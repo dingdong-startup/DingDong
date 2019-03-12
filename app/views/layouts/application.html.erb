@@ -10,6 +10,20 @@
   </head>
 
   <body>
+
+
+
+  <% if agency_signed_in? %>
+   
+    <%= link_to('Logout', destroy_agency_session_path, :method => :delete) %>        
+   
+  <% else %>
+   
+    <%= link_to('Register', new_agency_registration_path)  %>
+    <%= link_to('Login', new_agency_session_path)  %>  
+   
+  <% end %>
+
     <%= yield %>
   </body>
 </html>
