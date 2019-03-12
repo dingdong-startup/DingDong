@@ -27,23 +27,27 @@
                <% end %>
              
              </li>
+              <% if agency_signed_in? %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    email
+                    <%= @agency.email %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <%= link_to "Profile", root_path, class: "dropdown-item" %>
-                    <%= link_to "Mes commandes", root_path, class: "dropdown-item" %>
-                    <%= link_to "Log out", root_path, class: "dropdown-item" %>
+                    <%= link_to "Profile PRO", root_path, class: "dropdown-item" %>
+                    <%= link_to "Mes biens", root_path, class: "dropdown-item" %>
+                    <%= link_to('Logout', destroy_agency_session_path, :method => :delete, class: "dropdown-item") %>
                 </div>
               </li>
+               <%end %>
             </ul>
-
+            
+            <% if !agency_signed_in? %>
             <ul class="navbar-nav align-items-center mr-0">
               <li class="nav-item">
-                <%= link_to "Se connecter / s'inscrire", root_path, class: "nav-link text-light"%>
+                <%= link_to("Se connecter / s'inscrire", new_agency_registration_path, class: "nav-link text-light")  %>
               </li>
             </ul>
+            <% end %>
 
 
 
