@@ -1,0 +1,52 @@
+<%=render 'layouts/navbar'%>
+
+
+<body data-aos-easing="ease" data-aos-duration="800" data-aos-delay="0">
+
+
+  <%=render 'layouts/profile_header', agency: @agency%>
+
+
+<section class="bg-light pt-2">
+
+  <div class="container">
+    <div class="tab-content" id="demo-2">
+
+      <!-- tab info -->
+      <div class="tab-pane show active" id="demo-2-1" role="tabpanel" aria-labelledby="demo-2-1">
+        <div class="row justify-content-center">
+          <div class="col-md-10 col-lg-8">
+
+            <!-- stats -->
+            <%=render 'layouts/profile_stats', orders: @orders%>
+
+
+            <!-- description -->
+            <%=render 'layouts/profile_description'%>
+
+
+          </div>
+        </div>
+      </div>
+      <!-- / tab -->
+
+      <br>
+
+
+      <%=render 'layouts/profile_edit', agency: @agency%>
+
+
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+</body>
+
+
+
+<%=render 'layouts/footer'%>

@@ -1,0 +1,33 @@
+<div class="tab-pane active show" id="demo-2-4" role="tabpanel" aria-labelledby="demo-2-4">
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
+
+      <div class="row">
+        <div class="col">
+          <h5 class="mb-2 fs-20 font-weight-normal">Profile Information</h5>
+
+          <%= form_tag agency_path(agency), method: :PATCH do %>
+            <div class="form-row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="firstName">Name</label>
+                  <%= text_field_tag :name,'', class:"form-control", placeholder: agency.name %>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="firstName">Email</label>
+                  <%= text_field_tag :email,'', class:"form-control", placeholder: agency.email %>
+                </div>
+              </div>
+            </div>
+
+
+            <%= submit_tag 'Save changes', class:"btn btn-orange"%>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
