@@ -12,4 +12,10 @@
  *
  *= require_tree .
  *= require_self
+ 
+ *= require css/go_vendor
+ *= require go_style
+ *= require style
+ *= require font-awesome
+*= require icomoon-free/style
  */
