@@ -7,99 +7,87 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Property.destroy_all 
-ActiveRecord::Base.connexion.reset_pk_sequence('properties')
-Area.destroy_all 
-ActiveRecord::Base.connexion.reset_pk_sequence('areas')
-Tenant.destroy_all 
-ActiveRecord::Base.connexion.reset_pk_sequence('tenants')
-RequirementList.destroy_all 
-ActiveRecord::Base.connexion.reset_pk_sequence('requirement_lists')
+# Property.destroy_all 
+# ActiveRecord::Base.connection.reset_pk_sequence!('properties')
+# Area.destroy_all 
+# ActiveRecord::Base.connection.reset_pk_sequence!('areas')
+# Tenant.destroy_all 
+# ActiveRecord::Base.connection.reset_pk_sequence!('tenants')
+# RequirementList.destroy_all 
+# ActiveRecord::Base.connection.reset_pk_sequence!('requirement_lists')
 Agency.destroy_all 
-ActiveRecord::Base.connexion.reset_pk_sequence('agencies')
+ActiveRecord::Base.connection.reset_pk_sequence!('agencies')
 Position.destroy_all 
-ActiveRecord::Base.connexion.reset_pk_sequence('positions')
+ActiveRecord::Base.connection.reset_pk_sequence!('positions')
 Agent.destroy_all 
-ActiveRecord::Base.connexion.reset_pk_sequence('agents')
-Visit.destroy_all 
-ActiveRecord::Base.connexion.reset_pk_sequence('visits')
+ActiveRecord::Base.connection.reset_pk_sequence!('agents')
+# Visit.destroy_all 
+# ActiveRecord::Base.connection.reset_pk_sequence!('visits')
 
 
-v = VisitStatus.new(
-  name: "Pending"
-)
-v.save
+# v = VisitStatus.new(name: "Pending")
+# v.save
 
 
-10.times do
-  t = Tenant.new(first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  stripe_customer_id: nil) 
-  t.save
-end
+# 10.times do
+#   t = Tenant.new(first_name: Faker::Name.first_name,
+#   last_name: Faker::Name.last_name,
+#   stripe_customer_id: nil) 
+#   t.save
+# end
 
-3.times do 
-  a = Area.new(
-    name: Faker::Address.city,
-    zipcode: Faker::Address.zip_code
-  )
-end
+# 3.times do 
+#   a = Area.new(name: Faker::Address.city,
+#     zipcode: Faker::Address.zip_code)
+# end
 
 5.times do 
-  r = RequirementList.new(
-    flat_sharing: Faker::Boolean.boolean,
-    warrant: Faker::Boolean.boolean,
-    min_revenu: rand(700.1500)*3
-  )
-  r.save 
+  # r = RequirementList.new(flat_sharing: Faker::Boolean.boolean,
+  #   warrant: Faker::Boolean.boolean,
+  #   min_revenu: rand(700.1500)*3)
+  # r.save 
   
-  a = Agency.new(
-    name: Faker::Company.name,
-    address: Faker::address.full_address,
+  a = Agency.new(name: Faker::Company.name,
+    address: Faker::Address.full_address,
     phone: Faker::PhoneNumber.cell_phone,
-    monthly_properties: rand(5..40),
-    requirement_list_id: rand(1..3)
-  )
+    email: Faker::Internet.email,
+    password: "TEST123",
+    monthly_properties: rand(5..40))
   a.save
 
-  p = Position.new(
-    title: Faker::Company.profession
-  )
+  p = Position.new(title: Faker::Company.profession)
   p.save 
 
-  b = Agent.new(
-  first_name: Faker::Name.first_name,
+  b = Agent.new(first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
   cellphone: Faker::PhoneNumber.cell_phone,
-  position_id: rand(1..3)
+  position_id: p.id,
   agency_id: a.id)
   b.save
 end 
 
 
-20.times do 
-  p = Property.new(
-    title: Faker::Address.full_address,
-    price: ,
-    surface: ,
-    description: Faker::Company.bs,
-    agency_id: rand(1..5),
-    floor: rand(1..9),
-    rooms: rand(1..4),
-    area_id: rand(1..3),
-    available_date: Faker::Date.forward(rand(10..50)),
-    address: Faker::Address.street_address
-  )
-  p.save
+# 20.times do 
+#   p = Property.new(
+#     title: Faker::Address.full_address,
+#     price: ,
+#     surface: ,
+#     description: Faker::Company.bs,
+#     agency_id: rand(1..5),
+#     floor: rand(1..9),
+#     rooms: rand(1..4),
+#     area_id: rand(1..3),
+#     available_date: Faker::Date.forward(rand(10..50)),
+#     address: Faker::Address.street_address)
+#   p.save
 
-  3.times do 
-    v = Visit.new(time_id: Faker::Date.forward(rand(2..6)),
-      property_id: p.id,
-      tenant_id: rand(1..10),
-      visit_status_id: 1
-    )
-  end
-end
+#   3.times do 
+#     v = Visit.new(time_id: Faker::Date.forward(rand(2..6)),
+#       property_id: p.id,
+#       tenant_id: rand(1..10),
+#       visit_status_id: 1)
+#   end
+# end
 
 
