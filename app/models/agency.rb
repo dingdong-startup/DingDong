@@ -5,4 +5,6 @@ class Agency < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :agency_groups
   has_many :groups, through: :agency_groups
+  
+  has_many :agents
 end

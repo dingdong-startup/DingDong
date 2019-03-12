@@ -1,5 +1,5 @@
 class Position < ApplicationRecord
-  has_many :agencies
+  has_many :agents
 
   validates :title, 
     presence: true,
