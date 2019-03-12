@@ -1,0 +1,11 @@
+/*PROPERTIES*/
+
+.property h3{
+	font-weight: 600;
+}
+
+.property ul {
+	padding-left: 0.5em;
+	list-style: none;
+	line-height: 2em;
+}
