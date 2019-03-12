@@ -47,7 +47,7 @@ class DeviseCreateAgencies < ActiveRecord::Migration[5.2]
     # Initialize first demo account:
     Agency.create! do |u|
         u.email     = 'agency@agency.com'
-        u.password    = 'password'
+        u.password  = 'password'
     end
 
   end
