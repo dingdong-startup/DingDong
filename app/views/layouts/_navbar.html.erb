@@ -1,0 +1,54 @@
+<header class="header-sticky header-dark headroom headroom--not-bottom headroom--pinned headroom--top", style= "background-color: #14439C;">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar_dark">
+
+          <%= link_to root_path, class: "navbar-brand" do %>
+            <span style="font-size: 30px; line-height:30px; color: #fff;">
+
+              <i class="fas fa-bell"></i>
+            </span>
+          <% end %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="burger"><span></span></span></button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav align-items-center mr-auto">
+              <li class="nav-item">
+                <%= link_to "Home", root_path, class: "nav-link text-light"%>
+              </li>
+            </ul>
+
+
+            <ul class="navbar-nav align-items-center mr-0">
+              <li class="nav-item">
+               <%= link_to root_path, class:"nav-link" do %>
+                 <span style="font-size: 20px; line-height:20px;">
+                   <i class="fas fa-shopping-bag text-light"></i><small class="text-light"> (0)</small>
+                 </span>
+               <% end %>
+             
+             </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    email
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <%= link_to "Profile", root_path, class: "dropdown-item" %>
+                    <%= link_to "Mes commandes", root_path, class: "dropdown-item" %>
+                    <%= link_to "Log out", root_path, class: "dropdown-item" %>
+                </div>
+              </li>
+            </ul>
+
+            <ul class="navbar-nav align-items-center mr-0">
+              <li class="nav-item">
+                <%= link_to "Se connecter / s'inscrire", root_path, class: "nav-link text-light"%>
+              </li>
+            </ul>
+
+
+
+
+          </div>
+        </nav>
+      </div>
+</header>
