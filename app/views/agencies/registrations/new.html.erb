@@ -1,4 +1,8 @@
-<h2>Sign up</h2>
+<div class="viewport">
+  <div class="image image-overlay" style="background-image:url(<%=asset_path('sofa.jpg')%>)"></div>
+
+
+<h2>Sign up as an agency</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
@@ -23,3 +27,5 @@
 <% end %>
 
 <%= render "agencies/shared/links" %>
+
+</div>
