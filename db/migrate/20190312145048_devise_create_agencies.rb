@@ -43,5 +43,12 @@ class DeviseCreateAgencies < ActiveRecord::Migration[5.2]
     add_index :agencies, :reset_password_token, unique: true
     # add_index :agencies, :confirmation_token,   unique: true
     # add_index :agencies, :unlock_token,         unique: true
+    
+    # Initialize first demo account:
+    Agency.create! do |u|
+        u.email     = 'agency@agency.com'
+        u.password    = 'password'
+    end
+
   end
 end
