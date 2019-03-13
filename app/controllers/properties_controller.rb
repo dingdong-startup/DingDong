@@ -1,9 +1,6 @@
 class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
-    puts "#"*50
-    puts params[:agency_id]
-    puts "#"*50
 
   end
   
@@ -18,15 +15,6 @@ class PropertiesController < ApplicationController
     @property.agency_id = params[:agency_id]
     @property.agent_id = 1
     @property.area_id = 1
-
-    puts "#"*50
-    puts params[:property][:images]
-    puts "#"*50
-
-
-    puts "#"*50
-   	puts @property.inspect
-		puts "#"*50
 
     if @property.save
       flash[:success] = "Votre bien a été créé"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_13_114121) do
+ActiveRecord::Schema.define(version: 2019_03_13_140514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,21 @@ ActiveRecord::Schema.define(version: 2019_03_13_114121) do
     t.index ["agency_id"], name: "index_properties_on_agency_id"
     t.index ["agent_id"], name: "index_properties_on_agent_id"
     t.index ["area_id"], name: "index_properties_on_area_id"
+  end
+
+  create_table "tenants", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "stripe_customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_tenants_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_tenants_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
