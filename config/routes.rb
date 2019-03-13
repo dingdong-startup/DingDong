@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :visits, only: [:new, :create, :delete]
   end
 
+  resources :charges
+
   root 'statics#index'
 
 end

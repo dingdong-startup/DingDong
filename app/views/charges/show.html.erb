@@ -1,0 +1,12 @@
+<%= @tenant.first_name %>
+<%= @tenant.stripe_customer_id %>
+
+<%= form_tag charges_path %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+  </article>
+<%= submit_tag 'Debiter' %> 
