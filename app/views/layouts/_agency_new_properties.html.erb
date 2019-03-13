@@ -3,13 +3,13 @@
       <div class="col-md-10 col-lg-8">
         <div class="row">
           <div class="col">
-            <h5 class="mb-2 fs-20 font-weight-normal">Nouveau bien</h5>
-            <form>
+            
+            <%= form_for [agency, property] do |f| %>
               <div class="form-row">
                 <div class="col">
                   <div class="form-group">
                     <label for="userMail">Titre</label>
-                    <input type="email" class="form-control" id="userMail" aria-describedby="userMail" placeholder="T2 avec une incroyable vue">
+                    <%= f.text_field :title, class: "form-control", id:"userMail", placeholder:"T2 avec une incroyable vue" %>
                   </div>
                 </div>
               </div>
@@ -19,9 +19,9 @@
                     <label for="firstName">Prix</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
-                        <span class="input-group-text">€</span>
+                        <span class="input-group-text"><i class="fas fa-coins"></i></span>
                       </div>
-                      <input type="text" id="userTwitter" class="form-control" placeholder="1600" aria-label="Username" aria-describedby="userTwitter">
+                      <%= f.text_field :price, class: "form-control", id:"userTwitter", placeholder:"1600 €" %>
                     </div>
                   </div>
                 </div>
@@ -30,32 +30,66 @@
                     <label for="firstName">Surface</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
-                        <span class="input-group-text">m2</span>
+                        <span class="input-group-text"><i class="fas fa-arrows-alt-h"></i></span>
                       </div>
-                      <input type="text" id="userTwitter" class="form-control" placeholder="75" aria-label="Username" aria-describedby="userTwitter">
+                      <%= f.text_field :surface, class: "form-control", id:"userTwitter", placeholder:"75 m2" %>
                     </div>
                   </div>
                 </div>
               </div>
+
               <div class="form-row">
                 <div class="col">
                   <div class="form-group">
                     <label for="firstName">Etage</label>
-                    <input type="email" class="form-control" id="firstName" aria-describedby="firstName" placeholder="3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fas fa-hiking"></i></span>
+                        </div>
+                       <%= f.number_field :floor, class: "form-control", id:"userTwitter", placeholder:"3 ème" %>
+                      </div>
                   </div>
                 </div>
+
+                
+
                 <div class="col">
                   <div class="form-group">
                     <label for="secondName">Nombre de chambres</label>
-                    <input type="email" class="form-control" id="secondName" aria-describedby="secondName" placeholder="2">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fas fa-home"></i></span>
+                        </div>
+                       <%= f.number_field :room, class: "form-control", id:"userTwitter", placeholder:"2" %>
+                      </div>
+                  </div>
+                </div>
+               
+                <div class="col">
+                  <div class="form-group">
+                    <label for="secondName">Date de dispo.</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fas fa-calendar-alt"></i></span>
+                        </div>
+                       <%= f.date_field :available_date, class: "form-control", id:"userTwitter", placeholder:"20/10/2020" %>
+                      </div>
                   </div>
                 </div>
               </div>
+
+              
+
               <div class="form-row">
                 <div class="col-6">
                   <div class="form-group">
                     <label for="agencyAddress">Address</label>
-                    <input type="textarea" class="form-control" id="agencyAddress" aria-describedby="agencyAddress" placeholder="68 Rue Joseph de Maistre">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                      </div>
+                      <%= f.text_field :address, class: "form-control", id:"userTwitter", placeholder:"68 Rue Joseph de Maistre" %>
+                    </div>
                   </div>
                 </div>
                 <div class="col">
@@ -72,22 +106,33 @@
                   </div>
                 </div>
               </div>
+
               <div class="form-row">
                 <div class="col">
                   <div class="form-group">
                     <label for="exampleFormControlTextarea1">Description</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" placeholder="Appartement meublé de 75 m², au 3ème étage d'un immeuble récent, se compose d'une entrée, d'un salon, d'une chambre, d'une salle de bains. Les WC sont séparés et une TERRASSE de 32 m² avec vue sur le Sacré Coeur complète ce bien. De nombreux placards. Les sols sont en marbre, très belles prestations. Chauffage et eau collectifs.."></textarea>
+                    <%= f.text_area :description, class: "form-control", id:"userTwitter", placeholder:"Appartement meublé de 75 m², au 3ème étage d'un immeuble récent, se compose d'une entrée, d'un salon, d'une chambre, d'une salle de bains. Les WC sont séparés et une TERRASSE de 32 m² avec vue sur le Sacré Coeur complète ce bien. De nombreux placards. Les sols sont en marbre, très belles prestations. Chauffage et eau collectifs.", rows: "8" %>
                   </div>
                 </div>
               </div>
-              <div class="form-row mt-1 align-items-center">
-                <div class="col-3">
-                  <button class="btn btn-secondary">Enregistrer mon bien</button>
-                </div>
+         
+          
+
+            <div class="form-row mt-1 align-items-center">
+              <div class="col-8">
+                <%= f.file_field :images, multiple: true %>
               </div>
-            </form>
+              <div class="col-3">
+                <%= submit_tag("Enregistrer mon bien", id: "button", class: "btn btn-secondary", name: "submit") %>
+              </div>
+            </div>
+
+            <% end %>
+
+
           </div>
         </div>
       </div>
 	</div>
 </div>
+

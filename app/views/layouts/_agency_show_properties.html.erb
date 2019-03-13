@@ -10,13 +10,13 @@
 		          <div class="row align-items-center justify-content-between">
 		            <div class="col-10">
 		              <div class="media align-items-center">
-		                <img src="<%=asset_path("sofa.jpg")%>" alt="Avatar" class="avatar avatar-lg mr-3">
+		                <img src="<%=asset_path(image_path(main_app.url_for(property.images.first)))%>" alt="Avatar" class="avatar avatar-lg mr-3">
 		                <div class="media-body">
 		                  <h5 class="mb-0"><%=property.title%></h5>
 		                  <br>
 		                  <container>
 		                  	<div class="row">
-			                  <div class="col-4 text-muted"><i class="fas fa-arrows-alt-v"></i> <%=property.surface%> m2  </div>
+			                  <div class="col-4 text-muted"><i class="fas fa-arrows-alt-h"></i> <%=property.surface%> m2  </div>
 			                  <div class=" col-4 text-muted"><i class="fas fa-coins"></i> <%=property.price%> €  </div>
 			                  <div class="col-4 text-muted"><i class="fas fa-map-marker-alt"></i> <%=property.area.zipcode%></div>
 			              	</div>
