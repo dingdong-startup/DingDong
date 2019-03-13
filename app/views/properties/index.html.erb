@@ -1,0 +1,20 @@
+<%= render 'layouts/navbar' %>
+
+<div class="tab-content m-3" >
+  <div class="container" style="margin-top:150px;">
+  	<%rowcount = 0%>
+  	<div class="row">
+			<% @properties.each do |property| %>
+				
+				
+				<%= render 'layouts/property_index_row', property: property %>
+			<% rowcount += 1%>
+			<% if rowcount%3 == 0 %> </div> <div class="row"><% end%>
+
+			<% end %> 
+
+		</div>
+	</div>
+</div>
+
+<%= render 'layouts/footer' %>
