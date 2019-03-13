@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-# Property.destroy_all 
-# ActiveRecord::Base.connection.reset_pk_sequence!('properties')
-# Area.destroy_all 
-# ActiveRecord::Base.connection.reset_pk_sequence!('areas')
+Property.destroy_all 
+ActiveRecord::Base.connection.reset_pk_sequence!('properties')
+Area.destroy_all 
+ActiveRecord::Base.connection.reset_pk_sequence!('areas')
 # Tenant.destroy_all 
 # ActiveRecord::Base.connection.reset_pk_sequence!('tenants')
 # RequirementList.destroy_all 
