@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :tenants
   get 'agencies/index'
   get 'agencies/show'
   get 'static_homes/index'
