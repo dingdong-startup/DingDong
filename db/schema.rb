@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_12_154500) do
+ActiveRecord::Schema.define(version: 2019_03_13_092351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(version: 2019_03_12_154500) do
     t.index ["position_id"], name: "index_agents_on_position_id"
   end
 
+  create_table "areas", force: :cascade do |t|
+    t.string "name"
+    t.string "zipcode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -63,6 +70,25 @@ ActiveRecord::Schema.define(version: 2019_03_12_154500) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "properties", force: :cascade do |t|
+    t.string "title"
+    t.integer "price"
+    t.integer "surface"
+    t.text "description"
+    t.integer "floor"
+    t.integer "room"
+    t.datetime "available_date"
+    t.text "address"
+    t.bigint "agency_id"
+    t.bigint "agent_id"
+    t.bigint "area_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agency_id"], name: "index_properties_on_agency_id"
+    t.index ["agent_id"], name: "index_properties_on_agent_id"
+    t.index ["area_id"], name: "index_properties_on_area_id"
   end
 
 end
