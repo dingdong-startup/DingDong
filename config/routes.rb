@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :tenants
   get 'agencies/index'
   get 'agencies/show'
   get 'static_homes/index'
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
     resources :properties, except: [:index]
   end
 
-  resources :properties, only: [:show]
+  resources :properties, only: [:index, :show]
 
   root 'statics#index'
 

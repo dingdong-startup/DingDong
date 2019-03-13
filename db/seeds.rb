@@ -11,8 +11,8 @@ Property.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('properties')
 Area.destroy_all 
 ActiveRecord::Base.connection.reset_pk_sequence!('areas')
-# Tenant.destroy_all 
-# ActiveRecord::Base.connection.reset_pk_sequence!('tenants')
+Tenant.destroy_all 
+ActiveRecord::Base.connection.reset_pk_sequence!('tenants')
 # RequirementList.destroy_all 
 # ActiveRecord::Base.connection.reset_pk_sequence!('requirement_lists')
 Agency.destroy_all 
@@ -29,12 +29,14 @@ ActiveRecord::Base.connection.reset_pk_sequence!('agents')
 # v.save
 
 
-# 10.times do
-#   t = Tenant.new(first_name: Faker::Name.first_name,
-#   last_name: Faker::Name.last_name,
-#   stripe_customer_id: nil) 
-#   t.save
-# end
+10.times do
+  t = Tenant.new(first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password: "test123",
+  stripe_customer_id: nil) 
+  t.save
+end
 
 3.times do 
   a = Area.new(name: Faker::Address.city,
