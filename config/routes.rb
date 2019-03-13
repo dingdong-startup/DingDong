@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   resources :agencies
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  resources :agencies do 
+    resources :properties, only: [:show, :edit, :update, :delete]
+  end
 
-root 'statics#index'
-resources :agencies
+  resources :properties, only: [:show]
 
+  root 'statics#index'
 
 end
