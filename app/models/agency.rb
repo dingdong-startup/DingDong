@@ -7,4 +7,5 @@ class Agency < ApplicationRecord
   has_many :groups, through: :agency_groups
   
   has_many :agents
+  has_many :properties
 end
