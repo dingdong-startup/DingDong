@@ -40,16 +40,23 @@
 		        </div>
 		    </div>
 
-			<div class="col-2 ml-4">
-                  <h4 class="progress-title">Visiteurs</h4>
+			<div class="col-2 ml-10">
+                  <h4 class="progress-title">Demandes de visites</h4>
                   <div class="progress-item">
                     <div class="progress">
                     	<%p = rand(1..10)%>
                         <div class="progress-bar bg-orange" role="progressbar" style="width: <%=p*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-orange"><%=p%></span></div>
                     </div>
                   </div>
+                  <br>
+                  <h4 class="progress-title align-bottom">Postulants</h4>
+                  <div class="progress-item align-bottom">
+                    <div class="progress">
+                    	<%p = rand(1..10)%>
+                        <div class="progress-bar bg-blue" role="progressbar" style="width: <%=p*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-blue"><%=p%></span></div>
+                    </div>
+                  </div>
             </div>
-
 
 <%end%>
 
