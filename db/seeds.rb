@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-# Property.destroy_all 
-# ActiveRecord::Base.connection.reset_pk_sequence!('properties')
-# Area.destroy_all 
-# ActiveRecord::Base.connection.reset_pk_sequence!('areas')
+Property.destroy_all 
+ActiveRecord::Base.connection.reset_pk_sequence!('properties')
+Area.destroy_all 
+ActiveRecord::Base.connection.reset_pk_sequence!('areas')
 # Tenant.destroy_all 
 # ActiveRecord::Base.connection.reset_pk_sequence!('tenants')
 # RequirementList.destroy_all 
@@ -83,7 +83,10 @@ end
     area_id: rand(1..3),
     available_date: Faker::Date.forward(rand(10..50)),
     address: Faker::Address.street_address)
+  p.images.attach(io: File.open('app/assets/images/photo1.jpg'), filename: 'photo1.jpg', content_type: 'image/jpg')
+  
   p.save
+
 
 #   3.times do 
 #     v = Visit.new(time_id: Faker::Date.forward(rand(2..6)),
