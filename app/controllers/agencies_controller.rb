@@ -7,6 +7,5 @@ class AgenciesController < ApplicationController
   	@agency = Agency.find(params[:id])
   	#@director = @agency.agents
   	#@agent = @agency.agents
-
   end
 end
