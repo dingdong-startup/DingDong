@@ -5,6 +5,8 @@ class AgenciesController < ApplicationController
 
   def show
   	@agency = Agency.find(params[:id])
+  	@properties = @agency.properties
+    @property = Property.new
   	#@director = @agency.agents
   	#@agent = @agency.agents
   end

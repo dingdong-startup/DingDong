@@ -34,4 +34,5 @@ class PropertiesController < ApplicationController
   	params.require(:property).permit(:title, :price, :surface, :description, :floor, :room, :available_date, :address)
   end
 
+
 end
