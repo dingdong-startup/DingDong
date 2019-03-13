@@ -1,0 +1,32 @@
+<h1>Add a property</h1>
+
+
+<div class="container">
+	<div class="row">
+			<%= form_for [@agency, @property] do |f| %>
+			Titre : 
+			<%= f.text_field :title %> <br><br>
+			Price : 
+			<%= f.text_field :price %> <br><br>
+			Surface : 
+			<%= f.text_field :surface %> <br><br>
+			Description : 
+			<%= f.text_area :description %> <br><br>
+			Etage : 
+			<%= f.text_field :floor %> <br><br>
+			Nombre de pièces : 
+			<%= f.number_field :room %> <br><br>
+			Disponibilité : 
+			<%= f.datetime_select :available_date %> <br><br>
+			Adresse : 
+			<%= f.text_area :address %> <br><br>
+			Image :
+			<%= f.file_field :images, multiple: true %> <br><br>
+
+			<%= submit_tag("Créer", id: "button", class: "Test", name: "submit") %>
+
+			<% end %>
+					
+	</div>
+
+</div>
