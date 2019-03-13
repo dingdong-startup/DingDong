@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :properties, only: [:show, :edit, :update, :delete]
   end
 
+  resources :properties, only: [:show]
+
   root 'statics#index'
 
 end
