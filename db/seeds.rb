@@ -83,7 +83,7 @@ end
     area_id: rand(1..3),
     available_date: Faker::Date.forward(rand(10..50)),
     address: Faker::Address.street_address)
-  p.images.attached(io: File.open('/app/assets/images'), filename: 'photo1.jpg')
+  p.images.attach(io: File.open('app/assets/images/photo1.jpg'), filename: 'photo1.jpg', content_type: 'image/jpg')
   
   p.save
 
