@@ -5,25 +5,30 @@
 
 <% properties.each do |property| %>
 
+
 		    <div class="col-8">
 		        <div class="boxed p-2 bordered scaling">
 		          <div class="row align-items-center justify-content-between">
 		            <div class="col-10">
-		              <div class="media align-items-center">
-		                <img src="<%=asset_path(image_path(main_app.url_for(property.images.first)))%>" alt="Avatar" class="avatar avatar-lg mr-3">
-		                <div class="media-body">
-		                  <h5 class="mb-0"><%=property.title%></h5>
-		                  <br>
-		                  <container>
-		                  	<div class="row">
-			                  <div class="col-4 text-muted"><i class="fas fa-arrows-alt-h"></i> <%=property.surface%> m2  </div>
-			                  <div class=" col-4 text-muted"><i class="fas fa-coins"></i> <%=property.price%> €  </div>
-			                  <div class="col-4 text-muted"><i class="fas fa-map-marker-alt"></i> <%=property.area.zipcode%></div>
-			              	</div>
-		              	  </container>
-		                </div>
-		              </div>
+			            <%= link_to property_path(property) do %>
+			              <div class="media align-items-center">           			           
+			                <img src="<%=asset_path(image_path(main_app.url_for(property.images.first)))%>" alt="Avatar" class="avatar avatar-lg mr-3">
+			                 
+			                <div class="media-body">
+			                  <h5 class="mb-0"><%=property.title%></h5>
+			                  <br>
+			                  <container>
+			                  	<div class="row">
+				                  <div class="col-4 text-muted"><i class="fas fa-arrows-alt-h"></i> <%=property.surface%> m2  </div>
+				                  <div class=" col-4 text-muted"><i class="fas fa-coins"></i> <%=property.price%> €  </div>
+				                  <div class="col-4 text-muted"><i class="fas fa-map-marker-alt"></i> <%=property.area.zipcode%></div>
+				              	</div>
+			              	  </container>
+			                </div>
+			              </div>
+			            <% end %>
 		            </div>
+		           
 		            <div class="col-2 text-md-right">
 		              <div class="dropdown">
 		                <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,6 +44,7 @@
 		          </div>
 		        </div>
 		    </div>
+		    
 
 			<div class="col-2 ml-10">
 				
