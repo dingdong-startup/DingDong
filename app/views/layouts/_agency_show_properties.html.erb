@@ -1,39 +1,55 @@
  <div class="tab-pane show active" id="demo-2-1" role="tabpanel" aria-labelledby="demo-2-1">
 	<div class="row justify-content-center">
-	  <div class="col-md-10 col-lg-8">
+	  <div class="col-md-12 col-lg-12">
 	    <div class="row gutter-1">
 
 <% properties.each do |property| %>
 
-	      <div class="col-12">
-	        <div class="boxed p-2">
-	          <div class="row align-items-center justify-content-between">
-	            <div class="col-10">
-	              <div class="media align-items-center">
-	                <img src="../../assets/images/demo/user-5.jpg" alt="Avatar" class="avatar avatar-lg rounded mr-3">
-	                <div class="media-body">
-	                  <h5 class="mb-0"><%=property.title%></h5>
-	                  <span class="text-muted"><%=property.surface%> m2</span> |
-	                  <span class="text-muted"><%=property.price%> €</span> |
-	                  <span class="text-muted"><%=property.area.name%> ème</span>
-	                </div>
-	              </div>
-	            </div>
-	            <div class="col-2 text-md-right">
-	              <div class="dropdown">
-	                <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                  <i class="icon-more-vertical fs-22"></i>
-	                </a>
+		    <div class="col-8">
+		        <div class="boxed p-2 bordered scaling">
+		          <div class="row align-items-center justify-content-between">
+		            <div class="col-10">
+		              <div class="media align-items-center">
+		                <img src="<%=asset_path("sofa.jpg")%>" alt="Avatar" class="avatar avatar-lg mr-3">
+		                <div class="media-body">
+		                  <h5 class="mb-0"><%=property.title%></h5>
+		                  <br>
+		                  <container>
+		                  	<div class="row">
+			                  <div class="col-4 text-muted"><i class="fas fa-arrows-alt-v"></i> <%=property.surface%> m2  </div>
+			                  <div class=" col-4 text-muted"><i class="fas fa-coins"></i> <%=property.price%> €  </div>
+			                  <div class="col-4 text-muted"><i class="fas fa-map-marker-alt"></i> <%=property.area.zipcode%></div>
+			              	</div>
+		              	  </container>
+		                </div>
+		              </div>
+		            </div>
+		            <div class="col-2 text-md-right">
+		              <div class="dropdown">
+		                <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                  <i class="icon-more-vertical fs-22"></i>
+		                </a>
 
-	                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
-	                  <a class="dropdown-item" href="#">Make Primary</a>
-	                  <a class="dropdown-item" href="#">Remove</a>
-	                </div>
-	              </div>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
+		                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
+		                  <a class="dropdown-item" href="#">Make Primary</a>
+		                  <a class="dropdown-item" href="#">Remove</a>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+		    </div>
+
+			<div class="col-2 ml-4">
+                  <h4 class="progress-title">Visiteurs</h4>
+                  <div class="progress-item">
+                    <div class="progress">
+                    	<%p = rand(1..10)%>
+                        <div class="progress-bar bg-orange" role="progressbar" style="width: <%=p*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-orange"><%=p%></span></div>
+                    </div>
+                  </div>
+            </div>
+
 
 <%end%>
 
