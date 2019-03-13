@@ -36,10 +36,11 @@ ActiveRecord::Base.connection.reset_pk_sequence!('agents')
 #   t.save
 # end
 
-# 3.times do 
-#   a = Area.new(name: Faker::Address.city,
-#     zipcode: Faker::Address.zip_code)
-# end
+3.times do 
+  a = Area.new(name: Faker::Address.city,
+    zipcode: Faker::Address.zip_code)
+  a.save
+end
 
 5.times do 
   # r = RequirementList.new(flat_sharing: Faker::Boolean.boolean,
@@ -68,19 +69,21 @@ ActiveRecord::Base.connection.reset_pk_sequence!('agents')
 end 
 
 
-# 20.times do 
-#   p = Property.new(
-#     title: Faker::Address.full_address,
-#     price: ,
-#     surface: ,
-#     description: Faker::Company.bs,
-#     agency_id: rand(1..5),
-#     floor: rand(1..9),
-#     rooms: rand(1..4),
-#     area_id: rand(1..3),
-#     available_date: Faker::Date.forward(rand(10..50)),
-#     address: Faker::Address.street_address)
-#   p.save
+20.times do 
+
+  p = Property.new(
+    title: Faker::Address.full_address,
+    price: rand(600..3000),
+    surface: rand(9..150),
+    description: Faker::Company.bs,
+    agency_id: rand(1..5),
+    agent_id: rand(1..5),
+    floor: rand(1..9),
+    room: rand(1..4),
+    area_id: rand(1..3),
+    available_date: Faker::Date.forward(rand(10..50)),
+    address: Faker::Address.street_address)
+  p.save
 
 #   3.times do 
 #     v = Visit.new(time_id: Faker::Date.forward(rand(2..6)),
@@ -88,6 +91,6 @@ end
 #       tenant_id: rand(1..10),
 #       visit_status_id: 1)
 #   end
-# end
+end
 
 
