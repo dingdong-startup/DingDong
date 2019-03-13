@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :properties, except: [:index]
   end
 
-  resources :properties, only: [:show]
+  resources :properties, only: [:index, :show]
 
   root 'statics#index'
 

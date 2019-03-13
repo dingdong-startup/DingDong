@@ -5,13 +5,9 @@
 
       <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-383px, 0px, 0px); transition: all 0.25s ease 0s; width: 1534px;"><div class="owl-item" style="width: 373.333px; margin-right: 10px;">
         <figure class="photo">
-          <img src="<%=asset_path('photo1.jpg')%>" alt="Image">
-        </figure></div><div class="owl-item active" style="width: 373.333px; margin-right: 10px;"><figure class="photo">
-          <img src="<%=asset_path('photo2.jpg')%>" alt="Image">
-        </figure></div><div class="owl-item active" style="width: 373.333px; margin-right: 10px;"><figure class="photo">
-          <img src="<%=asset_path('photo3.jpg')%>" alt="Image">
-        </figure></div><div class="owl-item active" style="width: 373.333px; margin-right: 10px;"><figure class="photo">
-          <img src="<%=asset_path('photo4.jpg')%>" alt="Image">
+        <% @property.images.each do |i| %>
+          <img src="<%=asset_path(image_path(main_app.url_for(i)))%>" alt="Image">
+        <%end%>
         </figure></div></div>
       </div>
 

@@ -1,0 +1,23 @@
+<div class="col-4">
+  <div class="card">
+    <img class="card-img-top" src="<%= asset_path(image_path(main_app.url_for(property.images.first))) %>" alt="Card image cap">
+    <div class="card-body">
+      <a href="" class="eyebrow mb-1">Paris 18</a>
+      <h4 class="card-title mb-0"><a href=""><%= property.title%></a></h4>
+    </div>
+    <div class="card-footer">
+      <div class="row align-items-center">
+        <div class="col-4">
+          <%= link_to property_path(property.id), class: "btn btn-ico btn-rounded btn-outline-primary" do %>
+            <i class="fas fa-arrow-right" style="margin-top:1em;"></i>
+          <%end%>
+        </div>
+        <div class="col-8 text-right">
+          <ul class="list-inline mb-0">
+            <a class="btn btn-orange">Découvrir</a>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
