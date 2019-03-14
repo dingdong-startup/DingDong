@@ -32,8 +32,7 @@
           <div class="col col-md-10 col-lg-8">
             <div class="nav nav-tabs mb-1">
               <a class="nav-item nav-link active" data-toggle="tab" href="#demo-2-1">Profile</a>
-              <a class="nav-item nav-link" data-toggle="tab" href="#demo-2-2">Connections</a>
-              <a class="nav-item nav-link" data-toggle="tab" href="#demo-2-3">Groups</a>
+              <a class="nav-item nav-link" data-toggle="tab" href="#demo-2-2">Favoris</a>
               <a class="nav-item nav-link" data-toggle="tab" href="#demo-2-4">Editer mes infos</a>
             </div>
           </div>
@@ -59,10 +58,10 @@
                     <div class="equal">
                       <div class="boxed bg-primary text-white">
                         <div class="equal-header">
-                          <b class="h2">89</b>
+                          <b class="h2">3</b>
                         </div>
                         <div class="equal-footer">
-                          <span class="text-muted">apparts en favoris</span>
+                          <span class="text-muted">demandes de visites</span>
                         </div>
                       </div>
                     </div>
@@ -74,7 +73,7 @@
                           <b class="h2">14</b>
                         </div>
                         <div class="equal-footer">
-                          <span class="text-muted">likes</span>
+                          <span class="text-muted">apparts en favoris</span>
                         </div>
                       </div>
                     </div>
@@ -83,10 +82,10 @@
                     <div class="equal">
                       <div class="boxed">
                         <div class="equal-header">
-                          <b class="h2">9</b>
+                          <b class="h2">0</b>
                         </div>
                         <div class="equal-footer">
-                          <span class="text-muted">articles</span>
+                          <span class="text-muted">dossier complété</span>
                         </div>
                       </div>
                     </div>
@@ -95,127 +94,61 @@
                     <div class="equal">
                       <div class="boxed">
                         <div class="equal-header">
-                          <b class="h2">119</b>
+                          <b class="h2">0</b>
                         </div>
                         <div class="equal-footer">
-                          <span class="text-muted">following</span>
+                          <span class="text-muted">bien loué via Din-Dong</span>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <!-- / stats -->
-
-                <!-- post -->
-                <div class="row mb-1">
-                  <div class="col">
-                    <article class="card">
-                      <div class="card-header">
-                        <div class="row align-items-center">
-                          <div class="col-6">
-                            <div class="media align-items-center">
-                              <img class="avatar rounded mr-1" src="../../assets/images/demo/user-2.jpg" alt="Image">
-                              <div class="media-body">
-                                <span class="mt-0">Michael Doe</span>
+                
+                <!-- Flats to visit -->
+                <div class="row gutter-1">
+                  <div class="col-12"><h3>Demandes de visites</h3> </div>
+                </div>
+                <div class="row gutter-1">
+                  <% @visit_properties.each do |property| %>
+                    <div class="col-12">
+                      <div class="boxed p-2 bordered scaling">
+                        <div class="row align-items-center justify-content-between">
+                          <div class="col-10">
+                            <%= link_to property_path(property) do %>
+                              <div class="media align-items-center">                           
+                                <img src="<%=asset_path(image_path(main_app.url_for(property.images.first)))%>" alt="Avatar" class="avatar avatar-lg mr-3">
+                                <div class="media-body">
+                                  <h5 class="mb-0"><%=property.title%></h5>
+                                  <br>
+                                  <container>
+                                    <div class="row">
+                                    <div class="col-4 text-muted"><i class="fas fa-arrows-alt-h"></i> <%=property.surface%> m2  </div>
+                                    <div class=" col-4 text-muted"><i class="fas fa-coins"></i> <%=property.price%> €  </div>
+                                    <div class="col-4 text-muted"><i class="fas fa-map-marker-alt"></i> <%=property.area.zipcode%></div>
+                                  </div>
+                                  </container>
+                                </div>
                               </div>
-                            </div>
+                            <% end %>
                           </div>
-                          <div class="col-6 text-right">
-                            <small class="text-mute">2 hours ago</small>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card-body overflow-hidden">
-                        <div class="owl-carousel gallery visible" data-items="[2,2]" data-margin="10" data-nav="true">
-                          <figure class="photo equal equal-double">
-                            <a href="../../assets/images/demo/image-square-1.jpg" title="Image title">
-                              <img src="../../assets/images/demo/image-square-1.jpg" alt="Image">
-                            </a>
-                          </figure>
-                          <figure class="photo equal equal-double">
-                            <a href="../../assets/images/demo/image-square-2.jpg" title="Image title">
-                              <img src="../../assets/images/demo/image-square-2.jpg" alt="Image">
-                            </a>
-                          </figure>
-                          <figure class="photo equal equal-double">
-                            <a href="../../assets/images/demo/image-square-3.jpg" title="Image title">
-                              <img src="../../assets/images/demo/image-square-3.jpg" alt="Image">
-                            </a>
-                          </figure>
-                        </div>
-                      </div>
-                      <div class="card-footer">
-                        <div class="row">
-                          <div class="col">
-                            <a href="" class="btn btn-ico btn-sm rounded btn-outline-light text-red"><i class="icon-heart2 fs-22"></i></a>
-                          </div>
-                          <div class="col text-right">
+                          <div class="col-2 text-md-right">
                             <div class="dropdown">
-                              <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="icon-more-vertical fs-22"></i>
                               </a>
-
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Make Primary</a>
-                                <a class="dropdown-item" href="#">Remove</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
+                                  <a class="dropdown-item" href="#">Make Primary</a>
+                                  <a class="dropdown-item" href="#">Remove</a>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </article>
-                  </div>
+                    </div>
+                  <%end%>
                 </div>
-                <!-- / post -->
-
-                <!-- post -->
-                <div class="row">
-                  <div class="col">
-                    <article class="card">
-                      <div class="card-header">
-                        <div class="row align-items-center">
-                          <div class="col-6">
-                            <div class="media align-items-center">
-                              <img class="avatar rounded mr-1" src="../../assets/images/demo/user-2.jpg" alt="Image">
-                              <div class="media-body">
-                                <span class="mt-0">Michael Doe</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-6 text-right">
-                            <small class="text-mute">2 hours ago</small>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card-body overflow-hidden">
-                        <blockquote class="blockquote">
-                          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                          <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-                        </blockquote>
-                      </div>
-                      <div class="card-footer">
-                        <div class="row">
-                          <div class="col">
-                            <a href="" class="btn btn-ico btn-sm rounded btn-outline-light text-red"><i class="icon-heart2 fs-22"></i></a>
-                          </div>
-                          <div class="col text-right">
-                            <div class="dropdown">
-                              <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="icon-more-vertical fs-22"></i>
-                              </a>
-
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-2">
-                                <a class="dropdown-item" href="#">Make Primary</a>
-                                <a class="dropdown-item" href="#">Remove</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                  </div>
-                </div>
-                <!-- / post -->
+                
 
               </div>
             </div>
@@ -223,335 +156,51 @@
           <!-- / tab -->
 
 
-          <!-- tab connections -->
+          <!-- tab favoris -->
           <div class="tab-pane" id="demo-2-2" role="tabpanel" aria-labelledby="demo-2-2">
             <div class="row justify-content-center">
               <div class="col-md-10 col-lg-8">
                 <div class="row gutter-1">
-                  <div class="col-md-4">
-                    <figure class="user">
-                      <a href="" class="user-photo">
-                        <img src="../../assets/images/demo/user-1.jpg" alt="Avatar">
-                      </a>
-                      <figcaption class="user-caption">
-                        <h4>John Doe</h4>
-                        <span>Senior Designer</span>
-                        <ul class="socials bordered">
-                          <li><a href="" class="icon-facebook fs-20"></a></li>
-                          <li><a href="" class="icon-instagram fs-20"></a></li>
-                          <li><a href="" class="icon-twitter fs-20"></a></li>
-                        </ul>
-                      </figcaption>
-                    </figure>
-                  </div>
-                  <div class="col-md-4">
-                    <figure class="user">
-                      <a href="" class="user-photo">
-                        <img src="../../assets/images/demo/user-2.jpg" alt="Avatar">
-                      </a>
-                      <figcaption class="user-caption">
-                        <h4>James Doe</h4>
-                        <span>Senior Designer</span>
-                        <ul class="socials bordered">
-                          <li><a href="" class="icon-facebook fs-20"></a></li>
-                          <li><a href="" class="icon-instagram fs-20"></a></li>
-                          <li><a href="" class="icon-twitter fs-20"></a></li>
-                        </ul>
-                      </figcaption>
-                    </figure>
-                  </div>
-                  <div class="col-md-4">
-                    <figure class="user">
-                      <a href="" class="user-photo">
-                        <img src="../../assets/images/demo/user-3.jpg" alt="Avatar">
-                      </a>
-                      <figcaption class="user-caption">
-                        <h4>Valerie Doe</h4>
-                        <span>Senior Designer</span>
-                        <ul class="socials bordered">
-                          <li><a href="" class="icon-facebook fs-20"></a></li>
-                          <li><a href="" class="icon-instagram fs-20"></a></li>
-                          <li><a href="" class="icon-twitter fs-20"></a></li>
-                        </ul>
-                      </figcaption>
-                    </figure>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-lg-8">
-                <div class="row gutter-1">
-                  <div class="col-12">
-                    <div class="boxed p-2">
-                      <div class="row align-items-center justify-content-between">
-                        <div class="col-10">
-                          <div class="media align-items-center">
-                            <img src="../../assets/images/demo/user-5.jpg" alt="Avatar" class="avatar avatar-lg rounded mr-3">
-                            <div class="media-body">
-                              <h5 class="mb-0">Nicole Doe</h5>
-                              <span class="text-muted">Senior UI Designer</span>
-                            </div>
+                  <% @fav_properties.each do |property| %>
+                    <div class="col-12">
+                      <div class="boxed p-2 bordered scaling">
+                        <div class="row align-items-center justify-content-between">
+                          <div class="col-10">
+                            <%= link_to property_path(property) do %>
+                              <div class="media align-items-center">                           
+                                <img src="<%=asset_path(image_path(main_app.url_for(property.images.first)))%>" alt="Avatar" class="avatar avatar-lg mr-3">
+                                <div class="media-body">
+                                  <h5 class="mb-0"><%=property.title%></h5>
+                                  <br>
+                                  <container>
+                                    <div class="row">
+                                    <div class="col-4 text-muted"><i class="fas fa-arrows-alt-h"></i> <%=property.surface%> m2  </div>
+                                    <div class=" col-4 text-muted"><i class="fas fa-coins"></i> <%=property.price%> €  </div>
+                                    <div class="col-4 text-muted"><i class="fas fa-map-marker-alt"></i> <%=property.area.zipcode%></div>
+                                  </div>
+                                  </container>
+                                </div>
+                              </div>
+                            <% end %>
                           </div>
-                        </div>
-                        <div class="col-2 text-md-right">
-                          <div class="dropdown">
-                            <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="icon-more-vertical fs-22"></i>
-                            </a>
+                          <div class="col-2 text-md-right">
 
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
-                              <a class="dropdown-item" href="#">Make Primary</a>
-                              <a class="dropdown-item" href="#">Remove</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <div class="boxed p-2">
-                      <div class="row align-items-center justify-content-between">
-                        <div class="col-10">
-                          <div class="media align-items-center">
-                            <img src="../../assets/images/demo/user-2.jpg" alt="Avatar" class="avatar avatar-lg rounded mr-3">
-                            <div class="media-body">
-                              <h5 class="mb-0">James Doe</h5>
-                              <span class="text-muted">Senior UI Designer</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-2 text-md-right">
-                          <div class="dropdown">
-                            <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="icon-more-vertical fs-22"></i>
-                            </a>
+                              <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm icon" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-heart text-danger" id="fav-<%=property.id%>"></i>
+                              </a>
 
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-4">
-                              <a class="dropdown-item" href="#">Make Primary</a>
-                              <a class="dropdown-item" href="#">Remove</a>
                             </div>
                           </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
-                  <div class="col-12">
-                    <div class="boxed p-2">
-                      <div class="row align-items-center justify-content-between">
-                        <div class="col-10">
-                          <div class="media align-items-center">
-                            <img src="../../assets/images/demo/user-3.jpg" alt="Avatar" class="avatar avatar-lg rounded mr-3">
-                            <div class="media-body">
-                              <h5 class="mb-0">Violet Doe</h5>
-                              <span class="text-muted">Senior UI Designer</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-2 text-md-right">
-                          <div class="dropdown">
-                            <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="icon-more-vertical fs-22"></i>
-                            </a>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-5">
-                              <a class="dropdown-item" href="#">Make Primary</a>
-                              <a class="dropdown-item" href="#">Remove</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <div class="boxed p-2">
-                      <div class="row align-items-center justify-content-between">
-                        <div class="col-10">
-                          <div class="media align-items-center">
-                            <img src="../../assets/images/demo/user-4.jpg" alt="Avatar" class="avatar avatar-lg rounded mr-3">
-                            <div class="media-body">
-                              <h5 class="mb-0">Valerie Doe</h5>
-                              <span class="text-muted">Senior UI Designer</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-2 text-md-right">
-                          <div class="dropdown">
-                            <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="icon-more-vertical fs-22"></i>
-                            </a>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-6">
-                              <a class="dropdown-item" href="#">Make Primary</a>
-                              <a class="dropdown-item" href="#">Remove</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <div class="boxed p-2">
-                      <div class="row align-items-center justify-content-between">
-                        <div class="col-10">
-                          <div class="media align-items-center">
-                            <img src="../../assets/images/demo/user-6.jpg" alt="Avatar" class="avatar avatar-lg rounded mr-3">
-                            <div class="media-body">
-                              <h5 class="mb-0">Nick Doe</h5>
-                              <span class="text-muted">Senior UI Designer</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-2 text-md-right">
-                          <div class="dropdown">
-                            <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="icon-more-vertical fs-22"></i>
-                            </a>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-7">
-                              <a class="dropdown-item" href="#">Make Primary</a>
-                              <a class="dropdown-item" href="#">Remove</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <%end%>
                 </div>
               </div>
             </div>
           </div>
           <!-- / tab -->
 
-          <!-- tab groups -->
-          <div class="tab-pane" id="demo-2-3" role="tabpanel" aria-labelledby="demo-2-3">
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-lg-8">
-                
-                <div class="row gutter-2">
-                  <div class="col-md-6">
-                    <div class="card">
-                      <div class="card-header mb-3">
-                        <div class="row">
-                          <div class="col-6">
-                            <img src="../../assets/images/demo/logo/logo-2.png" alt="Image">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <h3 class="fs-20 font-weight-normal">Project Title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      </div>
-                      <div class="card-footer separator-top pt-3">
-                        <div class="row align-items-center">
-                          <div class="col-8">
-                            <ul class="user-list">
-                              <li><img src="../../assets/images/demo/user-1.jpg" alt="" data-toggle="tooltip" data-placement="top" title="John Doe"></li>
-                              <li><img src="../../assets/images/demo/user-4.jpg" alt="" data-toggle="tooltip" data-placement="top" title="Valerie Lucien"></li>
-                              <li><img src="../../assets/images/demo/user-5.jpg" alt="" data-toggle="tooltip" data-placement="top" title="Ann Campbel"></li>
-                            </ul>
-                          </div>
-                          <div class="col-4 text-right">
-                            <div class="dropdown">
-                              <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-8" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="icon-more-vertical fs-22"></i>
-                              </a>
-
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-8">
-                                <a class="dropdown-item" href="#">Make Primary</a>
-                                <a class="dropdown-item" href="#">Remove</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="card">
-                      <div class="card-header mb-3">
-                        <div class="row">
-                          <div class="col-6">
-                            <img src="../../assets/images/demo/logo/logo-3.png" alt="Image">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <h3 class="fs-20 font-weight-normal">Project Title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      </div>
-                      <div class="card-footer separator-top pt-3">
-                        <div class="row align-items-center">
-                          <div class="col-8">
-                            <ul class="user-list">
-                              <li><img src="../../assets/images/demo/user-1.jpg" alt="" data-toggle="tooltip" data-placement="top" title="John Doe"></li>
-                              <li><img src="../../assets/images/demo/user-4.jpg" alt="" data-toggle="tooltip" data-placement="top" title="Valerie Lucien"></li>
-                              <li><img src="../../assets/images/demo/user-5.jpg" alt="" data-toggle="tooltip" data-placement="top" title="Ann Campbel"></li>
-                            </ul>
-                          </div>
-                          <div class="col-4 text-right">
-                            <div class="dropdown">
-                              <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-9" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="icon-more-vertical fs-22"></i>
-                              </a>
-
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-9">
-                                <a class="dropdown-item" href="#">Make Primary</a>
-                                <a class="dropdown-item" href="#">Remove</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="card">
-                      <div class="card-header mb-3">
-                        <div class="row">
-                          <div class="col-6">
-                            <img src="../../assets/images/demo/logo/logo-5.png" alt="Image">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <h3 class="fs-20 font-weight-normal">Project Title</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                      </div>
-                      <div class="card-footer separator-top pt-3">
-                        <div class="row align-items-center">
-                          <div class="col-8">
-                            <ul class="user-list">
-                              <li><img src="../../assets/images/demo/user-1.jpg" alt="" data-toggle="tooltip" data-placement="top" title="John Doe"></li>
-                              <li><img src="../../assets/images/demo/user-4.jpg" alt="" data-toggle="tooltip" data-placement="top" title="Valerie Lucien"></li>
-                              <li><img src="../../assets/images/demo/user-5.jpg" alt="" data-toggle="tooltip" data-placement="top" title="Ann Campbel"></li>
-                            </ul>
-                          </div>
-                          <div class="col-4 text-right">
-                            <div class="dropdown">
-                              <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="icon-more-vertical fs-22"></i>
-                              </a>
-
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-10">
-                                <a class="dropdown-item" href="#">Make Primary</a>
-                                <a class="dropdown-item" href="#">Remove</a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-
-              </div>
-            </div>
-          </div>
-          <!-- / tab -->
-
+          
           <!-- tab settings -->
           <div class="tab-pane" id="demo-2-4" role="tabpanel" aria-labelledby="demo-2-4">
             <div class="row justify-content-center">
