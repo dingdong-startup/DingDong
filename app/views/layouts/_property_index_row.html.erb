@@ -8,13 +8,16 @@
     <div class="card-footer">
       <div class="row align-items-center">
         <div class="col-4">
-          <%= link_to property_path(property.id), class: "btn btn-ico btn-rounded btn-outline-primary" do %>
-            <i class="fas fa-arrow-right" style="margin-top:1em;"></i>
+          <%= link_to root_path, class: "btn btn-ico btn-rounded btn-outline-primary" do %>
+            <i class="fas fa-star" style="margin-top:1em;"></i>
           <%end%>
         </div>
         <div class="col-8 text-right">
           <ul class="list-inline mb-0">
-            <a class="btn btn-orange">Découvrir</a>
+          <%= link_to property_path(property.id) do %>
+            <span class="btn btn-orange">Découvrir</span>
+          <%end%>
+            
           </ul>
         </div>
       </div>
