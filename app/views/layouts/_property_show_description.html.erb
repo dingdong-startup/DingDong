@@ -1,18 +1,49 @@
-<div class="col-md-12 col-lg-12">
-  <div class="card text-center">
-    <div class="card-header">
-      <%= property.title %>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title"><%= property.price %> €/mois</h5>
-      <h5 class="card-title">3 pièces</h5>
-      <h5 class="card-title"><%= property.surface %> m2</h5>
-      <h5 class="card-title">2 chambres</h5>
-      <p class="card-text"><%= property.description %></p>
+<div class="col-12">
+    <div class="boxed p-2">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-12">
+            <div class="media align-items-center">                           
+               
+              <div class="media-body">
+                      <h5 class="card-title text-blue text-center"><%= property.title %></h5>
+                <br>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-4">
+                        <div class="text-muted"><i class="fas fa-arrows-alt-h mr-1"></i> Surface : <%=property.surface%> m2  </div>
+                        <br>
+                        <div class="text-muted"><i class="fas fa-coins mr-1"></i> Loyer / Mois : <%=property.price%> €  </div>
+                        <br>
+                        <div class="text-muted"><i class="fas fa-hiking mr-1"></i> Etage : <%=property.floor%> ème</div>
+                        <br>
+                        <div class="text-muted"><i class="fas fa-calendar-alt mr-1"></i> Disponible le : <%=property.available_date.to_date%></div>
+                        <br>
+                        <div class="text-muted"><i class="fas fa-map-marker-alt mr-1"></i> Adresse : Adresse, <%=property.area.zipcode%> Ville
+                        </div>
+                      </div>
+                      
+                      <div class="text-muted"><i class="fas fa-map-marker-alt mr-1"></i> Description : <%=property.description%>
+                      </div>
 
+                    </div>
+
+                    <div class="row" style="justify-content: flex-end;">
+                      <div class="card-meta font-weight-light mr-1">Ajouté le : <%=property.updated_at.to_date%>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    
+      </div>
     </div>
-    <div class="card-footer text-muted">
-      2 days ago
-    </div>
-  </div>
 </div>
+
+
+
+
+
+
+
