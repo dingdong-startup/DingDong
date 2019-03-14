@@ -1,6 +1,7 @@
 class VisitsController < ApplicationController
   def create
     visit = Visit.new(property_id: params[:property_id], tenant: current_tenant, visit_status_id: 2)
+    visit.save
 
     customer = Stripe::Customer.create({
       source: params[:stripeToken],
@@ -9,6 +10,7 @@ class VisitsController < ApplicationController
 
     if customer.save
       current_tenant.update(stripe_customer_id: customer.id, payment_status_id: 2)
+      visit.update(visit_status_id: 3)
       flash[:success] = "Votre carte a bien été enregistrée !"
       redirect_to properties_path
     else
