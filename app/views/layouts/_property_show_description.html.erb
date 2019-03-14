@@ -10,19 +10,30 @@
                   <div class="container">
                     <div class="row">
                       <div class="col-4">
-                        <div class="text-muted"><i class="fas fa-arrows-alt-h mr-1"></i> Surface : <%=property.surface%> m2  </div>
+                        <div class=""><i class="fas fa-arrows-alt-h mr-1"></i> Surface : 
+                        <span class="text-muted"> <%=property.surface%> m2  </span>
+                        </div>
                         <br>
-                        <div class="text-muted"><i class="fas fa-coins mr-1"></i> Loyer / Mois : <%=property.price%> €  </div>
+                        <div class=""><i class="fas fa-coins mr-1"></i> Loyer / Mois :  
+                        <span class="text-muted"> <%=property.price%> €   </span>
+                        </div>
                         <br>
-                        <div class="text-muted"><i class="fas fa-hiking mr-1"></i> Etage : <%=property.floor%> ème</div>
+                        <div class=""><i class="fas fa-hiking mr-1"></i> Etage : 
+                        <span class="text-muted"> <%=property.floor%> ème</span>
+                        </div>
                         <br>
-                        <div class="text-muted"><i class="fas fa-calendar-alt mr-1"></i> Disponible le : <%=property.available_date.to_date%></div>
+                        <div class=""><i class="fas fa-calendar-alt mr-1"></i> Disponible le :
+                        <span class="text-muted">  <%=property.available_date.to_date%>  </span>
+                        </div>
                         <br>
-                        <div class="text-muted"><i class="fas fa-map-marker-alt mr-1"></i> Adresse : Adresse, <%=property.area.zipcode%> Ville
+                        <div class=""><i class="fas fa-map-marker-alt mr-1"></i> Adresse :                   
+                        <span class="text-muted"> Adresse, <%=property.area.zipcode%> Ville  </span>
                         </div>
                       </div>
-                      
-                      <div class="text-muted"><i class="fas fa-map-marker-alt mr-1"></i> Description : <%=property.description%>
+                      <div class="col-8">
+                        <div class=""><i class="fas fa-map-marker-alt mr-1"></i> Description 
+                        <div class="text-muted"><%=property.description%></div>
+                      </div>
                       </div>
 
                     </div>

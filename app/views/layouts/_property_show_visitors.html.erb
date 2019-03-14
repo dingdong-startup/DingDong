@@ -1,0 +1,116 @@
+<div class="container">
+		<div class="col-8">
+		<div class="boxed p-2 bordered scaling">
+		  <div class="row align-items-center justify-content-between">
+		    <div class="col-10">
+		          <div class="media align-items-center">           			           
+		            <img src="<%=asset_path(image_path(main_app.url_for(property.images.first)))%>" alt="Avatar" class="avatar avatar-lg mr-3">
+		             
+		            <div class="media-body">
+		              <h5 class="mb-0"><%=property.title%></h5>
+		              <br>
+		              <container>
+		              	<div class="row">
+		                  <div class="col-4 text-muted"><i class="fas fa-arrows-alt-h"></i> <%=property.surface%> m2  </div>
+		                  <div class=" col-4 text-muted"><i class="fas fa-coins"></i> <%=property.price%> €  </div>
+		                  <div class="col-4 text-muted"><i class="fas fa-map-marker-alt"></i> <%=property.area.zipcode%></div>
+		              	</div>
+		          	  </container>
+		            </div>
+		          </div>
+		    </div>
+		   
+		    <div class="col-2 text-md-right">
+		      <div class="dropdown">
+		        <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          <i class="icon-more-vertical fs-22"></i>
+		        </a>
+
+		        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
+		          <a class="dropdown-item" href="#">Make Primary</a>
+		          <a class="dropdown-item" href="#">Remove</a>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+        <div class="media align-items-center">  
+	        <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">         			           
+			   <img src="<%=asset_path(image_path(main_app.url_for(property.images.first)))%>" alt="Avatar" class="avatar mr-3 user-rounded">
+			</button>
+		             
+	            <div class="media-body">
+	              <h5 class="mb-0">First_name Last_name</h5>
+	              <br>
+
+	              	<div class="row">
+	                  <div class="col-4 text-muted"><i class="fas fa-phone  mr-1"></i>06.24.99.32.34  </div>
+	                  <div class=" col-4 text-muted"><i class="fas fa-envelope  mr-1"></i>email@email.com  </div>
+	             
+	              	</div>
+
+	            </div>
+		</div>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <div class="row gutter-3">
+        	<div class="col-4">
+              <div class="aos-init aos-animate" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
+                <i class="icon-activity fs-30 mr-1 text-purple">
+                </i>
+                <span class="eyebrow">Activity Tracker</span>
+              </div>
+              <div class="aos-init aos-animate" data-aos="fade-up">
+                <i class="icon-airplay fs-30 mb-1 text-purple">
+                </i>
+                <span class="eyebrow">Airplay Compatibility</span>
+              </div>
+              <div class="aos-init aos-animate" data-aos="fade-up">
+                <i class="icon-command fs-30 mb-1 text-purple">
+                </i>
+                <span class="eyebrow">Task Manager</span>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Collapsible Group Item #2
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Collapsible Group Item #3
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+</div>
+</div>
