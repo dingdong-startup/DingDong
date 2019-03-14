@@ -1,19 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="owl-carousel owl-loaded owl-drag" data-items="[3,2]" data-margin="10" data-dots="true" data-nav="true">
+<div class="component-example">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="owl-carousel owl-loaded owl-drag" data-items="[3,2]" data-margin="10" data-dots="true" data-nav="true">    
+        
+        <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0.25s ease 0s; width: 1534px;"><div class="owl-item active" style="width: 373.333px; margin-right: 10px;">
+          <figure class="photo">
+            <% first_property = @property.images.first %>
+            <img src="<%=asset_path(image_path(main_app.url_for(first_property)))%>" alt="Image">
+          </figure>
+        </div>
 
-      <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-383px, 0px, 0px); transition: all 0.25s ease 0s; width: 1534px;"><div class="owl-item" style="width: 373.333px; margin-right: 10px;">
-        <figure class="photo">
-        <% @property.images.each do |i| %>
-          <img src="<%=asset_path(image_path(main_app.url_for(i)))%>" alt="Image">
+        <% @property.images.drop(1).each do |i| %>
+          <div class="owl-item active" style="width: 373.333px; margin-right: 10px;">
+            <figure class="photo">
+              <img src="<%=asset_path(image_path(main_app.url_for(i)))%>" alt="Image">
+            </figure>
+          </div>
         <%end%>
-        </figure></div></div>
+
       </div>
+    </div>
 
-        <div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next disabled"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot active"><span></span></button></div>
-
+    <div class="owl-nav"><button type="button" role="presentation" class="owl-prev disabled"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
       </div>
     </div>
   </div>
 </div>
+
