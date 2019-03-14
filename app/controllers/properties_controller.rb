@@ -1,4 +1,6 @@
 class PropertiesController < ApplicationController
+  load_and_authorize_resource
+  
   def index 
     @properties = Property.all
   end
