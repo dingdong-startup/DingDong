@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   resources :tenants, only: [:show, :edit, :update]
 
+  resources :admin_charges, only: [:index, :create]
+
   root 'statics#index'
 
 end
