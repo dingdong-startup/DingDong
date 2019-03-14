@@ -1,5 +1,16 @@
+<% if agency_signed_in? %>
+
+<%= render 'layouts/navbar' %>
+<%= render 'layouts/property_show_description', property: @property%>
+<%= render 'layouts/property_show_carroussel' %>
+<%= render 'layouts/footer' %>
+
+<% else %>
+
 <%= render 'layouts/navbar' %>
 <%= render 'layouts/property_show_photo_description' %>
 <%= render 'layouts/property_show_description', property: @property%>
 <%= render 'layouts/property_show_carroussel' %>
 <%= render 'layouts/footer' %>
+
+<% end %>
