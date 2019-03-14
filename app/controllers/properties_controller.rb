@@ -1,4 +1,10 @@
 class PropertiesController < ApplicationController
+  
+
+  alias_method :current_user, :current_tenant
+
+  load_and_authorize_resource
+  
   def index 
     @properties = Property.all
   end
@@ -23,8 +29,8 @@ class PropertiesController < ApplicationController
       flash[:success] = "Votre bien a été créé"
       redirect_to root_path
     else
-    flash[:danger] = @property.errors.messages
-    redirect_to new_agency_property_path
+      flash[:danger] = @property.errors.messages
+      redirect_to new_agency_property_path
     end
   end
 

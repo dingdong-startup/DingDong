@@ -366,11 +366,8 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 5.2.2)
-<<<<<<< HEAD
   rails_admin
-=======
   rails-controller-testing
->>>>>>> dev
   rb-readline (~> 0.5.3)
   rspec-rails
   rubocop
