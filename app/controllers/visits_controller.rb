@@ -8,7 +8,7 @@ class VisitsController < ApplicationController
     })
 
     if customer.save
-      current_tenant.update(stripe_customer_id: customer.id)
+      current_tenant.update(stripe_customer_id: customer.id, payment_status_id: 2)
       flash[:success] = "Votre carte a bien été enregistrée !"
       redirect_to properties_path
     else
