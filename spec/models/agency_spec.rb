@@ -8,7 +8,6 @@ RSpec.describe Agency, type: :model do
 
 		context "validation" do
 
-
   		it "has a valid factory" do
     		expect(build(:agency)).to be_valid
 			end
@@ -22,13 +21,21 @@ RSpec.describe Agency, type: :model do
 				expect(@agency.class).to eq(Agency)
 			end
 		end
-
+		
 		context "associations" do
 
-			describe "agents" do
+			describe "agency have many agents" do
 				it { expect(@agency).to have_many(:agents) }
 			end
+
+			describe "agency have many properties" do
+				it { expect(@agency).to have_many(:properties) }
+			end
 	
+			describe "agency have many groups though agency_gorups" do
+				it { should have_many(:groups).through(:agency_groups) }
+			end
+
 		end
 
 end
