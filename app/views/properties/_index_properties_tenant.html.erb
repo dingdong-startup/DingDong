@@ -24,9 +24,12 @@
 				</div>
 				<div class="col-2 text-md-right">
 					<%if visit.visit_status_id == 2 %>
-					<a class="btn btn-ico btn-outline-light text-dark rounded btn-sm icon" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 
-						<i class="fas fa-heart text-danger" id="fav-<%=visit.property.id%>"></i>
-					</a>
+						<%= form_tag visits_update_path, method: 'put' do %>
+							<%= hidden_field_tag :property_id, visit.property.id %>
+							<%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-red rounded btn-sm icon", remote: true) do %>
+								<i class="fas fa-heart" id="fav-<%=visit.property.id%>"></i>
+							<% end %>
+						<% end %>
 					<% end %>
 				</div>
 			</div>
