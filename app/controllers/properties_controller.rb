@@ -1,12 +1,12 @@
 class PropertiesController < ApplicationController
-  def index 
+  def index
     @properties = Property.all
   end
-  
+
   def show
     @property = Property.find(params[:id])
   end
-  
+
   def new
   	@agency = Agency.find(params[:agency_id])
     @property = Property.new
@@ -27,6 +27,16 @@ class PropertiesController < ApplicationController
     redirect_to new_agency_property_path
     end
   end
+
+  def edit
+end
+
+def update
+end
+
+def destroy
+end
+
 
   private
 
