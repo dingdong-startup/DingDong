@@ -1,0 +1,49 @@
+<div class="viewport">
+  <div class="image image-overlay" style="background-image:url(<%=asset_path('money.jpg')%>)"></div>
+
+
+  <div class="container">
+    <div class="row justify-content-center align-items-center vh-100">
+      <div class="col-md-6 col-lg-5">
+        <div class="accordion-group accordion-group-portal" data-accordion-group="">
+
+
+          <!-- LOGIN -->
+          <div class="accordion open" data-accordion="">
+            <div class="accordion-control" data-control="">
+              <h5>Connexion Admin</h5>
+            </div>
+            <div class="accordion-content" data-content="" style="max-height: 382px; overflow: hidden; transition: max-height 300ms ease 0s;">
+              <div class="accordion-content-wrapper">
+                <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="form-group">
+                  <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email", class: "form-control" } %>
+
+                  <span style="opacity: 1; left: 392px; top: 151.5px; width: 19px; min-width: 19px; height: 13px; position: absolute; background-image: url(""); background-repeat: no-repeat; background-position: 0px 0px; border: none; display: inline; visibility: visible; z-index: auto;"></span>
+                </div>
+
+                <div class="form-group">
+                  <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password", class: "form-control"  } %>
+                  <span style="opacity: 1; left: 392px; top: 249.5px; width: 19px; min-width: 19px; height: 13px; position: absolute; background-image: url(""); background-repeat: no-repeat; background-position: 0px 0px; border: none; display: inline; visibility: visible; z-index: auto;"></span></div>
+
+
+                  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+
+                  <%= f.button :submit, "Se connecter", class: "btn btn-primary btn-block" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
