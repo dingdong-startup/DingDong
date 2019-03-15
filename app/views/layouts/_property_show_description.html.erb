@@ -5,13 +5,12 @@
             <div class="media align-items-center">                           
                
               <div class="media-body">
-                      <h5 class="card-title text-blue text-center"><%= property.title %></h5>
-                <br>
+                      <br>
                   <div class="container">
                     <div class="row">
                       <div class="col-4">
                         <div class=""><i class="fas fa-arrows-alt-h mr-1"></i> Surface : 
-                        <span class="text-muted"> <%=property.surface%> m2  </span>
+                        <span class="text-muted"> <%=property.surface%> m2</span>
                         </div>
                         <br>
                         <div class=""><i class="fas fa-coins mr-1"></i> Loyer / Mois :  
@@ -30,10 +29,23 @@
                         <span class="text-muted"> Adresse, <%=property.area.zipcode%> Ville  </span>
                         </div>
                       </div>
-                      <div class="col-8">
+                      <div class="col-7">
                         <div class=""><i class="fas fa-map-marker-alt mr-1"></i> Description 
                         <div class="text-muted"><%=property.description%></div>
                       </div>
+                      </div>
+
+                      <div class="col-1 text-md-right">
+                        <div class="dropdown">
+                          <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-more-vertical fs-22"></i>
+                          </a>
+
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
+                            <a class="dropdown-item" href="#">Editer</a>
+                            <a class="dropdown-item" href="#">Supprimer</a>
+                          </div>
+                        </div>
                       </div>
 
                     </div>
