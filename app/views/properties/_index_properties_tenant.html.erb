@@ -23,7 +23,7 @@
 					<% end %>
 				</div>
 				<div class="col-2 text-md-right">
-					<%if visit.visit_status_id == 1 %>
+					<%if visit.visit_status_id == 2 %>
 					<a class="btn btn-ico btn-outline-light text-dark rounded btn-sm icon" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 
 						<i class="fas fa-heart text-danger" id="fav-<%=visit.property.id%>"></i>
 					</a>
@@ -35,7 +35,7 @@
 
 
 	<div class="col-4  align-items-center">
-		<%if visit.visit_status_id == 2 %>
+		<%if visit.visit_status_id == 4 %>
 		<p>Le gestionnaire du bien va revenir vers vous afin de convenir d'un rendez-vous</p>
 			<%= link_to "Annuler ma demande", root_path, class: 'btn btn-light' %>
 		<%else%>

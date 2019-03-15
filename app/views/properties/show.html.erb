@@ -16,42 +16,29 @@
 <%= render 'layouts/property_show_description', property: @property%>
 <%= render 'layouts/property_show_carroussel' %>
 
-<% if false %>
-<% if current_tenant.payment_status_id != 2 %>
-<%= render 'layouts/stripe_print' %>
-<% else %>
+<% if tenant_signed_in? %>
   <% if @property.visits.find_by(tenant: current_tenant) %>
+  
+    <% if current_tenant.payment_status_id == 1 %>
+       <%= render 'layouts/stripe_print' %>
+    <% elsif @property.visits.find_by(tenant: current_tenant, property_id: params[:id], visit_status_id: 4) %>
+       <p> Vous avez déjà demandé la visite </p>
+    <% else %>
+       <%= render 'layouts/ask_visit'%>
+    <% end %>
 
-  <% elsif @property.visits.find_by(property_id: params[:property_id]).visit_status_id == 4 %>
-
-    <p> Visite déjà demandée </p>
-
-
-    <%= render 'layouts/ask_visit' %>
-  <% end %>
-
-<% end %>
-<% end %>
-
-<% #OKOKOKOK ON DEMARRE LES BOUTONS %>
-
-<% if @property.visits.find_by(tenant: current_tenant) %>
-  <% if current_tenant.payment_status_id == 1 %>
-  <%= render 'layouts/stripe_print' %>
-  <% elsif @property.visits.find_by(tenant: current_tenant, property_id: params[:id], visit_status_id: 4) %>
-  <p> Vous avez déjà demandé la visite </p>
   <% else %>
-  <%= render 'layouts/ask_visit'%>
+
+    <% if current_tenant.payment_status_id == 1 %>
+        <%= render 'layouts/stripe_print' %>
+    <% else %>
+        <%= render 'layouts/ask_visit'%>
+    <% end %>
+
   <% end %>
 <% else %>
-  <% if current_tenant.payment_status_id == 1 %>
-  <%= render 'layouts/stripe_print' %>
-  <% else %>
-  <%= render 'layouts/ask_visit'%>
-  <% end %>
-
+    <%= link_to 'Demander une visite',  new_tenant_session_path, class: 'btn btn-blue'%>
 <% end %>
-
 
 
 <%= render 'layouts/footer' %>
