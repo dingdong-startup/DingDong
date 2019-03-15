@@ -1,0 +1,49 @@
+<% visits.each do |visit| %>
+<div class="row">
+	<div class="col-8">
+		<div class="boxed p-2 bordered scaling">
+			<div class="row align-items-center justify-content-between">
+				<div class="col-10">
+					<%= link_to property_path(visit.property.id) do %>
+					<div class="media align-items-center">           			           
+						<img src="<%=asset_path(image_path(main_app.url_for(visit.property.images.first)))%>" alt="Avatar" class="avatar avatar-lg mr-3">
+
+						<div class="media-body">
+							<h5 class="mb-0"><%=visit.property.title%></h5>
+							<br>
+							<container>
+								<div class="row">
+									<div class="col-4 text-muted"><i class="fas fa-arrows-alt-h"></i> <%=visit.property.surface%> m2  </div>
+									<div class=" col-4 text-muted"><i class="fas fa-coins"></i> <%=visit.property.price%> €  </div>
+									<div class="col-4 text-muted"><i class="fas fa-map-marker-alt"></i> <%=visit.property.area.zipcode%></div>
+								</div>
+							</container>
+						</div>
+					</div>
+					<% end %>
+				</div>
+				<div class="col-2 text-md-right">
+					<%if visit.visit_status_id == 2 %>
+					<a class="btn btn-ico btn-outline-light text-dark rounded btn-sm icon" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 
+						<i class="fas fa-heart text-danger" id="fav-<%=visit.property.id%>"></i>
+					</a>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col-4  align-items-center">
+		<%if visit.visit_status_id == 4 %>
+		<p>Le gestionnaire du bien va revenir vers vous afin de convenir d'un rendez-vous</p>
+			<%= link_to "Annuler ma demande", root_path, class: 'btn btn-light' %>
+		<%else%>
+			<%= link_to "Visiter", root_path, class: 'btn btn-primary' %>
+			<p><br>Le gestionnaire du bien va revenir vers vous afin de convenir d'un rendez-vous</p>
+		<%end%>
+	</div>
+</div>
+
+<%end%>
+

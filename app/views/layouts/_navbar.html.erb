@@ -34,7 +34,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <%= link_to "Mon profil", tenant_path(current_tenant.id), class: "dropdown-item" %>
-                    <%= link_to "Mes biens", root_path, class: "dropdown-item" %>
+                    <%= link_to "Mes biens", tenant_properties_path(current_tenant.id), class: "dropdown-item" %>
                     <%= link_to('Logout', destroy_agency_session_path, :method => :delete, class: "dropdown-item") %>
                 </div>
               </li>
