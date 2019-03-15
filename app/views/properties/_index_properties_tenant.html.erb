@@ -23,42 +23,26 @@
 					</div>
 					<% end %>
 				</div>
-
 				<div class="col-2 text-md-right">
-					<div class="dropdown">
-						<a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i class="icon-more-vertical fs-22"></i>
-						</a>
-
-						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
-							<a class="dropdown-item" href="#">Make Primary</a>
-							<a class="dropdown-item" href="#">Remove</a>
-						</div>
-					</div>
+					<%if visit.visit_status_id == 1 %>
+					<a class="btn btn-ico btn-outline-light text-dark rounded btn-sm icon" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 
+						<i class="fas fa-heart text-danger" id="fav-<%=visit.property.id%>"></i>
+					</a>
+					<% end %>
 				</div>
 			</div>
 		</div>
 	</div>
 
 
-	<div class="col-2 ml-10 align-items-center">
-
-		<h4 class="progress-title">Demandes de visites</h4>
-		<div class="progress-item">
-			<div class="progress">
-				<%p = rand(1..10)%>
-				<div class="progress-bar bg-orange" role="progressbar" style="width: <%=p*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-orange"><%=p%></span></div>
-			</div>
-		</div>
-		<br>
-		<h4 class="progress-title align-bottom">Postulants</h4>
-		<div class="progress-item align-bottom">
-			<div class="progress">
-				<%p = rand(1..10)%>
-				<div class="progress-bar bg-blue" role="progressbar" style="width: <%=p*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-blue"><%=p%></span></div>
-			</div>
-		</div>
-
+	<div class="col-4  align-items-center">
+		<%if visit.visit_status_id == 2 %>
+		<p>Le gestionnaire du bien va revenir vers vous afin de convenir d'un rendez-vous</p>
+			<%= link_to "Annuler ma demande", root_path, class: 'btn btn-light' %>
+		<%else%>
+			<%= link_to "Visiter", root_path, class: 'btn btn-primary' %>
+			<p><br>Le gestionnaire du bien va revenir vers vous afin de convenir d'un rendez-vous</p>
+		<%end%>
 	</div>
 </div>
 
