@@ -6,9 +6,20 @@
 
 <% if @tenant %>
 	<h2>Favoris</h2>
-	<%= render 'properties/index_properties_tenant', visits: @fav_visits %>
+	<% if @fav_visits.size > 0 %>
+		<%= render 'properties/index_properties_tenant', visits: @fav_visits %>
+	<% else %>
+		<p>Oh oh, vous n'avez aucun appartement en favori</p>
+	<% end %>
+
 	<h2>Demandes de visites</h2>
-	<%= render 'properties/index_properties_tenant', visits: @asked_visits %>
+	<% if @asked_visits.size > 0 %>
+		<%= render 'properties/index_properties_tenant', visits: @asked_visits %>
+	<% else %>
+		<p>Oh oh, vous n'avez fait aucune demande de visite pour le moment</p>
+	<% end %>
+	<br><br>
+	<%= link_to "Continuer mes recherches", properties_path %>
 	
 <% else %>
 
