@@ -2,48 +2,47 @@
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar_dark">
 
-          <%= link_to root_path, class: "navbar-brand" do %>
-            <span style="font-size: 30px; line-height:30px; color: #fff;">
+            <%= link_to root_path, class: "navbar-brand" do %>
+              <span style="font-size: 30px; line-height:30px; color: #fff;">
 
-              <i class="fas fa-bell"></i>
-            </span>
-          <% end %>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="burger"><span></span></span></button>
+                <i class="fas fa-bell"></i>
+              </span>
+            <% end %>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="burger"><span></span></span></button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav align-items-center mr-auto">
-              <li class="nav-item">
-                <%= link_to "Home", root_path, class: "nav-link text-light"%>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav align-items-center mr-auto">
+                <li class="nav-item">
+                  <%= link_to "Home", properties_path, class: "nav-link text-light"%>
+                </li>
+              </ul>
+
+            <% if tenant_signed_in? %>
+              <ul class="navbar-nav align-items-center mr-0">
+                <li class="nav-item">
+                <%= link_to tenant_properties_path(current_tenant.id), class:"nav-link" do %>
+                  <span style="font-size: 20px; line-height:20px;">
+                    <i class="fas fa-shopping-bag text-light"></i><small class="text-light"> (<%= current_tenant.visits.where(visit_status_id:4).count + current_tenant.visits.where(visit_status_id:2).count %>)</small>
+                  </span>
+                <% end %>
+              
               </li>
-            </ul>
-
-
-            <ul class="navbar-nav align-items-center mr-0">
-              <li class="nav-item">
-               <%= link_to root_path, class:"nav-link" do %>
-                 <span style="font-size: 20px; line-height:20px;">
-                   <i class="fas fa-shopping-bag text-light"></i><small class="text-light"> (0)</small>
-                 </span>
-               <% end %>
-             
-             </li>
-              <% if tenant_signed_in? %>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   email
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <%= link_to "Mon profil", tenant_path(current_tenant.id), class: "dropdown-item" %>
-                    <%= link_to "Mes biens", tenant_properties_path(current_tenant.id), class: "dropdown-item" %>
-                    <%= link_to('Logout', destroy_agency_session_path, :method => :delete, class: "dropdown-item") %>
-                </div>
-              </li>
-               <%end %>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%= current_tenant.email %>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <%= link_to "Mon profil", tenant_path(current_tenant.id), class: "dropdown-item" %>
+                      <%= link_to "Mes biens", tenant_properties_path(current_tenant.id), class: "dropdown-item" %>
+                      <%= link_to('Logout', destroy_agency_session_path, :method => :delete, class: "dropdown-item") %>
+                  </div>
+                </li>
+              <% end %>
 
               <% if agency_signed_in? %>
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown" style="list-style: none">
                 <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   email
+                   <%= current_agency.email %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <%= link_to('Logout', destroy_agency_session_path, :method => :delete, class: "dropdown-item") %>
@@ -51,10 +50,9 @@
                 </div>
               </li>
                <%end %>
-
             </ul>
             
-            <% if !agency_signed_in? %>
+            <% if !agency_signed_in? && !tenant_signed_in? %>
             <ul class="navbar-nav align-items-center mr-0">
               <li class="nav-item">
                 <%= link_to("Se connecter / s'inscrire", new_tenant_registration_path, class: "nav-link text-light")  %>

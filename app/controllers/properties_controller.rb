@@ -1,7 +1,10 @@
 class PropertiesController < ApplicationController
-  def index
 
-    @tenant = nil
+  alias_method :current_user, :current_tenant
+
+  #load_and_authorize_resource
+
+  def index
 
     if params[:tenant_id]
       @tenant =Tenant.find(params[:tenant_id])

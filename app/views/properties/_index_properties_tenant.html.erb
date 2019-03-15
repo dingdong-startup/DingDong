@@ -24,9 +24,12 @@
 				</div>
 				<div class="col-2 text-md-right">
 					<%if visit.visit_status_id == 2 %>
-					<a class="btn btn-ico btn-outline-light text-dark rounded btn-sm icon" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 
-						<i class="fas fa-heart text-danger" id="fav-<%=visit.property.id%>"></i>
-					</a>
+						<%= form_tag visits_update_path, method: 'put' do %>
+							<%= hidden_field_tag :property_id, visit.property.id %>
+							<%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-red rounded btn-sm icon", remote: true) do %>
+								<i class="fas fa-heart" id="fav-<%=visit.property.id%>"></i>
+							<% end %>
+						<% end %>
 					<% end %>
 				</div>
 			</div>
@@ -37,9 +40,12 @@
 	<div class="col-4  align-items-center">
 		<%if visit.visit_status_id == 4 %>
 		<p>Le gestionnaire du bien va revenir vers vous afin de convenir d'un rendez-vous</p>
-			<%= link_to "Annuler ma demande", root_path, class: 'btn btn-light' %>
+			<%= form_tag visits_update_path, method: 'put' do %>
+				<%= hidden_field_tag :property_id, visit.property.id %>
+				<%= submit_tag 'Annuler ma demande', class: 'btn btn-light' %>
+			<% end %>
 		<%else%>
-			<%= link_to "Visiter", root_path, class: 'btn btn-primary' %>
+			<%= link_to 'Visiter', property_visits_path(visit.property.id), class: 'btn btn-blue', method: 'create' %>
 			<p><br>Le gestionnaire du bien va revenir vers vous afin de convenir d'un rendez-vous</p>
 		<%end%>
 	</div>
