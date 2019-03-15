@@ -4,8 +4,8 @@ class PropertiesController < ApplicationController
 
   #load_and_authorize_resource
 
-  def index 
-    
+  def index
+
     if params[:tenant_id]
       @tenant =Tenant.find(params[:tenant_id])
       @fav_visits = Visit.where(visit_status_id: 2, tenant_id: @tenant.id)
@@ -14,11 +14,12 @@ class PropertiesController < ApplicationController
     end
     @properties = Property.all
   end
-  
+
   def show
     @property = Property.find(params[:id])
+    @agency = Agency.find(params[:agency_id])
   end
-  
+
   def new
   	@agency = Agency.find(params[:agency_id])
     @property = Property.new
@@ -45,6 +46,7 @@ class PropertiesController < ApplicationController
   end
 
   def update
+    puts params
     @property = Property.find(params[:id])
     @agency = Agency.find(params[:agency_id])
 
