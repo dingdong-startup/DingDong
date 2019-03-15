@@ -2,22 +2,22 @@
     <div class="boxed p-2">
       <div class="row align-items-center justify-content-between">
         <div class="col-12">
-            <div class="media align-items-center">                           
-               
+            <div class="media align-items-center">
+
               <div class="media-body">
                       <br>
                   <div class="container">
                     <div class="row">
                       <div class="col-4">
-                        <div class=""><i class="fas fa-arrows-alt-h mr-1"></i> Surface : 
+                        <div class=""><i class="fas fa-arrows-alt-h mr-1"></i> Surface :
                         <span class="text-muted"> <%=property.surface%> m2</span>
                         </div>
                         <br>
-                        <div class=""><i class="fas fa-coins mr-1"></i> Loyer / Mois :  
+                        <div class=""><i class="fas fa-coins mr-1"></i> Loyer / Mois :
                         <span class="text-muted"> <%=property.price%> €   </span>
                         </div>
                         <br>
-                        <div class=""><i class="fas fa-hiking mr-1"></i> Etage : 
+                        <div class=""><i class="fas fa-hiking mr-1"></i> Etage :
                         <span class="text-muted"> <%=property.floor%> ème</span>
                         </div>
                         <br>
@@ -25,12 +25,12 @@
                         <span class="text-muted">  <%=property.available_date.to_date%>  </span>
                         </div>
                         <br>
-                        <div class=""><i class="fas fa-map-marker-alt mr-1"></i> Adresse :                   
+                        <div class=""><i class="fas fa-map-marker-alt mr-1"></i> Adresse :
                         <span class="text-muted"> Adresse, <%=property.area.zipcode%> Ville  </span>
                         </div>
                       </div>
                       <div class="col-7">
-                        <div class=""><i class="fas fa-map-marker-alt mr-1"></i> Description 
+                        <div class=""><i class="fas fa-map-marker-alt mr-1"></i> Description
                         <div class="text-muted"><%=property.description%></div>
                       </div>
                       </div>
@@ -43,7 +43,7 @@
 
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
                             <a class="dropdown-item btn-blue" data-toggle="modal" data-target="#exampleModal" href="#">Editer</a>
-                            <%= link_to "Supprimer", agency_property_path(agency_id: current_agency.id, property_id: property), method: :DELETE, class:"dropdown-item btn-orange" %> 
+                            <%= link_to "Supprimer", agency_property_path(agency_id: current_agency.id, property_id: property), method: :DELETE, class:"dropdown-item btn-orange" %>
                           </div>
                         </div>
                       </div>
@@ -64,7 +64,7 @@
                                           <div class="col">
                                             <div class="form-group">
                                               <label for="userMail">Titre</label>
-                                              <%= f.text_field :title, class: "form-control", id:"userMail", placeholder:"T2 avec une incroyable vue" %>
+                                              <%= f.text_field :title, class: "form-control", id:"userMail", placeholder:property.title %>
                                             </div>
                                           </div>
                                         </div>
@@ -76,7 +76,7 @@
                                                 <div class="input-group-prepend">
                                                   <span class="input-group-text"><i class="fas fa-coins"></i></span>
                                                 </div>
-                                                <%= f.text_field :price, class: "form-control", id:"userTwitter", placeholder:"1600 €" %>
+                                                <%= f.text_field :price, class: "form-control", id:"userTwitter", placeholder:property.price%>
                                               </div>
                                             </div>
                                           </div>
@@ -87,7 +87,7 @@
                                                 <div class="input-group-prepend">
                                                   <span class="input-group-text"><i class="fas fa-arrows-alt-h"></i></span>
                                                 </div>
-                                                <%= f.text_field :surface, class: "form-control", id:"userTwitter", placeholder:"75 m2" %>
+                                                <%= f.text_field :surface, class: "form-control", id:"userTwitter", placeholder:property.surface%>
                                               </div>
                                             </div>
                                           </div>
@@ -101,12 +101,12 @@
                                                   <div class="input-group-prepend">
                                                     <span class="input-group-text"> <i class="fas fa-hiking"></i></span>
                                                   </div>
-                                                 <%= f.number_field :floor, class: "form-control", id:"userTwitter", placeholder:"3 ème" %>
+                                                 <%= f.number_field :floor, class: "form-control", id:"userTwitter", placeholder:property.floor %>
                                                 </div>
                                             </div>
                                           </div>
 
-                                          
+
 
                                           <div class="col">
                                             <div class="form-group">
@@ -115,11 +115,11 @@
                                                   <div class="input-group-prepend">
                                                     <span class="input-group-text"> <i class="fas fa-home"></i></span>
                                                   </div>
-                                                 <%= f.number_field :room, class: "form-control", id:"userTwitter", placeholder:"2" %>
+                                                 <%= f.number_field :room, class: "form-control", id:"userTwitter", placeholder:property.room %>
                                                 </div>
                                             </div>
                                           </div>
-                                         
+
                                           <div class="col">
                                             <div class="form-group">
                                               <label for="secondName">Date de dispo.</label>
@@ -127,13 +127,13 @@
                                                   <div class="input-group-prepend">
                                                     <span class="input-group-text"> <i class="fas fa-calendar-alt"></i></span>
                                                   </div>
-                                                 <%= f.date_field :available_date, class: "form-control", id:"userTwitter", placeholder:"20/10/2020" %>
+                                                 <%= f.date_field :available_date, class: "form-control", id:"userTwitter", placeholder:property.available_date %>
                                                 </div>
                                             </div>
                                           </div>
                                         </div>
 
-                                        
+
 
                                         <div class="form-row">
                                           <div class="col-6">
@@ -143,7 +143,7 @@
                                                 <div class="input-group-prepend">
                                                   <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
                                                 </div>
-                                                <%= f.text_field :address, class: "form-control", id:"userTwitter", placeholder:"68 Rue Joseph de Maistre" %>
+                                                <%= f.text_field :address, class: "form-control", id:"userTwitter", placeholder: property.address %>
                                               </div>
                                             </div>
                                           </div>
@@ -166,12 +166,12 @@
                                           <div class="col">
                                             <div class="form-group">
                                               <label for="exampleFormControlTextarea1">Description</label>
-                                              <%= f.text_area :description, class: "form-control", id:"userTwitter", placeholder:"Appartement meublé de 75 m², au 3ème étage d'un immeuble récent, se compose d'une entrée, d'un salon, d'une chambre, d'une salle de bains. Les WC sont séparés et une TERRASSE de 32 m² avec vue sur le Sacré Coeur complète ce bien. De nombreux placards. Les sols sont en marbre, très belles prestations. Chauffage et eau collectifs.", rows: "8" %>
+                                              <%= f.text_area :description, class: "form-control", id:"userTwitter", placeholder: property.description %>
                                             </div>
                                           </div>
                                         </div>
-                                   
-                                    
+
+
 
                                       <div class="form-row mt-1 align-items-center">
                                         <div class="col-8">
@@ -205,9 +205,7 @@
               </div>
             </div>
         </div>
-    
+
       </div>
     </div>
 </div>
-
-
