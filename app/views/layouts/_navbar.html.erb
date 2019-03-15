@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav align-items-center mr-auto">
                 <li class="nav-item">
-                  <%= link_to "Home", root_path, class: "nav-link text-light"%>
+                  <%= link_to "Home", properties_path, class: "nav-link text-light"%>
                 </li>
               </ul>
 
@@ -22,7 +22,7 @@
                 <li class="nav-item">
                 <%= link_to tenant_properties_path(current_tenant.id), class:"nav-link" do %>
                   <span style="font-size: 20px; line-height:20px;">
-                    <i class="fas fa-shopping-bag text-light"></i><small class="text-light"> (<%= current_tenant.visits.count %>)</small>
+                    <i class="fas fa-shopping-bag text-light"></i><small class="text-light"> (<%= current_tenant.visits.where(visit_status_id:4).count + current_tenant.visits.where(visit_status_id:2).count %>)</small>
                   </span>
                 <% end %>
               
