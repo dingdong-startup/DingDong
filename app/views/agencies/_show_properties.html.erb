@@ -51,8 +51,8 @@
                   <h4 class="progress-title">Demandes de visites</h4>
                   <div class="progress-item">
                     <div class="progress">
-                    	<%p = rand(1..10)%>
-                        <div class="progress-bar bg-orange" role="progressbar" style="width: <%=p*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-orange"><%=p%></span></div>
+                    	<%asked_visits = property.visits.length %>
+                        <div class="progress-bar bg-orange" role="progressbar" style="width: <%=asked_visits*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-orange"><%=asked_visits%></span></div>
                     </div>
                   </div>
                   <br>
@@ -60,7 +60,7 @@
                   <div class="progress-item align-bottom">
                     <div class="progress">
                     	<%p = rand(1..10)%>
-                        <div class="progress-bar bg-blue" role="progressbar" style="width: <%=p*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-blue"><%=p%></span></div>
+                        <div class="progress-bar bg-blue" role="progressbar" style="width: <%=asked_visits*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-blue"><%=asked_visits%></span></div>
                     </div>
                   </div>
               
