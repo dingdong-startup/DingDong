@@ -37,15 +37,20 @@ class PropertiesController < ApplicationController
     end
   end
 
-  def update
-    @property = Property.update(property_params)
+  def edit
 
-    if @property.save
-      flash[:success] = "Votre bien a été créé"
-      redirect_to agency_path(current_agency)
+  end
+
+  def update
+    @property = Property.find(params[:id])
+    @agency = Agency.find(params[:agency_id])
+
+    if @property.update(agency_property_params)
+      flash[:success] = "Votre bien a été mis à jour"
+      redirect_to agency_property_path(@agency,@property)
     else
-    flash[:danger] = @property.errors.messages
-    redirect_to new_agency_property_path
+      flash[:danger] = @property.errors.messages
+      redirect_to agency_property_path(@agency,@property)
     end
   end
 
@@ -62,6 +67,10 @@ class PropertiesController < ApplicationController
   end
 
   private
+
+  def agency_property_params
+    params.require("/agencies/#{@agency.id}/properties/#{@property.id}").permit(:title, :price, :surface, :description, :floor, :room, :available_date, :address)
+  end
 
   def property_params
   	params.require(:property).permit(:title, :price, :surface, :description, :floor, :room, :available_date, :address)
