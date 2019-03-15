@@ -23,6 +23,8 @@ PaymentStatus.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('payment_statuses')
 Visit.destroy_all 
 ActiveRecord::Base.connection.reset_pk_sequence!('visits')
+VisitStatus.destroy_all 
+ActiveRecord::Base.connection.reset_pk_sequence!('visit_statuses')
 
 
 v1 = VisitStatus.new(title: "Unfavorite")
