@@ -4,25 +4,25 @@ class VisitsController < ApplicationController
     visit = Visit.find_by(property_id: params[:property_id], tenant: current_tenant)
 
     if visit 
-      # Si existe parce que le Tenant a déjà mis en favoris, on l'update en visist status : Demanded Visit
+      # If Visit exist because the Tenant already put a property in its favorites, we update the visit status to Demanded Visit
       visit.update_attributes(visit_status_id: 3)
     else
-      # Si visite n'existe pas parce que le user n'a pas mis en favoris, je crée une visite avec visit status : Demanded Visit
+      # If the visist doesn't exist yet because the user didn't put one in its favorites, we create a visist with VisitStatus : Demanded Visit
       visit = Visit.new(property_id: params[:property_id], tenant: current_tenant, visit_status_id: 3)
       visit.save
     end
     
-    # Stripe prend la releve sur l'étape de création de l'object Customer
+    # Stripe take the lead on the creation Customer step
     customer = Stripe::Customer.create({
       source: params[:stripeToken],
       email: params[:stripeEmail],
     })
 
     if customer.save
-      # Si la création du Stripe Customer est ok, le payment status s'update en 2, card saved
+      # If the Stripe Customer object creation is ok, the paymentstatus is updated to 2 : Card Saved
       current_tenant.update(stripe_customer_id: customer.id, payment_status_id: 2)
       flash[:success] = "Votre carte a bien été enregistrée !"
-      # Et le visit status s'update en 4, visite accepted
+      # The visit status is updated to 4 : Visit Accepted
       visit.update(visit_status_id: 4)
       redirect_back(fallback_location: properties_path)
     else
@@ -49,8 +49,6 @@ class VisitsController < ApplicationController
       flash[:primary] = "Demande de visite annulée"
       redirect_back(fallback_location: properties_path)
     else
-      puts "*" * 60
-      puts "C'est moi!!!!"
       puts params
       Visit.create(property_id: params[:property_id], tenant: current_tenant, visit_status_id: 2)
       flash[:success] = "Appartement ajouté aux favoris !"
