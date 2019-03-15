@@ -19,7 +19,7 @@
                 <%= form_tag visits_update_path, method: 'put' do %>
                   <%= hidden_field_tag :property_id, property.id %>
                   <%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-blue rounded btn-sm icon", remote: true) do %>
-                    <i class="far fa-star"></i>
+                    <i class="far fa-heart"></i>
                   <% end %>
                 <% end %>
 
@@ -27,8 +27,8 @@
 
                 <%= form_tag visits_update_path, method: 'put' do %>
                   <%= hidden_field_tag :property_id, property.id %>
-                  <%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-yellow rounded btn-sm icon", remote: true) do %>
-                    <i class="fas fa-star"></i>
+                  <%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-red rounded btn-sm icon", remote: true) do %>
+                    <i class="fas fa-heart"></i>
                   <% end %>
                 <% end %>
 
@@ -38,7 +38,7 @@
                 <%= form_tag visits_update_path, method: 'put' do %>
                   <%= hidden_field_tag :property_id, property.id %>
                   <%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-blue rounded btn-sm icon", remote: true) do %>
-                    <i class="far fa-star"></i>
+                    <i class="far fa-heart"></i>
                   <% end %>
                 <% end %>
 
