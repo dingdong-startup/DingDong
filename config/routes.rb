@@ -17,13 +17,21 @@ Rails.application.routes.draw do
   end
 
 
+<<<<<<< HEAD
   resources :properties, only: [:index, :show] do 
+=======
+  resources :properties, only: [:index, :show] do
+>>>>>>> dev
     resources :visits, only: [:create]
   end
 
   resources :tenants, only: [:show, :edit, :update]
 
+<<<<<<< HEAD
   resources :charges, only: [:index, :create]
+=======
+  resources :admin_charges, only: [:index, :create]
+>>>>>>> dev
 
   root 'statics#index'
 

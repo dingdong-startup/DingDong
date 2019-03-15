@@ -21,6 +21,7 @@ Agent.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('agents')
 PaymentStatus.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('payment_statuses')
+<<<<<<< HEAD
 Visit.destroy_all 
 ActiveRecord::Base.connection.reset_pk_sequence!('visits')
 
@@ -38,20 +39,30 @@ v5.save
 v6 = VisitStatus.new(title: "Location Successful")
 v6.save
 
+=======
+# Visit.destroy_all 
+# ActiveRecord::Base.connection.reset_pk_sequence!('visits')
+
+
+>>>>>>> dev
 p1 = PaymentStatus.new(title: 'No Card')
 p2 = PaymentStatus.new(title: 'Card Saved')
 p3 = PaymentStatus.new(title: 'Card Debited')
 p1.save
 p2.save
 p3.save
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
 
 10.times do
   t = Tenant.new(first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
   password: "test123",
-  stripe_customer_id: nil) 
+  stripe_customer_id: nil,
+  payment_status_id: rand(1..3)) 
   t.save
 end
 
