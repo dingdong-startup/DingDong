@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :agencies do 
+  resources :agencies do
     resources :properties, except: [:index]
   end
 
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :tenants, only: [:show, :edit, :update]
 
   resources :charges, only: [:index, :create]
+
 
   root 'statics#index'
 
