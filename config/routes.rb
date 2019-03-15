@@ -19,7 +19,9 @@ Rails.application.routes.draw do
 
   resources :properties, only: [:index, :show]
 
-  resources :tenants, only: [:show, :edit, :update]
+  resources :tenants, only: [:show, :edit, :update] do 
+    resources :properties, only: [:index]
+  end
 
   root 'statics#index'
 
