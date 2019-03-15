@@ -1,3 +1,65 @@
-<% properties.each do |p| %>
-	<h1><%= p.title %></h1>
-<% end %>
+
+<% visits.each do |visit| %>
+<div class="row">
+	<div class="col-8">
+		<div class="boxed p-2 bordered scaling">
+			<div class="row align-items-center justify-content-between">
+				<div class="col-10">
+					<%= link_to property_path(visit.property.id) do %>
+					<div class="media align-items-center">           			           
+						<img src="<%=asset_path(image_path(main_app.url_for(visit.property.images.first)))%>" alt="Avatar" class="avatar avatar-lg mr-3">
+
+						<div class="media-body">
+							<h5 class="mb-0"><%=visit.property.title%></h5>
+							<br>
+							<container>
+								<div class="row">
+									<div class="col-4 text-muted"><i class="fas fa-arrows-alt-h"></i> <%=visit.property.surface%> m2  </div>
+									<div class=" col-4 text-muted"><i class="fas fa-coins"></i> <%=visit.property.price%> €  </div>
+									<div class="col-4 text-muted"><i class="fas fa-map-marker-alt"></i> <%=visit.property.area.zipcode%></div>
+								</div>
+							</container>
+						</div>
+					</div>
+					<% end %>
+				</div>
+
+				<div class="col-2 text-md-right">
+					<div class="dropdown">
+						<a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="icon-more-vertical fs-22"></i>
+						</a>
+
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
+							<a class="dropdown-item" href="#">Make Primary</a>
+							<a class="dropdown-item" href="#">Remove</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col-2 ml-10 align-items-center">
+
+		<h4 class="progress-title">Demandes de visites</h4>
+		<div class="progress-item">
+			<div class="progress">
+				<%p = rand(1..10)%>
+				<div class="progress-bar bg-orange" role="progressbar" style="width: <%=p*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-orange"><%=p%></span></div>
+			</div>
+		</div>
+		<br>
+		<h4 class="progress-title align-bottom">Postulants</h4>
+		<div class="progress-item align-bottom">
+			<div class="progress">
+				<%p = rand(1..10)%>
+				<div class="progress-bar bg-blue" role="progressbar" style="width: <%=p*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-blue"><%=p%></span></div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<%end%>

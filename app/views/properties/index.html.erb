@@ -3,6 +3,15 @@
 <div class="tab-content m-3" >
   <div class="container" style="margin-top:150px;">
   	<%rowcount = 0%>
+
+<% if @tenant %>
+	<h2>Favoris</h2>
+	<%= render 'properties/index_properties_tenant', visits: @fav_visits %>
+	<h2>Demandes de visites</h2>
+	<%= render 'properties/index_properties_tenant', visits: @asked_visits %>
+<% else %>
+
+
   	<div class="row">
 			<% @properties.each do |property| %>
 				
@@ -14,7 +23,9 @@
 			<% end %> 
 
 		</div>
+
+<%end%>
+
 	</div>
 </div>
-
 <%= render 'layouts/footer' %>

@@ -1,8 +1,13 @@
 class PropertiesController < ApplicationController
   def index 
-    tenant = Tenant.find(params[:tenant_id])
-    if tenant
-      @visits = tenant.visits
+    
+    @tenant = nil
+
+    if params[:tenant_id]
+      @tenant =Tenant.find(params[:tenant_id])
+      @fav_visits = Visit.where(visit_status_id: 1, tenant_id: @tenant.id)
+      @asked_visits = Visit.where(visit_status_id: 2, tenant_id: @tenant.id)
+
     end
     @properties = Property.all
   end
