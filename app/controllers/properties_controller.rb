@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
-  def index 
-    
+  def index
+
     @tenant = nil
 
     if params[:tenant_id]
@@ -11,11 +11,12 @@ class PropertiesController < ApplicationController
     end
     @properties = Property.all
   end
-  
+
   def show
     @property = Property.find(params[:id])
+    @agency = Agency.find(params[:agency_id])
   end
-  
+
   def new
   	@agency = Agency.find(params[:agency_id])
     @property = Property.new
@@ -42,6 +43,7 @@ class PropertiesController < ApplicationController
   end
 
   def update
+    puts params
     @property = Property.find(params[:id])
     @agency = Agency.find(params[:agency_id])
 
