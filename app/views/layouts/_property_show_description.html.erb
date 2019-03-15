@@ -5,13 +5,12 @@
             <div class="media align-items-center">                           
                
               <div class="media-body">
-                      <h5 class="card-title text-blue text-center"><%= property.title %></h5>
-                <br>
+                      <br>
                   <div class="container">
                     <div class="row">
                       <div class="col-4">
                         <div class=""><i class="fas fa-arrows-alt-h mr-1"></i> Surface : 
-                        <span class="text-muted"> <%=property.surface%> m2  </span>
+                        <span class="text-muted"> <%=property.surface%> m2</span>
                         </div>
                         <br>
                         <div class=""><i class="fas fa-coins mr-1"></i> Loyer / Mois :  
@@ -30,11 +29,170 @@
                         <span class="text-muted"> Adresse, <%=property.area.zipcode%> Ville  </span>
                         </div>
                       </div>
-                      <div class="col-8">
+                      <div class="col-7">
                         <div class=""><i class="fas fa-map-marker-alt mr-1"></i> Description 
                         <div class="text-muted"><%=property.description%></div>
                       </div>
                       </div>
+
+                      <div class="col-1 text-md-right">
+                        <div class="dropdown">
+                          <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-more-vertical fs-22"></i>
+                          </a>
+
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
+                            <a class="dropdown-item btn-blue" data-toggle="modal" data-target="#exampleModal" href="#">Editer</a>
+                            <%= link_to "Supprimer", agency_property_path(agency_id: current_agency.id, property_id: property), method: :DELETE, class:"dropdown-item btn-orange" %> 
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header justify-content-end">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="icon-x"></span>
+                              </button>
+                            </div>
+                            <div class="modal-body text-center">
+
+
+                                  <%= form_for agency_property_path(agency_id: current_agency.id, id: property), method: :PUT do |f| %>
+                                        <div class="form-row">
+                                          <div class="col">
+                                            <div class="form-group">
+                                              <label for="userMail">Titre</label>
+                                              <%= f.text_field :title, class: "form-control", id:"userMail", placeholder:"T2 avec une incroyable vue" %>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="form-row">
+                                          <div class="col">
+                                            <div class="form-group">
+                                              <label for="firstName">Prix</label>
+                                              <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                  <span class="input-group-text"><i class="fas fa-coins"></i></span>
+                                                </div>
+                                                <%= f.text_field :price, class: "form-control", id:"userTwitter", placeholder:"1600 €" %>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col">
+                                            <div class="form-group">
+                                              <label for="firstName">Surface</label>
+                                              <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                  <span class="input-group-text"><i class="fas fa-arrows-alt-h"></i></span>
+                                                </div>
+                                                <%= f.text_field :surface, class: "form-control", id:"userTwitter", placeholder:"75 m2" %>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                          <div class="col">
+                                            <div class="form-group">
+                                              <label for="firstName">Etage</label>
+                                              <div class="input-group">
+                                                  <div class="input-group-prepend">
+                                                    <span class="input-group-text"> <i class="fas fa-hiking"></i></span>
+                                                  </div>
+                                                 <%= f.number_field :floor, class: "form-control", id:"userTwitter", placeholder:"3 ème" %>
+                                                </div>
+                                            </div>
+                                          </div>
+
+                                          
+
+                                          <div class="col">
+                                            <div class="form-group">
+                                              <label for="secondName">Nombre de chambres</label>
+                                                <div class="input-group">
+                                                  <div class="input-group-prepend">
+                                                    <span class="input-group-text"> <i class="fas fa-home"></i></span>
+                                                  </div>
+                                                 <%= f.number_field :room, class: "form-control", id:"userTwitter", placeholder:"2" %>
+                                                </div>
+                                            </div>
+                                          </div>
+                                         
+                                          <div class="col">
+                                            <div class="form-group">
+                                              <label for="secondName">Date de dispo.</label>
+                                              <div class="input-group">
+                                                  <div class="input-group-prepend">
+                                                    <span class="input-group-text"> <i class="fas fa-calendar-alt"></i></span>
+                                                  </div>
+                                                 <%= f.date_field :available_date, class: "form-control", id:"userTwitter", placeholder:"20/10/2020" %>
+                                                </div>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        
+
+                                        <div class="form-row">
+                                          <div class="col-6">
+                                            <div class="form-group">
+                                              <label for="agencyAddress">Address</label>
+                                              <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                  <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                                </div>
+                                                <%= f.text_field :address, class: "form-control", id:"userTwitter", placeholder:"68 Rue Joseph de Maistre" %>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col">
+                                            <div class="form-group">
+                                              <label for="agencyAddress">Arrondissement</label>
+                                              <input type="textarea" class="form-control" id="agencyAddress" aria-describedby="agencyAddress" placeholder="75018">
+                                            </div>
+                                          </div>
+
+                                          <div class="col">
+                                            <div class="form-group">
+                                              <label for="agencyAddress">Ville</label>
+                                              <input type="textarea" class="form-control" id="agencyAddress" aria-describedby="agencyAddress" placeholder="Paris">
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                          <div class="col">
+                                            <div class="form-group">
+                                              <label for="exampleFormControlTextarea1">Description</label>
+                                              <%= f.text_area :description, class: "form-control", id:"userTwitter", placeholder:"Appartement meublé de 75 m², au 3ème étage d'un immeuble récent, se compose d'une entrée, d'un salon, d'une chambre, d'une salle de bains. Les WC sont séparés et une TERRASSE de 32 m² avec vue sur le Sacré Coeur complète ce bien. De nombreux placards. Les sols sont en marbre, très belles prestations. Chauffage et eau collectifs.", rows: "8" %>
+                                            </div>
+                                          </div>
+                                        </div>
+                                   
+                                    
+
+                                      <div class="form-row mt-1 align-items-center">
+                                        <div class="col-8">
+                                          <%= f.file_field :images, multiple: true %>
+                                        </div>
+                                        <div class="col-3">
+                                          <%= submit_tag("Enregistrer mon bien", id: "button", class: "btn btn-secondary", name: "submit") %>
+                                        </div>
+                                      </div>
+
+                                      <% end %>
+
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-primary btn-block">Save changes</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
 
                     </div>
 
@@ -51,3 +209,5 @@
       </div>
     </div>
 </div>
+
+
