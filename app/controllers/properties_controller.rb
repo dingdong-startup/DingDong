@@ -1,8 +1,11 @@
 class PropertiesController < ApplicationController
+
+  alias_method :current_user, :current_tenant
+
+  #load_and_authorize_resource
+
   def index 
     
-    @tenant = nil
-
     if params[:tenant_id]
       @tenant =Tenant.find(params[:tenant_id])
       @fav_visits = Visit.where(visit_status_id: 2, tenant_id: @tenant.id)
