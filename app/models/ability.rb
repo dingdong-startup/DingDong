@@ -7,11 +7,19 @@ class Ability
       puts current_agency
       puts "#"*50
 
-      if true
-        can :manage, Property
+      # if true
+      #   can :manage, Property
+      # else
+      #   can :read, Property
+      # end
+
+      agency ||= Agency.new # guest user (not logged in)
+      if agency.email.empty?
+        can :show, Property
       else
-        can :read, Property
+        can :manage, Property
       end
+      
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

@@ -1,5 +1,6 @@
 class PropertiesController < ApplicationController
 
+  alias_method :current_user, :current_tenant
   load_and_authorize_resource
 
   def index 
