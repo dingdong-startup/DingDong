@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_14_134440) do
+ActiveRecord::Schema.define(version: 2019_03_15_090910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,12 @@ ActiveRecord::Schema.define(version: 2019_03_14_134440) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "payment_statuses", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "positions", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -135,8 +141,27 @@ ActiveRecord::Schema.define(version: 2019_03_14_134440) do
     t.string "stripe_customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "payment_status_id"
     t.index ["email"], name: "index_tenants_on_email", unique: true
+    t.index ["payment_status_id"], name: "index_tenants_on_payment_status_id"
     t.index ["reset_password_token"], name: "index_tenants_on_reset_password_token", unique: true
+  end
+
+  create_table "visit_statuses", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "visits", force: :cascade do |t|
+    t.bigint "property_id"
+    t.bigint "visit_status_id"
+    t.bigint "tenant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_visits_on_property_id"
+    t.index ["tenant_id"], name: "index_visits_on_tenant_id"
+    t.index ["visit_status_id"], name: "index_visits_on_visit_status_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
