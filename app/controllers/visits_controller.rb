@@ -1,7 +1,14 @@
 class VisitsController < ApplicationController
   def create
-    visit = Visit.new(property_id: params[:property_id], tenant: current_tenant, visit_status_id: 3)
-    visit.save
+
+    visit = Visit.find_by(property_id: params[:property_id], tenant: current_tenant)
+    
+    if visit 
+      visit.update_attributes(visit_status_id: 3)
+    else
+      visit = Visit.new(property_id: params[:property_id], tenant: current_tenant, visit_status_id: 3)
+      visit.save
+    end
 
     customer = Stripe::Customer.create({
       source: params[:stripeToken],
@@ -21,5 +28,31 @@ class VisitsController < ApplicationController
     rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to properties_path
+  end
+
+  def update 
+    if is_favorited 
+      @visit.update_attributes(visit_status_id: 1)
+      flash[:success] = "Appartement ajouté aux favoris !"
+      redirect_to properties_path
+    elsif is_unfavorited 
+      @visit.update_attributes(visit_status_id: 2)
+      flash[:primary] = "Appartement retiré des favoris !"
+      redirect_to properties_path
+    else
+      Visit.create(property_id: params[:property_id], tenant: current_tenant, visit_status_id: 2)
+      flash[:success] = "Appartement ajouté aux favoris !"
+      redirect_to properties_path
+    end
+  end
+
+  private 
+
+  def is_favorited
+    @visit = Visit.find_by(property_id: params[:property_id], tenant: current_tenant, visit_status_id: 2) 
+  end
+
+  def is_unfavorited 
+    @visit = Visit.find_by(property_id: params[:property_id], tenant: current_tenant, visit_status_id: 1)
   end
 end

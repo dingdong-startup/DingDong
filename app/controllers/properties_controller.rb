@@ -5,8 +5,8 @@ class PropertiesController < ApplicationController
 
     if params[:tenant_id]
       @tenant =Tenant.find(params[:tenant_id])
-      @fav_visits = Visit.where(visit_status_id: 1, tenant_id: @tenant.id)
-      @asked_visits = Visit.where(visit_status_id: 2, tenant_id: @tenant.id)
+      @fav_visits = Visit.where(visit_status_id: 2, tenant_id: @tenant.id)
+      @asked_visits = Visit.where(visit_status_id: 4, tenant_id: @tenant.id)
 
     end
     @properties = Property.all

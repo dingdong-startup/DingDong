@@ -16,6 +16,30 @@
           <ul class="list-inline mb-0">
             <a class="btn btn-orange">Découvrir</a>
           </ul>
+            <% if property.visits.find_by(tenant: current_tenant) %>
+              <% if property.visits.find_by(tenant: current_tenant).visit_status_id == 1 %>
+
+                <%= form_tag visits_update_path, method: 'put' do %>
+                  <%= hidden_field_tag :property_id, property.id %>
+                  <%= submit_tag 'Favoris' %>
+                <% end %>
+
+              <% elsif property.visits.find_by(tenant: current_tenant).visit_status_id == 2 %>
+
+                <%= form_tag visits_update_path, method: 'put' do %>
+                  <%= hidden_field_tag :property_id, property.id %>
+                  <%= submit_tag 'Unfavorite' %>
+                <% end %>
+
+              <% end %>
+              <% elsif %>
+              
+                <%= form_tag visits_update_path, method: 'put' do %>
+                  <%= hidden_field_tag :property_id, property.id %>
+                  <%= submit_tag 'Favoris' %>
+                <% end %>
+
+            <% end %>
         </div>
       </div>
     </div>
