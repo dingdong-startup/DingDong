@@ -1,5 +1,12 @@
 class PropertiesController < ApplicationController
   def index 
+    tenant = Tenant.find(params[:tenant_id])
+    puts "#"*100
+    if tenant
+      @properties = tenant.properties
+      puts "On est bien dans la bonne boucle"
+    end
+    puts "#"*100
     @properties = Property.all
   end
   
