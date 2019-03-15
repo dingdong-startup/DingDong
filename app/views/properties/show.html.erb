@@ -15,7 +15,45 @@
 <%= render 'layouts/property_show_photo_description' %>
 <%= render 'layouts/property_show_description', property: @property%>
 <%= render 'layouts/property_show_carroussel' %>
+
+<% if false %>
+<% if current_tenant.payment_status_id != 2 %>
 <%= render 'layouts/stripe_print' %>
+<% else %>
+  <% if @property.visits.find_by(tenant: current_tenant) %>
+
+  <% elsif @property.visits.find_by(property_id: params[:property_id]).visit_status_id == 4 %>
+
+    <p> Visite déjà demandée </p>
+
+
+    <%= render 'layouts/ask_visit' %>
+  <% end %>
+
+<% end %>
+<% end %>
+
+<% #OKOKOKOK ON DEMARRE LES BOUTONS %>
+
+<% if @property.visits.find_by(tenant: current_tenant) %>
+  <% if current_tenant.payment_status_id == 1 %>
+  <%= render 'layouts/stripe_print' %>
+  <% elsif @property.visits.find_by(tenant: current_tenant, property_id: params[:id], visit_status_id: 4) %>
+  <p> Vous avez déjà demandé la visite </p>
+  <% else %>
+  <%= render 'layouts/ask_visit'%>
+  <% end %>
+<% else %>
+  <% if current_tenant.payment_status_id == 1 %>
+  <%= render 'layouts/stripe_print' %>
+  <% else %>
+  <%= render 'layouts/ask_visit'%>
+  <% end %>
+
+<% end %>
+
+
+
 <%= render 'layouts/footer' %>
 
 <% end %>
