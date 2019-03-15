@@ -30,7 +30,7 @@ class PropertiesController < ApplicationController
 
     if @property.save
       flash[:success] = "Votre bien a été créé"
-      redirect_to root_path
+      redirect_to agency_path(current_agency)
     else
     flash[:danger] = @property.errors.messages
     redirect_to new_agency_property_path

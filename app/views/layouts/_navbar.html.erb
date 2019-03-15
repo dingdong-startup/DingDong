@@ -47,6 +47,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <%= link_to('Logout', destroy_agency_session_path, :method => :delete, class: "dropdown-item") %>
+                    <%= link_to('Mon profil', agency_path(current_agency), class: "dropdown-item") %>
                 </div>
               </li>
                <%end %>
