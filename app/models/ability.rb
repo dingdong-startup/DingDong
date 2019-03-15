@@ -4,20 +4,14 @@ class Ability
   def initialize(user)
     # Define abilities for the passed in user here. For example:
       puts "#"*50
-      puts current_agency
+      puts user
       puts "#"*50
 
-      # if true
-      #   can :manage, Property
-      # else
-      #   can :read, Property
-      # end
-
-      agency ||= Agency.new # guest user (not logged in)
-      if agency.email.empty?
-        can :show, Property
+      user ||= Agency.new # guest user (not logged in)
+      if user.is_a? Agency
+        can :manage, Property, {agency_id: user.id}
       else
-        can :manage, Property
+        can :show, Property 
       end
       
     #
