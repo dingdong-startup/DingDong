@@ -37,6 +37,30 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def update
+    @property = Property.update(property_params)
+
+    if @property.save
+      flash[:success] = "Votre bien a été créé"
+      redirect_to agency_path(current_agency)
+    else
+    flash[:danger] = @property.errors.messages
+    redirect_to new_agency_property_path
+    end
+  end
+
+
+  def destroy
+    @property = Property.find(params[:property_id])
+    if @property.destroy
+      flash[:success] = "Votre bien a été supprimé"
+      redirect_to agency_path(current_agency)
+    else
+      flash[:danger] = @property.errors.messages
+      redirect_to agency_path(current_agency)
+    end
+  end
+
   private
 
   def property_params

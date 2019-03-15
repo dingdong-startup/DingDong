@@ -43,7 +43,7 @@
 
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
                             <a class="dropdown-item btn-blue" data-toggle="modal" data-target="#exampleModal" href="#">Editer</a>
-                            <a class="dropdown-item btn-orange" href="#">Supprimer</a>
+                            <%= link_to "Supprimer", agency_property_path(agency_id: current_agency.id, property_id: property), method: :DELETE, class:"dropdown-item btn-orange" %> 
                           </div>
                         </div>
                       </div>
@@ -57,8 +57,134 @@
                               </button>
                             </div>
                             <div class="modal-body text-center">
-                              <h3>En attente du travail d'Etienne</h3>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias alias ipsam minima, dolore! Modi enim porro neque quaerat blanditiis. Ipsa aliquam quam maxime rerum eum accusamus nulla, molestiae soluta repellendus!</p>
+
+
+        <%= form_for agency_property_path(agency_id: current_agency.id, property_id: property), method: :PUT do |f| %>
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="userMail">Titre</label>
+                    <%= f.text_field :title, class: "form-control", id:"userMail", placeholder:"T2 avec une incroyable vue" %>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="firstName">Prix</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-coins"></i></span>
+                      </div>
+                      <%= f.text_field :price, class: "form-control", id:"userTwitter", placeholder:"1600 €" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="firstName">Surface</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-arrows-alt-h"></i></span>
+                      </div>
+                      <%= f.text_field :surface, class: "form-control", id:"userTwitter", placeholder:"75 m2" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="firstName">Etage</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fas fa-hiking"></i></span>
+                        </div>
+                       <%= f.number_field :floor, class: "form-control", id:"userTwitter", placeholder:"3 ème" %>
+                      </div>
+                  </div>
+                </div>
+
+                
+
+                <div class="col">
+                  <div class="form-group">
+                    <label for="secondName">Nombre de chambres</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fas fa-home"></i></span>
+                        </div>
+                       <%= f.number_field :room, class: "form-control", id:"userTwitter", placeholder:"2" %>
+                      </div>
+                  </div>
+                </div>
+               
+                <div class="col">
+                  <div class="form-group">
+                    <label for="secondName">Date de dispo.</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fas fa-calendar-alt"></i></span>
+                        </div>
+                       <%= f.date_field :available_date, class: "form-control", id:"userTwitter", placeholder:"20/10/2020" %>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              
+
+              <div class="form-row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="agencyAddress">Address</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                      </div>
+                      <%= f.text_field :address, class: "form-control", id:"userTwitter", placeholder:"68 Rue Joseph de Maistre" %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="agencyAddress">Arrondissement</label>
+                    <input type="textarea" class="form-control" id="agencyAddress" aria-describedby="agencyAddress" placeholder="75018">
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="form-group">
+                    <label for="agencyAddress">Ville</label>
+                    <input type="textarea" class="form-control" id="agencyAddress" aria-describedby="agencyAddress" placeholder="Paris">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Description</label>
+                    <%= f.text_area :description, class: "form-control", id:"userTwitter", placeholder:"Appartement meublé de 75 m², au 3ème étage d'un immeuble récent, se compose d'une entrée, d'un salon, d'une chambre, d'une salle de bains. Les WC sont séparés et une TERRASSE de 32 m² avec vue sur le Sacré Coeur complète ce bien. De nombreux placards. Les sols sont en marbre, très belles prestations. Chauffage et eau collectifs.", rows: "8" %>
+                  </div>
+                </div>
+              </div>
+         
+          
+
+            <div class="form-row mt-1 align-items-center">
+              <div class="col-8">
+                <%= f.file_field :images, multiple: true %>
+              </div>
+              <div class="col-3">
+                <%= submit_tag("Enregistrer mon bien", id: "button", class: "btn btn-secondary", name: "submit") %>
+              </div>
+            </div>
+
+            <% end %>
+
+
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-primary btn-block">Save changes</button>

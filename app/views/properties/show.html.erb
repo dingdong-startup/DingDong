@@ -5,7 +5,7 @@
 <%= render 'layouts/property_show_visitors', property: @property %>
 
 <%= render 'layouts/property_show_carroussel', property: @property %>
-<%= render 'layouts/property_show_description', property: @property%>
+<%= render 'layouts/property_show_description', agency: @agency, property: @property%>
 <%= render 'layouts/footer' %>
 
 <% else %>
