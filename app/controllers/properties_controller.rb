@@ -1,7 +1,10 @@
 class PropertiesController < ApplicationController
-  def index 
-    
-    @tenant = nil
+
+  alias_method :current_user, :current_tenant
+
+  #load_and_authorize_resource
+
+  def index
 
     if params[:tenant_id]
       @tenant =Tenant.find(params[:tenant_id])
@@ -11,11 +14,12 @@ class PropertiesController < ApplicationController
     end
     @properties = Property.all
   end
-  
+
   def show
     @property = Property.find(params[:id])
+    @agency = Agency.find(params[:agency_id])
   end
-  
+
   def new
   	@agency = Agency.find(params[:agency_id])
     @property = Property.new
@@ -30,14 +34,48 @@ class PropertiesController < ApplicationController
 
     if @property.save
       flash[:success] = "Votre bien a été créé"
-      redirect_to root_path
+      redirect_to agency_path(current_agency)
     else
     flash[:danger] = @property.errors.messages
     redirect_to new_agency_property_path
     end
   end
 
+  def edit
+
+  end
+
+  def update
+    puts params
+    @property = Property.find(params[:id])
+    @agency = Agency.find(params[:agency_id])
+
+    if @property.update(agency_property_params)
+      flash[:success] = "Votre bien a été mis à jour"
+      redirect_to agency_property_path(@agency,@property)
+    else
+      flash[:danger] = @property.errors.messages
+      redirect_to agency_property_path(@agency,@property)
+    end
+  end
+
+
+  def destroy
+    @property = Property.find(params[:property_id])
+    if @property.destroy
+      flash[:success] = "Votre bien a été supprimé"
+      redirect_to agency_path(current_agency)
+    else
+      flash[:danger] = @property.errors.messages
+      redirect_to agency_path(current_agency)
+    end
+  end
+
   private
+
+  def agency_property_params
+    params.require("/agencies/#{@agency.id}/properties/#{@property.id}").permit(:title, :price, :surface, :description, :floor, :room, :available_date, :address)
+  end
 
   def property_params
   	params.require(:property).permit(:title, :price, :surface, :description, :floor, :room, :available_date, :address)

@@ -10,10 +10,10 @@
 		        <div class="boxed p-2 bordered scaling">
 		          <div class="row align-items-center justify-content-between">
 		            <div class="col-10">
-			            <%= link_to property_path(property) do %>
-			              <div class="media align-items-center">           			           
+			            <%= link_to agency_property_path(@agency,property) do %>
+			              <div class="media align-items-center">
 			                <img src="<%=asset_path(image_path(main_app.url_for(property.images.first)))%>" alt="Avatar" class="avatar avatar-lg mr-3">
-			                 
+
 			                <div class="media-body">
 			                  <h5 class="mb-0"><%=property.title%></h5>
 			                  <br>
@@ -28,7 +28,7 @@
 			              </div>
 			            <% end %>
 		            </div>
-		           
+
 		            <div class="col-2 text-md-right">
 		              <div class="dropdown">
 		                <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,26 +44,29 @@
 		          </div>
 		        </div>
 		    </div>
-		    
+
 
 			<div class="col-2 ml-10 align-items-center">
-				
-                  <h4 class="progress-title">Demandes de visites</h4>
+				<div class="row">
                   <div class="progress-item">
+                  	<h4 class="progress-title">Demandes de visites</h4>
                     <div class="progress">
-                    	<%p = rand(1..10)%>
-                        <div class="progress-bar bg-orange" role="progressbar" style="width: <%=p*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-orange"><%=p%></span></div>
+                    	<%asked_visits = property.visits.length %>
+                        <div class="progress-bar bg-orange" role="progressbar" style="width: <%=asked_visits*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-orange"><%=asked_visits%></span></div>
                     </div>
                   </div>
-                  <br>
-                  <h4 class="progress-title align-bottom">Postulants</h4>
-                  <div class="progress-item align-bottom">
+                </div>
+                <div class="row" style="margin-top: -1em">
+                  <div class="progress-item pb-3">
+                  	<h4 class="progress-title align-bottom">Postulants</h4>
                     <div class="progress">
                     	<%p = rand(1..10)%>
-                        <div class="progress-bar bg-blue" role="progressbar" style="width: <%=p*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-blue"><%=p%></span></div>
+                        <div class="progress-bar bg-blue" role="progressbar" style="width: <%=asked_visits*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-blue"><%=asked_visits%></span></div>
                     </div>
                   </div>
-              
+                </div>
+
+
             </div>
 
 <%end%>
