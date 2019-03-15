@@ -10,10 +10,10 @@
 		        <div class="boxed p-2 bordered scaling">
 		          <div class="row align-items-center justify-content-between">
 		            <div class="col-10">
-			            <%= link_to property_path(property) do %>
-			              <div class="media align-items-center">           			           
+			            <%= link_to agency_property_path(@agency,property) do %>
+			              <div class="media align-items-center">
 			                <img src="<%=asset_path(image_path(main_app.url_for(property.images.first)))%>" alt="Avatar" class="avatar avatar-lg mr-3">
-			                 
+
 			                <div class="media-body">
 			                  <h5 class="mb-0"><%=property.title%></h5>
 			                  <br>
@@ -28,7 +28,7 @@
 			              </div>
 			            <% end %>
 		            </div>
-		           
+
 		            <div class="col-2 text-md-right">
 		              <div class="dropdown">
 		                <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,7 +44,7 @@
 		          </div>
 		        </div>
 		    </div>
-		    
+
 
 			<div class="col-2 ml-10 align-items-center">
 				<div class="row">
@@ -66,7 +66,7 @@
                   </div>
                 </div>
 
-              
+
             </div>
 
 <%end%>
