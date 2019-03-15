@@ -13,8 +13,6 @@ Area.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('areas')
 Tenant.destroy_all 
 ActiveRecord::Base.connection.reset_pk_sequence!('tenants')
-# RequirementList.destroy_all 
-# ActiveRecord::Base.connection.reset_pk_sequence!('requirement_lists')
 Agency.destroy_all 
 ActiveRecord::Base.connection.reset_pk_sequence!('agencies')
 Position.destroy_all 
@@ -23,9 +21,22 @@ Agent.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('agents')
 PaymentStatus.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('payment_statuses')
-# Visit.destroy_all 
-# ActiveRecord::Base.connection.reset_pk_sequence!('visits')
+Visit.destroy_all 
+ActiveRecord::Base.connection.reset_pk_sequence!('visits')
 
+
+v1 = VisitStatus.new(title: "Unfavorite")
+v1.save
+v2 = VisitStatus.new(title: "Favorite")
+v2.save
+v3 = VisitStatus.new(title: "Demanded Visit")
+v3.save
+v4 = VisitStatus.new(title: "Visit Accepted")
+v4.save
+v5 = VisitStatus.new(title: "Visit Done")
+v5.save
+v6 = VisitStatus.new(title: "Location Successful")
+v6.save
 
 p1 = PaymentStatus.new(title: 'No Card')
 p2 = PaymentStatus.new(title: 'Card Saved')
@@ -51,10 +62,6 @@ end
 end
 
 5.times do 
-  # r = RequirementList.new(flat_sharing: Faker::Boolean.boolean,
-  #   warrant: Faker::Boolean.boolean,
-  #   min_revenu: rand(700.1500)*3)
-  # r.save 
   
   a = Agency.new(name: Faker::Company.name,
     address: Faker::Address.full_address,
@@ -76,7 +83,6 @@ end
   b.save
 end 
 
-
 20.times do 
 
   p = Property.new(
@@ -94,14 +100,6 @@ end
   p.images.attach(io: File.open('app/assets/images/photo1.jpg'), filename: 'photo1.jpg', content_type: 'image/jpg')
   
   p.save
-
-
-#   3.times do 
-#     v = Visit.new(time_id: Faker::Date.forward(rand(2..6)),
-#       property_id: p.id,
-#       tenant_id: rand(1..10),
-#       visit_status_id: 1)
-#   end
 end
 
 

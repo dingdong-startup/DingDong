@@ -17,13 +17,13 @@ Rails.application.routes.draw do
   end
 
 
-  resources :properties, only: [:index, :show] do
+  resources :properties, only: [:index, :show] do 
     resources :visits, only: [:create]
   end
 
   resources :tenants, only: [:show, :edit, :update]
 
-  resources :admin_charges, only: [:index, :create]
+  resources :charges, only: [:index, :create]
 
   root 'statics#index'
 

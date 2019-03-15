@@ -1,0 +1,16 @@
+<ul>
+<% @tenants.each do |tenant| %>
+<li><%= tenant.first_name %><%= tenant.id %></li>
+<li><%= form_tag charges_path %>
+<%= hidden_field_tag(:tenant_id, tenant.id) %>
+<%= hidden_field_tag(:stripe_customer_id, tenant.stripe_customer_id) %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+  </article>
+<%= submit_tag 'Debiter' %> </li>
+<% end %>
+</ul>
