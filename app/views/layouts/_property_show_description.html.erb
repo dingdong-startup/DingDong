@@ -42,11 +42,36 @@
                           </a>
 
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
-                            <a class="dropdown-item" href="#">Editer</a>
-                            <a class="dropdown-item" href="#">Supprimer</a>
+                            <a class="dropdown-item btn-blue" data-toggle="modal" data-target="#exampleModal" href="#">Editer</a>
+                            <a class="dropdown-item btn-orange" href="#">Supprimer</a>
                           </div>
                         </div>
                       </div>
+
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Launch Modal
+                      </button>
+
+
+                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header justify-content-end">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="icon-x"></span>
+                              </button>
+                            </div>
+                            <div class="modal-body text-center">
+                              <h3>Modal title</h3>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias alias ipsam minima, dolore! Modi enim porro neque quaerat blanditiis. Ipsa aliquam quam maxime rerum eum accusamus nulla, molestiae soluta repellendus!</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-primary btn-block">Save changes</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
 
                     </div>
 
