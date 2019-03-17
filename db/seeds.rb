@@ -53,7 +53,7 @@ p3.save
   email: Faker::Internet.email,
   password: "test123",
   stripe_customer_id: nil,
-  payment_status_id: rand(1..3)) 
+  payment_status_id: 1) 
   t.save
 end
 
