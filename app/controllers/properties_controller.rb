@@ -18,7 +18,7 @@ class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
     ##TODO : Fix this bug, the params for agency ID works for agencies/id/property/id, but not for propertie/id
-    # @agency = Agency.find(params[:agency_id]) 
+    # @agency = Agency.find(params[:agency_id])
   end
 
   def new
@@ -80,11 +80,11 @@ class PropertiesController < ApplicationController
   private
 
   def agency_property_params
-    params.require("/agencies/#{@agency.id}/properties/#{@property.id}").permit(:title, :price, :surface, :description, :floor, :room, :available_date, :address)
+    params.require("/agencies/#{@agency.id}/properties/#{@property.id}").permit(:title, :price, :surface, :description, :floor, :room, :available_date, :address, :charges, :agency_fees, :deposit, :furnished)
   end
 
   def property_params
-  	params.require(:property).permit(:title, :price, :surface, :description, :floor, :room, :available_date, :address)
+  	params.require(:property).permit(:title, :price, :surface, :description, :floor, :room, :available_date, :address, :charges, :agency_fees, :deposit, :furnished)
   end
 
 
