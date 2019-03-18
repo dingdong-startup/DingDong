@@ -14,38 +14,76 @@ require 'byebug'
 @Itot=[] #tableau des images
 @I=[] #tableau intermédiaire des images d'une maison
 @ad=[] #tableau des adresses
+@intermediate =[]
+@Sh=[] #shared flat accepted or not
+@Vs = ""
+@Ps = ""
+@Ss = ""
+@Fs = ""
+@Rs
+@Fu = [] #furnished or not
+@Rintermediate = []
+
+
 
 def flat_scrapper ()
+  # page_image = Nokogiri::HTML(open('https://www.airbnb.fr/s/Paris/homes?refinement_paths%5B%5D=%2Fhomes&adults=0&children=0&infants=0&guests=0&place_id=ChIJD7fiBh9u5kcRYJSMaMOCCwQ&click_referer=t%3ASEE_ALL%7Csid%3A9d3f7bdf-ff75-4c7b-99db-469ef83da30e%7Cst%3AMAGAZINE_HOMES&title_type=MAGAZINE_HOMES&query=Paris&allow_override%5B%5D=&s_tag=v9JpW3bS'))
+  # @I= page_image.xpath('//body')
+  # puts "Images url"
+  # puts @I.to_s
   page = Nokogiri::HTML(open('https://www.flatlooker.com/appartements?utf8=%E2%9C%93&room_count_1=false&room_count_2=false&room_count_3=false&room_count_4=false&room_count_5=false&min_latitude=48.762749606303565&min_longitude=2.200325842396969&max_latitude=48.96150853951048&max_longitude=2.440651770131344&page=1&prix_max=9999&surface_min=30&zoom=12&furnished=&move_search=true'))
-  page.xpath('//div[1]/a/@href')[6..-1].first(20).each_slice(2) do |url, url_bis|
+  @Vs = page.xpath('//div/a/div/strong').text
+  @Ps = page.xpath('//div/a/div/p/strong[1]').text
+  @Ss = page.xpath('//div/a/div/p/strong[2]').text.delete("-")
+  @Rs = page.xpath('//div/a/div/small').text
+  @Fd = page.xpath('//div/a/div/small').text
+  @V = @Vs.split(')')
+  @S = @Ss.split('m2')
+  @P = @Ps.split('€')
+  @V.map!{|e| e + ")"}
+  @Rintermediate = @Rs.delete("\u0095").split("\n\n")
+
+  @Rintermediate.map!{|e| e.split("\n")}
+  # @Rintermediate.map!{|e| e.delete('')}
+  # @Rintermediate.map!{|e| e.map{ |a| a.strip!}}
+  @Rintermediate.map{|e| e.delete("")}
+  @Rintermediate.map{|e| e.map{ |a| a.strip!}}
+
+
+  @Rintermediate.each{|e| @R << e[0]}
+  @Rintermediate.each{|e| @Fu << e[1]}
+  # puts @Rs
+  puts @Rintermediate.to_s
+  puts @R.to_s
+  puts @F.to_s
+
+  page.xpath('//div[1]/a/@href')[6..-1].first(4).each_slice(2) do |url, url_bis|
     complete_url = 'https://www.flatlooker.com' + url
     @U << complete_url
-    @V << page.xpath('//*[@id="container_flat_1852"]/div/a/div/strong').text
-    @P << page.xpath('//*[@id="container_flat_1852"]/div/a/div/p/strong[1]').text
-    @S << page.xpath('//*[@id="container_flat_1852"]/div/a/div/p/strong[2]').text
+
     puts @address
     page_flat = Nokogiri::HTML(open(complete_url))
+    @I = page_flat.xpath('/html/body/div[5]/img/@src')
+
     @T << page_flat.xpath('//*[@id="annonce"]/div[1]/div[1]/h3').text
-    # byebug
-    # @S << page_flat.xpath('/html/body/div[4]/div[5]/div/div/div[1]/div[2]').text
-    # @P << page_flat.xpath('/html/body/div[6]/div[6]/div/div/p[2]/strong').text
-    # @V << page_flat.xpath('/html/body/div[6]/div[6]/div/div/div[1]/div[2]').text
     @F << page_flat.xpath('//*[@id="table-essentials"]/tbody/tr[2]/td[4]').text
-    @R << page_flat.xpath('/html/body/div[6]/div[6]/div/div/div[1]/div[1]').text
+    @R << page_flat.xpath('//body/div[6]/div[6]/div/div/div[1]/div[1]').text
     @D << page_flat.xpath('//*[@id="annonce"]/div[2]/div[1]/div').text
-    @ad << page_flat.xpath('/html/body/div[6]/div[6]/div/div/h4').text
+    @ad << page_flat.xpath('//body/div[6]/div[6]/div/div/h4').text
+    @Sh << page_flat.xpath('//*[@id="table-essentials"]/tbody/tr[1]/td[4]').text
   end
+  puts @I
   # puts @T.to_s, @S.to_s, @P.to_s, @V.to_s, @F.to_s, @R.to_s, @D.to_s, @ad.to_s
-  clean(@U)
-  clean(@A)
-  clean(@T)
-  clean(@S)
-  clean(@P)
-  clean(@F)
-  clean(@D)
-  clean(@R)
-  clean(@V)
-  clean(@ad)
+  # clean(@U)
+  # clean(@A)
+  # clean(@T)
+  # clean(@S)
+  # clean(@P)
+  # clean(@F)
+  # clean(@D)
+  # clean(@R)
+  # clean(@V)
+  # clean(@ad)
 end
 #   page.xpath("//*[@id="header-offer-ED20A669-765C-652D-C932-7063775917AF"]/div/div[2]/div[1]/div[1]/div[1]/p[1]/a").first(4).each do |node|
 #     @B << node.text
@@ -54,7 +92,7 @@ end
 #     @C << node.text
 #   end
 def clean(array)
- return array.map!{ |element| element.gsub(/\n/, '')}
+ return array.map!{ |element| element.strip.gsub(/\n/, '')}.map!{ |element| element.gsub(/\r/, '')}
  # .map!{ |element| element.gsub(/n/, '').gsub(/\n/, '') }
 end
 
@@ -95,8 +133,11 @@ end
 
 def perform ()
   flat_scrapper
-  @T.zip(@S, @D, @V, @F, @R, @ad).each{|x| @A << {"title" => x[0], "superficie" => x[1], "description" => x[2], "ville" => x[3], "floor" => x[4], "room" => x[5], "address" => x[6] }}
-  puts @A.to_s
+  @intermediate = @T.zip(@S, @D, @V, @F, @R, @ad, @P, @Fu)
+  @intermediate.each{|array| clean(array)}
+  @intermediate.each{|x| @A << {"title" => x[0], "superficie" => x[1], "description" => x[2], "ville" => x[3], "floor" => x[4], "room" => x[5], "address" => x[6], "price" => x[7], "furnished" => x[8] }}
+  puts @A.first.to_s
+  puts @A.last.to_s
 end
 
 perform
