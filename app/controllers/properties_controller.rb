@@ -63,14 +63,16 @@ class PropertiesController < ApplicationController
 
   def destroy
     @property = Property.find(params[:property_id])
-    if @property.destroy
-      flash[:success] = "Votre bien a été supprimé"
+    if @property.update(is_archived: true)
+      flash[:success] = "Votre bien a été archivé"
       redirect_to agency_path(current_agency)
     else
       flash[:danger] = @property.errors.messages
       redirect_to agency_path(current_agency)
     end
   end
+
+
 
   private
 
