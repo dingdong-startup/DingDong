@@ -8,7 +8,7 @@
             <div class="accordion-group accordion-group-portal" data-accordion-group="">
               
               <!-- LOGIN -->
-              <div class="accordion" data-accordion="">
+              <div class="accordion open" data-accordion="">
                 <div class="accordion-control" data-control="">
                   <h5>Connexion PRO</h5>
                 </div>
@@ -33,6 +33,9 @@
 
                       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
 
+                      <%= render 'agencies/modal_reset_password'%>
+                      
+
                       <%= f.button :submit, "Se connecter", class: "btn btn-primary btn-block" %>
                     <% end %>
                   </div>
@@ -41,7 +44,7 @@
 
 
             <!-- SIGNUP -->
-              <div class="accordion open" data-accordion="">
+              <div class="accordion" data-accordion="">
                 <div class="accordion-control" data-control="">
                   <h5>Créer un compte PRO</h5>
                 </div>
