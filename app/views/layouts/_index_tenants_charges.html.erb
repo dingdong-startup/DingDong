@@ -1,0 +1,49 @@
+<% @tenants.each do |tenant| %>
+<div class="row">
+	<div class="col-8">
+		<div class="boxed p-2 bordered scaling">
+			<div class="row align-items-center justify-content-between">
+				<div class="col-10">
+					<div class="media align-items-center">           			           
+						<div class="media-body">
+							<h5 class="mb-0">Utilisateur n°<%= tenant.id %></h5>
+							<br>
+							<container>
+								<div class="row">
+									<div class="col-4 text-muted"><i class="fas fa-arrows-alt-h"></i> <%=tenant.email%></div>
+									<div class=" col-4 text-muted"><i class="fas fa-coins"></i> <%=tenant.created_at.strftime("%F")%></div>
+									<div class="col-4 text-muted"><i class="fas fa-map-marker-alt"></i> <%=tenant.visits.count%></div>
+								</div>
+							</container>
+						</div>
+					</div>
+				</div>
+				<div class="col-2 text-md-right">
+              <%= form_for charges_path do |f| %>
+                <%= hidden_field_tag(:stripe_customer_id, tenant.stripe_customer_id) %>
+                <%= hidden_field_tag(:tenant_id, tenant.id) %>
+                <%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-red rounded btn-sm icon", remote: true) do %>
+								<i class="fas fa-money-bill-wave-alt" id="fav-<%=tenant.id%>"></i>
+							<% end %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+  <div class="col-4  align-items-center">
+  <% if tenant.payment_status_id == 2 %>
+		<p>Débiter cet utilisateur lui prélevera 99€ sur son compte en banque.</p>
+			<%= form_for charges_path do |f|%>
+        <%= hidden_field_tag(:stripe_customer_id, tenant.stripe_customer_id) %>
+        <%= hidden_field_tag(:tenant_id, tenant.id) %>
+				<%= submit_tag 'Débiter', class: 'btn btn-orange' %>
+			<% end %>
+  <% else %>
+    <p>Cet utilisateur a déjà été débité.</p>
+  <% end %>
+	</div>
+</div>
+
+<%end%>
+

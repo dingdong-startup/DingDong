@@ -21,9 +21,13 @@ Rails.application.routes.draw do
     resources :visits, only: [:create]
   end
 
-  resources :tenants, only: [:show, :edit, :update]
+  resources :tenants, only: [:show, :edit, :update] do 
+    resources :properties, only: [:index]
+  end
 
   resources :charges, only: [:index, :create]
+
+  put 'visits/update'
 
   root 'statics#index'
 

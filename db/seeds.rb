@@ -23,6 +23,8 @@ PaymentStatus.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('payment_statuses')
 Visit.destroy_all 
 ActiveRecord::Base.connection.reset_pk_sequence!('visits')
+VisitStatus.destroy_all 
+ActiveRecord::Base.connection.reset_pk_sequence!('visit_statuses')
 
 
 v1 = VisitStatus.new(title: "Unfavorite")
@@ -51,14 +53,18 @@ p3.save
   email: Faker::Internet.email,
   password: "test123",
   stripe_customer_id: nil,
-  payment_status_id: rand(1..3)) 
+  payment_status_id: 1) 
   t.save
 end
 
-3.times do 
-  a = Area.new(name: Faker::Address.city,
-    zipcode: Faker::Address.zip_code)
+i = 1
+while i <= 20
+  zip = 75000 + i
+  a = Area.new(name: "Paris #{i}",
+  zipcode: zip.to_s)
   a.save
+  i += 1
+  puts "Zipcode : #{zip}"
 end
 
 5.times do 

@@ -1,4 +1,8 @@
 class AgenciesController < ApplicationController
+
+  alias_method :current_user, :current_tenant
+  #load_and_authorize_resource
+
   def index
   	@agencies = Agency.all
   end
@@ -8,6 +12,7 @@ class AgenciesController < ApplicationController
   	@properties = @agency.properties
     @property = Property.new
   	#@director = @agency.agents
-  	#@agent = @agency.agents
+    #@agent = @agency.agents
+    @areas = Area.all
   end
 end

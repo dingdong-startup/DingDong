@@ -5,7 +5,6 @@ class ChargesController < ApplicationController
 
   def create
     stripe_customer_id = params[:stripe_customer_id]
-
     @tenant = Tenant.find(params[:tenant_id])
 
     charge = Stripe::Charge.create({
