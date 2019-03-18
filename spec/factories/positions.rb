@@ -1,5 +1,5 @@
 FactoryBot.define do
     factory :position do
-        title {"Agent"}
+        sequence(:title) {Faker::Name.name}
     end
   end

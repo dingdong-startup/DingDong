@@ -8,9 +8,9 @@ RSpec.describe Position, type: :model do
 
         context "validation" do
             
-      #it "has a valid factory" do
-    	#	expect(build(:position)).to be_valid
-		  #end
+      it "has a valid factory" do
+    		expect(build(:position)).to be_valid
+		  end
 
 			it "is valid with valid attributes" do
 				expect(@position).to be_a(Position)
