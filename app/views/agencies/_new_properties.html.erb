@@ -3,13 +3,13 @@
       <div class="col-md-10 col-lg-8">
         <div class="row">
           <div class="col">
-            
+
             <%= form_for [agency, property] do |f| %>
               <div class="form-row">
                 <div class="col">
                   <div class="form-group">
                     <label for="userMail">Titre</label>
-                    <%= f.text_field :title, class: "form-control", id:"userMail", placeholder:"T2 avec une incroyable vue" %>
+                    <%= f.text_field :title, class: "form-control", id:"userMail", placeholder:"T2 avec une incroyable vue" , required:true %>
                   </div>
                 </div>
               </div>
@@ -51,7 +51,7 @@
                   </div>
                 </div>
 
-                
+
 
                 <div class="col">
                   <div class="form-group">
@@ -64,7 +64,7 @@
                       </div>
                   </div>
                 </div>
-               
+
                 <div class="col">
                   <div class="form-group">
                     <label for="secondName">Date de dispo.</label>
@@ -72,13 +72,13 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text"> <i class="fas fa-calendar-alt"></i></span>
                         </div>
-                       <%= f.date_field :available_date, class: "form-control", id:"userTwitter", placeholder:"20/10/2020" %>
+                       <%= f.date_field :available_date, class: "form-control", id:"userTwitter", placeholder:"20/10/2020" , required:true%>
                       </div>
                   </div>
                 </div>
               </div>
 
-              
+
 
               <div class="form-row">
                 <div class="col-6">
@@ -115,12 +115,12 @@
                   </div>
                 </div>
               </div>
-         
-          
+
+
 
             <div class="form-row mt-1 align-items-center">
               <div class="col-8">
-                <%= f.file_field :images, multiple: true %>
+                <%= f.file_field :images, multiple: true , required:true%>
               </div>
               <div class="col-3">
                 <%= submit_tag("Enregistrer mon bien", id: "button", class: "btn btn-secondary", name: "submit") %>
@@ -135,4 +135,3 @@
       </div>
 	</div>
 </div>
-
