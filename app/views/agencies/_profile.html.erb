@@ -17,13 +17,13 @@
               <div class="col">
                 <div class="form-group">
                   <label for="directorFirstName">Prénom</label>
-                  <input type="email" class="form-control" id="directorFirstName" aria-describedby="directorFirstName" placeholder="Louis">
+                  <input type="email" class="form-control" id="directorFirstName" aria-describedby="directorFirstName" value="<%= @director.first_name %>" placeholder="Louis">
                 </div>
               </div>
               <div class="col">
                 <div class="form-group">
                   <label for="directorSecondName">Nom</label>
-                  <input type="email" class="form-control" id="directorSecondName" aria-describedby="directorSecondName" placeholder="Martin">
+                  <input type="email" class="form-control" id="directorSecondName" aria-describedby="directorSecondName" value="<%= @director.last_name %>" placeholder="Martin">
                 </div>
               </div>
             </div>
@@ -31,13 +31,13 @@
               <div class="col">
                 <div class="form-group">
                   <label for="directorMail">Email</label>
-                  <input type="email" class="form-control" id="directorMail" aria-describedby="directorMail" placeholder="directeur@agence.com">
+                  <input type="email" class="form-control" id="directorMail" aria-describedby="directorMail" value="<%= @director.email %>" placeholder="directeur@agence.com">
                 </div>
               </div>
               <div class="col">
                 <div class="form-group">
                   <label for="directorPhone">Téléphone</label>
-                  <input type="phone" class="form-control" id="directorPhone" aria-describedby="directorPhone" placeholder="06.......">
+                  <input type="phone" class="form-control" id="directorPhone" aria-describedby="directorPhone" value="<%= @director.cellphone %>" placeholder="06.......">
                 </div>
               </div>
             </div>
@@ -58,13 +58,13 @@
               <div class="col">
                 <div class="form-group">
                   <label for="agentFirstName">Prénom</label>
-                  <input type="email" class="form-control" id="agentFirstName" aria-describedby="agentFirstName" placeholder="Jeanne">
+                  <input type="email" class="form-control" id="agentFirstName" aria-describedby="agentFirstName" value="<%=@agent.first_name %>" placeholder="Jeanne">
                 </div>
               </div>
               <div class="col">
                 <div class="form-group">
                   <label for="agentSecondName">Nom</label>
-                  <input type="email" class="form-control" id="agentSecondName" aria-describedby="agentSecondName" placeholder="Dubois">
+                  <input type="email" class="form-control" id="agentSecondName" aria-describedby="agentSecondName" value="<%=@agent.last_name %>" placeholder="Dubois">
                 </div>
               </div>
             </div>
@@ -72,13 +72,13 @@
               <div class="col">
                 <div class="form-group">
                   <label for="agentMail">Email</label>
-                  <input type="email" class="form-control" id="agentMail" aria-describedby="agentMail" placeholder="agent@agence.com">
+                  <input type="email" class="form-control" id="agentMail" aria-describedby="agentMail" value="<%=@agent.email %>" placeholder="agent@agence.com">
                 </div>
               </div>
               <div class="col">
                 <div class="form-group">
                   <label for="agentPhone">Téléphone</label>
-                  <input type="phone" class="form-control" id="agentPhone" aria-describedby="agentPhone" placeholder="06....... ">
+                  <input type="phone" class="form-control" id="agentPhone" aria-describedby="agentPhone" value="<%=@agent.cellphone %>" placeholder="06....... ">
                 </div>
               </div>
             </div>
