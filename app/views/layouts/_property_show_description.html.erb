@@ -9,22 +9,27 @@
                   <div class="container">
                     <div class="row">
                       <div class="col-4">
-                        <div class=""><i class="fas fa-arrows-alt-h mr-1"></i> Surface :
+                        <div class="mb-1"><i class="fas fa-arrows-alt-h mr-1"></i> Surface :
                         <span class="text-muted"> <%=property.surface%> m2</span>
                         </div>
-                        <br>
-                        <div class=""><i class="fas fa-coins mr-1"></i> Loyer / Mois :
-                        <span class="text-muted"> <%=property.price%> €   </span>
+                        <div class="mb-1"><i class="fas fa-coins mr-1"></i> Loyer / Mois :
+                        <span class="text-muted"> <%=property.price%> €</span>
+                        <div class="text-muted"> > Dont X € de charges </div>
                         </div>
-                        <br>
-                        <div class=""><i class="fas fa-hiking mr-1"></i> Etage :
+                        <div class="mb-1"><i class="fas fa-money-check mr-1"></i>Honoraires de location :
+                        <span class="text-muted"> X €</span>
+                        <div class="text-muted"> > Et X € de dépôt de garantie </div>
+                        </div>
+
+
+                        <div class="mb-1"><i class="fas fa-hiking mr-1"></i> Etage :
                         <span class="text-muted"> <%=property.floor%> ème</span>
                         </div>
-                        <br>
-                        <div class=""><i class="fas fa-calendar-alt mr-1"></i> Disponibilité :
+
+                        <div class="mb-1"><i class="fas fa-calendar-alt mr-1"></i> Disponibilité :
                         <span class="text-muted">  <%=property.available_date.to_date%>  </span>
                         </div>
-                        <br>
+
                         <div class=""><i class="fas fa-map-marker-alt mr-1"></i> Adresse :
                         <span class="text-muted"> Adresse, <%=property.area.zipcode%> Ville  </span>
                         </div>
@@ -34,8 +39,6 @@
                         <div class="text-muted"><%=property.description%></div>
                       </div>
                       </div>
-
-
 
                     </div>
 
