@@ -78,12 +78,10 @@
                 </div>
               </div>
 
-              
-
               <div class="form-row">
-                <div class="col-6">
+                <div class="col">
                   <div class="form-group">
-                    <label for="agencyAddress">Address</label>
+                    <label for="firstName">Address</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
@@ -94,18 +92,16 @@
                 </div>
                 <div class="col">
                   <div class="form-group">
-                    <label for="agencyAddress">Arrondissement</label>
-                    <input type="textarea" class="form-control" id="agencyAddress" aria-describedby="agencyAddress" placeholder="75018">
-                  </div>
-                </div>
-
-                <div class="col">
-                  <div class="form-group">
-                    <label for="agencyAddress">Ville</label>
-                    <input type="textarea" class="form-control" id="agencyAddress" aria-describedby="agencyAddress" placeholder="Paris">
-                  </div>
+                    <label for="firstName">Arrondissement</label>
+                      <select class="form-control" name="area" min-width="100px">
+                        <%= @areas.each do |area| %>
+                           <option><%= area.name %></option>
+                        <% end %>
+                      </select>
+                    </div>
                 </div>
               </div>
+
 
               <div class="form-row">
                 <div class="col">

@@ -10,8 +10,8 @@ class PropertiesController < ApplicationController
       @tenant =Tenant.find(params[:tenant_id])
       @fav_visits = Visit.where(visit_status_id: 2, tenant_id: @tenant.id)
       @asked_visits = Visit.where(visit_status_id: 4, tenant_id: @tenant.id)
-
     end
+
     @properties = Property.all
   end
 
@@ -24,6 +24,7 @@ class PropertiesController < ApplicationController
   def new
   	@agency = Agency.find(params[:agency_id])
     @property = Property.new
+
   end
 
   def create
@@ -31,7 +32,11 @@ class PropertiesController < ApplicationController
     @property.images.attach(params[:property][:images])
     @property.agency_id = params[:agency_id]
     @property.agent_id = 1
-    @property.area_id = 1
+    @property.area = Area.find_by(name: params[:area])
+
+    puts '*' * 50
+    puts params[:area]
+    puts @property.area
 
     if @property.save
       flash[:success] = "Votre bien a été créé"
