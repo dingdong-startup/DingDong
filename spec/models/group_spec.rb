@@ -21,6 +21,10 @@ RSpec.describe Group, type: :model do
 				expect(@group.class).to eq(Group)
 			end
 		end
+
+		describe 'name' do
+			it { should validate_presence_of(:name) }
+		end
 		
 		context "associations" do
 	
