@@ -17,7 +17,8 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
-    @agency = Agency.find(params[:agency_id])
+    ##TODO : Fix this bug, the params for agency ID works for agencies/id/property/id, but not for propertie/id
+    # @agency = Agency.find(params[:agency_id]) 
   end
 
   def new
