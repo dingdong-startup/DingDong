@@ -12,6 +12,7 @@ class AgenciesController < ApplicationController
   	@properties = @agency.properties
     @property = Property.new
   	#@director = @agency.agents
-  	#@agent = @agency.agents
+    #@agent = @agency.agents
+    @areas = Area.all
   end
 end

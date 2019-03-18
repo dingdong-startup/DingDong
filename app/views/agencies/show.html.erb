@@ -1,11 +1,10 @@
 <%=render 'layouts/navbar'%>
-
     <section class="p-0 bg-light">
       <div class="image image-overlay image-cover" style="background-image:url(<%=asset_path('sofa.jpg')%>)"
       data-top-top="transform: translateY(0px);" 
-      data-top-bottom="transform: translateY(-200px);"></div>
+      data-top-bottom="transform: translateY(-100px);"></div>
       <div class="container">
-        <div class="row justify-content-center align-items-end vh-50 mb-5">
+        <div class="row justify-content-center align-items-end vh-40 mb-5">
           <div class="col col-md-10 col-lg-8">
             <div class="row align-items-center">
               <div class="col-4 col-lg-3">
@@ -31,10 +30,9 @@
         <div class="row justify-content-center">
           <div class="col col-md-10 col-lg-8">
             <div class="nav nav-tabs mb-1">
-              <a class="nav-item nav-link active" data-toggle="tab" href="#demo-2-1">Mes apparts</a>
-              <a class="nav-item nav-link" data-toggle="tab" href="#demo-2-2">Créer un appart</a>
-              <a class="nav-item nav-link" data-toggle="tab" href="#demo-2-3">Mon profil</a>
-              
+              <a class="nav-item nav-link active" data-toggle="tab" href="#demo-2-1">Mes annonces</a>
+              <a class="nav-item nav-link" data-toggle="tab" href="#demo-2-2" id="toggleCreate">Créer une annonce</a>
+              <a class="nav-item nav-link" data-toggle="tab" href="#demo-2-3">Profil de l'Agence</a>
             </div>
           </div>
         </div>

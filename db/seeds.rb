@@ -57,10 +57,14 @@ p3.save
   t.save
 end
 
-3.times do 
-  a = Area.new(name: Faker::Address.city,
-    zipcode: Faker::Address.zip_code)
+i = 1
+while i <= 20
+  zip = 75000 + i
+  a = Area.new(name: "Paris #{i}",
+  zipcode: zip.to_s)
   a.save
+  i += 1
+  puts "Zipcode : #{zip}"
 end
 
 5.times do 
