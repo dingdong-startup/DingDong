@@ -33,11 +33,12 @@
 
                       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
 
-                      <%= render 'agencies/modal_reset_password'%>
-                      
+
 
                       <%= f.button :submit, "Se connecter", class: "btn btn-primary btn-block" %>
                     <% end %>
+                    
+                      <%= render 'agencies/modal_reset_password'%>
                   </div>
                 </div>
               </div>

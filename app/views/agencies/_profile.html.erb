@@ -1,88 +1,95 @@
 <div class="tab-pane" id="demo-2-3" role="tabpanel" aria-labelledby="demo-2-3">
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-lg-8">
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
 
-                <div class="row">
-                  <div class="col">
-                    <h5 class="mb-2 fs-20 font-weight-normal">Directeur de l'agence</h5>
-                    <form>
-                      <div class="form-row">
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="directorFirstName">Prénom</label>
-                            <input type="email" class="form-control" id="directorFirstName" aria-describedby="directorFirstName" placeholder="Louis">
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="directorSecondName">Nom</label>
-                            <input type="email" class="form-control" id="directorSecondName" aria-describedby="directorSecondName" placeholder="Martin">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="directorMail">Email</label>
-                            <input type="email" class="form-control" id="directorMail" aria-describedby="directorMail" placeholder="directeur@agence.com">
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="directorPhone">Téléphone</label>
-                            <input type="phone" class="form-control" id="directorPhone" aria-describedby="directorPhone" placeholder="06.......">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-row mt-1 align-items-center">
-                        <div class="col-3">
-                          <button class="btn btn-secondary">Enregistrer</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
+      <div class="row">
+        <div class="col">
+          <%= link_to "Modifier les informations de connexion ou supprimer mon compte", edit_agency_registration_path %>
+        </div>
+      </div>
 
-                <div class="row">
-                  <div class="col">
-                    <h5 class="mb-2 fs-20 font-weight-normal">Gestionnaire de l'agence</h5>
-                    <form>
-                      <div class="form-row">
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="agentFirstName">Prénom</label>
-                            <input type="email" class="form-control" id="agentFirstName" aria-describedby="agentFirstName" placeholder="Jeanne">
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="agentSecondName">Nom</label>
-                            <input type="email" class="form-control" id="agentSecondName" aria-describedby="agentSecondName" placeholder="Dubois">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="agentMail">Email</label>
-                            <input type="email" class="form-control" id="agentMail" aria-describedby="agentMail" placeholder="agent@agence.com">
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="agentPhone">Téléphone</label>
-                            <input type="phone" class="form-control" id="agentPhone" aria-describedby="agentPhone" placeholder="06....... ">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-row mt-1 align-items-center">
-                        <div class="col-3">
-                          <button class="btn btn-secondary">Enregistrer</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
+
+      <div class="row">
+        <div class="col">
+          <h5 class="mb-2 fs-20 font-weight-normal">Directeur de l'agence</h5>
+          <form>
+            <div class="form-row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="directorFirstName">Prénom</label>
+                  <input type="email" class="form-control" id="directorFirstName" aria-describedby="directorFirstName" placeholder="Louis">
                 </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="directorSecondName">Nom</label>
+                  <input type="email" class="form-control" id="directorSecondName" aria-describedby="directorSecondName" placeholder="Martin">
+                </div>
+              </div>
             </div>
-          </div>
-         </div>
+            <div class="form-row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="directorMail">Email</label>
+                  <input type="email" class="form-control" id="directorMail" aria-describedby="directorMail" placeholder="directeur@agence.com">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="directorPhone">Téléphone</label>
+                  <input type="phone" class="form-control" id="directorPhone" aria-describedby="directorPhone" placeholder="06.......">
+                </div>
+              </div>
+            </div>
+            <div class="form-row mt-1 align-items-center">
+              <div class="col-3">
+                <button class="btn btn-secondary">Enregistrer</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h5 class="mb-2 fs-20 font-weight-normal">Gestionnaire de l'agence</h5>
+          <form>
+            <div class="form-row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="agentFirstName">Prénom</label>
+                  <input type="email" class="form-control" id="agentFirstName" aria-describedby="agentFirstName" placeholder="Jeanne">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="agentSecondName">Nom</label>
+                  <input type="email" class="form-control" id="agentSecondName" aria-describedby="agentSecondName" placeholder="Dubois">
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="agentMail">Email</label>
+                  <input type="email" class="form-control" id="agentMail" aria-describedby="agentMail" placeholder="agent@agence.com">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="agentPhone">Téléphone</label>
+                  <input type="phone" class="form-control" id="agentPhone" aria-describedby="agentPhone" placeholder="06....... ">
+                </div>
+              </div>
+            </div>
+            <div class="form-row mt-1 align-items-center">
+              <div class="col-3">
+                <button class="btn btn-secondary">Enregistrer</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
