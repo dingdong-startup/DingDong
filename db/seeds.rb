@@ -73,9 +73,6 @@ end
     monthly_properties: rand(5..40))
   a.save
 
-  p = Position.new(title: Faker::Company.profession)
-  p.save 
-
   b = Agent.new(first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
@@ -103,5 +100,9 @@ end
   
   p.save
 end
+
+# Creation of position visit_statuses
+Position.create(title: "Director")
+Position.create(title: "Agent")
 
 
