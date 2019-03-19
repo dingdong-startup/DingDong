@@ -54,9 +54,6 @@
                                           <div class="form-group">
                                             <label for="firstName">Dont charges</label>
                                             <div class="input-group">
-                                              <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-coins"></i></span>
-                                              </div>
                                               <%= f.text_field :charges, class: "form-control", value: property.charges %>
                                             </div>
                                           </div>
@@ -68,7 +65,7 @@
                                             <label for="firstName">Honoraires de location</label>
                                             <div class="input-group">
                                               <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-coins"></i></span>
+                                                <span class="input-group-text"><i class="fas fa-money-check"></i></span>
                                               </div>
                                               <%= f.text_field :agency_fees, class: "form-control", value: property.agency_fees %>
                                             </div>
@@ -78,9 +75,6 @@
                                           <div class="form-group">
                                             <label for="firstName">Dépôt de garantie</label>
                                             <div class="input-group">
-                                              <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-coins"></i></span>
-                                              </div>
                                               <%= f.text_field :deposit, class: "form-control", value: property.deposit %>
                                             </div>
                                           </div>
