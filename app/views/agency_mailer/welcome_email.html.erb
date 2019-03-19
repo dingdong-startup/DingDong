@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <h1>Bienvenue <%= @agency.name %> et bravo pour votre inscription chez Ding Dong !</h1>
+
+  <p>  Ding Dong est la première plateforme immobilière en ligne 100% gratuite qui s'occupe de toute la logistique des visites à votre place. DingDong, c'est simple comme 4 étapes :
+    <ul>
+      <li>1 - Vous déposez votre bien gratuitement sur notre plateforme</li>
+      <li> 2 - Nous nous occupons de sa publication</li>
+      <li>3 - Nous nous chargeons de vous sélectionner les meilleurs dossiers et d'organiser les visites selon vos disponibilités</li>
+      <li>4 - Vous nous notifiez quand vous avez trouvé preneur pour votre bien</li>
+    </ul>
+  </p>
+
+  <p>    Vous vous êtes inscrit sur Ding Dong en utilisant l'e-mail suivant : <%= @agency.email %>.</p>
+
+
+  <p>     Pour accéder à votre espace agence, connectez-vous via : <%= @url %>.</p>
+
+  <p>   Pour modifier votre mot de passe, vous pouvez vous rendre sur : <%= @url_password %></p>
+
+  <p>   À très vite sur monsite.fr !</p>
+
+
+  <p>   Pour ne plus recevoir de mails de notre part, vous pouvez vous désinscrire ici :</p>
+</body>
+</html>

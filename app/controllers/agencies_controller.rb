@@ -15,4 +15,5 @@ class AgenciesController < ApplicationController
     #@agent = @agency.agents
     @areas = Area.all
   end
+
 end
