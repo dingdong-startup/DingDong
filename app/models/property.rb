@@ -5,4 +5,7 @@ class Property < ApplicationRecord
 
 	has_many_attached :images
 	has_many :visits
+
+	has_many :likes
+	has_many :tenants, through: :likes
 end
