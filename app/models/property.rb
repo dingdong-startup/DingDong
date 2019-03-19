@@ -6,6 +6,7 @@ class Property < ApplicationRecord
 	has_many_attached :images
 	has_many :visits
 
+<<<<<<< HEAD
 	validates :title, 
 			  :surface, 
 			  :address, 
@@ -21,5 +22,11 @@ class Property < ApplicationRecord
 	validates :floor, numericality: { only_integer: true }
 	validates :description, length: { minimum: 40 }
 	validates :title, length: { minimum: 10 }
+=======
+
+	def self.not_archived
+		self.where(is_archived: false)
+	end	
+>>>>>>> dev
 
 end
