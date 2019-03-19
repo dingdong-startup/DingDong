@@ -29,6 +29,8 @@ gem 'rb-readline', '~> 0.5.3'
 gem 'rails_admin'
 gem 'devise-i18n'
 gem 'rails-i18n', '~> 5.1'
+gem 'gibbon',  '~>1.2.0'
+gem 'mandrill-api', '~> 1.0', '>= 1.0.53'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -54,6 +56,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'guard-rspec', require: false
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -63,8 +67,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
+
+
 end
 
 group :test do
@@ -73,8 +77,6 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
   gem 'shoulda-matchers', '4.0.0.rc1'
   gem 'rails-controller-testing' # If you are using Rails 5.x
   gem 'nyan-cat-formatter', '~> 0.12.0'
