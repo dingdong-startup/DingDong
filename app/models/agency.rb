@@ -40,6 +40,8 @@ class Agency < ApplicationRecord
 
   end
 
+  def available_properties
+    self.properties.where(is_archived: false)
+  end 
 
->>>>>>> dev
 end

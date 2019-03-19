@@ -2,9 +2,12 @@
 
   <h5 class="card-title text-blue text-center mt-8 mb-5">LOCATAIRES INTÉRESSÉS</h5>
 
+<% if visits.empty? %>
+<p>Il n'y a encore aucune demande de visite pour ce bien</p>
+<%else%>
 <div id="accordion">
 
-  <%property.visits.where(visit_status_id: 4).each do |visit|%>
+  <%visits.each do |visit|%>
 
     <div class="card">
       <div class="card-header" id="headingOne">
@@ -45,4 +48,5 @@
       </div>
     </div>
   <%end%>
-</div>
+</div> 
+<%end%>

@@ -24,8 +24,15 @@ class Property < ApplicationRecord
 	validates :title, length: { minimum: 10 }
 
 	def self.not_archived
-		self.where(is_archived: false)
-	end	
+    self.where(is_archived: false)
+  end 
+
+  def total_rent
+  	self.price.to_i + self.charges.to_i
+  end
+
+
+
 
 
 end

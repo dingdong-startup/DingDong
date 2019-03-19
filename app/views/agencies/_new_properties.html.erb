@@ -16,7 +16,7 @@
           <div class="form-row">
             <div class="col">
               <div class="form-group">
-                <label for="firstName">Prix</label>
+                <label for="firstName">Loyer H.C.</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-coins"></i></span>
@@ -27,7 +27,7 @@
             </div>
             <div class="col">
               <div class="form-group">
-                <label for="firstName">Dont charges</label>
+                <label for="firstName">Charges</label>
                 <div class="input-group">
                   <%= f.text_field :charges, class: "form-control", placeholder:"100 €" %>
                 </div>
@@ -150,7 +150,8 @@
 
           <div class="form-row mt-1 align-items-center">
             <div class="col-8">
-              <%= f.file_field :images, multiple: true , required:true%>
+              <%= f.file_field :images, multiple: true , required:true, class:'inputfile' , id: 'images'%>
+              <label for="images" class="btn btn-success btn-sm">Ajouter des photos</label>
             </div>
             <div class="col-3">
               <%= submit_tag("Enregistrer mon bien", id: "button", class: "btn btn-secondary", name: "submit") %>

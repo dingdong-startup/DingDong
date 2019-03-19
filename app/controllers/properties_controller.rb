@@ -18,6 +18,7 @@ class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
     @areas = Area.all
+    @asked_visits = @property.visits.where(visit_status_id: 4)
     ##TODO : Fix this bug, the params for agency ID works for agencies/id/property/id, but not for propertie/id
     # @agency = Agency.find(params[:agency_id])
   end
