@@ -84,22 +84,6 @@ Position.create(title: "Agent")
     monthly_properties: rand(5..40))
   a.save
 
-  # d = Agent.new(first_name: Faker::Name.first_name,
-  # last_name: Faker::Name.last_name,
-  # email: Faker::Internet.email,
-  # cellphone: Faker::PhoneNumber.cell_phone,
-  # position_id: 1,
-  # agency_id: a.id)
-  # d.save
-
-  # b = Agent.new(first_name: Faker::Name.first_name,
-  # last_name: Faker::Name.last_name,
-  # email: Faker::Internet.email,
-  # cellphone: Faker::PhoneNumber.cell_phone,
-  # position_id: 2,
-  # agency_id: a.id)
-  # b.save
-
 end 
 
 20.times do 
@@ -108,7 +92,7 @@ end
     title: Faker::Address.full_address,
     price: rand(600..3000),
     surface: rand(9..150),
-    description: Faker::Company.bs,
+    description: Faker::Lorem.paragraph_by_chars(256, false),
     agency_id: rand(1..5),
     agent_id: rand(1..5),
     floor: rand(1..9),

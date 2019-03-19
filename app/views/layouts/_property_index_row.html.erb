@@ -48,6 +48,7 @@
         </div>
         <% end %>
         <div class="col-8 text-right">
+          <% if tenant_signed_in? %>
             <% if current_tenant.visits.find_by(property_id: property.id) %>
             <p>Visite déjà demandée.</p>
             <% else %>
@@ -78,6 +79,7 @@
                 <% end %>
               <% end %>
             <% end %>
+          <% end %>
         </div>
       </div>
     </div>

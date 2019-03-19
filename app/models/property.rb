@@ -6,10 +6,8 @@ class Property < ApplicationRecord
 	has_many_attached :images
 	has_many :visits
 
-<<<<<<< HEAD
 	has_many :favorites
 	has_many :tenants, through: :favorites
-=======
 
 	validates :title, 
 			  :surface, 
@@ -35,9 +33,4 @@ class Property < ApplicationRecord
   	self.price.to_i + self.charges.to_i
   end
 
-
-
-
-
->>>>>>> dev
 end
