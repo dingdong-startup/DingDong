@@ -34,7 +34,7 @@
                                         <div class="col">
                                           <div class="form-group">
                                             <label for="userMail">Titre</label>
-                                            <%= f.text_field :title, class: "form-control", placeholder:"T2 avec une incroyable vue" , required:true %>
+                                            <%= f.text_field :title, class: "form-control", value: property.title, required:true %>
                                           </div>
                                         </div>
                                       </div>
@@ -46,7 +46,7 @@
                                               <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-coins"></i></span>
                                               </div>
-                                              <%= f.text_field :price, class: "form-control", placeholder:"1600 €" %>
+                                              <%= f.text_field :price, class: "form-control", value: property.price %>
                                             </div>
                                           </div>
                                         </div>
@@ -54,10 +54,7 @@
                                           <div class="form-group">
                                             <label for="firstName">Dont charges</label>
                                             <div class="input-group">
-                                              <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-coins"></i></span>
-                                              </div>
-                                              <%= f.text_field :charges, class: "form-control", placeholder:"100 €" %>
+                                              <%= f.text_field :charges, class: "form-control", value: property.charges %>
                                             </div>
                                           </div>
                                         </div>
@@ -68,9 +65,9 @@
                                             <label for="firstName">Honoraires de location</label>
                                             <div class="input-group">
                                               <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-coins"></i></span>
+                                                <span class="input-group-text"><i class="fas fa-money-check"></i></span>
                                               </div>
-                                              <%= f.text_field :agency_fees, class: "form-control", placeholder:"500 €" %>
+                                              <%= f.text_field :agency_fees, class: "form-control", value: property.agency_fees %>
                                             </div>
                                           </div>
                                         </div>
@@ -78,10 +75,7 @@
                                           <div class="form-group">
                                             <label for="firstName">Dépôt de garantie</label>
                                             <div class="input-group">
-                                              <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-coins"></i></span>
-                                              </div>
-                                              <%= f.text_field :deposit, class: "form-control", placeholder:"500 €" %>
+                                              <%= f.text_field :deposit, class: "form-control", value: property.deposit %>
                                             </div>
                                           </div>
                                         </div>
@@ -96,7 +90,7 @@
                                                   <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-arrows-alt-h"></i></span>
                                                   </div>
-                                                  <%= f.text_field :surface, class: "form-control", placeholder:"75 m2" %>
+                                                  <%= f.text_field :surface, class: "form-control", value: property.surface %>
                                                 </div>
                                               </div>
                                             </div>
@@ -110,7 +104,7 @@
                                                   <div class="input-group-prepend">
                                                     <span class="input-group-text"> <i class="fas fa-hiking"></i></span>
                                                   </div>
-                                                  <%= f.number_field :floor, class: "form-control", placeholder:"3 ème" %>
+                                                  <%= f.number_field :floor, class: "form-control", value: property.floor %>
                                                 </div>
                                               </div>
                                             </div>
@@ -122,7 +116,7 @@
                                                   <div class="input-group-prepend">
                                                     <span class="input-group-text"> <i class="fas fa-home"></i></span>
                                                   </div>
-                                                  <%= f.number_field :room, class: "form-control", placeholder:"2" %>
+                                                  <%= f.number_field :room, class: "form-control", value: property.room %>
                                                 </div>
                                               </div>
                                             </div>
@@ -134,7 +128,7 @@
                                                   <div class="input-group-prepend">
                                                     <span class="input-group-text"> <i class="fas fa-calendar-alt"></i></span>
                                                   </div>
-                                                  <%= f.date_field :available_date, class: "form-control", placeholder:"20/10/2020" , required:true%>
+                                                  <%= f.date_field :available_date, class: "form-control", value: property.available_date , required:true%>
                                                 </div>
                                               </div>
                                             </div>
@@ -148,21 +142,18 @@
                                                   <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
                                                   </div>
-                                                  <%= f.text_field :address, class: "form-control", placeholder:"68 Rue Joseph de Maistre" %>
+                                                  <%= f.text_field :address, class: "form-control", value: property.address %>
                                                 </div>
                                               </div>
                                             </div>
-                                            <div class="col">
+                                            <div class="col-6">
                                               <div class="form-group">
-                                                <label for="agencyAddress">Code postal</label>
-                                                <input type="textarea" class="form-control" id="agencyAddress" aria-describedby="agencyAddress" placeholder="75018">
-                                              </div>
-                                            </div>
-
-                                            <div class="col">
-                                              <div class="form-group">
-                                                <label for="agencyAddress">Ville</label>
-                                                <input type="textarea" class="form-control" id="agencyAddress" aria-describedby="agencyAddress" placeholder="Paris">
+                                                <label for="firstName">Arrondissement</label>
+                                                <select class="form-control" name="area" min-width="100px">
+                                                  <%= areas.each do |area| %>
+                                                  <option><%= area.name %></option>
+                                                  <% end %>
+                                                </select>
                                               </div>
                                             </div>
                                           </div>
@@ -171,7 +162,7 @@
                                             <div class="col">
                                               <div class="form-group">
                                                 <label for="exampleFormControlTextarea1">Description</label>
-                                                <%= f.text_area :description, class: "form-control", placeholder:"Appartement meublé de 75 m², au 3ème étage d'un immeuble récent, se compose d'une entrée, d'un salon, d'une chambre, d'une salle de bains. Les WC sont séparés et une TERRASSE de 32 m² avec vue sur le Sacré Coeur complète ce bien. De nombreux placards. Les sols sont en marbre, très belles prestations. Chauffage et eau collectifs.", rows: "8" %>
+                                                <%= f.text_area :description, class: "form-control", value: property.description, rows: "8" %>
                                               </div>
                                             </div>
                                           </div>
