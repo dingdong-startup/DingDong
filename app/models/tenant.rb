@@ -8,8 +8,8 @@ class Tenant < ApplicationRecord
 
   before_validation :default_payment_status
 
-  has_many :likes
-  has_many :properties, through: :likes
+  has_many :favorites
+  has_many :properties, through: :favorites
 
   def default_payment_status
     self.payment_status_id ||= 1
