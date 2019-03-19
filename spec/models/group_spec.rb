@@ -20,17 +20,16 @@ RSpec.describe Group, type: :model do
 			it 'creates an agency' do
 				expect(@group.class).to eq(Group)
 			end
-		end
 
-		describe 'name' do
 			it { should validate_presence_of(:name) }
+
 		end
 		
 		context "associations" do
 	
-			describe "agency have many groups though agency_groups" do
+
 				it { should have_many(:agencies).through(:agency_groups) }
-			end
+
 
 		end
 
