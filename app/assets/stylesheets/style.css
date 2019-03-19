@@ -28,6 +28,11 @@
 	font-weight: 300;
 }
 
+.link{
+	cursor: pointer;
+}
+
+
 /*INPUT FILE FOR IMAGES*/
 
 .inputfile{
