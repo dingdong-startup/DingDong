@@ -9,7 +9,7 @@ class AgenciesController < ApplicationController
   end
 
   def show
-  	@agency = Agency.find(params[:id])
+  	@agency = current_agency
   	@properties = @agency.properties
     @property = Property.new
 
