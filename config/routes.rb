@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :properties, except: [:index]
   end
 
+  resources :agents, only: [:create, :update, :edit]
+
 
   resources :properties, only: [:index, :show] do 
     resources :visits, only: [:create]
