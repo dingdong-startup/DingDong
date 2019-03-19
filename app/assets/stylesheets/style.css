@@ -18,3 +18,12 @@
 	background-color: #fff;
 	padding: 2em;
 }
+
+.agency-login{
+	font-size: 1.5em;
+	text-transform: uppercase;
+	text-align: center;
+	color: #fff;
+	margin: auto;
+	font-weight: 300;
+}
