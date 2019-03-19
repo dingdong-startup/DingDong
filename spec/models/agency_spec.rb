@@ -20,6 +20,23 @@ RSpec.describe Agency, type: :model do
 			it 'creates an agency' do
 				expect(@agency.class).to eq(Agency)
 			end
+
+			describe 'name' do
+				it { should validate_presence_of(:name) }
+			end
+
+			describe 'phone' do
+				it { should validate_presence_of(:phone) }
+			end
+
+			describe 'email' do
+				it { should validate_presence_of(:email) }
+			end
+
+			describe 'address' do
+				it { should validate_presence_of(:address) }
+			end
+
 		end
 		
 		context "associations" do
@@ -32,7 +49,7 @@ RSpec.describe Agency, type: :model do
 				it { expect(@agency).to have_many(:properties) }
 			end
 	
-			describe "agency have many groups though agency_gorups" do
+			describe "agency have many groups though agency_groups" do
 				it { should have_many(:groups).through(:agency_groups) }
 			end
 
