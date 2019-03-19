@@ -44,3 +44,19 @@
 	z-index: -1;
 }
 
+.custo-alert{
+	z-index: 1000;
+	position: absolute;
+	top: 0;
+	right: 0; 
+	min-width: 200px;
+	min-height: 50px;
+	/*background-color: white;*/
+	margin: 20px;
+}
+
+.alert-alert{
+	background-color: #fc2c38;
+	color: #fff !important;
+}
+
