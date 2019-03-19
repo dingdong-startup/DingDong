@@ -14,3 +14,53 @@
 	padding: 0.7em;
 }
 
+.white{
+	background-color: #fff;
+	padding: 2em;
+}
+
+.agency-login{
+	font-size: 1.5em;
+	text-transform: uppercase;
+	text-align: center;
+	color: #fff;
+	margin: auto;
+	font-weight: 300;
+}
+
+.link{
+	cursor: pointer;
+}
+
+
+/*INPUT FILE FOR IMAGES*/
+
+.inputfile{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.custo-alert{
+	z-index: 1000;
+	position: absolute;
+	top: 0;
+	right: 0; 
+	min-width: 200px;
+	min-height: 50px;
+	/*background-color: white;*/
+	margin: 20px;
+}
+
+.alert-alert{
+	background-color: #fc2c38;
+	color: #fff !important;
+}
+
+.alert-notice{
+	background-color: #54AF5D;
+	color: #fff !important;
+}
