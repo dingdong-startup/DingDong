@@ -25,6 +25,8 @@ Visit.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('visits')
 VisitStatus.destroy_all 
 ActiveRecord::Base.connection.reset_pk_sequence!('visit_statuses')
+Favorite.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('favorites')
 
 
 v1 = VisitStatus.new(title: "Unfavorite")
