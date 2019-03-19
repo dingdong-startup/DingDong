@@ -22,6 +22,8 @@ class VisitsController < ApplicationController
       # If the Stripe Customer object creation is ok, the paymentstatus is updated to 2 : Card Saved
       current_tenant.update(stripe_customer_id: customer.id, payment_status_id: 2)
       flash[:success] = "Votre carte a bien été enregistrée !"
+      # TODO : Make model's method, it's not DRY at all
+      visit.property.favorites.find_by(tenant: current_tenant).update_attributes(is_liked: false)
       # The visit status is updated to 4 : Visit Accepted
       visit.update(visit_status_id: 4)
       redirect_back(fallback_location: properties_path)
@@ -46,10 +48,11 @@ class VisitsController < ApplicationController
       redirect_back(fallback_location: properties_path)
     elsif visit_is_canceled 
       @visit.update_attributes(visit_status_id: 1)
+      @visit.property.favorites.find_by(tenant: current_tenant).update_attributes(is_liked: true)
+      @visit.destroy
       flash[:primary] = "Demande de visite annulée"
       redirect_back(fallback_location: properties_path)
     else
-      puts params
       Visit.create(property_id: params[:property_id], tenant: current_tenant, visit_status_id: 2)
       flash[:success] = "Appartement ajouté aux favoris !"
       redirect_back(fallback_location: properties_path)
