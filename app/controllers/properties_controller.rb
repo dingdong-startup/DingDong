@@ -34,9 +34,6 @@ class PropertiesController < ApplicationController
     @property.agent_id = 1
     @property.area = Area.find_by(name: params[:area])
 
-    puts '*' * 50
-    puts params[:area]
-    puts @property.area
 
     if @property.save
       flash[:success] = "Votre bien a été créé"

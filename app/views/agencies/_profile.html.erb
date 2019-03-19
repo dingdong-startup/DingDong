@@ -12,7 +12,7 @@
       <div class="row">
         <div class="col">
           <h5 class="mb-2 fs-20 font-weight-normal">Directeur de l'agence</h5>
-          <form>
+          <%= form_for @agent do |f| %>
             <div class="form-row">
               <div class="col">
                 <div class="form-group">
@@ -46,7 +46,7 @@
                 <button class="btn btn-secondary">Enregistrer</button>
               </div>
             </div>
-          </form>
+          <% end %>
         </div>
       </div>
 
