@@ -11,6 +11,10 @@ class Property < ApplicationRecord
     self.where(is_archived: false)
   end 
 
+  def total_rent
+  	self.price.to_i + self.charges.to_i
+  end
+
 
 
 

@@ -1,58 +1,58 @@
 <h5 class="card-title text-blue text-center mt-8 mb-5">DÉTAILS DE L'ANNONCE</h5>
-    <div class="boxed p-2">
-      <div class="row align-items-center justify-content-between">
-        <div class="col-12">
-            <div class="media align-items-center">
+<div class="boxed p-2">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-12">
+      <div class="media align-items-center">
 
-              <div class="media-body">
-                      <br>
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-4">
-                        <div class="mb-1"><i class="fas fa-arrows-alt-h mr-1"></i> Surface :
-                        <span class="text-muted"> <%=property.surface%> m2</span>
-                        </div>
-                        <div class="mb-1"><i class="fas fa-coins mr-1"></i> Loyer / Mois :
-                        <span class="text-muted"> <%=property.price%> €</span>
-                        <div class="text-muted"> > Dont X € de charges </div>
-                        </div>
-                        <div class="mb-1"><i class="fas fa-money-check mr-1"></i>Honoraires de location :
-                        <span class="text-muted"> X €</span>
-                        <div class="text-muted"> > Et X € de dépôt de garantie </div>
-                        </div>
+        <div class="media-body">
+          <br>
+          <div class="container">
+            <div class="row">
+              <div class="col-4">
+                <div class="mb-1"><i class="fas fa-arrows-alt-h mr-1"></i> Surface :
+                  <span class="text-muted"> <%=property.surface%> m2</span>
+                </div>
+                <div class="mb-1"><i class="fas fa-coins mr-1"></i> Loyer C.C. / Mois :
+                  <span class="text-muted"> <%=property.total_rent%> €</span>
+                  <div class="text-muted"> > Dont <%= property.charges %> € de charges </div>
+                </div>
+                <div class="mb-1"><i class="fas fa-money-check mr-1"></i>Honoraires de location :
+                  <span class="text-muted"> <%= property.agency_fees %> €</span>
+                  <div class="text-muted"> > Et <%= property.deposit %> € de dépôt de garantie </div>
+                </div>
 
 
-                        <div class="mb-1"><i class="fas fa-hiking mr-1"></i> Etage :
-                        <span class="text-muted"> <%=property.floor%> ème</span>
-                        </div>
+                <div class="mb-1"><i class="fas fa-hiking mr-1"></i> Etage :
+                  <span class="text-muted"> <%=property.floor%> ème</span>
+                </div>
 
-                        <div class="mb-1"><i class="fas fa-calendar-alt mr-1"></i> Disponibilité :
-                        <span class="text-muted">  <%=property.available_date.to_date%>  </span>
-                        </div>
+                <div class="mb-1"><i class="fas fa-calendar-alt mr-1"></i> Disponibilité :
+                  <span class="text-muted">  <%=property.available_date.to_date%>  </span>
+                </div>
 
-                        <div class=""><i class="fas fa-map-marker-alt mr-1"></i> Adresse :
-                        <span class="text-muted"> Adresse, <%=property.area.zipcode%> Ville  </span>
-                        </div>
-                      </div>
-                      <div class="col-7">
-                        <div class=""><i class="fas fa-map-marker-alt mr-1"></i> Description
-                        <div class="text-muted"><%=property.description%></div>
-                      </div>
-                      </div>
-
-                    </div>
-
-                    <div class="row" style="justify-content: flex-end;">
-                      <div class="card-meta font-weight-light mr-1">Ajouté le : <%=property.updated_at.to_date%>
-                      </div>
-                    </div>
-                  </div>
+                <div class=""><i class="fas fa-map-marker-alt mr-1"></i> Adresse :
+                  <span class="text-muted"> Adresse, <%=property.area.zipcode%> Ville  </span>
                 </div>
               </div>
-            </div>
-        </div>
+              <div class="col-7">
+                <div class=""><i class="fas fa-map-marker-alt mr-1"></i> Description
+                  <div class="text-muted"><%=property.description%></div>
+                </div>
+              </div>
 
+            </div>
+
+            <div class="row" style="justify-content: flex-end;">
+              <div class="card-meta font-weight-light mr-1">Ajouté le : <%=property.updated_at.to_date%>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
+
+</div>
 
 </div>
 
