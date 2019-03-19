@@ -12,18 +12,18 @@
       <div class="row">
         <div class="col">
           <h5 class="mb-2 fs-20 font-weight-normal">Directeur de l'agence</h5>
-          <%= form_for @agent do |f| %>
+          <%= form_for @director do |f| %>
             <div class="form-row">
               <div class="col">
                 <div class="form-group">
                   <label for="directorFirstName">Prénom</label>
-                  <input type="email" class="form-control" id="directorFirstName" aria-describedby="directorFirstName" value="<%= @director.first_name %>" placeholder="Louis">
+                   <%= f.text_field :first_name, class: "form-control", placeholder:"Louis", value: @director.first_name %>
                 </div>
               </div>
               <div class="col">
                 <div class="form-group">
                   <label for="directorSecondName">Nom</label>
-                  <input type="email" class="form-control" id="directorSecondName" aria-describedby="directorSecondName" value="<%= @director.last_name %>" placeholder="Martin">
+                  <%= f.text_field :last_name, class: "form-control", placeholder:"Martin", value: @director.last_name %>
                 </div>
               </div>
             </div>
@@ -31,13 +31,13 @@
               <div class="col">
                 <div class="form-group">
                   <label for="directorMail">Email</label>
-                  <input type="email" class="form-control" id="directorMail" aria-describedby="directorMail" value="<%= @director.email %>" placeholder="directeur@agence.com">
+                  <%= f.email_field :email, class: "form-control", placeholder:"directeur@agence.com", value: @director.email %>
                 </div>
               </div>
               <div class="col">
                 <div class="form-group">
                   <label for="directorPhone">Téléphone</label>
-                  <input type="phone" class="form-control" id="directorPhone" aria-describedby="directorPhone" value="<%= @director.cellphone %>" placeholder="06.......">
+                  <%= f.text_field :cellphone, class: "form-control", placeholder:"06.......", value: @director.cellphone %>
                 </div>
               </div>
             </div>
@@ -53,18 +53,18 @@
       <div class="row">
         <div class="col">
           <h5 class="mb-2 fs-20 font-weight-normal">Gestionnaire de l'agence</h5>
-          <form>
+          <%= form_for @agent do |f| %>
             <div class="form-row">
               <div class="col">
                 <div class="form-group">
                   <label for="agentFirstName">Prénom</label>
-                  <input type="email" class="form-control" id="agentFirstName" aria-describedby="agentFirstName" value="<%=@agent.first_name %>" placeholder="Jeanne">
+                   <%= f.text_field :first_name, class: "form-control", placeholder:"Jeanne", value: @agent.first_name %>
                 </div>
               </div>
               <div class="col">
                 <div class="form-group">
                   <label for="agentSecondName">Nom</label>
-                  <input type="email" class="form-control" id="agentSecondName" aria-describedby="agentSecondName" value="<%=@agent.last_name %>" placeholder="Dubois">
+                   <%= f.text_field :last_name, class: "form-control", placeholder:"Dubois", value: @agent.last_name %>
                 </div>
               </div>
             </div>
@@ -72,13 +72,12 @@
               <div class="col">
                 <div class="form-group">
                   <label for="agentMail">Email</label>
-                  <input type="email" class="form-control" id="agentMail" aria-describedby="agentMail" value="<%=@agent.email %>" placeholder="agent@agence.com">
-                </div>
+                   <%= f.text_field :email, class: "form-control", placeholder:"agent@agence.com", value: @agent.email %>                </div>
               </div>
               <div class="col">
                 <div class="form-group">
                   <label for="agentPhone">Téléphone</label>
-                  <input type="phone" class="form-control" id="agentPhone" aria-describedby="agentPhone" value="<%=@agent.cellphone %>" placeholder="06....... ">
+                  <%= f.text_field :cellphone, class: "form-control", placeholder:"06.......", value: @agent.cellphone %>
                 </div>
               </div>
             </div>
@@ -87,7 +86,7 @@
                 <button class="btn btn-secondary">Enregistrer</button>
               </div>
             </div>
-          </form>
+          <% end %>
         </div>
       </div>
     </div>
