@@ -156,7 +156,8 @@
 
           <div class="form-row mt-1 align-items-center">
             <div class="col-8">
-              <%= f.file_field :images, multiple: true , required:true%>
+              <%= f.file_field :images, multiple: true , required:true, class: ''%>
+              <!-- <label for="file">Choose a file</label> -->
             </div>
             <div class="col-3">
               <%= submit_tag("Enregistrer mon bien", id: "button", class: "btn btn-secondary", name: "submit") %>

@@ -5,7 +5,7 @@ class AgenciesController < ApplicationController
   #load_and_authorize_resource
 
   def index
-  	@agencies = Agency.available_properties
+  	@agencies = Agency.all
   end
 
   def show

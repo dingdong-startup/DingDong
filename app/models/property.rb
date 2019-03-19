@@ -6,9 +6,11 @@ class Property < ApplicationRecord
 	has_many_attached :images
 	has_many :visits
 
+
 	def self.not_archived
     self.where(is_archived: false)
   end 
+
 
 
 
