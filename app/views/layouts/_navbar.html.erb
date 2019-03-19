@@ -19,13 +19,19 @@
 
             <% if tenant_signed_in? %>
               <ul class="navbar-nav align-items-center mr-0">
+              <li class="nav-item">
+                <%= link_to tenant_favorites_path(current_tenant.id), class:"nav-link" do %>
+                  <span style="font-size: 20px; line-height:20px;">
+                    <i class="fas fa-heart text-light"></i><small class="text-light"> (<%= current_tenant.favorites.where(is_liked:true).count%>)</small>
+                  </span>
+                <% end %>
+              </li>
                 <li class="nav-item">
                 <%= link_to tenant_properties_path(current_tenant.id), class:"nav-link" do %>
                   <span style="font-size: 20px; line-height:20px;">
-                    <i class="fas fa-shopping-bag text-light"></i><small class="text-light"> (<%= current_tenant.visits.where(visit_status_id:4).count + current_tenant.visits.where(visit_status_id:2).count %>)</small>
+                    <i class="fas fa-shopping-bag text-light"></i><small class="text-light"> (<%= current_tenant.visits.where(visit_status_id:4).count%>)</small>
                   </span>
                 <% end %>
-              
               </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
