@@ -11,12 +11,16 @@ class PropertiesController < ApplicationController
       @fav_visits = Visit.where(visit_status_id: 2, tenant_id: @tenant.id)
       @asked_visits = Visit.where(visit_status_id: 4, tenant_id: @tenant.id)
     end
-
     @properties = Property.all
+    
+    # Selecting all favorites so I can find it for the favorite update method
+    @favorites = Favorite.all
   end
 
   def show
     @property = Property.find(params[:id])
+    @areas = Area.all
+    @asked_visits = @property.visits.where(visit_status_id: 4)
     ##TODO : Fix this bug, the params for agency ID works for agencies/id/property/id, but not for propertie/id
     # @agency = Agency.find(params[:agency_id])
   end
@@ -34,9 +38,6 @@ class PropertiesController < ApplicationController
     @property.agent_id = 1
     @property.area = Area.find_by(name: params[:area])
 
-    puts '*' * 50
-    puts params[:area]
-    puts @property.area
 
     if @property.save
       flash[:success] = "Votre bien a été créé"
@@ -68,14 +69,16 @@ class PropertiesController < ApplicationController
 
   def destroy
     @property = Property.find(params[:property_id])
-    if @property.destroy
-      flash[:success] = "Votre bien a été supprimé"
+    if @property.update(is_archived: true)
+      flash[:success] = "Votre bien a été archivé"
       redirect_to agency_path(current_agency)
     else
       flash[:danger] = @property.errors.messages
       redirect_to agency_path(current_agency)
     end
   end
+
+
 
   private
 

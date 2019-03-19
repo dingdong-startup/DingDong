@@ -1,3 +1,4 @@
+
 <%=render 'layouts/navbar'%>
     <section class="p-0 bg-light">
       <div class="image image-overlay image-cover" style="background-image:url(<%=asset_path('sofa.jpg')%>)"
@@ -31,7 +32,7 @@
           <div class="col col-md-10 col-lg-8">
             <div class="nav nav-tabs mb-1">
               <a class="nav-item nav-link active" data-toggle="tab" href="#demo-2-1">Mes annonces</a>
-              <a class="nav-item nav-link" data-toggle="tab" href="#demo-2-2" id="toggleCreate">Créer une annonce</a>
+              <a class="nav-item nav-link" data-toggle="tab" href="#demo-2-2">Créer une annonce</a>
               <a class="nav-item nav-link" data-toggle="tab" href="#demo-2-3">Profil de l'Agence</a>
             </div>
           </div>
@@ -48,12 +49,13 @@
 
 
           <!-- tab connections -->
-          <%=render 'show_properties', properties: @properties%>
+          <%=render 'show_properties', properties: @properties, areas: @areas, agency: @agency%>
           <!-- / tab -->
           <%=render 'new_properties', agency: @agency, property: @property%>
 
           <!-- tab settings -->
           <%=render 'profile'%>
+          
           
 
           <!-- / tab -->

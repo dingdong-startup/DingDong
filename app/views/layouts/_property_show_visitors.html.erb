@@ -1,188 +1,52 @@
-<div class="container" style="margin-top:150px;">
+<div class="container">
 
-  <h5 class="card-title text-blue text-center mt-10 mb-4">Demandes des locataires</h5>
+  <h5 class="card-title text-blue text-center mt-8 mb-5">LOCATAIRES INTÉRESSÉS</h5>
 
+<% if visits.empty? %>
+<p>Il n'y a encore aucune demande de visite pour ce bien</p>
+<%else%>
 <div id="accordion">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-        <div class="media align-items-center">  
-	        <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">         			           
-			   <img src="<%=asset_path(image_path(main_app.url_for(property.images.first)))%>" alt="Avatar" class="avatar mr-3 user-rounded">
-			</button>
-		             
-	            <div class="media-body pr-3">
-                <div class="row mb-2 justify-content-between">
-  	              <h5 class="mb-0">First_name Last_name</h5>
-                  <span class="font-weight-light">Visite prévue le : 13/11/2020 à 12h</span>
-                </div>
 
-	              	<div class="row">
-	                  <div class="col-4 text-muted"><i class="fas fa-phone  mr-1"></i>06.24.99.32.34  </div>
-	                  <div class=" col-4 text-muted"><i class="fas fa-envelope  mr-1"></i>email@email.com  </div>
-	             
-	              	</div>
+  <%visits.each do |visit|%>
 
-	            </div>
-		    </div>
-    </div>
-
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
-        <div class="row gutter-3">
-        	<div class="col-4">
-              <div class="aos-init aos-animate d-flex justify-content-center" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
-                <i class="icon-activity fs-30 mr-1 mb-1 text-purple">
-                </i>
-                <span class="eyebrow">Requirement 1</span>
-              </div>
-              <div class="aos-init aos-animate d-flex justify-content-center" data-aos="fade-up">
-                <i class="icon-airplay fs-30 mr-1 mb-1 text-purple">
-                </i>
-                <span class="eyebrow">Requirement 2</span>
-              </div>
-              <div class="aos-init aos-animate d-flex justify-content-center" data-aos="fade-up">
-                <i class="icon-command fs-30 mr-1 mb-2 text-purple">
-                </i>
-                <span class="eyebrow">Requirement 3</span>
-              </div>
-
-          </div>
-
-          <div class="col-4">
-              <div class="aos-init aos-animate d-flex justify-content-center" data-aos="fade-up">
-                <span class="eyebrow">Son dossier</span>
-              </div>
-          </div>
-
-          <div class="col-4">
-              <div class="aos-init aos-animate d-flex justify-content-center" data-aos="fade-up">
-                <span class="eyebrow">Visite prévue le : 13/11/2020 à 12h</span>
-              </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-        <div class="media align-items-center">  
-          <button class="btn" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">                          
-         <img src="<%=asset_path(image_path(main_app.url_for(property.images.first)))%>" alt="Avatar" class="avatar mr-3 user-rounded">
-      </button>
-                 
-              <div class="media-body pr-3">
-                <div class="row mb-2 justify-content-between">
-                  <h5 class="mb-0">First_name Last_name</h5>
-                  <span class="font-weight-light">Visite prévue le : 13/11/2020 à 12h</span>
-                </div>
-
-                  <div class="row">
-                    <div class="col-4 text-muted"><i class="fas fa-phone  mr-1"></i>06.24.99.32.34  </div>
-                    <div class=" col-4 text-muted"><i class="fas fa-envelope  mr-1"></i>email@email.com  </div>
-               
+    <div class="card">
+      <div class="card-header" id="headingOne">
+          <div class="media align-items-center">  
+  	        <button class="btn" data-toggle="collapse" data-target="#visit<%=visit.id%>" aria-expanded="true" aria-controls="collapseOne">         			           
+  			   <img src="<%=asset_path(image_path(main_app.url_for(visit.property.images.first)))%>" alt="Avatar" class="avatar mr-3 user-rounded">
+  			</button>
+  		             
+  	            <div class="media-body pr-3">
+                  <div class="row mb-2 justify-content-between">
+    	              <h5 class="mb-0"><%=visit.tenant.first_name%> <%=visit.tenant.last_name%></h5>
+                    <span class="btn btn-blue text-white"> <%=link_to 'Accéder à son Dossier'%> </span>
                   </div>
 
-              </div>
-        </div>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-            <div class="card-body">
-        <div class="row gutter-3">
-          <div class="col-4">
-              <div class="aos-init aos-animate d-flex justify-content-center" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
-                <i class="icon-activity fs-30 mr-1 mb-1 text-purple">
-                </i>
-                <span class="eyebrow">Requirement 1</span>
-              </div>
-              <div class="aos-init aos-animate d-flex justify-content-center" data-aos="fade-up">
-                <i class="icon-airplay fs-30 mr-1 mb-1 text-purple">
-                </i>
-                <span class="eyebrow">Requirement 2</span>
-              </div>
-              <div class="aos-init aos-animate d-flex justify-content-center" data-aos="fade-up">
-                <i class="icon-command fs-30 mr-1 mb-2 text-purple">
-                </i>
-                <span class="eyebrow">Requirement 3</span>
-              </div>
+  	              	<div class="row">
+  	                  <div class="col-4 text-muted"><i class="fas fa-phone  mr-1"></i>06.24.99.32.34  </div>
+  	                  <div class=" col-4 text-muted"><i class="fas fa-envelope  mr-1"></i><%=visit.tenant.email%> </div>
+  	             
+  	              	</div>
 
-          </div>
-
-          <div class="col-4">
-              <div class="aos-init aos-animate d-flex justify-content-center" data-aos="fade-up">
-                <span class="eyebrow">Son dossier</span>
-              </div>
-          </div>
-
-          <div class="col-4">
-              <div class="aos-init aos-animate d-flex justify-content-center" data-aos="fade-up">
-                <span class="eyebrow">Visite prévue le : 13/11/2020 à 12h</span>
-              </div>
-          </div>
-
-        </div>
+  	            </div>
+  		    </div>
       </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-              <div class="media align-items-center">  
-          <button class="btn" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">                          
-         <img src="<%=asset_path(image_path(main_app.url_for(property.images.first)))%>" alt="Avatar" class="avatar mr-3 user-rounded">
-      </button>
-                 
-              <div class="media-body pr-3">
-                <div class="row mb-2 justify-content-between">
-                  <h5 class="mb-0">First_name Last_name</h5>
-                  <span class="font-weight-light">Visite prévue le : 13/11/2020 à 12h</span>
+
+      <div id="visit<%=visit.id%>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+          <div class="row gutter-3">
+            <div class="col-12">
+              <div class="mb-1">
+              <i class="fas fa-user mr-1"></i> Description
+              </div>
+                <div class="text-muted">Nico est un locataire avec un énorme background de batard Nico est un locataire avec un énorme background de batard Nico est un locataire avec un énorme background de batard Nico est un locataire avec un énorme background de batard Nico est un locataire avec un énorme background de batard
                 </div>
-
-                  <div class="row">
-                    <div class="col-4 text-muted"><i class="fas fa-phone  mr-1"></i>06.24.99.32.34  </div>
-                    <div class=" col-4 text-muted"><i class="fas fa-envelope  mr-1"></i>email@email.com  </div>
-               
-                  </div>
-
-              </div>
-        </div>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-            <div class="card-body">
-        <div class="row gutter-3">
-          <div class="col-4">
-              <div class="aos-init aos-animate d-flex justify-content-center" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
-                <i class="icon-activity fs-30 mr-1 mb-1 text-purple">
-                </i>
-                <span class="eyebrow">Requirement 1</span>
-              </div>
-              <div class="aos-init aos-animate d-flex justify-content-center" data-aos="fade-up">
-                <i class="icon-airplay fs-30 mr-1 mb-1 text-purple">
-                </i>
-                <span class="eyebrow">Requirement 2</span>
-              </div>
-              <div class="aos-init aos-animate d-flex justify-content-center" data-aos="fade-up">
-                <i class="icon-command fs-30 mr-1 mb-2 text-purple">
-                </i>
-                <span class="eyebrow">Requirement 3</span>
-              </div>
-
+            
+            </div>
           </div>
-
-          <div class="col-4">
-              <div class="aos-init aos-animate d-flex justify-content-center" data-aos="fade-up">
-                <span class="eyebrow">Son dossier</span>
-              </div>
-          </div>
-
-          <div class="col-4">
-              <div class="aos-init aos-animate d-flex justify-content-center" data-aos="fade-up">
-                <span class="eyebrow">Visite prévue le : 13/11/2020 à 12h</span>
-              </div>
-          </div>
-
         </div>
       </div>
     </div>
-  </div>
-</div>
-</div>
+  <%end%>
+</div> 
+<%end%>

@@ -1,7 +1,7 @@
  <div class="tab-pane show active" id="demo-2-1" role="tabpanel" aria-labelledby="demo-2-1">
 	<div class="row justify-content-center">
 	  <div class="col-md-12 col-lg-12">
-	    <div class="row gutter-1">
+	    <div class="row gutter-1 align-items-center">
 
 		<% if properties.count == 0 %>
 
@@ -9,7 +9,8 @@
 		        <div class="boxed p-2 bordered scaling">
 		          <div class="row align-items-center justify-content-between">
 		            <div class="col-10">
-								<h5 class="nav-item nav-link" data-toggle="tab" href="#demo-2-2">Vous n'avez aucune annonce en cours.</h5>
+								<h5>Vous n'avez aucune annonce en cours.</h5>
+								<p>Pour ajouter une annonce, cliquez sur "Créer une annonce".</p>
 								</div>
 							</div>
 						</div>
@@ -39,26 +40,13 @@
 			              </div>
 			            <% end %>
 		            </div>
-
-		            <div class="col-2 text-md-right">
-		              <div class="dropdown">
-		                <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		                  <i class="icon-more-vertical fs-22"></i>
-		                </a>
-
-		                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
-		                  <a class="dropdown-item" href="#">Make Primary</a>
-		                  <a class="dropdown-item" href="#">Remove</a>
-		                </div>
-		              </div>
-		            </div>
 		          </div>
 		        </div>
 		    </div>
 
 
-				<div class="col-2 align-items-center">
-					<div class="row ml-1 pt-2">
+				<div class="col-2 align-items-center ml-2">
+					<div class="row ml-1 pt-2 mb-4">
 						<div class="progress-item">
 							<h4 class="progress-title">Demandes de visites</h4>
 							<div class="progress">
@@ -67,9 +55,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="row mx-auto" >
+					<div class="row ml-1" >
 						<div class="col-2" style="padding-left: -2em">
-								<%= link_to "Voir l'annonce", agency_property_path(@agency,property), class: "btn btn-blue" %>
+								<%= link_to "Voir l'annonce", agency_property_path(@agency,property), class: "btn btn-blue btn-sm" %>
 						</div>
 					</div>
 				</div>
