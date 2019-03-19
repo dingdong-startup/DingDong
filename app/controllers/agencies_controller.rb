@@ -12,8 +12,12 @@ class AgenciesController < ApplicationController
   	@agency = Agency.find(params[:id])
   	@properties = @agency.properties
     @property = Property.new
+
   	@director = @agency.agents.find_by(position_id: 1)
   	@agent = @agency.agents.find_by(position_id: 2)
+
+    @areas = Area.all
+
   end
 
 
