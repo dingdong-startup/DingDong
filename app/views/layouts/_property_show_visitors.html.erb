@@ -13,7 +13,7 @@
       <div class="card-header" id="headingOne">
           <div class="media align-items-center">  
   	        <button class="btn" data-toggle="collapse" data-target="#visit<%=visit.id%>" aria-expanded="true" aria-controls="collapseOne">         			           
-  			   <img src="<%=asset_path(image_path(main_app.url_for(property.images.first)))%>" alt="Avatar" class="avatar mr-3 user-rounded">
+  			   <img src="<%=asset_path(image_path(main_app.url_for(visit.property.images.first)))%>" alt="Avatar" class="avatar mr-3 user-rounded">
   			</button>
   		             
   	            <div class="media-body pr-3">
