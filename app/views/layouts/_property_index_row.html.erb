@@ -12,6 +12,8 @@
             <i class="fas fa-arrow-right" style="margin-top:1em;"></i>
           <%end%>
         </div>
+        
+        <% if false %>
         <div class="col-8 text-right">
             <% if property.visits.find_by(tenant: current_tenant) %>
               <% if property.visits.find_by(tenant: current_tenant).visit_status_id == 1 %>
@@ -42,6 +44,39 @@
                   <% end %>
                 <% end %>
 
+            <% end %>
+        </div>
+        <% end %>
+        <div class="col-8 text-right">
+            <% if current_tenant.visits.find_by(property_id: property.id) %>
+            <p>Visite déjà demandée.</p>
+            <% else %>
+              <% if property.favorites.find_by(tenant: current_tenant) %>
+                <% if property.favorites.find_by(tenant: current_tenant).is_liked == true %>
+                <% favorite = @favorites.find_by(property_id: property.id, tenant: current_tenant) %>
+                  <%= form_tag property_favorite_path(property.id, favorite.id), method: 'put' do %>
+                    <%= hidden_field_tag :property_id, property.id %>
+                    <%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-blue rounded btn-sm icon", remote: true) do %>
+                      <i class="fas fa-heart"></i>
+                    <% end %>
+                  <% end %>
+                  <% else %>
+                  <% favorite = @favorites.find_by(property_id: property.id, tenant: current_tenant) %>
+                   <%= form_tag property_favorite_path(property.id, favorite.id), method: 'put' do %>
+                    <%= hidden_field_tag :property_id, property.id %>
+                    <%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-blue rounded btn-sm icon", remote: true) do %>
+                      <i class="far fa-heart"></i>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <%= form_tag property_favorites_path(property.id), method: 'post' do %>
+                  <%= hidden_field_tag :property_id, property.id %>
+                  <%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-blue rounded btn-sm icon", remote: true) do %>
+                    <i class="far fa-heart"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
             <% end %>
         </div>
       </div>
