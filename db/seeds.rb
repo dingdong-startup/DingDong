@@ -23,7 +23,7 @@ PaymentStatus.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('payment_statuses')
 Visit.destroy_all 
 ActiveRecord::Base.connection.reset_pk_sequence!('visits')
-VisitStatus.destroy_all 
+VisitStatus.destroy_all   
 ActiveRecord::Base.connection.reset_pk_sequence!('visit_statuses')
 
 
@@ -67,6 +67,11 @@ while i <= 20
   puts "Zipcode : #{zip}"
 end
 
+
+# Creation of position visit_statuses
+Position.create(title: "Director")
+Position.create(title: "Agent")
+
 5.times do 
   
   a = Agency.new(name: Faker::Company.name,
@@ -77,16 +82,22 @@ end
     monthly_properties: rand(5..40))
   a.save
 
-  p = Position.new(title: Faker::Company.profession)
-  p.save 
+  # d = Agent.new(first_name: Faker::Name.first_name,
+  # last_name: Faker::Name.last_name,
+  # email: Faker::Internet.email,
+  # cellphone: Faker::PhoneNumber.cell_phone,
+  # position_id: 1,
+  # agency_id: a.id)
+  # d.save
 
-  b = Agent.new(first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  email: Faker::Internet.email,
-  cellphone: Faker::PhoneNumber.cell_phone,
-  position_id: p.id,
-  agency_id: a.id)
-  b.save
+  # b = Agent.new(first_name: Faker::Name.first_name,
+  # last_name: Faker::Name.last_name,
+  # email: Faker::Internet.email,
+  # cellphone: Faker::PhoneNumber.cell_phone,
+  # position_id: 2,
+  # agency_id: a.id)
+  # b.save
+
 end 
 
 20.times do 
@@ -107,5 +118,6 @@ end
   
   p.save
 end
+
 
 

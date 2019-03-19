@@ -7,10 +7,16 @@
           <div class="col-md-6 col-lg-5">
             <div class="accordion-group accordion-group-portal" data-accordion-group="">
               
+              
+              <div class="row  p-1 mb-0 bg-primary d-flex align-items-center">
+                <div class="col-12 agency-login d-flex align-items-center justify-content-center">
+                  Espace agence
+                </div>
+              </div>
               <!-- LOGIN -->
-              <div class="accordion" data-accordion="">
+              <div class="accordion open" data-accordion="">
                 <div class="accordion-control" data-control="">
-                  <h5>Connexion PRO</h5>
+                  <h5>Connexion</h5>
                 </div>
                 <div class="accordion-content" data-content="" style="transition: max-height 300ms ease 0s; max-height: 0px; overflow: hidden;">
                   <div class="accordion-content-wrapper">
@@ -33,17 +39,21 @@
 
                       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
 
+
+
                       <%= f.button :submit, "Se connecter", class: "btn btn-primary btn-block" %>
                     <% end %>
+                    
+                      <%= render 'agencies/modal_reset_password'%>
                   </div>
                 </div>
               </div>
 
 
             <!-- SIGNUP -->
-              <div class="accordion open" data-accordion="">
+              <div class="accordion" data-accordion="">
                 <div class="accordion-control" data-control="">
-                  <h5>Créer un compte PRO</h5>
+                  <h5>Créer un compte</h5>
                 </div>
                 <div class="accordion-content" data-content="" style="max-height: 382px; overflow: hidden; transition: max-height 300ms ease 0s;">
                   <div class="accordion-content-wrapper">
