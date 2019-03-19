@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_18_174106) do
+ActiveRecord::Schema.define(version: 2019_03_19_081852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,16 @@ ActiveRecord::Schema.define(version: 2019_03_18_174106) do
     t.string "zipcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.boolean "is_liked"
+    t.bigint "property_id"
+    t.bigint "tenant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_favorites_on_property_id"
+    t.index ["tenant_id"], name: "index_favorites_on_tenant_id"
   end
 
   create_table "groups", force: :cascade do |t|
