@@ -13,7 +13,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav align-items-center mr-auto">
                 <li class="nav-item">
+                  <% if agency_signed_in? %>
+                  <%= link_to "L\'agence", agency_path(current_agency), class: "nav-link text-light"%>
+                  <% else %>
                   <%= link_to "Home", properties_path, class: "nav-link text-light"%>
+                  <% end %>
                 </li>
               </ul>
 
@@ -45,8 +49,12 @@
                    <%= current_agency.email %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <%= link_to('Logout', destroy_agency_session_path, :method => :delete, class: "dropdown-item") %>
-                    <%= link_to('Mon profil', agency_path(current_agency), class: "dropdown-item") %>
+                    
+                    <%= link_to('L\'agence', agency_path(current_agency), class: "dropdown-item") %>
+
+                    <%= link_to "Changer de mot de passe", edit_agency_registration_path, class: "dropdown-item" %>
+
+                    <%= link_to('Se deconnecter', destroy_agency_session_path, :method => :delete, class: "dropdown-item text-danger") %>
                 </div>
               </li>
                <%end %>

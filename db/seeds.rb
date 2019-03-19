@@ -23,7 +23,7 @@ PaymentStatus.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('payment_statuses')
 Visit.destroy_all 
 ActiveRecord::Base.connection.reset_pk_sequence!('visits')
-VisitStatus.destroy_all 
+VisitStatus.destroy_all   
 ActiveRecord::Base.connection.reset_pk_sequence!('visit_statuses')
 
 
@@ -53,15 +53,24 @@ p3.save
   email: Faker::Internet.email,
   password: "test123",
   stripe_customer_id: nil,
-  payment_status_id: rand(1..3)) 
+  payment_status_id: 1) 
   t.save
 end
 
-3.times do 
-  a = Area.new(name: Faker::Address.city,
-    zipcode: Faker::Address.zip_code)
+i = 1
+while i <= 20
+  zip = 75000 + i
+  a = Area.new(name: "Paris #{i}",
+  zipcode: zip.to_s)
   a.save
+  i += 1
+  puts "Zipcode : #{zip}"
 end
+
+
+# Creation of position visit_statuses
+Position.create(title: "Director")
+Position.create(title: "Agent")
 
 5.times do 
   
@@ -73,16 +82,22 @@ end
     monthly_properties: rand(5..40))
   a.save
 
-  p = Position.new(title: Faker::Company.profession)
-  p.save 
+  # d = Agent.new(first_name: Faker::Name.first_name,
+  # last_name: Faker::Name.last_name,
+  # email: Faker::Internet.email,
+  # cellphone: Faker::PhoneNumber.cell_phone,
+  # position_id: 1,
+  # agency_id: a.id)
+  # d.save
 
-  b = Agent.new(first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  email: Faker::Internet.email,
-  cellphone: Faker::PhoneNumber.cell_phone,
-  position_id: p.id,
-  agency_id: a.id)
-  b.save
+  # b = Agent.new(first_name: Faker::Name.first_name,
+  # last_name: Faker::Name.last_name,
+  # email: Faker::Internet.email,
+  # cellphone: Faker::PhoneNumber.cell_phone,
+  # position_id: 2,
+  # agency_id: a.id)
+  # b.save
+
 end 
 
 20.times do 
@@ -103,5 +118,6 @@ end
   
   p.save
 end
+
 
 

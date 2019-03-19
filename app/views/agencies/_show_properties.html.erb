@@ -1,19 +1,31 @@
  <div class="tab-pane show active" id="demo-2-1" role="tabpanel" aria-labelledby="demo-2-1">
 	<div class="row justify-content-center">
 	  <div class="col-md-12 col-lg-12">
-	    <div class="row gutter-1">
+	    <div class="row gutter-1 align-items-center">
 
-<% properties.each do |property| %>
+		<% if properties.count == 0 %>
 
+		  <div class="col-8">
+		        <div class="boxed p-2 bordered scaling">
+		          <div class="row align-items-center justify-content-between">
+		            <div class="col-10">
+								<h5>Vous n'avez aucune annonce en cours.</h5>
+								<p>Pour ajouter une annonce, cliquez sur "Créer une annonce".</p>
+								</div>
+							</div>
+						</div>
+			</div>
+		<% else %>
+		<% properties.each do |property| %>
 
 		    <div class="col-8">
 		        <div class="boxed p-2 bordered scaling">
 		          <div class="row align-items-center justify-content-between">
 		            <div class="col-10">
-			            <%= link_to property_path(property) do %>
-			              <div class="media align-items-center">           			           
+			            <%= link_to agency_property_path(@agency,property) do %>
+			              <div class="media align-items-center">
 			                <img src="<%=asset_path(image_path(main_app.url_for(property.images.first)))%>" alt="Avatar" class="avatar avatar-lg mr-3">
-			                 
+
 			                <div class="media-body">
 			                  <h5 class="mb-0"><%=property.title%></h5>
 			                  <br>
@@ -28,48 +40,29 @@
 			              </div>
 			            <% end %>
 		            </div>
-		           
-		            <div class="col-2 text-md-right">
-		              <div class="dropdown">
-		                <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		                  <i class="icon-more-vertical fs-22"></i>
-		                </a>
-
-		                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
-		                  <a class="dropdown-item" href="#">Make Primary</a>
-		                  <a class="dropdown-item" href="#">Remove</a>
-		                </div>
-		              </div>
-		            </div>
 		          </div>
 		        </div>
 		    </div>
-		    
 
-			<div class="col-2 ml-10 align-items-center">
-				<div class="row">
-                  <div class="progress-item">
-                  	<h4 class="progress-title">Demandes de visites</h4>
-                    <div class="progress">
-                    	<%asked_visits = property.visits.length %>
-                        <div class="progress-bar bg-orange" role="progressbar" style="width: <%=asked_visits*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-orange"><%=asked_visits%></span></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" style="margin-top: -1em">
-                  <div class="progress-item pb-3">
-                  	<h4 class="progress-title align-bottom">Postulants</h4>
-                    <div class="progress">
-                    	<%p = rand(1..10)%>
-                        <div class="progress-bar bg-blue" role="progressbar" style="width: <%=asked_visits*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-blue"><%=asked_visits%></span></div>
-                    </div>
-                  </div>
-                </div>
 
-              
-            </div>
-
-<%end%>
+				<div class="col-2 align-items-center ml-2">
+					<div class="row ml-1 pt-2 mb-4">
+						<div class="progress-item">
+							<h4 class="progress-title">Demandes de visites</h4>
+							<div class="progress">
+								<%asked_visits = property.visits.length %>
+									<div class="progress-bar bg-orange" role="progressbar" style="width: <%=asked_visits*10%>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="text-orange"><%=asked_visits%></span></div>
+							</div>
+						</div>
+					</div>
+					<div class="row ml-1" >
+						<div class="col-2" style="padding-left: -2em">
+								<%= link_to "Voir l'annonce", agency_property_path(@agency,property), class: "btn btn-blue btn-sm" %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
 
 	    </div>
 	  </div>

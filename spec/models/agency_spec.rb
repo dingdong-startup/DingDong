@@ -20,21 +20,27 @@ RSpec.describe Agency, type: :model do
 			it 'creates an agency' do
 				expect(@agency.class).to eq(Agency)
 			end
+
+			it { expect(@agency).to allow_value("0658227035").for(:phone) }
+
+			it { expect(@agency).to_not allow_value("06.22.11.44.33").for(:phone) }
+			it { expect(@agency).to_not allow_value("06 22 11 44 33").for(:phone) }
+			
+			it { should validate_presence_of(:email) }
+			it { expect(@agency).to allow_value("dhh@nonopinionated.com").for(:email) }
+			it { expect(@agency).to_not allow_value("base@example").for(:email) }
+
+			it { should validate_presence_of(:password) }
+			it { expect(@agency).to allow_value("I am long enough to be a password").for(:password) }
+			it { expect(@agency).to_not allow_value("short").for(:password) }
+
 		end
 		
 		context "associations" do
 
-			describe "agency have many agents" do
-				it { expect(@agency).to have_many(:agents) }
-			end
-
-			describe "agency have many properties" do
-				it { expect(@agency).to have_many(:properties) }
-			end
-	
-			describe "agency have many groups though agency_gorups" do
-				it { should have_many(:groups).through(:agency_groups) }
-			end
+			it { expect(@agency).to have_many(:agents) }
+			it { expect(@agency).to have_many(:properties) }
+			it { should have_many(:groups).through(:agency_groups) }
 
 		end
 
