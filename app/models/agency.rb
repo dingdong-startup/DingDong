@@ -9,7 +9,7 @@ class Agency < ApplicationRecord
   has_many :agents
   has_many :properties
 
-  validates :name, :phone, :address, :email, presence: true
+  validates :email, presence: true
 
 
 
