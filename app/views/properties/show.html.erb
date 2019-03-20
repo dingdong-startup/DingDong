@@ -16,29 +16,17 @@
 <%= render 'layouts/property_show_carroussel' %>
 
 <% if tenant_signed_in? %>
-  <% if @property.visits.find_by(tenant: current_tenant) %>
-  
-    <% if current_tenant.payment_status_id == 1 %>
-       <%= render 'layouts/stripe_print' %>
-    <% elsif @property.visits.find_by(tenant: current_tenant, property_id: params[:id], visit_status_id: 4) %>
-       <p> Vous avez déjà demandé la visite </p>
-    <% else %>
-       <%= render 'layouts/ask_visit'%>
-    <% end %>
-
-  <% else %>
-
-    <% if current_tenant.payment_status_id == 1 %>
-        <%= render 'layouts/stripe_print' %>
-    <% else %>
-        <%= render 'layouts/ask_visit'%>
-    <% end %>
-
-  <% end %>
+<%= render 'layouts/modal_btn' %>
+<%= render 'layouts/modal_description' %>
 <% else %>
-    <%= link_to 'Demander une visite',  new_tenant_session_path, class: 'btn btn-blue'%>
+<div class="container">
+  <div class="row">
+    <div class="col text-center  mb-3">
+      <%= link_to 'Demander une visite',  new_tenant_session_path, class: 'btn btn-orange'%>
+    </div>
+  </div>
+</div>
 <% end %>
-
 
 <%= render 'layouts/footer' %>
 
