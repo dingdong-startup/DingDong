@@ -21,7 +21,7 @@ class Tenant < ApplicationRecord
   end
 
   def fav_properties
-    self.visits.where(visit_status_id: 2)
+    self.favorites.where(is_liked: true)
   end
 
   def asked_visits
