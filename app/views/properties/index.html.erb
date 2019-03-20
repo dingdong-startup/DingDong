@@ -23,14 +23,12 @@
 <% else %>
 
 
+
+
   	<div class="row">
 			<% @properties.each do |property| %>
+			<%= render 'properties/card_property', property: property %> 
 				
-				
-			<%= render 'layouts/property_index_row', property: property %>
-			<% rowcount += 1%>
-			<% if rowcount%3 == 0 %> </div> <div class="row"><% end%>
-
 			<% end %> 
 
 		</div>
