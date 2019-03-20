@@ -46,45 +46,49 @@
 	            </div>
 	          </div>
 		</div>
+
+		<% if @property.visits.find_by(tenant: current_tenant, property_id: params[:id], visit_status_id: 4) %>
+        <% else %>
 		
-		<div class="row justify-content-around mt-8">
-           	<div class="col d-flex justify-content-end">
-							<% if tenant_signed_in? %>
-								<% if @favorite.nil? %>
-								<%= form_tag property_favorites_path(property.id), method: 'post' do %>
-									<%= hidden_field_tag :property_id, property.id %>
-									<%= button_tag(type: "submit", class: "btn btn btn-outline-orange mb-1", remote: true) do %>
-										<div><i class="far fa-heart mr-1"></i>Enregistrer</div> 
-									<% end %>
-								<% end %>
-
-								<% elsif @favorite.is_liked == true %>
-
-								<%= form_tag property_favorite_path(property.id, @favorite.id), method: 'put' do %>
-									<%= hidden_field_tag :property_id, property.id %>
-									<%= button_tag(type: "submit", class: "btn btn btn-orange mb-1", remote: true) do %>
-										<div><i class="fas fa-heart mr-1"></i>Enregistrer</div> 
-									<% end %>
-								<% end %>
-
-								<% else %>
-
-									<%= form_tag property_favorite_path(property.id, @favorite.id), method: 'put' do %>
+			<div class="row justify-content-around mt-8">
+	           	<div class="col d-flex justify-content-end">
+								<% if tenant_signed_in? %>
+									<% if @favorite.nil? %>
+									<%= form_tag property_favorites_path(property.id), method: 'post' do %>
 										<%= hidden_field_tag :property_id, property.id %>
 										<%= button_tag(type: "submit", class: "btn btn btn-outline-orange mb-1", remote: true) do %>
 											<div><i class="far fa-heart mr-1"></i>Enregistrer</div> 
 										<% end %>
 									<% end %>
-								<% end %>
-							<% end %>
-	        </div>
-			<div class="col d-flex justify-content-start">
-			        <button type="button" class="btn btn-blue mb-1" data-toggle="modal" data-target="#PropertyShow">
-		    		<i class="fas fa-calendar-check mr-1"></i>Demander une visite
-				</button>
-	        </div>
 
-	    </div>
+									<% elsif @favorite.is_liked == true %>
+
+									<%= form_tag property_favorite_path(property.id, @favorite.id), method: 'put' do %>
+										<%= hidden_field_tag :property_id, property.id %>
+										<%= button_tag(type: "submit", class: "btn btn btn-orange mb-1", remote: true) do %>
+											<div><i class="fas fa-heart mr-1"></i>Enregistrer</div> 
+										<% end %>
+									<% end %>
+
+									<% else %>
+
+										<%= form_tag property_favorite_path(property.id, @favorite.id), method: 'put' do %>
+											<%= hidden_field_tag :property_id, property.id %>
+											<%= button_tag(type: "submit", class: "btn btn btn-outline-orange mb-1", remote: true) do %>
+												<div><i class="far fa-heart mr-1"></i>Enregistrer</div> 
+											<% end %>
+										<% end %>
+									<% end %>
+								<% end %>
+		        </div>
+				<div class="col d-flex justify-content-start">
+				        <button type="button" class="btn btn-blue mb-1" data-toggle="modal" data-target="#PropertyShow">
+			    		<i class="fas fa-calendar-check mr-1"></i>Demander une visite
+					</button>
+		        </div>
+
+	    	</div>
+	    <%end%>
 
 
 
