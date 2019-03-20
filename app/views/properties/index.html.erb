@@ -1,37 +1,39 @@
 <%= render 'layouts/navbar' %>
+<%= render 'banner_property_index_tenant', property: Property.first %>
+
+
 
 <div class="tab-content m-3" >
-  <div class="container" style="margin-top:150px;">
-  	<%rowcount = 0%>
+	<div class="container">
+		<%rowcount = 0%>
 
-<% if @tenant %>
-	<h2>Demandes de visites</h2>
-	<% if @asked_visits.size > 0 %>
+		<% if @tenant %>
+		<h2>Demandes de visites</h2>
+		<% if @asked_visits.size > 0 %>
 		<%= render 'properties/index_properties_tenant', visits: @asked_visits %>
-	<% else %>
+		<% else %>
 		<p>Oh oh, vous n'avez fait aucune demande de visite pour le moment</p>
-	<% end %>
-	<br><br>
-	<%= link_to "Continuer mes recherches", properties_path %>
-	<% if @asked_visits.count <= 1 %>
-  <%= render 'layouts/footer_fixed'%>
-  <% else %>
-				</div>
+		<% end %>
+		<br><br>
+		<%= link_to "Continuer mes recherches", properties_path %>
+		<% if @asked_visits.count <= 1 %>
+		<%= render 'layouts/footer_fixed'%>
+		<% else %>
+	</div>
 </div>
-  <%= render 'layouts/footer' %>
-  <% end %>
+<%= render 'layouts/footer' %>
+<% end %>
+
+
 <% else %>
 
+<div class="row">
+	<% @properties.each do |property| %>
+	<%= render 'properties/card_property', property: property %> 
 
+	<% end %> 
 
-
-  	<div class="row">
-			<% @properties.each do |property| %>
-			<%= render 'properties/card_property', property: property %> 
-				
-			<% end %> 
-
-		</div>
+</div>
 </div>
 </div>
 <%= render 'layouts/footer' %>
