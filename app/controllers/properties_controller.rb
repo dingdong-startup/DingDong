@@ -16,6 +16,12 @@ class PropertiesController < ApplicationController
     # Selecting all favorites so I can find it for the favorite update method
     #@favorites = Favorite.all
     @favorite = Favorite.new
+
+    @last_property = Property.last
+    @last_date = ((Time.now - @last_property.created_at)/60/60).to_i
+
+
+
   end
 
   def show
