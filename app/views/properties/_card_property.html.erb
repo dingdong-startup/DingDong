@@ -34,7 +34,7 @@
 					<div class="item-property p-1 m-1 mb-0 flex-wrap"> <%=property.room%> pièces</div>
 				</div>
 				<div class="justify-content-around flex-wrap">
-					<a href="#" class="btn btn-primary">Voir plus</a>
+					<%= link_to "Voir plus", property_path(property.id), class: "btn btn-primary" %> 
 				</div>
 			</div>
 		</div>
