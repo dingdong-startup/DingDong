@@ -13,7 +13,13 @@
 	<% end %>
 	<br><br>
 	<%= link_to "Continuer mes recherches", properties_path %>
-	
+	<% if @asked_visits.count <= 1 %>
+  <%= render 'layouts/footer_fixed'%>
+  <% else %>
+				</div>
+</div>
+  <%= render 'layouts/footer' %>
+  <% end %>
 <% else %>
 
 
@@ -29,8 +35,8 @@
 
 		</div>
 
+<%= render 'layouts/footer' %>
 <%end%>
 
-	</div>
-</div>
-<%= render 'layouts/footer' %>
+
+
