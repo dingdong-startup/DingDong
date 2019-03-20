@@ -16243,8 +16243,8 @@ footer {
     background: transparent;
     border: 0; }
     .accordion-group-steps .accordion.open .accordion-control::before {
-      background: #FF7F50;
-      border-color: #FF7F50;
+      background: #14439C;
+      border-color: #14439C;
       color: #fff;
       -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
       -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
@@ -16253,7 +16253,7 @@ footer {
       -moz-transform: scale(1.4);
       transform: scale(1.4); }
     .accordion-group-steps .accordion:hover .accordion-control::before {
-      border-color: #FF7F50; }
+      border-color: #14439C; }
     .accordion-group-steps .accordion:not(:first-child) {
       margin: 0; }
       .accordion-group-steps .accordion:not(:first-child)::before {
