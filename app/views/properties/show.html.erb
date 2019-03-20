@@ -13,28 +13,13 @@
 
 <%= render 'layouts/navbar' %>
 <%= render 'property_show_tenant_banner', property: @property, areas: @areas %>
+
 <%= render 'layouts/property_show_carroussel', property: @property %>
 <%= render 'property_show_tenant_description', agency: @agency, property: @property%>
-<%= render 'layouts/steps'%>
+<%= render 'properties_show_steps'%>
 <%=render 'crossed_properties', properties: @properties %>
 
-    <% if @property.visits.find_by(tenant: current_tenant, property_id: params[:id], visit_status_id: 4) %>
-       <p> Vous avez déjà demandé la visite </p>
-    <% else %>
 
-<% if tenant_signed_in? %>
-<%= render 'layouts/modal_btn' %>
-<%= render 'layouts/modal_description' %>
-<% else %>
-<div class="container">
-  <div class="row">
-    <div class="col text-center  mb-3">
-      <%= link_to 'Demander une visite',  new_tenant_session_path, class: 'btn btn-orange'%>
-    </div>
-  </div>
-</div>
-<% end %>
-<% end %> 
 
 <%= render 'layouts/footer' %>
 
