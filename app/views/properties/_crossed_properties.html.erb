@@ -12,27 +12,40 @@
               <div class="owl-stage-outer">
                 <div class="owl-stage" style="transform: translate3d(-4253px, 0px, 0px); transition: all 0.4s ease 0s; width: 6380px;">
                   <div class="owl-item active" style="width: 521.665px; margin-right: 10px;">
-                    <figure class="photo equal pt-2">
-                      <% first_property_first_image = properties.last(20)[rand(0..19)].images.first %>
-                      <img src="<%=asset_path(image_path(main_app.url_for(first_property_first_image)))%>" alt="Image">
-                    </figure>
+                    <% first_property = properties.last(20)[rand(0..19)]%>
+                    <% first_property_first_image = first_property.images.first %>
+                    <%=link_to property_path(first_property) do %>
+                      <figure class="photo equal pt-2">
+                          <img src="<%=asset_path(image_path(main_app.url_for(first_property_first_image)))%>" alt="Image">
+                      </figure>
+                    <%end%>
+                  </div>
+                  <div class="owl-item active pb-2" style="width: 521.665px; margin-right: 10px;">
+                    <% second_property = properties.last(20)[rand(0..19)]%>
+                    <% second_property_first_image = second_property.images.first %>
+                    <%=link_to property_path(second_property) do %>
+                      <figure class="photo equal pt-2">
+                          <img src="<%=asset_path(image_path(main_app.url_for(second_property_first_image)))%>" alt="Image">
+                      </figure>
+                    <%end%>
                   </div>
                   <div class="owl-item active" style="width: 521.665px; margin-right: 10px;">
-                    <figure class="photo equal">
-                      <% second_property_first_image = properties.last(20)[rand(0..19)].images.first %>
-                      <img src="<%=asset_path(image_path(main_app.url_for(second_property_first_image)))%>" alt="Image">
-                    </figure>
+                    <% third_property = properties.last(20)[rand(0..19)]%>
+                    <% third_property_first_image = third_property.images.first %>
+                    <%=link_to property_path(third_property) do %>
+                      <figure class="photo equal pt-2">
+                          <img src="<%=asset_path(image_path(main_app.url_for(third_property_first_image)))%>" alt="Image">
+                      </figure>
+                    <%end%>
                   </div>
-                  <div class="owl-item active" style="width: 521.665px; margin-right: 10px;">
-                    <figure class="photo equal pt-2">
-                      <% third_property_first_image = properties.last(20)[rand(0..19)].images.first %>
-                      <img src="<%=asset_path(image_path(main_app.url_for(third_property_first_image)))%>" alt="Image">
-                  </div>
-                  <div class="owl-item active" style="width: 521.665px; margin-right: 10px;">
-                    <figure class="photo equal">
-                      <% fourth_property_first_image = properties.last(20)[rand(0..19)].images.first %>
-                      <img src="<%=asset_path(image_path(main_app.url_for(fourth_property_first_image)))%>" alt="Image">
-                    </figure>
+                  <div class="owl-item active pb-2" style="width: 521.665px; margin-right: 10px;">
+                    <% fourth_property = properties.last(20)[rand(0..19)]%>
+                    <% fourth_property_first_image = fourth_property.images.first %>
+                    <%=link_to property_path(fourth_property) do %>
+                      <figure class="photo equal pt-2">
+                          <img src="<%=asset_path(image_path(main_app.url_for(fourth_property_first_image)))%>" alt="Image">
+                      </figure>
+                    <%end%>
                   </div>
                 </div>
               </div>
@@ -45,17 +58,9 @@
                   <span aria-label="Next">›</span>
                 </button>
               </div>
-              <div class="owl-dots disabled">
-                
-              </div>
             </div>
           </div>
         </div>
         
-        <div class="row">
-          <div class="col text-center">
-            <%= link_to "Je m'inscris aux visites!", properties_path, class:'btn btn-rounded btn-primary px-5'%>
-          </div>
-        </div>
       </div>
     </section>
