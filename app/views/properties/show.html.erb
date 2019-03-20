@@ -12,32 +12,13 @@
 <% else %>
 
 <%= render 'layouts/navbar' %>
-<%= render 'layouts/property_show_photo_description' %>
-<%= render 'layouts/property_show_carroussel' %>
+<%= render 'property_show_tenant_banner', property: @property, areas: @areas %>
 
-<% if tenant_signed_in? %>
-  <% if @property.visits.find_by(tenant: current_tenant) %>
-  
-    <% if current_tenant.payment_status_id == 1 %>
-       <%= render 'layouts/stripe_print' %>
-    <% elsif @property.visits.find_by(tenant: current_tenant, property_id: params[:id], visit_status_id: 4) %>
-       <p> Vous avez déjà demandé la visite </p>
-    <% else %>
-       <%= render 'layouts/ask_visit'%>
-    <% end %>
+<%= render 'layouts/property_show_carroussel', property: @property %>
+<%= render 'property_show_tenant_description', agency: @agency, property: @property%>
+<%= render 'properties_show_steps'%>
+<%=render 'crossed_properties', properties: @properties %>
 
-  <% else %>
-
-    <% if current_tenant.payment_status_id == 1 %>
-        <%= render 'layouts/stripe_print' %>
-    <% else %>
-        <%= render 'layouts/ask_visit'%>
-    <% end %>
-
-  <% end %>
-<% else %>
-    <%= link_to 'Demander une visite',  new_tenant_session_path, class: 'btn btn-blue'%>
-<% end %>
 
 
 <%= render 'layouts/footer' %>

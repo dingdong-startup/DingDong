@@ -7,7 +7,9 @@
         <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0.25s ease 0s; width: 1534px;"><div class="owl-item active" style="width: 373.333px; margin-right: 10px;">
           <figure class="photo">
             <% first_property = @property.images.first %>
+            <a class="lightbox" href="<%=asset_path(image_path(main_app.url_for(first_property)))%>">
             <img src="<%=asset_path(image_path(main_app.url_for(first_property)))%>" alt="Image">
+          </a>
           </figure>
         </div>
 
