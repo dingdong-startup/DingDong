@@ -23,6 +23,7 @@ require 'byebug'
 @Rs
 @Fu = [] #furnished or not
 @Rintermediate = []
+@Rintermediatebis = []
 
 
 
@@ -55,36 +56,42 @@ def flat_scrapper ()
   # puts @Rs
   puts @Rintermediate.to_s
   puts @R.to_s
-  puts @F.to_s
+  # puts @F.to_s
 
   page.xpath('//div[1]/a/@href')[6..-1].first(4).each_slice(2) do |url, url_bis|
     complete_url = 'https://www.flatlooker.com' + url
     @U << complete_url
 
-    puts @address
+    # puts @address
     page_flat = Nokogiri::HTML(open(complete_url))
-    @I = page_flat.xpath('/html/body/div[5]/img/@src')
-
     @T << page_flat.xpath('//*[@id="annonce"]/div[1]/div[1]/h3').text
     @F << page_flat.xpath('//*[@id="table-essentials"]/tbody/tr[2]/td[4]').text
     @R << page_flat.xpath('//body/div[6]/div[6]/div/div/div[1]/div[1]').text
     @D << page_flat.xpath('//*[@id="annonce"]/div[2]/div[1]/div').text
     @ad << page_flat.xpath('//body/div[6]/div[6]/div/div/h4').text
     @Sh << page_flat.xpath('//*[@id="table-essentials"]/tbody/tr[1]/td[4]').text
+    @Itot << image_hash(complete_url,page_flat)
+
+
+
   end
-  puts @I
-  # puts @T.to_s, @S.to_s, @P.to_s, @V.to_s, @F.to_s, @R.to_s, @D.to_s, @ad.to_s
-  # clean(@U)
-  # clean(@A)
-  # clean(@T)
-  # clean(@S)
-  # clean(@P)
-  # clean(@F)
-  # clean(@D)
-  # clean(@R)
-  # clean(@V)
-  # clean(@ad)
+
 end
+
+def image_hash(url,page)
+  @I.clear
+  for i in 1..5
+    href = '//*[@id="slick-slide0' + i.to_s + '"]/img/@src'
+    @I << page.xpath(href)
+    puts "je suis la"
+    puts @I.to_s
+  end
+  return @I
+end
+
+
+# puts @T.to_s, @S.to_s, @P.to_s, @V.to_s, @F.to_s, @R.to_s, @D.to_s, @ad.to_s
+
 #   page.xpath("//*[@id="header-offer-ED20A669-765C-652D-C932-7063775917AF"]/div/div[2]/div[1]/div[1]/div[1]/p[1]/a").first(4).each do |node|
 #     @B << node.text
 #   end
@@ -92,8 +99,8 @@ end
 #     @C << node.text
 #   end
 def clean(array)
- return array.map!{ |element| element.strip.gsub(/\n/, '')}.map!{ |element| element.gsub(/\r/, '')}
- # .map!{ |element| element.gsub(/n/, '').gsub(/\n/, '') }
+  return array.map!{ |element| element.strip.gsub(/\n/, '')}.map!{ |element| element.gsub(/\r/, '')}
+  # .map!{ |element| element.gsub(/n/, '').gsub(/\n/, '') }
 end
 
 
@@ -130,12 +137,15 @@ end
 # end
 #
 
-
 def perform ()
+  page_test = Nokogiri::HTML(open('https://www.flatlooker.com/appartements/location-meublee-9-m2-cambronne-75015-paris'))
+  puts page_test.xpath('//*[@id="slick-container"]/div[6]/div/div/div/img/@src')
+
   flat_scrapper
+  @intermediatebis = @T.zip(@S, @D, @V, @F, @R, @ad, @P, @Fu, @Itot)
   @intermediate = @T.zip(@S, @D, @V, @F, @R, @ad, @P, @Fu)
   @intermediate.each{|array| clean(array)}
-  @intermediate.each{|x| @A << {"title" => x[0], "superficie" => x[1], "description" => x[2], "ville" => x[3], "floor" => x[4], "room" => x[5], "address" => x[6], "price" => x[7], "furnished" => x[8] }}
+  @intermediatebis.each{|x| @A << {"title" => x[0], "superficie" => x[1], "description" => x[2], "ville" => x[3], "floor" => x[4], "room" => x[5], "address" => x[6], "price" => x[7], "furnished" => x[8], "images" => x[9]}}
   puts @A.first.to_s
   puts @A.last.to_s
 end
