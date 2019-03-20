@@ -1,87 +1,91 @@
 <header class="header-sticky header-dark headroom headroom--not-bottom headroom--pinned headroom--top", style= "background-color: #14439C;">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar_dark">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar_dark">
 
-            <%= link_to root_path, class: "navbar-brand" do %>
-              <span style="font-size: 30px; line-height:30px; color: #fff;">
+      <%= link_to root_path, class: "navbar-brand" do %>
+      <span style="font-size: 30px; line-height:30px; color: #fff;">
 
-                <i class="fas fa-bell"></i>
-              </span>
+        <i class="fas fa-bell"></i>
+      </span>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="burger"><span></span></span></button>
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav align-items-center mr-auto">
+          <li class="nav-item">
+            <% if agency_signed_in? %>
+            <%= link_to "L\'agence", agency_path(current_agency), class: "nav-link text-light"%>
+            <% else %>
+            <%= link_to "Nos annonces", properties_path, class: "nav-link text-light"%>
             <% end %>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="burger"><span></span></span></button>
+          </li>
+        </ul>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav align-items-center mr-auto">
-                <li class="nav-item">
-                  <% if agency_signed_in? %>
-                  <%= link_to "L\'agence", agency_path(current_agency), class: "nav-link text-light"%>
-                  <% else %>
-                  <%= link_to "Home", properties_path, class: "nav-link text-light"%>
-                  <% end %>
-                </li>
-              </ul>
 
-            <% if tenant_signed_in? %>
-              <ul class="navbar-nav align-items-center mr-0">
-              <li class="nav-item">
-                <%= link_to tenant_favorites_path(current_tenant.id), class:"nav-link" do %>
-                  <span style="font-size: 20px; line-height:20px;">
-                  <% if current_tenant.fav_properties.count > 0 %>
-                    <i class="fas fa-heart text-orange"></i><small class="text-light"> (<%= current_tenant.fav_properties.count%>)</small>
-                    <% else %>
-                    <i class="fas fa-heart text-light"></i><small class="text-light"> (<%= current_tenant.fav_properties.count%>)</small>
-                  <% end %>
-                  </span>
-                <% end %>
-              </li>
-                <li class="nav-item">
-                <%= link_to tenant_properties_path(current_tenant.id), class:"nav-link" do %>
-                  <span style="font-size: 20px; line-height:20px;">
-                    <i class="fas fa-shopping-bag text-light"></i><small class="text-light"> (<%= current_tenant.asked_visits.count%>)</small>
-                  </span>
-                <% end %>
-              </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <%= current_tenant.email %>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <%= link_to "Mon profil", tenant_path(current_tenant.id), class: "dropdown-item" %>
-                      <%= link_to "Mes biens", tenant_properties_path(current_tenant.id), class: "dropdown-item" %>
-                      <%= link_to('Logout', destroy_agency_session_path, :method => :delete, class: "dropdown-item") %>
-                  </div>
-                </li>
+        <% if tenant_signed_in? %>
+        <ul class="navbar-nav align-items-center mr-0">
+          <li class="nav-item">
+            <%= link_to tenant_favorites_path(current_tenant.id), class:"nav-link" do %>
+            <span style="font-size: 20px; line-height:20px;">
+              <% if current_tenant.fav_properties.count > 0 %>
+              <i class="fas fa-heart text-orange"></i><span style="font-size: 15px;" class="text-light"> Favoris</span><small class="text-light"> (<%= current_tenant.fav_properties.count%>)</small>
+              <% else %>
+              <i class="fas fa-heart text-light"></i><span style="font-size: 15px;" class="text-light"> Favoris</span><small class="text-light"> (<%= current_tenant.fav_properties.count%>)</small>
               <% end %>
-
-              <% if agency_signed_in? %>
-              <li class="nav-item dropdown" style="list-style: none">
-                <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   <%= current_agency.email %>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    
-                    <%= link_to('L\'agence', agency_path(current_agency), class: "dropdown-item") %>
-
-                    <%= link_to "Changer de mot de passe", edit_agency_registration_path, class: "dropdown-item" %>
-
-                    <%= link_to('Se deconnecter', destroy_agency_session_path, :method => :delete, class: "dropdown-item text-danger") %>
-                </div>
-              </li>
-               <%end %>
-            </ul>
-            
-            <% if !agency_signed_in? && !tenant_signed_in? %>
-            <ul class="navbar-nav align-items-center mr-0">
-              <li class="nav-item">
-                <%= link_to("Se connecter / s'inscrire", new_tenant_registration_path, class: "nav-link text-light")  %>
-              </li>
-            </ul>
+            </span>
             <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to tenant_properties_path(current_tenant.id), class:"nav-link" do %>
+            <span style="font-size: 20px; line-height:20px;">
+              <i class="fas fa-calendar-check text-light"></i><span style="font-size: 15px;" class="text-light">  Demandes</span><small class="text-light"> (<%= current_tenant.asked_visits.count%>)</small>
+            </span>
+            <% end %>
+          </li>
+          <li class="nav-item dropdown d-flex">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_tenant.first_name %>
+              <img class=" avatar avatar-xl rounded avatar-navbar" src="<%=asset_path(image_path(main_app.url_for(current_tenant.avatar)))%>"" />
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to tenant_favorites_path(current_tenant.id), class: "dropdown-item" do %><i class="fas fa-heart text-orange"></i>&nbsp;Mes favoris <% end%>
+              <%= link_to tenant_properties_path(current_tenant.id), class: "dropdown-item" do %><i class="fas fa-calendar-check text-primary"></i>&nbsp;Mes demandes <% end%>
+              <%= link_to "Mon profil", tenant_path(current_tenant.id), class: "dropdown-item text-primary" %>
+              <%= link_to('Se déconnecter', destroy_agency_session_path, :method => :delete, class: "dropdown-item text-danger") %>
+            </div>
+          </li>
+          <% end %>
+
+          <% if agency_signed_in? %>
+          <li class="nav-item dropdown" style="list-style: none">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_agency.email %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+              <%= link_to('L\'agence', agency_path(current_agency), class: "dropdown-item") %>
+
+              <%= link_to "Changer de mot de passe", edit_agency_registration_path, class: "dropdown-item" %>
+
+              <%= link_to('Se deconnecter', destroy_agency_session_path, :method => :delete, class: "dropdown-item text-danger") %>
+            </div>
+          </li>
+          <%end %>
+        </ul>
+
+        <% if !agency_signed_in? && !tenant_signed_in? %>
+        <ul class="navbar-nav align-items-center mr-0">
+          <li class="nav-item">
+            <%= link_to("Se connecter / s'inscrire", new_tenant_registration_path, class: "nav-link text-light")  %>
+          </li>
+        </ul>
+        <% end %>
 
 
 
 
-          </div>
-        </nav>
       </div>
+    </nav>
+  </div>
 </header>
