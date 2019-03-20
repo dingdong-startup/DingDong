@@ -42,13 +42,15 @@
 
                       <%= f.button :submit, "Me connecter", class: "btn btn-primary btn-block" %>
                     <% end %>
+                    <br>
+                    <%= link_to "Mot de passe oublié?", new_password_path(resource_name) %>
                   </div>
                 </div>
               </div>
 
 
             <!-- SIGNUP -->
-              <div class="accordion open" data-accordion="">
+              <div class="accordion" data-accordion="">
                 <div class="accordion-control" data-control="">
                   <h5>Créer un compte</h5>
                 </div>
