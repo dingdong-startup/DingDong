@@ -18,7 +18,7 @@ class FavoritesController < ApplicationController
   def update  
     if is_already_favorited
       @favorite.update_attributes(is_liked: false)
-      flash[:primary] = "Cette annonce a été retirée de vos favoris"
+      flash[:light] = "Cette annonce a été retirée de vos favoris"
       redirect_back(fallback_location: properties_path)
     else is_already_unfavorited
       @favorite.update_attributes(is_liked: true)

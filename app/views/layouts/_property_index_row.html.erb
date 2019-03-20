@@ -57,7 +57,7 @@
                 <% favorite = @favorites.find_by(property_id: property.id, tenant: current_tenant) %>
                   <%= form_tag property_favorite_path(property.id, favorite.id), method: 'put' do %>
                     <%= hidden_field_tag :property_id, property.id %>
-                    <%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-danger rounded btn-sm icon", remote: true) do %>
+                    <%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-orange rounded btn-sm icon", remote: true) do %>
                       <i class="fas fa-heart"></i>
                     <% end %>
                   <% end %>
@@ -65,7 +65,7 @@
                   <% favorite = @favorites.find_by(property_id: property.id, tenant: current_tenant) %>
                    <%= form_tag property_favorite_path(property.id, favorite.id), method: 'put' do %>
                     <%= hidden_field_tag :property_id, property.id %>
-                    <%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-danger rounded btn-sm icon", remote: true) do %>
+                    <%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-orange rounded btn-sm icon", remote: true) do %>
                       <i class="far fa-heart"></i>
                     <% end %>
                   <% end %>
@@ -73,7 +73,7 @@
               <% else %>
                 <%= form_tag property_favorites_path(property.id), method: 'post' do %>
                   <%= hidden_field_tag :property_id, property.id %>
-                  <%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-danger rounded btn-sm icon", remote: true) do %>
+                  <%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-orange rounded btn-sm icon", remote: true) do %>
                     <i class="far fa-heart"></i>
                   <% end %>
                 <% end %>
