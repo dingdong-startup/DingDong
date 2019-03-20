@@ -29,6 +29,7 @@ gem 'rb-readline', '~> 0.5.3'
 gem 'rails_admin'
 gem 'devise-i18n'
 gem 'rails-i18n', '~> 5.1'
+gem 'intercom-rails'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
