@@ -13,24 +13,29 @@
 	<% end %>
 	<br><br>
 	<%= link_to "Continuer mes recherches", properties_path %>
-	
+	<% if @asked_visits.count <= 1 %>
+  <%= render 'layouts/footer_fixed'%>
+  <% else %>
+				</div>
+</div>
+  <%= render 'layouts/footer' %>
+  <% end %>
 <% else %>
+
+
 
 
   	<div class="row">
 			<% @properties.each do |property| %>
+			<%= render 'properties/card_property', property: property %> 
 				
-				
-			<%= render 'layouts/property_index_row', property: property %>
-			<% rowcount += 1%>
-			<% if rowcount%3 == 0 %> </div> <div class="row"><% end%>
-
 			<% end %> 
 
 		</div>
-
-<%end%>
-
-	</div>
+</div>
 </div>
 <%= render 'layouts/footer' %>
+<%end%>
+
+
+

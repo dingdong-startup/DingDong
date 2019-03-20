@@ -11,14 +11,7 @@ class Agency < ApplicationRecord
   has_many :properties
 
 
-  # validates :phone, numericality: { only_integer: true }
-  validates :password, length: { minimum: 6 }
   validates :email, presence: true
-  validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
-
-
-
-
 
   after_create :create_agents
 
