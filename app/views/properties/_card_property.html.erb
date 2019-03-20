@@ -1,0 +1,42 @@
+
+<div class="col-xs-12 col-md-6 col-lg-4 p-1">
+	<div class="card">
+		<%= link_to property_path(property.id), class: "card-img-container" do %>
+		<img class="card-img-top" src="<%= asset_path 'sofa.jpg' %>" alt="Property image">
+		<div class="card-header  d-flex flex-column justify-content-between">
+			<div class="d-flex justify-content-end">
+				<%if !property.existant_fav(current_tenant).nil? %>
+					<%= form_tag property_favorite_path(property.id, property.existant_fav(current_tenant).id), method: 'put' do%>
+						<%= button_tag(type: "submit", class: "btn-invisible") do %>
+						<span class="circle-fav d-flex justify-content-around align-items-center"><i class="fas fa-heart text-orange" id="fav-<%=property.id %>"></i></span>
+						<% end %>
+					<% end%>
+				<% else %>
+					<%= form_tag property_favorites_path(property.id), method: 'create' do%>
+						<%= button_tag(type: "submit", class: "btn-invisible") do %>
+						<span class="circle-fav d-flex justify-content-around align-items-center"><i class="far fa-heart text-orange" id="fav-<%=property.id %>"></i></span>
+						<% end %>
+					<% end%>
+				<% end %>
+			</div>
+			<div><h5 class="card-title"><%= property.title %></h5></div>
+		</div>
+		<% end %>
+		<div class="card-body">
+			<div class="row mb-2 d-flex justify-content-around" >
+				<div class="text-primary" style="font-weight: 900"> <i class="fas fa-map-marker-alt mr-1"></i><%= property.area.zipcode %></div>
+				<div class="text-primary" style="font-weight: 900"><i class="fas fa-arrows-alt-h mr-1"></i><%= property.surface %> m&#xB2;</div>
+				<div class="text-primary" style="font-weight: 900"><i class="fas fa-coins mr-1"></i><%= property.total_rent %> € C.C.</div>
+			</div>
+			<div class="row d-fex justify-content-around flex-wrap mb-0">
+				<div class="row d-fex justify-content-around  flex-wrap mb-0">
+					<div class="item-property p-1 m-1 mb-0 flex-wrap"> <%=property.floor%> <sup>e</sup> étage</div>
+					<div class="item-property p-1 m-1 mb-0 flex-wrap"> <%=property.room%> pièces</div>
+				</div>
+				<div class="justify-content-around flex-wrap">
+					<a href="#" class="btn btn-primary">Voir plus</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

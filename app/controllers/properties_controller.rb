@@ -14,7 +14,8 @@ class PropertiesController < ApplicationController
     @properties = Property.all
     
     # Selecting all favorites so I can find it for the favorite update method
-    @favorites = Favorite.all
+    #@favorites = Favorite.all
+    @favorite = Favorite.new
   end
 
   def show
