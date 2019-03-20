@@ -1,0 +1,61 @@
+<section class="bg-light">
+      <div class="container gallery">
+        <div class="row justify-content-center">
+          <div class="col-md-6 text-center">
+            <h2><b>Découvre</b> nos derniers appartements.</h2>
+            <p>Clique et enjoy !</p>
+          </div>
+        </div>
+        <div class="row mb-1 aos-init" data-aos="fade-left">
+          <div class="col-10">
+            <div class="owl-carousel visible align-bottom owl-loaded owl-drag" data-items="[2,2,2]" data-margin="10" data-loop="true" data-autoplay="true">
+              <div class="owl-stage-outer">
+                <div class="owl-stage" style="transform: translate3d(-4253px, 0px, 0px); transition: all 0.4s ease 0s; width: 6380px;">
+                  <div class="owl-item active" style="width: 521.665px; margin-right: 10px;">
+                    <figure class="photo equal pt-2">
+                      <% first_property_first_image = properties.first.images.first %>
+                      <img src="<%=asset_path(image_path(main_app.url_for(first_property_first_image)))%>" alt="Image">
+                    </figure>
+                  </div>
+                  <div class="owl-item active" style="width: 521.665px; margin-right: 10px;">
+                    <figure class="photo equal">
+                      <% second_property_first_image = properties.second.images.first %>
+                      <img src="<%=asset_path(image_path(main_app.url_for(second_property_first_image)))%>" alt="Image">
+                    </figure>
+                  </div>
+                  <div class="owl-item active" style="width: 521.665px; margin-right: 10px;">
+                    <figure class="photo equal pt-2">
+                      <% third_property_first_image = properties.third.images.first %>
+                      <img src="<%=asset_path(image_path(main_app.url_for(third_property_first_image)))%>" alt="Image">
+                  </div>
+                  <div class="owl-item active" style="width: 521.665px; margin-right: 10px;">
+                    <figure class="photo equal">
+                      <% fourth_property_first_image = properties.fourth.images.first %>
+                      <img src="<%=asset_path(image_path(main_app.url_for(fourth_property_first_image)))%>" alt="Image">
+                    </figure>
+                  </div>
+                </div>
+              </div>
+
+              <div class="owl-nav disabled">
+                <button type="button" role="presentation" class="owl-prev">
+                  <span aria-label="Previous">‹</span>
+                </button>
+                <button type="button" role="presentation" class="owl-next">
+                  <span aria-label="Next">›</span>
+                </button>
+              </div>
+              <div class="owl-dots disabled">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col text-center">
+            <%= link_to "Je m'inscris aux visites!", properties_path, class:'btn btn-rounded btn-primary px-5'%>
+          </div>
+        </div>
+      </div>
+    </section>

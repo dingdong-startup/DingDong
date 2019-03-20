@@ -64,3 +64,60 @@
 	background-color: #54AF5D;
 	color: #fff !important;
 }
+
+/*USER PROFILE PAGE*/
+
+.equal{
+	cursor: pointer !important;
+}
+
+/*NAVBAR*/
+
+.avatar-navbar{
+	max-width: 30px !important; 
+	display: inline-block;
+	
+}
+
+/*SIGN IN*/
+label {
+    display: block;
+    margin: 1em 0;
+}
+
+.hint{
+	display: block;
+	color: #555;
+	font-weight: 300;
+	margin: 0.5em 0;
+	font-size: 0.8em;
+	font-style: italic;
+}
+
+/*PROPERTY CARDS*/
+.item-property{
+	border: solid 1px #333;
+	border-radius: 0.25rem;
+	color: #333;
+	font-size: 0.8rem;
+	line-height: 0.8rem;
+}
+
+.circle-fav{
+	font-size : 1.5em;
+	height : 2em;
+	width:2em;
+}
+
+.card-img-container:hover{
+	cursor:pointer !important;
+}
+
+.card-header {
+	height:100%;
+}
+
+.btn-invisible{
+	background: none;
+	border: none;
+}

@@ -14,15 +14,18 @@ class PropertiesController < ApplicationController
     @properties = Property.all
     
     # Selecting all favorites so I can find it for the favorite update method
-    @favorites = Favorite.all
+    #@favorites = Favorite.all
+    @favorite = Favorite.new
   end
 
   def show
+    @properties = Property.all
     @property = Property.find(params[:id])
     @areas = Area.all
     @asked_visits = @property.visits.where(visit_status_id: 4)
     ##TODO : Fix this bug, the params for agency ID works for agencies/id/property/id, but not for propertie/id
     # @agency = Agency.find(params[:agency_id])
+    @favorite = Favorite.find_by(property_id: @property.id, tenant: current_tenant)
   end
 
   def new
@@ -89,6 +92,4 @@ class PropertiesController < ApplicationController
   def property_params
   	params.require(:property).permit(:title, :price, :surface, :description, :floor, :room, :available_date, :address, :charges, :agency_fees, :deposit, :furnished)
   end
-
-
 end
