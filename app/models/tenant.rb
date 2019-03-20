@@ -25,7 +25,7 @@ class Tenant < ApplicationRecord
   end
 
   def asked_visits
-    self.visits.where(visit_status_id: 3)
+    self.visits.where(visit_status_id: 4)
   end
 
   def successful_rent
