@@ -147,6 +147,8 @@ GEM
     icomoon-rails (0.1.0)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
+    intercom-rails (0.4.0)
+      activesupport (> 3.0)
     io-like (0.3.0)
     jaro_winkler (1.5.2)
     jbuilder (2.8.0)
@@ -392,6 +394,7 @@ DEPENDENCIES
   font-awesome-rails
   guard-rspec
   icomoon-rails
+  intercom-rails
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
