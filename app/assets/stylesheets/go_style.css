@@ -15762,7 +15762,7 @@ footer {
     display: block;
     content: "";
     width: 100%;
-    padding-top: 80%; }
+    padding-top: 60%; }
   .anchor > *, .box > *, .equal > *, .feature-square > *, .tile > *, .presentation-circle > * {
     position: absolute;
     top: 0;
