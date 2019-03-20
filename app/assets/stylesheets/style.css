@@ -70,3 +70,11 @@
 .equal{
 	cursor: pointer !important;
 }
+
+/*NAVBAR*/
+
+.avatar-navbar{
+	max-width: 30px !important; 
+	display: inline-block;
+	
+}
