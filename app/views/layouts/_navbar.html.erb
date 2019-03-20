@@ -15,8 +15,13 @@
         <ul class="navbar-nav align-items-center mr-auto">
           <li class="nav-item">
             <% if agency_signed_in? %>
-            <%= link_to "L\'agence", agency_path(current_agency), class: "nav-link text-light"%>
-            <% else %>
+            <li class="nav-item">
+              <%= link_to agency_path(current_agency), class:"nav-link" do %>
+              <span style="font-size: 20px; line-height:20px;">
+                <i class="fas fa-home text-light"></i><small class="text-light"><span style="font-size: 15px; " class="text-light">  Mes annonces</span> (<%= current_agency.properties.count%>)</small>
+              </span>
+              <% end %>
+            </li>            <% else %>
             <%= link_to "Nos annonces", properties_path, class: "nav-link text-light"%>
             <% end %>
           </li>
@@ -56,36 +61,45 @@
             </div>
           </li>
           <% end %>
-
           <% if agency_signed_in? %>
-          <li class="nav-item dropdown" style="list-style: none">
-            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= current_agency.email %>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul class="navbar-nav align-items-center mr-0">
+            <li class="nav-item">
+              <%= link_to agency_path(current_agency), class:"nav-link" do %>
+              <span style="font-size: 20px; line-height:20px;">
+                <i class="fas fa-plus-circle text-light"></i><span style="font-size: 15px; " class="text-light">  Créer une annonce</span>
+              </span>
+              <% end %>
 
-              <%= link_to('L\'agence', agency_path(current_agency), class: "dropdown-item") %>
+            </li>
+            <li class="nav-item dropdown d-flex">
+              <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_agency.email %>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-              <%= link_to "Changer de mot de passe", edit_agency_registration_path, class: "dropdown-item" %>
+                <%= link_to('L\'agence', agency_path(current_agency), class: "dropdown-item") %>
 
-              <%= link_to('Se deconnecter', destroy_agency_session_path, :method => :delete, class: "dropdown-item text-danger") %>
-            </div>
-          </li>
-          <%end %>
-        </ul>
+                <%= link_to "Changer de mot de passe", edit_agency_registration_path, class: "dropdown-item" %>
 
-        <% if !agency_signed_in? && !tenant_signed_in? %>
-        <ul class="navbar-nav align-items-center mr-0">
-          <li class="nav-item">
-            <%= link_to("Se connecter / s'inscrire", new_tenant_registration_path, class: "nav-link text-light")  %>
-          </li>
-        </ul>
-        <% end %>
+                <%= link_to('Se deconnecter', destroy_agency_session_path, :method => :delete, class: "dropdown-item text-danger") %>
+              </div>
+            </li>
+            <%end %>
+          </ul>
+
+          <% if !agency_signed_in? && !tenant_signed_in? %>
+          <ul class="navbar-nav align-items-center mr-0">
+            <li class="nav-item">
+              <%= link_to("Se connecter / s'inscrire", new_tenant_registration_path, class: "nav-link text-light")  %>
+            </li>
+          </ul>
+          <% end %>
 
 
 
 
-      </div>
-    </nav>
-  </div>
-</header>
+
+        </div>
+      </nav>
+    </div>
+  </header>
