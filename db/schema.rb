@@ -135,11 +135,11 @@ ActiveRecord::Schema.define(version: 2019_03_20_080251) do
     t.bigint "area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_archived", default: false
     t.integer "charges"
     t.integer "agency_fees"
     t.integer "deposit"
     t.boolean "furnished"
-    t.boolean "is_archived", default: false
     t.index ["agency_id"], name: "index_properties_on_agency_id"
     t.index ["agent_id"], name: "index_properties_on_agent_id"
     t.index ["area_id"], name: "index_properties_on_area_id"
