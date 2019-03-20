@@ -6,8 +6,8 @@ class AgencyMailer < ApplicationMailer
     @url  = 'http://dingdongproduction.herokuapp.com/agencies/sign_up'
     @url_password = 'http://dingdongproduction.herokuapp.com/agencies/password/edit'
     mail(to: @agency.email, subject: 'Bienvenue chez Ding Dong !', from_name: 'Ding Dong')
-    gibbon = Gibbon::Request.new(api_key: ENV["MAILCHIMP_API_KEY"])
-    gibbon.lists
+    # gibbon = Gibbon::Request.new(api_key: ENV["MAILCHIMP_API_KEY"])
+     # gibbon.lists
   end
 
   def mandrill_template(template_name, attributes)
