@@ -16,7 +16,7 @@
 
 <%= render 'layouts/property_show_carroussel', property: @property %>
 <%= render 'property_show_tenant_description', agency: @agency, property: @property%>
-<%= render 'properties_show_steps'%>
+<%= render 'properties_show_steps', property: @property%>
 <%=render 'crossed_properties', properties: @properties %>
 
 

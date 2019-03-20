@@ -26,7 +26,7 @@
                   <% else %>
 
                     <% if tenant_signed_in? %>
-                      <%= render 'layouts/modal_btn' %>
+                      <%= render 'layouts/modal_btn', property: @property %>
                       <%= render 'layouts/modal_description' %>
                     <% else %>
                       <div class="container">
