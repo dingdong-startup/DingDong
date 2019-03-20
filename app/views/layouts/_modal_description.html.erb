@@ -1,0 +1,39 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header justify-content-end">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="icon-x"></span>
+        </button>
+      </div>
+
+      <% if current_tenant.payment_status_id == 1 %>
+        <div class="modal-body text-center">
+          <h3>Juste une empreinte</h3>
+          <p>Afin de pouvoir valider ta demande de visite, nous te demandons juste une empreinte bancaire et ton numéro de téléphone.</p><br/>
+          <p>Bien entendu, nous te facturerons 99€ <span class="text-black">si et seulement si</span> tu obtiens les clés de cet appart'.</p>
+        </div>
+        <div class="modal-body text-center">
+          <label>Votre numéro</label>
+          <input class="form-control form-control-lg" type="text" placeholder="06 07 08 09 10">
+        </div>
+        <div class="modal-footer">
+            <%= render 'layouts/stripe_print' %>
+        </div>
+
+
+      <% else %>
+
+
+        <div class="modal-body text-center">
+          <h3>Valide ta visite</h3>
+          <p>Nous reviendrons vers toi sous 2 jours pour valider ta visite.</p>
+          <p>Bien entendu, nous te facturerons 99€ <span class="text-black">si et seulement si</span> tu obtiens les clés de cet appart'.</p>
+        </div>
+        <div class="modal-footer">
+            <%= render 'layouts/validate_visit' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
