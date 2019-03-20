@@ -1,3 +1,5 @@
+require 'mandrill'
+
 class AgencyMailer < ApplicationMailer
   default from: 'no-reply@ding-dong.fr'
 

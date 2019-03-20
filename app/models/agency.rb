@@ -45,8 +45,6 @@ class Agency < ApplicationRecord
     self.properties.where(is_archived: false)
   end
 
-  validates :name, :phone, :address, :email, presence: true
-
   def welcome_send
     AgencyMailer.welcome_email(self).deliver_now
   end
