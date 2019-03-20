@@ -43,8 +43,8 @@
                <%= link_to tenant_favorites_path(@tenant.id) do %>
                <div class="equal">
                 <div class="boxed">
-                  <div class="equal-header">
-                    <b class="h2"><%= @tenant.fav_properties.size%> <i class="fas fa-heart text-orange"></i></b>
+                  <div class="equal-header text-orange">
+                    <b class="h2"><%= @tenant.fav_properties.size%> <i class="fas fa-heart "></i></b>
                   </div>
                   <div class="equal-footer">
                     <span class="text-muted">apparts en favoris</span>
@@ -56,7 +56,7 @@
             <div class="col-6 col-md-4 col-lg-3">
               <%= link_to tenant_properties_path(@tenant.id) do %>
               <div class="equal">
-                <div class="boxed">
+                <div class="boxed ">
                   <div class="equal-header">
                     <b class="h2"><%= @tenant.asked_visits.size %> <i class="fas fa-calendar-check text-primary"></i></b>
                   </div>
@@ -70,8 +70,8 @@
             <div class="col-6 col-md-4 col-lg-3">
               <div class="equal">
                 <div class="boxed">
-                  <div class="equal-header">
-                    <b class="h2">0 <i class="fas fa-file-upload text-dark"></i></b>
+                  <div class="equal-header text-primary">
+                    <b class="h2">0 <i class="fas fa-file-upload"></i></b>
                   </div>
                   <div class="equal-footer">
                     <span class="text-muted">dossier complété</span>
@@ -82,8 +82,8 @@
             <div class="col-6 col-md-4 col-lg-3">
               <div class="equal">
                 <div class="boxed">
-                  <div class="equal-header">
-                    <b class="h2"><%= @tenant.successful_rent.size %> <i class="fas fa-check-circle text-success"></i></b>
+                  <div class="equal-header text-primary">
+                    <b class="h2"><%= @tenant.successful_rent.size %> <i class="fas fa-check-circle text-primary"></i></b>
                   </div>
                   <div class="equal-footer">
                     <span class="text-muted">bien loué via Din-Dong</span>
@@ -125,7 +125,7 @@
                 <div class="col">
                   <div class="form-group">
                     <label for="userDocuments">Mon dossier</label>
-                    
+                    <%= f.text_field :documents, class:'form-control' %> 
                   </div>
                 </div>
               </div>
@@ -134,7 +134,7 @@
                   <div class="form-group">
                     <label>Changer de photo de profil</label> <br>
                     <%= f.file_field :avatar, class:'inputfile' , id: 'avatar'%>
-                    <label for="avatar" class="btn btn-secondary btn-sm">Selectionner nouvelle photo</label>
+                    <label for="avatar" class="btn btn-secondary btn-sm">Selectionner une nouvelle photo</label>
                   </div>
                 </div>
               </div>
