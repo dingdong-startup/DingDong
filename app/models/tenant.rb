@@ -33,7 +33,7 @@ class Tenant < ApplicationRecord
   end
 
   def attach_avatar
-    self.avatar.attach(io: File.open('app/assets/images/avatar.jpg'), filename: 'avatar.jpg', content_type: 'image/jpg')
+    self.avatar.attach(io: File.open('app/assets/images/avatar.png'), filename: 'avatar.png', content_type: 'image/png')
   end
 
 

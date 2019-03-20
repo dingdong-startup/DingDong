@@ -53,20 +53,20 @@
               </div>
               <% end %>
             </div>
-              <div class="col-6 col-md-4 col-lg-3">
-                <%= link_to tenant_properties_path(@tenant.id) do %>
-                <div class="equal">
-                  <div class="boxed">
-                    <div class="equal-header">
-                      <b class="h2"><%= @tenant.asked_visits.size %> <i class="fas fa-calendar-check text-primary"></i></b>
-                    </div>
-                    <div class="equal-footer">
-                      <span class="text-muted">demandes de visites</span>
-                    </div>
+            <div class="col-6 col-md-4 col-lg-3">
+              <%= link_to tenant_properties_path(@tenant.id) do %>
+              <div class="equal">
+                <div class="boxed">
+                  <div class="equal-header">
+                    <b class="h2"><%= @tenant.asked_visits.size %> <i class="fas fa-calendar-check text-primary"></i></b>
+                  </div>
+                  <div class="equal-footer">
+                    <span class="text-muted">demandes de visites</span>
                   </div>
                 </div>
-                <% end%>
               </div>
+              <% end%>
+            </div>
             <div class="col-6 col-md-4 col-lg-3">
               <div class="equal">
                 <div class="boxed">
@@ -124,14 +124,26 @@
               <div class="form-row">
                 <div class="col">
                   <div class="form-group">
-                    <label for="userMail">Mon dossier</label>
+                    <label for="userDocuments">Mon dossier</label>
                     
                   </div>
                 </div>
               </div>
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Changer de photo de profil</label> <br>
+                    <%= f.file_field :avatar, class:'inputfile' , id: 'avatar'%>
+                    <label for="avatar" class="btn btn-secondary btn-sm">Selectionner nouvelle photo</label>
+                  </div>
+                </div>
+              </div>
+
+
+
               <div class="form-row mt-1 align-items-center">
                 <div class="col-3">
-                  <%= submit_tag("Enregistrer", id: "button", class: "btn btn-secondary", name: "submit") %>
+                  <%= submit_tag("Enregistrer", id: "button", class: "btn btn-primary", name: "submit") %>
                 </div>
               </div>
               <% end %>
