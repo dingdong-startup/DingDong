@@ -14,4 +14,18 @@ class Tenant < ApplicationRecord
   def default_payment_status
     self.payment_status_id ||= 1
   end
+
+  def fav_properties
+    self.visits.where(visit_status_id: 2)
+  end
+
+  def asked_visits
+    self.visits.where(visit_status_id: 3)
+  end
+
+  def successful_rent
+    self.visits.where(visit_status_id: 6)
+  end
+
+
 end
