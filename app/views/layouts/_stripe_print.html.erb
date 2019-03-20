@@ -1,19 +1,29 @@
-<%= form_tag  property_visits_path(@property.id) do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
-  </article>
 
-<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-              data-description="Votre Empreinte Bancaire"
-              data-locale="auto">
-    </script>
-<script>
-    document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
-</script>
-<button type="submit" class="btn btn-blue">Demander une visite</button>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <%= form_tag  property_visits_path(@property.id) do %>
+        <article>
+          <% if flash[:error].present? %>
+            <div id="error_explanation">
+              <p><%= flash[:error] %></p>
+            </div>
+          <% end %>
+        </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                    data-description="Ton Empreinte Bancaire"
+                    data-locale="auto"
+                    data-name="Enregistrer"
+                    data-panel-label="Enregistrer">
+        </script>
+      <button type="submit" class="btn btn-orange">Demander une visite</button>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+      <script>
+          document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+      </script>
