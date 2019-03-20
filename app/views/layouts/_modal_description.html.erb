@@ -1,4 +1,4 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="PropertyShow" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header justify-content-end">
@@ -6,7 +6,6 @@
           <span aria-hidden="true" class="icon-x"></span>
         </button>
       </div>
-
       <% if current_tenant.payment_status_id == 1 %>
         <div class="modal-body text-center">
           <h3>Juste une empreinte</h3>
@@ -20,7 +19,6 @@
         <div class="modal-footer">
             <%= render 'layouts/stripe_print' %>
         </div>
-
 
       <% else %>
 
