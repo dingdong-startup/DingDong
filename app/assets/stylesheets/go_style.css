@@ -14412,7 +14412,7 @@ blockquote p {
   h4, .h4 {
     font-size: 1.3125rem; }
   h5, .h5 {
-    font-size: 1.5rem; } }
+    font-size: 1.175rem; } }
 
 header {
   -webkit-user-select: none;
@@ -15762,7 +15762,7 @@ footer {
     display: block;
     content: "";
     width: 100%;
-    padding-top: 80%; }
+    padding-top: 60%; }
   .anchor > *, .box > *, .equal > *, .feature-square > *, .tile > *, .presentation-circle > * {
     position: absolute;
     top: 0;
@@ -16150,7 +16150,7 @@ footer {
     flex-grow: 1;
     max-width: 100%;
     margin: 0;
-    /*font-size: 1rem;*/
+    font-size: 1rem;
     font-family: "Rubik", sans-serif;
     font-weight: 400;
     vertical-align: middle; }
