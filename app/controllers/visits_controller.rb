@@ -23,7 +23,9 @@ class VisitsController < ApplicationController
       current_tenant.update(stripe_customer_id: customer.id, payment_status_id: 2)
       flash[:success] = "Votre carte a bien été enregistrée !"
       # TODO : Make model's method, it's not DRY at all
-      visit.property.favorites.find_by(tenant: current_tenant).update_attributes(is_liked: false)
+      if visit.property.favorites.find_by(tenant: current_tenant)
+        visit.property.favorites.find_by(tenant: current_tenant).update_attributes(is_liked: false)
+      end
       # The visit status is updated to 4 : Visit Accepted
       visit.update(visit_status_id: 4)
       redirect_back(fallback_location: properties_path)
