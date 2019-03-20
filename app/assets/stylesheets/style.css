@@ -60,3 +60,13 @@
 	color: #fff !important;
 }
 
+.alert-notice{
+	background-color: #54AF5D;
+	color: #fff !important;
+}
+
+/*USER PROFILE PAGE*/
+
+.equal{
+	cursor: pointer !important;
+}

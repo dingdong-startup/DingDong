@@ -5,7 +5,6 @@ class TenantsController < ApplicationController
   	@fav_properties = Property.all.limit(14)
   	#To change to all flats where the user asked for a visit
   	@visit_properties = Property.all.limit(3)
-
   end
 
   def edit
@@ -31,7 +30,7 @@ class TenantsController < ApplicationController
   private
 
   def tenant_params
-  	params.require(:tenant).permit(:first_name, :last_name, :email)
+  	params.require(:tenant).permit(:first_name, :last_name, :email, :avatar, :documents)
   end
 
 end

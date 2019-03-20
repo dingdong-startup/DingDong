@@ -14,7 +14,6 @@ class ChargesController < ApplicationController
     })
     if charge.save 
       flash[:success] = "L'utilisateur a bien été débitée !"
-      @tenant.update_attributes(payment_status_id: 3)
       redirect_to root_path
     else
       flash[:danger] = "Erreur, réessayer"

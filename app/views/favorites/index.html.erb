@@ -1,0 +1,69 @@
+<%= render 'layouts/navbar' %>
+
+<div class="tab-content m-3" >
+  <div class="container" style="margin-top:150px;">
+  	<%rowcount = 0%>
+        <h2>Vos favoris</h2>
+          <% @favorites.each do |favorite| %>
+            <div class="row mt-3">
+              <div class="col-8">
+                <div class="boxed p-2 bordered scaling">
+                  <div class="row align-items-center justify-content-between">
+                    <div class="col-10">
+                      <%= link_to property_path(favorite.property.id) do %>
+                      <div class="media align-items-center">           			           
+                        <img src="<%=asset_path(image_path(main_app.url_for(favorite.property.images.first)))%>" alt="Avatar" class="avatar avatar-lg mr-3">
+                          <div class="media-body">
+                            <h5 class="mb-0"><%=favorite.property.title%></h5>
+                            <br>
+                            <container>
+                              <div class="row">
+                                <div class="col-4 text-muted"><i class="fas fa-arrows-alt-h"></i> <%=favorite.property.surface%> m2  </div>
+                                <div class=" col-4 text-muted"><i class="fas fa-coins"></i> <%=favorite.property.price%> €  </div>
+                                <div class="col-4 text-muted"><i class="fas fa-map-marker-alt"></i> <%=favorite.property.area.zipcode%></div>
+                              </div>
+                            </container>
+                          </div>
+                          <div class="ml-5">
+                          <%= form_tag property_favorite_path(favorite.property.id, favorite.id), method: 'put' do %>
+                            <%= hidden_field_tag :property_id, favorite.property.id %>
+                            <%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-blue rounded btn-sm icon", remote: true) do %>
+                              <i class="fas fa-heart text-red"></i>
+                            <% end %>
+                          <% end %>
+                          </div>
+                      </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% if favorite.tenant.payment_status_id == 2 %>
+              <div class="col-4  pt-2 align-items-center">
+                <%= link_to 'Demander une visite', property_visits_path(favorite.property.id), class: 'btn btn-blue', method: 'create' %>
+                <p><br>Le gestionnaire du bien va revenir vers vous afin de convenir d'un rendez-vous</p>
+              </div>
+              <% else %>
+              <div class="col-4  pt-2 align-items-center">
+                  <%= form_tag  property_visits_path(favorite.property.id) do %>
+                  <article>
+                    <% if flash[:error].present? %>
+                      <div id="error_explanation">
+                        <p><%= flash[:error] %></p>
+                      </div>
+                    <% end %>
+                  </article>
+                  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                            data-description="Votre Empreinte Bancaire"
+                            data-locale="auto">
+                  </script>
+                <% end %>
+                <p><br>Le gestionnaire du bien va revenir vers vous afin de convenir d'un rendez-vous</p>
+              </div>
+              <%end%>
+            </div>
+          <% end %>
+  </div>
+</div>
+<%= render 'layouts/footer' %>
