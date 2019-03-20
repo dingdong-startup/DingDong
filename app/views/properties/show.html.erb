@@ -15,6 +15,10 @@
 <%= render 'layouts/property_show_photo_description' %>
 <%= render 'layouts/property_show_carroussel' %>
 
+    <% if @property.visits.find_by(tenant: current_tenant, property_id: params[:id], visit_status_id: 4) %>
+       <p> Vous avez déjà demandé la visite </p>
+    <% else %>
+
 <% if tenant_signed_in? %>
 <%= render 'layouts/modal_btn' %>
 <%= render 'layouts/modal_description' %>
@@ -27,6 +31,7 @@
   </div>
 </div>
 <% end %>
+<% end %> 
 
 <%= render 'layouts/footer' %>
 
