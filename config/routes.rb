@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :properties, only: [:index, :show] do 
     resources :favorites, only: [:create, :update]
   end
+  
   resources :tenants do
     resources :favorites, only: [:index]
   end

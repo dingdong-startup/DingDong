@@ -11,7 +11,30 @@ class Tenant < ApplicationRecord
   has_many :favorites
   has_many :properties, through: :favorites
 
+  has_one_attached :avatar
+
+
+  before_create :attach_avatar
+
   def default_payment_status
     self.payment_status_id ||= 1
   end
+
+  def fav_properties
+    self.favorites.where(is_liked: true)
+  end
+
+  def asked_visits
+    self.visits.where(visit_status_id: 3)
+  end
+
+  def successful_rent
+    self.visits.where(visit_status_id: 6)
+  end
+
+  def attach_avatar
+    self.avatar.attach(io: File.open('app/assets/images/avatar.png'), filename: 'avatar.png', content_type: 'image/png')
+  end
+
+
 end
