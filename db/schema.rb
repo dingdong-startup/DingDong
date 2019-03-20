@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_19_081852) do
+ActiveRecord::Schema.define(version: 2019_03_20_080251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,11 +135,11 @@ ActiveRecord::Schema.define(version: 2019_03_19_081852) do
     t.bigint "area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_archived", default: false
     t.integer "charges"
     t.integer "agency_fees"
     t.integer "deposit"
     t.boolean "furnished"
-    t.boolean "is_archived", default: false
     t.index ["agency_id"], name: "index_properties_on_agency_id"
     t.index ["agent_id"], name: "index_properties_on_agent_id"
     t.index ["area_id"], name: "index_properties_on_area_id"
@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_081852) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "payment_status_id"
+    t.text "documents"
     t.index ["email"], name: "index_tenants_on_email", unique: true
     t.index ["payment_status_id"], name: "index_tenants_on_payment_status_id"
     t.index ["reset_password_token"], name: "index_tenants_on_reset_password_token", unique: true

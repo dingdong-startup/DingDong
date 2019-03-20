@@ -26,25 +26,31 @@
               <li class="nav-item">
                 <%= link_to tenant_favorites_path(current_tenant.id), class:"nav-link" do %>
                   <span style="font-size: 20px; line-height:20px;">
-                    <i class="fas fa-heart text-light"></i><small class="text-light"> (<%= current_tenant.favorites.where(is_liked:true).count%>)</small>
+                  <% if current_tenant.fav_properties.count > 0 %>
+                    <i class="fas fa-heart text-orange"></i><small class="text-light"> (<%= current_tenant.fav_properties.count%>)</small>
+                    <% else %>
+                    <i class="fas fa-heart text-light"></i><small class="text-light"> (<%= current_tenant.fav_properties.count%>)</small>
+                  <% end %>
                   </span>
                 <% end %>
               </li>
                 <li class="nav-item">
                 <%= link_to tenant_properties_path(current_tenant.id), class:"nav-link" do %>
                   <span style="font-size: 20px; line-height:20px;">
-                    <i class="fas fa-shopping-bag text-light"></i><small class="text-light"> (<%= current_tenant.visits.where(visit_status_id:4).count%>)</small>
+                    <i class="fas fa-shopping-bag text-light"></i><small class="text-light"> (<%= current_tenant.asked_visits.count%>)</small>
                   </span>
                 <% end %>
               </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown d-flex">
                   <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <%= current_tenant.email %>
+                    <%= current_tenant.first_name %>
+                    <img class=" avatar avatar-xl rounded avatar-navbar" src="<%=asset_path(image_path(main_app.url_for(current_tenant.avatar)))%>"" />
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <%= link_to "Mon profil", tenant_path(current_tenant.id), class: "dropdown-item" %>
-                      <%= link_to "Mes biens", tenant_properties_path(current_tenant.id), class: "dropdown-item" %>
-                      <%= link_to('Logout', destroy_agency_session_path, :method => :delete, class: "dropdown-item") %>
+                      <%= link_to tenant_favorites_path(current_tenant.id), class: "dropdown-item" do %><i class="fas fa-heart text-orange"></i>&nbsp;Mes favoris <% end%>
+                      <%= link_to tenant_properties_path(current_tenant.id), class: "dropdown-item" do %><i class="fas fa-calendar-check text-primary"></i>&nbsp;Mes demandes <% end%>
+                      <%= link_to "Mon profil", tenant_path(current_tenant.id), class: "dropdown-item text-primary" %>
+                      <%= link_to('Se déconnecter', destroy_agency_session_path, :method => :delete, class: "dropdown-item text-danger") %>
                   </div>
                 </li>
               <% end %>
