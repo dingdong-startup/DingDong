@@ -2,8 +2,31 @@
     <i class="fas fa-calendar-check mr-1"></i>Demander une visite
 </button>
 
+<% if tenant_signed_in? %>
+  <% if @favorite.nil? %>
+  <%= form_tag property_favorites_path(property.id), method: 'post' do %>
+    <%= hidden_field_tag :property_id, property.id %>
+    <%= button_tag(type: "submit", class: "btn btn btn-outline-orange mb-1", remote: true) do %>
+      <div><i class="far fa-heart mr-1"></i>Enregistrer</div> 
+    <% end %>
+  <% end %>
 
-<%=link_to root_path do %>
-  <div class="btn btn btn-outline-orange mb-1"><i class="fas fa-heart mr-1"></i>Enregistrer</div> 
-<%end%>
+  <% elsif @favorite.is_liked == true %>
 
+  <%= form_tag property_favorite_path(property.id, @favorite.id), method: 'put' do %>
+    <%= hidden_field_tag :property_id, property.id %>
+    <%= button_tag(type: "submit", class: "btn btn btn-orange mb-1", remote: true) do %>
+      <div><i class="fas fa-heart mr-1"></i>Enregistrer</div> 
+    <% end %>
+  <% end %>
+
+  <% else %>
+
+    <%= form_tag property_favorite_path(property.id, @favorite.id), method: 'put' do %>
+      <%= hidden_field_tag :property_id, property.id %>
+      <%= button_tag(type: "submit", class: "btn btn btn-outline-orange mb-1", remote: true) do %>
+        <div><i class="far fa-heart mr-1"></i>Enregistrer</div> 
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
