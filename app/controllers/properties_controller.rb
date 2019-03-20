@@ -18,6 +18,7 @@ class PropertiesController < ApplicationController
   end
 
   def show
+    @properties = Property.all
     @property = Property.find(params[:id])
     @areas = Area.all
     @asked_visits = @property.visits.where(visit_status_id: 4)

@@ -12,8 +12,11 @@
 <% else %>
 
 <%= render 'layouts/navbar' %>
-<%= render 'layouts/property_show_photo_description' %>
-<%= render 'layouts/property_show_carroussel' %>
+<%= render 'property_show_tenant_banner', property: @property, areas: @areas %>
+<%= render 'layouts/property_show_carroussel', property: @property %>
+<%= render 'property_show_tenant_description', agency: @agency, property: @property%>
+<%= render 'layouts/steps'%>
+<%=render 'crossed_properties', properties: @properties %>
 
     <% if @property.visits.find_by(tenant: current_tenant, property_id: params[:id], visit_status_id: 4) %>
        <p> Vous avez déjà demandé la visite </p>

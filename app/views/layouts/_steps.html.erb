@@ -39,12 +39,25 @@
 	              </div>
 	              <div class="accordion-content" data-content="" style="max-height: 0px; overflow: hidden;">
 	                <div class="accordion-content-wrapper">
-	                  <p>Tu reçois une réponse dans la semaine et à toi l'appart <i class="ml-1 fas fa-key text-orange"></i></p>
+	                  <p>Tu reçois une réponse dans la semaine et à toi l'appart <i class="ml-1 fas fa-key text-orange"></i>
+	                  </p>
 	                </div>
 	              </div>
 	            </div>
 	          </div>
-
 		</div>
+		<div class="row justify-content-around mt-8">
+           	<div class="col d-flex justify-content-end">
+				<%=link_to root_path do %>
+		            <div class="btn btn btn-orange mb-1"><i class="fas fa-heart mr-1"></i>Enregistrer</div> 
+		        <%end%>
+	        </div>
+			<div class="col d-flex justify-content-start">
+	        <%=link_to root_path do %>
+	            <div class="btn btn btn-blue"><i class="fas fa-calendar-check mr-1"></i>Visiter</div>
+	        <%end%>
+	        </div>
+
+	      </div>
 	</div>
 </section>

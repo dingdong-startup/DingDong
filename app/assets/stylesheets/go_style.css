@@ -16180,7 +16180,7 @@ footer {
 
 .text-white .accordion-group .accordion {
   border: 0;
-  background-color: rgba(255, 255, 255, 0.05); }
+  background-color: rgba(255, 255, 255, 0.05);}
   .text-white .accordion-group .accordion:not(:first-child) {
     margin-top: 2px; }
   .text-white .accordion-group .accordion:hover {
@@ -16236,12 +16236,13 @@ footer {
   color: #000; }
 
 .accordion-group-steps {
-  overflow: visible; }
+  overflow: visible; 
+    margin-left: 20px; }
   .accordion-group-steps .accordion {
     padding-left: 3.75rem;
     counter-increment: accordion;
     background: transparent;
-    border: 0; }
+    border: 0;}
     .accordion-group-steps .accordion.open .accordion-control::before {
       background: #14439C;
       border-color: #14439C;
@@ -17489,15 +17490,17 @@ footer {
     .show > .btn-transparent-black.dropdown-toggle:focus {
       box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5); }
 
+
+
 .btn-outline-blue {
-  color: #0030AE;
+  color: #14439C;
   background-color: transparent;
   background-image: none;
-  border-color: #0030AE; }
+  border-color: #14439C; }
   .btn-outline-blue:hover {
     color: #fff;
-    background-color: #0030AE;
-    border-color: #0030AE; }
+    background-color: #14439C;
+    border-color: #14439C; }
   .btn-outline-blue:focus, .btn-outline-blue.focus {
     box-shadow: 0 0 0 0 rgba(0, 48, 174, 0.5); }
   .btn-outline-blue.disabled, .btn-outline-blue:disabled {
@@ -17610,7 +17613,7 @@ footer {
   background-image: none;
   border-color: #FF7F50; }
   .btn-outline-orange:hover {
-    color: #151515;
+    color: #fff;
     background-color: #FF7F50;
     border-color: #FF7F50; }
   .btn-outline-orange:focus, .btn-outline-orange.focus {
