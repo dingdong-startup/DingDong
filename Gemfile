@@ -31,6 +31,7 @@ gem 'devise-i18n'
 gem 'rails-i18n', '~> 5.1'
 gem 'gibbon',  '~>1.2.0'
 gem 'mandrill-api', '~> 1.0', '>= 1.0.53'
+gem 'mandrill-rails'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
