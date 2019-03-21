@@ -21,10 +21,12 @@
 	<%= yield %>
 
 	<% if tenant_signed_in? %>
-	<%= render 'layouts/navbar_footer_tenant_signin' %>
+		<%= render 'layouts/navbar_footer_tenant_signin' %>
 	<% else %>
-	<%= render 'layouts/navbar_footer_signout' %>
+		<%= render 'layouts/navbar_footer_signout' %>
 	<%end%>
+
+
 	<script>
 		$('.alert').delay(2000).fadeOut();
 	</script>

@@ -143,6 +143,14 @@ label {
 	.navbar-footer {
 		display:none;
 	}
+
+	#footer{
+		display: none !important;
+	}
+
+	.item-label-ft{
+		display: none !important;
+	}
 }
 
 @media screen and (max-width: 1200px) {
@@ -154,6 +162,16 @@ label {
 	.navbar-footer {
 		display:none;
 	}
+	header{
+		display:none;
+	}
+	#footer{
+		display: flex !important;
+	}
+
+	.item-label-ft{
+		display: inline !important;
+	}
 }
 
 @media screen and (max-width: 768px) {
@@ -162,8 +180,20 @@ label {
 		height: 55vw;
 	}
 
+	header{
+		display:none;
+	}
+
 	.navbar-header {
 		display:none;
+	}
+
+	#footer{
+		display: flex !important;
+	}
+
+	.item-label-ft{
+		display: none !important;
 	}
 }
 
@@ -177,7 +207,7 @@ html {
 .navbar-footer{
 	color: #fff;
 	background-color: #14439C;
-	font-size: 2em;
+	font-size: 1.5em;
 	margin:auto;
 	position: fixed;
 	left: 0;
@@ -199,4 +229,10 @@ html {
 .item-navbar{
 	font-size: 1rem;
 	color:#fff !important;
+}
+
+.item-label-ft{
+	margin-left : 1em;
+	font-size: 0.6em !important;
+	color: #fff !important;
 }
