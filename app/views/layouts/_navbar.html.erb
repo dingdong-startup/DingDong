@@ -36,9 +36,9 @@
             <%= link_to tenant_favorites_path(current_tenant.id), class:"nav-link" do %>
             <span style="font-size: 20px; line-height:20px;">
               <% if current_tenant.fav_properties.count > 0 %>
-              <i class="fas fa-heart text-orange"></i><span style="font-size: 15px;" class="text-light"> Favoris</span><small class="text-light"> (<%= current_tenant.fav_properties.count%>)</small>
+              <i class="fas fa-heart text-orange"></i><span style="font-size: 15px;" class="text-light"> Favoris</span><small class="text-light" id ="fav_navbar"> (<%= current_tenant.fav_properties.count%>)</small>
               <% else %>
-              <i class="fas fa-heart text-light"></i><span style="font-size: 15px;" class="text-light"> Favoris</span><small class="text-light"> (<%= current_tenant.fav_properties.count%>)</small>
+              <i class="fas fa-heart text-light"></i><span style="font-size: 15px;" class="text-light"> Favoris</span><small class="text-light" id ="fav_navbar"> (<%= current_tenant.fav_properties.count%>)</small>
               <% end %>
             </span>
             <% end %>
