@@ -1,6 +1,6 @@
 <section class="p-0 bg-light">
   <% first_property = @property.images.first %>
-      <div class="image image-cover" style="background-image:url(<%=asset_path(image_path(main_app.url_for(first_property)))%>); opacity:1; filter: blur(10px);"
+      <div class="image" style="background-image:url(<%=asset_path(image_path(main_app.url_for(first_property)))%>); opacity:1; filter: blur(10px);"
       data-top-top="transform: translateY(0px);" 
       data-top-bottom="transform: translateY(-200px);"></div>
       <div class="container pl-4 pr-4">
