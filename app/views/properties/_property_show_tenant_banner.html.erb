@@ -1,24 +1,29 @@
 <section class="p-0 bg-light">
   <% first_property = @property.images.first %>
-      <div class="image image-overlay image-cover" style="background-image:url(<%=asset_path(image_path(main_app.url_for(first_property)))%>)"
+      <div class="image" style="background-image:url(<%=asset_path(image_path(main_app.url_for(first_property)))%>); opacity:1; filter: blur(10px);"
       data-top-top="transform: translateY(0px);" 
       data-top-bottom="transform: translateY(-200px);"></div>
-      <div class="container">
-        <div class="row justify-content-center align-items-end vh-40 mb-5">
-          <div class="col col-md-10 col-lg-10">
-            <div class="row align-items-center">
-              <div class="col-md-10">
-                <h2 class=""><%=property.title%></h2>
-                <h5 class="text-muted">
-                	<span class="col mr-4"><i class="fas fa-coins mr-1 text-primary"></i> <%=property.total_rent%> € CC
-                	</span>
-                	<span class="col mr-4"><i class="fas fa-arrows-alt-h mr-1 text-primary"></i> <%=property.surface%> m<sup>2</sup>
-                	</span>
-                	<span class="col mr-4"><i class="fas fa-map-marker-alt mr-1 text-primary"></i> <%=property.area.zipcode%>
-                	</span>
-            	</h5>
-              </div>
-              <div class="col-2">
+      <div class="container pl-4 pr-4">
+          <div class="row">
+            <div class="col-12 p-0">
+              <h2 class="mt-10"><%=property.title%></h2>
+            </div>
+          </div>
+
+
+
+
+          <div class="row">
+            <div class="col-lg-6 col-sm-12 p-0">
+                	<h5 class=""><i class="fas fa-coins mr-1 text-primary"></i> <%=property.total_rent%> € CC
+                	</h5>
+                	<h5 class=""><i class="fas fa-arrows-alt-h mr-1 text-primary"></i> <%=property.surface%> m<sup>2</sup>
+                	</h5>
+                	<h5 class=""><i class="fas fa-map-marker-alt mr-1 text-primary"></i> <%=property.area.zipcode%>
+                	</h5>
+            </div>
+
+            <div class="col-lg-6 col-sm-12 p-0">
            				
 
                   <% if @property.visits.find_by(tenant: current_tenant, property_id: params[:id], visit_status_id: 4) %>
@@ -42,10 +47,10 @@
 
                                      
 
-              </div>
-
             </div>
           </div>
+
+
 
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px;" role="document">
@@ -62,6 +67,14 @@
               </div>
             </div>
           </div>
-        </div>
+
       </div>
 </section>
+
+
+
+
+
+
+
+
