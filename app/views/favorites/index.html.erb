@@ -43,22 +43,38 @@
                       </div>
                     </div>
                     <% if favorite.tenant.payment_status_id == 2 %>
-                      <div class="col-4  pt-2 align-items-center">
-                        <div class="tab-pane show active" id="component-1-1" role="tabpanel" aria-labelledby="component-1-1">
-                          <div class="component-example">
-                            <div class="container">
-                              <div class="row">
-                                <div class="col text-center">
-                                  <button type="button" class="btn btn-orange" data-toggle="modal" data-target="#exampleModal">
-                                    Demander une visite
-                                  </button>
+                      <% if favorite.tenant.visits.find_by(property_id: favorite.property.id, tenant_id: favorite.tenant.id).nil? %>
+                        <div class="col-4  pt-2 align-items-center">
+                          <div class="tab-pane show active" id="component-1-1" role="tabpanel" aria-labelledby="component-1-1">
+                            <div class="component-example">
+                              <div class="container">
+                                <div class="row">
+                                  <div class="col text-center">
+                                    <button type="button" class="btn btn-orange" data-toggle="modal" data-target="#modalVisit-<%=favorite.id%>">
+                                      Demander une visite
+                                    </button>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <% else %>
+                        <div class="col-4  pt-2 align-items-center">
+                          <div class="tab-pane show active" id="component-1-1" role="tabpanel" aria-labelledby="component-1-1">
+                            <div class="component-example">
+                              <div class="container">
+                                <div class="row">
+                                  <div class="col text-center">
+                                    <h5>Visite demandée ! <i class="fas fa-check text-orange"></i></h5>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      <% end %>
+                      <div class="modal fade" id="modalVisit-<%=favorite.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                             <div class="modal-header justify-content-end">
@@ -84,23 +100,23 @@
                         </div>
                       </div>
                     <% else %>
-                      <div class="col-4  pt-2 align-items-center">
-                        <div class="tab-pane show active" id="component-1-1" role="tabpanel" aria-labelledby="component-1-1">
-                          <div class="component-example">
-                            <div class="container">
-                              <div class="row">
-                                <div class="col text-center">
-                                  <button type="button" class="btn btn-orange" data-toggle="modal" data-target="#exampleModal">
-                                    Demander une visite
-                                  </button>
+                        <div class="col-4  pt-2 align-items-center">
+                          <div class="tab-pane show active" id="component-1-1" role="tabpanel" aria-labelledby="component-1-1">
+                            <div class="component-example">
+                              <div class="container">
+                                <div class="row">
+                                  <div class="col text-center">
+                                    <button type="button" class="btn btn-orange" data-toggle="modal" data-target="#modalStripe-<%=favorite.id%>">
+                                      Demander une visite
+                                    </button>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
       
-                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="modalStripe-<%=favorite.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
                             <div class="modal-header justify-content-end">
