@@ -44,6 +44,9 @@
 	z-index: -1;
 }
 
+
+/*ALERTS*/
+
 .custo-alert{
 	z-index: 1000;
 	position: absolute;
@@ -61,7 +64,17 @@
 }
 
 .alert-notice{
-	background-color: #54AF5D;
+	background-color: #57b894;
+	color: #fff !important;
+}
+
+.alert-success{
+	background-color: #57b894;
+	color: #fff !important;
+}
+
+.alert-{
+	background-color: #57b894;
 	color: #fff !important;
 }
 
@@ -127,18 +140,20 @@ label {
 		height: 15vw;
 	}
 
-/*@media screen and(min-width: 1px) and (max-width:400px){
-	.card-img-top{
+
+@media screen and (max-width: 400px) {
+  .card-img-top{
 		height: 55vw;
 	}
-},
+}
 
-@media screen and (min-width: 401px) and (max-width:10000px){
-	.card-img-top{
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 2000px) {
+  .card-img-top{
 		object-fit: cover;
 		height: 15vw;
 	}
-}*/
+}
 
 /*MAIN PROPERTY*/
 .main-property{	
