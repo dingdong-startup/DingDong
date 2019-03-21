@@ -51,7 +51,7 @@
         <% else %>
 		
 			<div class="row justify-content-around mt-8">
-	           	<div class="col d-flex justify-content-end">
+	           	<div class="col-md col-sm-12 d-flex justify-content-center">
 								<% if tenant_signed_in? %>
 									<% if @favorite.nil? %>
 									<%= form_tag property_favorites_path(property.id), method: 'post' do %>
@@ -81,7 +81,7 @@
 									<% end %>
 								<% end %>
 		        </div>
-				<div class="col d-flex justify-content-start">
+				<div class="col d-flex justify-content-center">
 				        <button type="button" class="btn btn-blue mb-1" data-toggle="modal" data-target="#PropertyShow">
 			    		<i class="fas fa-calendar-check mr-1"></i>Demander une visite
 					</button>
