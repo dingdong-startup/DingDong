@@ -149,3 +149,8 @@ label {
 height: 20vw;
 object-fit: cover;	
 }
+
+/* Want to remove blue borders when button is clicked */
+.btn-invisible {
+	outline: none !important;
+}
