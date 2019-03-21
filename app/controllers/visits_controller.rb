@@ -21,7 +21,7 @@ class VisitsController < ApplicationController
       # updating payment status to 2
       # unfav if fav exists
       if customer.save
-        current_tenant.update(stripe_customer_id: customer.id, payment_status_id: 2)
+        current_tenant.update(stripe_customer_id: customer.id, payment_status_id: 2, phone_number: params[:tenant][:last_name])
         @visit.update(visit_status_id: 4)
         flash[:success] = "Carte bien enregistrée, demande de visite envoyée !"
         redirect_back(fallback_location: properties_path)
