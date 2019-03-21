@@ -127,7 +127,7 @@ label {
 		height: 15vw;
 	}
 
-@media screen and(min-width: 1px) and (max-width:400px){
+/*@media screen and(min-width: 1px) and (max-width:400px){
 	.card-img-top{
 		height: 55vw;
 	}
@@ -138,7 +138,7 @@ label {
 		object-fit: cover;
 		height: 15vw;
 	}
-}
+}*/
 
 /*MAIN PROPERTY*/
 .main-property{	
