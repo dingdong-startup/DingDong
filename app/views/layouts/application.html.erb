@@ -1,21 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>DingDong</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+	<title>DingDong</title>
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
-  </head>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
 
-  <body>
+	<meta name="viewport" content="width=device-width", initial-scale=1.0>	
+</head>
 
-     <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>" role="alert m-0" style="margin-top:78px"><%= value %></div>
-      <% end %>
+<body>
 
-    <%= yield %>
-  </body>
+	<% flash.each do |key, value| %>
+	<div class="alert alert-<%= key %> custo-alert" role="alert m-0" ><%= value %></div>
+	<% end %>
+
+	<%= yield %>
+
+	<% if tenant_signed_in? %>
+		<%= render 'layouts/navbar_footer_tenant_signin' %>
+	<% else %>
+		<%= render 'layouts/navbar_footer_signout' %>
+	<%end%>
+
+
+	<script>
+		$('.alert').delay(2000).fadeOut();
+	</script>
+
+
+</body>
 </html>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_14_134440) do
+ActiveRecord::Schema.define(version: 2019_03_20_080251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,16 @@ ActiveRecord::Schema.define(version: 2019_03_14_134440) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.boolean "is_liked"
+    t.bigint "property_id"
+    t.bigint "tenant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_favorites_on_property_id"
+    t.index ["tenant_id"], name: "index_favorites_on_tenant_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -125,6 +135,11 @@ ActiveRecord::Schema.define(version: 2019_03_14_134440) do
     t.bigint "area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "charges"
+    t.integer "agency_fees"
+    t.integer "deposit"
+    t.boolean "furnished"
+    t.boolean "is_archived", default: false
     t.index ["agency_id"], name: "index_properties_on_agency_id"
     t.index ["agent_id"], name: "index_properties_on_agent_id"
     t.index ["area_id"], name: "index_properties_on_area_id"
@@ -142,6 +157,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_134440) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "payment_status_id"
+    t.text "documents"
     t.index ["email"], name: "index_tenants_on_email", unique: true
     t.index ["payment_status_id"], name: "index_tenants_on_payment_status_id"
     t.index ["reset_password_token"], name: "index_tenants_on_reset_password_token", unique: true

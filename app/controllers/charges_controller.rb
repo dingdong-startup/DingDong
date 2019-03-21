@@ -5,7 +5,6 @@ class ChargesController < ApplicationController
 
   def create
     stripe_customer_id = params[:stripe_customer_id]
-
     @tenant = Tenant.find(params[:tenant_id])
 
     charge = Stripe::Charge.create({
@@ -15,7 +14,6 @@ class ChargesController < ApplicationController
     })
     if charge.save 
       flash[:success] = "L'utilisateur a bien été débitée !"
-      @tenant.update_attributes(payment_status_id: 3)
       redirect_to root_path
     else
       flash[:danger] = "Erreur, réessayer"

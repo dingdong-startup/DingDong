@@ -1,0 +1,66 @@
+<section class="bg-light">
+      <div class="container gallery">
+        <div class="row justify-content-center">
+          <div class="col-md-6 text-center">
+            <h2><b>D'autres apparts</b> sélectionnés pour toi</h2>
+            <p>Clique et enjoy !</p>
+          </div>
+        </div>
+        <div class="row mb-1 aos-init" data-aos="fade-left">
+          <div class="col-10">
+            <div class="owl-carousel visible align-bottom owl-loaded owl-drag" data-items="[2,2,2]" data-margin="10" data-loop="true" data-autoplay="true">
+              <div class="owl-stage-outer">
+                <div class="owl-stage" style="transform: translate3d(-4253px, 0px, 0px); transition: all 0.4s ease 0s; width: 6380px;">
+                  <div class="owl-item active" style="width: 521.665px; margin-right: 10px;">
+                    <% first_property = properties.last(20)[rand(0..19)]%>
+                    <% first_property_first_image = first_property.images.first %>
+                    <%=link_to property_path(first_property) do %>
+                      <figure class="photo equal pt-2">
+                          <img src="<%=asset_path(image_path(main_app.url_for(first_property_first_image)))%>" alt="Image">
+                      </figure>
+                    <%end%>
+                  </div>
+                  <div class="owl-item active pb-2" style="width: 521.665px; margin-right: 10px;">
+                    <% second_property = properties.last(20)[rand(0..19)]%>
+                    <% second_property_first_image = second_property.images.first %>
+                    <%=link_to property_path(second_property) do %>
+                      <figure class="photo equal pt-2">
+                          <img src="<%=asset_path(image_path(main_app.url_for(second_property_first_image)))%>" alt="Image">
+                      </figure>
+                    <%end%>
+                  </div>
+                  <div class="owl-item active" style="width: 521.665px; margin-right: 10px;">
+                    <% third_property = properties.last(20)[rand(0..19)]%>
+                    <% third_property_first_image = third_property.images.first %>
+                    <%=link_to property_path(third_property) do %>
+                      <figure class="photo equal pt-2">
+                          <img src="<%=asset_path(image_path(main_app.url_for(third_property_first_image)))%>" alt="Image">
+                      </figure>
+                    <%end%>
+                  </div>
+                  <div class="owl-item active pb-2" style="width: 521.665px; margin-right: 10px;">
+                    <% fourth_property = properties.last(20)[rand(0..19)]%>
+                    <% fourth_property_first_image = fourth_property.images.first %>
+                    <%=link_to property_path(fourth_property) do %>
+                      <figure class="photo equal pt-2">
+                          <img src="<%=asset_path(image_path(main_app.url_for(fourth_property_first_image)))%>" alt="Image">
+                      </figure>
+                    <%end%>
+                  </div>
+                </div>
+              </div>
+
+              <div class="owl-nav disabled">
+                <button type="button" role="presentation" class="owl-prev">
+                  <span aria-label="Previous">‹</span>
+                </button>
+                <button type="button" role="presentation" class="owl-next">
+                  <span aria-label="Next">›</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>

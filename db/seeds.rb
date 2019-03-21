@@ -25,6 +25,8 @@ Visit.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('visits')
 VisitStatus.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('visit_statuses')
+Favorite.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('favorites')
 
 
 v1 = VisitStatus.new(title: "Unfavorite")
@@ -69,8 +71,8 @@ p3.save
       monthly_properties: rand(5..40))
       a.save
 
-      p = Position.new(title: Faker::Company.profession)
-      p.save
+      po=Position.new(title: Faker::Company.profession)
+      po.save
 
       b = Agent.new(first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
@@ -86,58 +88,33 @@ p3.save
 
       puts "je suis la 1"
       @seed_property = Scrapper.new.perform
-      property = @seed_property[0]
-      property1 = @seed_property[1]
-      puts property
-      puts '$'*25
-      puts property1
-      puts '$'*25
-      a = Area.create!(name:property.fetch("area_name"),
-      zipcode:property.fetch("zipcode"))
+      puts @seed_property
 
-      puts "je suis la 2"
-      p = Property.new(
-        title: property.fetch("title"),
-        price: property.fetch("price"),
-        surface: property.fetch("surface"),
-        description: property.fetch("title"),
-        agency_id: rand(1..5),
-        agent_id: rand(1..5),
-        floor: property.fetch("floor"),
-        room: property.fetch("room"),
-        area_id: a.id,
-        available_date: Faker::Date.forward(rand(10..50)),
-        address: property.fetch("address"))
-        p.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[0]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
-        p.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[1]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
-        p.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[2]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
-        p.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[3]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
-        p.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[4]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
-        p.save
-        puts "je suis la 3"
-        puts property
+      @seed_property.each do |property|
 
-        a = Area.create!(name:property1.fetch("area_name"),
-        zipcode:property.fetch("zipcode"))
-
-        puts "je suis la 2"
-        p = Property.new(
-          title: property1.fetch("title"),
-          price: property1.fetch("price"),
-          surface: property1.fetch("surface"),
-          description: property1.fetch("title"),
-          agency_id: rand(1..5),
-          agent_id: rand(1..5),
-          floor: property1.fetch("floor"),
-          room: property1.fetch("room"),
-          area_id: a.id,
-          available_date: Faker::Date.forward(rand(10..50)),
-          address: property1.fetch("address"))
-          p.images.attach(io: File.open("app/assets/images/"+ property1.fetch("images")[0]+".jpg"), filename: property1.fetch("images")[0], content_type: 'image/jpg')
-          p.images.attach(io: File.open("app/assets/images/"+ property1.fetch("images")[1]+".jpg"), filename: property1.fetch("images")[0], content_type: 'image/jpg')
-          p.images.attach(io: File.open("app/assets/images/"+ property1.fetch("images")[2]+".jpg"), filename: property1.fetch("images")[0], content_type: 'image/jpg')
-          p.images.attach(io: File.open("app/assets/images/"+ property1.fetch("images")[3]+".jpg"), filename: property1.fetch("images")[0], content_type: 'image/jpg')
-          p.images.attach(io: File.open("app/assets/images/"+ property1.fetch("images")[4]+".jpg"), filename: property1.fetch("images")[0], content_type: 'image/jpg')
-          p.save
-          puts "je suis la 3"
-          puts property1
+        ar = Area.new(
+          name:property.fetch("area_name"),
+          zipcode:property.fetch("zipcode"))
+          ar.save
+          puts "je suis la 2"
+          pr = Property.new(
+            title: property.fetch("title"),
+            price: property.fetch("price"),
+            surface: property.fetch("surface"),
+            description: property.fetch("title"),
+            agency_id: rand(1..5),
+            agent_id: rand(1..5),
+            floor: property.fetch("floor"),
+            room: property.fetch("room"),
+            area_id: ar.id,
+            available_date: Faker::Date.forward(rand(10..50)),
+            address: property.fetch("address"))
+            pr.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[0]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
+            pr.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[1]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
+            pr.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[2]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
+            pr.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[3]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
+            pr.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[4]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
+            pr.save
+            puts "je suis la 3"
+            puts property
+          end

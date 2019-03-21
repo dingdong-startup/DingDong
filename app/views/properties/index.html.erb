@@ -1,43 +1,75 @@
-<%= render 'layouts/navbar' %>
+<%= render 'layouts/navbar_light' %>
+<%= render 'banner_property_index_tenant', property: Property.first %>
+
+
 
 <div class="tab-content m-3" >
-  <div class="container" style="margin-top:150px;">
-  	<%rowcount = 0%>
+	<div class="container">
 
-<% if @tenant %>
-	<h2>Favoris</h2>
-	<% if @fav_visits.size > 0 %>
-		<%= render 'properties/index_properties_tenant', visits: @fav_visits %>
-	<% else %>
-		<p>Oh oh, vous n'avez aucun appartement en favori</p>
-	<% end %>
-
-	<h2>Demandes de visites</h2>
-	<% if @asked_visits.size > 0 %>
+		<% if @tenant %>
+		<h2>Demandes de visites</h2>
+		<% if @asked_visits.size > 0 %>
 		<%= render 'properties/index_properties_tenant', visits: @asked_visits %>
-	<% else %>
+		<% else %>
 		<p>Oh oh, vous n'avez fait aucune demande de visite pour le moment</p>
-	<% end %>
-	<br><br>
-	<%= link_to "Continuer mes recherches", properties_path %>
-	
-<% else %>
-
-
-  	<div class="row">
-			<% @properties.each do |property| %>
-				
-				
-			<%= render 'layouts/property_index_row', property: property %>
-			<% rowcount += 1%>
-			<% if rowcount%3 == 0 %> </div> <div class="row"><% end%>
-
-			<% end %> 
-
-		</div>
-
-<%end%>
-
+		<% end %>
+		<br><br>
+		<%= link_to "Continuer mes recherches", properties_path %>
 	</div>
 </div>
 <%= render 'layouts/footer' %>
+
+
+<% else %>
+
+<div class="row mb-2 d-flex align-items-end">
+	<h3 class="m-0 p-0">Notre dernière annonce</h3> &nbsp;&nbsp;
+	<lead class="text-orange">publiée il y a  <%= @last_date%> jour(s)</lead>
+</div>
+
+<div class="row d-flex justify-space-around align-items-center">
+	
+	<div class="col-xs-12 col-md-8">
+		<img class="main-property-img" src="<%=asset_path(image_path(main_app.url_for(@last_property.images.first)))%>" alt="Property image">
+	</div>
+
+	<div class="col-xs-12 col-md-4 d-flex flex-column justify-content-between">
+		
+		<div class="col-12">
+			<h4 class="text-orange"><%= @last_property.title%></h4>
+		</div>
+		
+		<div class="col-12">
+			<div class="text-primary" style="font-weight: 900"><i class="fas fa-coins mr-1"></i><%= @last_property.total_rent %> € C.C.</div>
+
+			<div class="text-primary" style="font-weight: 900"><i class="fas fa-arrows-alt-h mr-1"></i><%= @last_property.surface %> m&#xB2;</div>
+
+			<div class="text-primary" style="font-weight: 900"> <i class="fas fa-map-marker-alt mr-1"></i><%= @last_property.area.zipcode %></div>
+		</div>
+		
+		<div class="col-12">
+			<%= link_to "Je fonce découvrir !", property_path(@last_property.id), class: "btn btn-primary" %> 
+		</div>
+			
+
+	</div>
+
+</div>
+
+<div class="row">
+	<h3>Toutes les annonces (<%= @properties.size %>)</h3>
+</div>
+<div class="row">
+	<% @properties.each do |property| %>
+	<%= render 'properties/card_property', property: property %> 
+
+	<% end %> 
+
+</div>
+</div>
+</div>
+<%= render 'layouts/footer' %>
+<%end%>
+
+
+

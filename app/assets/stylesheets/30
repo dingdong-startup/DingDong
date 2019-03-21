@@ -1,0 +1,157 @@
+/*PROPERTIES*/
+
+.property h3{
+	font-weight: 600;
+}
+
+.property ul {
+	padding-left: 0.5em;
+	list-style: none;
+	line-height: 2em;
+}
+
+.icon{
+	padding: 0.7em;
+}
+
+.white{
+	background-color: #fff;
+	padding: 2em;
+}
+
+.agency-login{
+	font-size: 1.5em;
+	text-transform: uppercase;
+	text-align: center;
+	color: #fff;
+	margin: auto;
+	font-weight: 300;
+}
+
+.link{
+	cursor: pointer;
+}
+
+
+/*INPUT FILE FOR IMAGES*/
+
+.inputfile{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+
+/*ALERTS*/
+
+.custo-alert{
+	z-index: 1000;
+	position: absolute;
+	top: 0;
+	right: 0; 
+	min-width: 200px;
+	min-height: 50px;
+	/*background-color: white;*/
+	margin: 20px;
+}
+
+.alert-alert{
+	background-color: #fc2c38;
+	color: #fff !important;
+}
+
+.alert-notice{
+	background-color: #57b894;
+	color: #fff !important;
+}
+
+.alert-success{
+	background-color: #57b894;
+	color: #fff !important;
+}
+
+.alert-{
+	background-color: #57b894;
+	color: #fff !important;
+}
+
+/*USER PROFILE PAGE*/
+
+.equal{
+	cursor: pointer !important;
+}
+
+/*NAVBAR*/
+
+.avatar-navbar{
+	max-width: 30px !important; 
+	display: inline-block;
+	
+}
+
+/*SIGN IN*/
+label {
+	display: block;
+	margin: 1em 0;
+}
+
+.hint{
+	display: block;
+	color: #555;
+	font-weight: 300;
+	margin: 0.5em 0;
+	font-size: 0.8em;
+	font-style: italic;
+}
+
+/*PROPERTY CARDS*/
+.item-property{
+	border: solid 1px #333;
+	border-radius: 0.25rem;
+	color: #333;
+	font-size: 0.8rem;
+	line-height: 0.8rem;
+}
+
+.circle-fav{
+	font-size : 1.5em;
+	height : 2em;
+	width:2em;
+}
+
+.card-img-container:hover{
+	cursor:pointer !important;
+}
+
+.card-header {
+	height:100%;
+}
+
+.btn-invisible{
+	background: none;
+	border: none;
+}
+
+@media screen and (max-width: 2000px) {
+  .card-img-top{
+		object-fit: cover;
+		height: 20vw;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+  .card-img-top{
+		object-fit: cover;
+		height: 30vw;
+	}
+}
+
+@media screen and (max-width: 768px) {
+  .card-img-top{
+		object-fit: cover;
+		height: 55vw;
+	}
+}

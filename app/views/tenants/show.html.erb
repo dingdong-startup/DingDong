@@ -1,256 +1,168 @@
 <%= render 'layouts/navbar' %>
 
-    <section class="p-0 bg-light">
-      <div class="image image-overlay image-cover" style="background-image:url(../../assets/images/demo/minimal/portfolio-bg-2.jpg)"
-      data-top-top="transform: translateY(0px);" 
-      data-top-bottom="transform: translateY(-250px);"></div>
-      <div class="container">
-        <div class="row justify-content-center align-items-end vh-50 mb-5">
-          <div class="col col-md-10 col-lg-8">
+<section class="p-0 bg-light">
+  <div class="image image-overlay image-cover" style="background-image:url(<%=asset_path 'tenant.png' %>)"
+  data-top-top="transform: translateY(0px);" 
+  data-top-bottom="transform: translateY(-250px);"></div>
+  <div class="container">
+    <div class="row justify-content-center align-items-end vh-50 mb-5">
+      <div class="col col-md-10 col-lg-8">
+        <div class="row align-items-center">
+          <div class="col-4 col-lg-3">
+            <img class="mr-3 avatar avatar-xl rounded" src="<%=asset_path(image_path(main_app.url_for(@tenant.avatar)))%>"" />
+          </div>
+          <div class="col">
             <div class="row align-items-center">
-              <div class="col-4 col-lg-3">
-                <img class="mr-3 avatar avatar-xl rounded" src="../../assets/images/demo/user-2.jpg" alt="Profil picture image">
-              </div>
-              <div class="col">
-                <div class="row align-items-center">
-                  <div class="col-md-8">
-                    <h2 class="mb-0"><b><%= @tenant.first_name %></b> <%= @tenant.last_name %></h2>
-                    <span class="text-muted"><%= @tenant.email %></span>
-                  </div>
-                </div>
+              <div class="col-md-8">
+                <h2 class="mb-0"><b><%= @tenant.first_name %></b> <%= @tenant.last_name %></h2>
+                <span class="text-muted"><%= @tenant.email %></span>
+                <p><%= link_to('Se deconnecter', destroy_tenant_session_path, :method => :delete, class: "text-orange") %></p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
 
-    <section class="bg-light p-0">
-      <div class="container">
+<section class="bg-light pt-2">
+
+  <div class="container">
+    <div class="tab-content" id="demo-2">
+
+      <!-- tab info -->
+      <div class="tab-pane show active" id="demo-2-1" role="tabpanel" aria-labelledby="demo-2-1">
         <div class="row justify-content-center">
-          <div class="col col-md-10 col-lg-8">
-            <div class="nav nav-tabs mb-1">
-              <a class="nav-item nav-link active" data-toggle="tab" href="#demo-2-1">Profile</a>
-              <a class="nav-item nav-link" data-toggle="tab" href="#demo-2-2">Favoris</a>
-              <a class="nav-item nav-link" data-toggle="tab" href="#demo-2-4">Editer mes infos</a>
+          <div class="col-md-10 col-lg-8">
+
+            <!-- stats -->
+            <div class="row gutter-1 mb-2">
+
+              <div class="col-6 col-md-4 col-lg-3">
+               <%= link_to tenant_favorites_path(@tenant.id) do %>
+               <div class="equal">
+                <div class="boxed">
+                  <div class="equal-header text-orange">
+                    <b class="h2"><%= @tenant.fav_properties.size%> <i class="fas fa-heart "></i></b>
+                  </div>
+                  <div class="equal-footer">
+                    <span class="text-muted">apparts en favoris</span>
+                  </div>
+                </div>
+              </div>
+              <% end %>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <section class="bg-light pt-2">
-
-      <div class="container">
-        <div class="tab-content" id="demo-2">
-
-          <!-- tab info -->
-          <div class="tab-pane show active" id="demo-2-1" role="tabpanel" aria-labelledby="demo-2-1">
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-lg-8">
-                
-                <!-- stats -->
-                <div class="row gutter-1 mb-2">
-                  <div class="col-6 col-md-4 col-lg-3">
-                    <div class="equal">
-                      <div class="boxed bg-primary text-white">
-                        <div class="equal-header">
-                          <b class="h2">3</b>
-                        </div>
-                        <div class="equal-footer">
-                          <span class="text-muted">demandes de visites</span>
-                        </div>
-                      </div>
-                    </div>
+            <div class="col-6 col-md-4 col-lg-3">
+              <%= link_to tenant_properties_path(@tenant.id) do %>
+              <div class="equal">
+                <div class="boxed ">
+                  <div class="equal-header">
+                    <b class="h2"><%= @tenant.asked_visits.size %> <i class="fas fa-calendar-check text-primary"></i></b>
                   </div>
-                  <div class="col-6 col-md-4 col-lg-3">
-                    <div class="equal">
-                      <div class="boxed">
-                        <div class="equal-header">
-                          <b class="h2">14</b>
-                        </div>
-                        <div class="equal-footer">
-                          <span class="text-muted">apparts en favoris</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-6 col-md-4 col-lg-3">
-                    <div class="equal">
-                      <div class="boxed">
-                        <div class="equal-header">
-                          <b class="h2">0</b>
-                        </div>
-                        <div class="equal-footer">
-                          <span class="text-muted">dossier complété</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-6 col-md-4 col-lg-3">
-                    <div class="equal">
-                      <div class="boxed">
-                        <div class="equal-header">
-                          <b class="h2">0</b>
-                        </div>
-                        <div class="equal-footer">
-                          <span class="text-muted">bien loué via Din-Dong</span>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="equal-footer">
+                    <span class="text-muted">demandes de visites</span>
                   </div>
                 </div>
-                <!-- / stats -->
-                
-                <!-- Flats to visit -->
-                <div class="row gutter-1">
-                  <div class="col-12"><h3>Demandes de visites</h3> </div>
+              </div>
+              <% end%>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+              <div class="equal">
+                <div class="boxed">
+                  <div class="equal-header text-primary">
+                    <b class="h2">0 <i class="fas fa-file-upload"></i></b>
+                  </div>
+                  <div class="equal-footer">
+                    <span class="text-muted">dossier complété</span>
+                  </div>
                 </div>
-                <div class="row gutter-1">
-                  <% @visit_properties.each do |property| %>
-                    <div class="col-12">
-                      <div class="boxed p-2 bordered scaling">
-                        <div class="row align-items-center justify-content-between">
-                          <div class="col-10">
-                            <%= link_to property_path(property) do %>
-                              <div class="media align-items-center">                           
-                                <img src="<%=asset_path(image_path(main_app.url_for(property.images.first)))%>" alt="Avatar" class="avatar avatar-lg mr-3">
-                                <div class="media-body">
-                                  <h5 class="mb-0"><%=property.title%></h5>
-                                  <br>
-                                  <container>
-                                    <div class="row">
-                                    <div class="col-4 text-muted"><i class="fas fa-arrows-alt-h"></i> <%=property.surface%> m2  </div>
-                                    <div class=" col-4 text-muted"><i class="fas fa-coins"></i> <%=property.price%> €  </div>
-                                    <div class="col-4 text-muted"><i class="fas fa-map-marker-alt"></i> <%=property.area.zipcode%></div>
-                                  </div>
-                                  </container>
-                                </div>
-                              </div>
-                            <% end %>
-                          </div>
-                          <div class="col-2 text-md-right">
-                            <div class="dropdown">
-                              <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="icon-more-vertical fs-22"></i>
-                              </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
-                                  <a class="dropdown-item" href="#">Make Primary</a>
-                                  <a class="dropdown-item" href="#">Remove</a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                  <%end%>
-                </div>
-                
-
               </div>
             </div>
-          </div>
-          <!-- / tab -->
-
-
-          <!-- tab favoris -->
-          <div class="tab-pane" id="demo-2-2" role="tabpanel" aria-labelledby="demo-2-2">
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-lg-8">
-                <div class="row gutter-1">
-                  <% @fav_properties.each do |property| %>
-                    <div class="col-12">
-                      <div class="boxed p-2 bordered scaling">
-                        <div class="row align-items-center justify-content-between">
-                          <div class="col-10">
-                            <%= link_to property_path(property) do %>
-                              <div class="media align-items-center">                           
-                                <img src="<%=asset_path(image_path(main_app.url_for(property.images.first)))%>" alt="Avatar" class="avatar avatar-lg mr-3">
-                                <div class="media-body">
-                                  <h5 class="mb-0"><%=property.title%></h5>
-                                  <br>
-                                  <container>
-                                    <div class="row">
-                                    <div class="col-4 text-muted"><i class="fas fa-arrows-alt-h"></i> <%=property.surface%> m2  </div>
-                                    <div class=" col-4 text-muted"><i class="fas fa-coins"></i> <%=property.price%> €  </div>
-                                    <div class="col-4 text-muted"><i class="fas fa-map-marker-alt"></i> <%=property.area.zipcode%></div>
-                                  </div>
-                                  </container>
-                                </div>
-                              </div>
-                            <% end %>
-                          </div>
-                          <div class="col-2 text-md-right">
-
-                              <a class="btn btn-ico btn-outline-light text-dark rounded btn-sm icon" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-heart text-danger" id="fav-<%=property.id%>"></i>
-                              </a>
-
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                  <%end%>
+            <div class="col-6 col-md-4 col-lg-3">
+              <div class="equal">
+                <div class="boxed">
+                  <div class="equal-header text-primary">
+                    <b class="h2"><%= @tenant.successful_rent.size %> <i class="fas fa-check-circle text-primary"></i></b>
+                  </div>
+                  <div class="equal-footer">
+                    <span class="text-muted">bien loué via Din-Dong</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- / tab -->
+          <!-- / stats -->
 
-          
-          <!-- tab settings -->
-          <div class="tab-pane" id="demo-2-4" role="tabpanel" aria-labelledby="demo-2-4">
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-lg-8">
-
-
-                <div class="row">
-                  <div class="col">
-                    <h5 class="mb-2 fs-20 font-weight-normal">Mes informations</h5>
-                    <%= form_for [@tenant], action: :update do |f| %>
-                      <div class="form-row">
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="firstName">Prénom</label>
-                            <%= f.text_field :first_name, class:'form-control' %>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="secondName">Nom</label>
-                            <%= f.text_field :last_name, class:'form-control' %>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="col">
-                          <div class="form-group">
-                            <label for="userMail">Email</label>
-                            <%= f.email_field :email, class:'form-control' %> 
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-row mt-1 align-items-center">
-                        <div class="col-3">
-                        	<%= submit_tag("Enregistrer", id: "button", class: "btn btn-secondary", name: "submit") %>
-                        </div>
-                      </div>
-                    <% end %>
+          <!-- EDIT INFOS -->
+          <div class="row">
+            <div class="col">
+              <h3 class="mb-2 font-weight-normal">Mes informations</h3>
+              <%= form_for [@tenant], action: :update do |f| %>
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="firstName">Prénom</label>
+                    <%= f.text_field :first_name, class:'form-control' %>
                   </div>
                 </div>
-
-
-
+                <div class="col">
+                  <div class="form-group">
+                    <label for="secondName">Nom</label>
+                    <%= f.text_field :last_name, class:'form-control' %>
+                  </div>
+                </div>
               </div>
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="userMail">Email</label>
+                    <%= f.email_field :email, class:'form-control' %> 
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="userDocuments">Mon dossier</label>
+                    <%= f.text_field :documents, class:'form-control' %> 
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Changer de photo de profil</label> <br>
+                    <%= f.file_field :avatar, class:'inputfile' , id: 'avatar'%>
+                    <label for="avatar" class="btn btn-secondary btn-sm">Selectionner une nouvelle photo</label>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="form-row mt-1 align-items-center">
+                <div class="col-3">
+                  <%= submit_tag("Enregistrer", id: "button", class: "btn btn-primary", name: "submit") %>
+                </div>
+              </div>
+              <% end %>
+              <br>
+
+              <%= link_to "Modifier les informations de connexion ou supprimer mon compte", edit_tenant_registration_path, class: 'text-orange' %>
             </div>
           </div>
-          <!-- / tab -->
 
         </div>
       </div>
-    </section>
+    </div>
+    <!-- / tab -->
+
+
+
+  </div>
+</div>
+</section>
 
 
