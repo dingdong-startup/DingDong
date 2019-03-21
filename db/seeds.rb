@@ -1,4 +1,4 @@
-@seedproperty1# This file should contain all the record creation needed to seed the database with its default values.
+# This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
@@ -55,66 +55,63 @@ p3.save
     email: Faker::Internet.email,
     password: "test123",
     stripe_customer_id: nil,
-    payment_status_id: rand(1..3))
+    payment_status_id: 1)
     t.save
   end
 
-
-
-  5.times do
-
-    a = Agency.new(name: Faker::Company.name,
-      address: Faker::Address.full_address,
-      phone: Faker::PhoneNumber.cell_phone,
-      email: Faker::Internet.email,
-      password: "TEST123",
-      monthly_properties: rand(5..40))
+  i = 1
+  while i <= 20
+    zip = 75000 + i
+    a = Area.new(name: "Paris #{i}",
+      zipcode: zip.to_s)
       a.save
+      i += 1
+      puts "Zipcode : #{zip}"
+    end
 
-      po=Position.new(title: Faker::Company.profession)
-      po.save
 
-      b = Agent.new(first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
+    # Creation of position visit_statuses
+    Position.create(title: "Director")
+    Position.create(title: "Agent")
+
+    5.times do
+
+      a = Agency.new(name: Faker::Company.name,
+        address: Faker::Address.full_address,
+        phone: Faker::PhoneNumber.cell_phone,
         email: Faker::Internet.email,
-        cellphone: Faker::PhoneNumber.cell_phone,
-        position_id: p.id,
-        agency_id: a.id)
-        b.save
+        password: "TEST123",
+        monthly_properties: rand(5..40))
+        a.save
+
       end
-
-
-
-
-      puts "je suis la 1"
+ j=1
       @seed_property = Scrapper.new.perform
-      puts @seed_property
-
       @seed_property.each do |property|
 
-        ar = Area.new(
+        a = Area.new(
           name:property.fetch("area_name"),
           zipcode:property.fetch("zipcode"))
-          ar.save
-          puts "je suis la 2"
-          pr = Property.new(
+          a.save
+          p = Property.new(
             title: property.fetch("title"),
             price: property.fetch("price"),
             surface: property.fetch("surface"),
-            description: property.fetch("title"),
+            description: property.fetch("description"),
             agency_id: rand(1..5),
             agent_id: rand(1..5),
             floor: property.fetch("floor"),
             room: property.fetch("room"),
-            area_id: ar.id,
+            area_id: a.id,
             available_date: Faker::Date.forward(rand(10..50)),
             address: property.fetch("address"))
-            pr.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[0]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
-            pr.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[1]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
-            pr.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[2]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
-            pr.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[3]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
-            pr.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[4]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
-            pr.save
-            puts "je suis la 3"
-            puts property
+            p.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[0]+".jpg"), filename: property.fetch("images")[0], content_type: property.fetch("images")[0])
+            p.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[1]+".jpg"), filename: property.fetch("images")[1], content_type: property.fetch("images")[1])
+            p.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[2]+".jpg"), filename: property.fetch("images")[2], content_type: property.fetch("images")[2])
+            p.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[3]+".jpg"), filename: property.fetch("images")[3], content_type: property.fetch("images")[3])
+            p.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[4]+".jpg"), filename: property.fetch("images")[4], content_type: property.fetch("images")[4])
+            p.save
+            puts 'proprerty numéro' + j.to_s + 'créée'
+            j += 1
           end
+  puts "database seed completed"
