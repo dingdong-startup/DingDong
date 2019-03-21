@@ -140,6 +140,9 @@ label {
 		object-fit: cover;
 		height: 15vw;
 	}
+	.navbar-footer {
+		display:none;
+	}
 }
 
 @media screen and (max-width: 1200px) {
@@ -148,7 +151,7 @@ label {
 		height: 20vw;
 	}
 
-	.navbar-header {
+	.navbar-footer {
 		display:none;
 	}
 }
