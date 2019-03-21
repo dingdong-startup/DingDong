@@ -1,5 +1,4 @@
-<header class="header-sticky header-dark headroom headroom--not-bottom headroom--pinned headroom--top", style= "background-color: #0470C1;">
-
+<header class="header-sticky header-dark headroom headroom--not-bottom headroom--pinned headroom--top", style= "background-color: transparent;">
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar_dark">
 
@@ -21,7 +20,6 @@
               <span style="font-size: 20px; line-height:20px;">
                 <i class="fas fa-home text-light"></i><small class="text-light"><span style="font-size: 15px; " class="text-light">  Mes annonces</span> (<%= current_agency.properties.count%>)</small>
               </span>
-
               <% end %>
             </li>            <% else %>
             <%= link_to "Nos annonces", properties_path, class: "nav-link text-light"%>
@@ -36,9 +34,9 @@
             <%= link_to tenant_favorites_path(current_tenant.id), class:"nav-link" do %>
             <span style="font-size: 20px; line-height:20px;">
               <% if current_tenant.fav_properties.count > 0 %>
-              <i class="fas fa-heart text-orange"></i><span style="font-size: 15px;" class="text-light"> Favoris</span><small class="text-light" id ="fav_navbar"> (<%= current_tenant.fav_properties.count%>)</small>
+              <i class="fas fa-heart text-orange"></i><span style="font-size: 15px;" class="text-light"> Favoris</span><small class="text-light"> (<%= current_tenant.fav_properties.count%>)</small>
               <% else %>
-              <i class="fas fa-heart text-light"></i><span style="font-size: 15px;" class="text-light"> Favoris</span><small class="text-light" id ="fav_navbar"> (<%= current_tenant.fav_properties.count%>)</small>
+              <i class="fas fa-heart text-light"></i><span style="font-size: 15px;" class="text-light"> Favoris</span><small class="text-light"> (<%= current_tenant.fav_properties.count%>)</small>
               <% end %>
             </span>
             <% end %>

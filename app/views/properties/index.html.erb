@@ -1,4 +1,4 @@
-<%= render 'layouts/navbar' %>
+<%= render 'layouts/navbar_light' %>
 <%= render 'banner_property_index_tenant', property: Property.first %>
 
 
@@ -24,7 +24,7 @@
 
 <div class="row mb-2 d-flex align-items-end">
 	<h3 class="m-0 p-0">Notre dernière annonce</h3> &nbsp;&nbsp;
-	<lead class="text-orange">publiée il y a  <%= @last_date%> heures</lead>
+	<lead class="text-orange">publiée il y a  <%= @last_date%> jour(s)</lead>
 </div>
 
 <div class="row d-flex justify-space-around align-items-center">
