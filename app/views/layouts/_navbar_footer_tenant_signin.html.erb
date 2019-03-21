@@ -1,0 +1,23 @@
+
+	<div class="container navbar-footer d-flex align-items-center ">
+
+		<div class="row mb-0 p-0 d-flex justify-content-between align-items-center flex-fill">
+
+			<div class="col-xs-3 mb-0 justify-content-center align-items-center navbar-footer-item">
+				<div>
+					<%= link_to properties_path, class: "text-white" do %> <i class="fas fa-bell"></i> <% end %>
+				</div>
+			</div>
+			<div class="col-xs-3 mb-0 justify-content-center align-items-center navbar-footer-item">
+				<div><%= link_to tenant_favorites_path(current_tenant.id), class: "text-white" do %> <i class="fas fa-heart"></i><% end %></div>
+			</div>
+			<div class="col-xs-3 mb-0 justify-content-center align-items-center navbar-footer-item">
+				<div><%= link_to tenant_path(current_tenant.id), class: "text-white" do %> <i class="fas fa-user"></i><% end %></div>
+			</div>
+			<div class="col-xs-3 mb-0 justify-content-center align-items-center navbar-footer-item">
+				<div></div>
+			</div>
+
+		</div>
+
+	</div>
