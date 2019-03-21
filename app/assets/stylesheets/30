@@ -136,107 +136,22 @@ label {
 }
 
 @media screen and (max-width: 2000px) {
-	.card-img-top{
+  .card-img-top{
 		object-fit: cover;
-		height: 15vw;
-	}
-	.navbar-footer {
-		display:none;
-	}
-
-	#footer{
-		display: none !important;
-	}
-
-	.item-label-ft{
-		display: none !important;
+		height: 20vw;
 	}
 }
 
 @media screen and (max-width: 1200px) {
-	.card-img-top{
+  .card-img-top{
 		object-fit: cover;
-		height: 20vw;
-	}
-
-	.navbar-footer {
-		display:none;
-	}
-	header{
-		display:none;
-	}
-	#footer{
-		display: flex !important;
-	}
-
-	.item-label-ft{
-		display: inline !important;
+		height: 30vw;
 	}
 }
 
 @media screen and (max-width: 768px) {
-	.card-img-top{
+  .card-img-top{
 		object-fit: cover;
 		height: 55vw;
 	}
-
-	header{
-		display:none;
-	}
-
-	.navbar-header {
-		display:none;
-	}
-
-	#footer{
-		display: flex !important;
-	}
-
-	.item-label-ft{
-		display: none !important;
-	}
-}
-
-
-/*NAVBAR FOOTER*/
-html {
-    position: relative;
-    min-height: 100%;
-}
-
-.navbar-footer{
-	color: #fff;
-	background-color: #0470C1;
-	font-size: 1.5em;
-	margin:auto;
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	height: 60px;
-	width: 100%;
-	z-index: 999;
-	max-width: 1200px;
-}
-
-.navbar-footer i {
-	display: block; 
-}
-
-.navbar-footer-item{
-	margin: auto;
-}
-
-.item-navbar{
-	font-size: 1rem;
-	color:#fff !important;
-}
-
-.item-label-ft{
-	margin-left : 1em;
-	font-size: 0.6em !important;
-	color: #fff !important;
-}
-
-.btn-invisible {
-	outline: none !important;
 }

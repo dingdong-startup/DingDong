@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DingDong</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+	<title>DingDong</title>
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= javascript_include_tag 'application'%>
   <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
 
-  <meta name="viewport" content="width=device-width", initial-scale=1.0>	
+	<meta name="viewport" content="width=device-width", initial-scale=1.0>	
 </head>
 
 <body>
 
- <% flash.each do |key, value| %>
- <div class="alert alert-<%= key %> custo-alert" role="alert m-0" ><%= value %></div>
- <% end %>
+	<% flash.each do |key, value| %>
+	<div class="alert alert-<%= key %> custo-alert" role="alert m-0" ><%= value %></div>
+	<% end %>
 
- <%= yield %>
+	<%= yield %>
 
- <script>
-  $('.alert').delay(2000).fadeOut();
-</script>
+	<% if tenant_signed_in? %>
+		<%= render 'layouts/navbar_footer_tenant_signin' %>
+	<% else %>
+		<%= render 'layouts/navbar_footer_signout' %>
+	<%end%>
+
+
+	<script>
+		$('.alert').delay(2000).fadeOut();
+	</script>
+
 
 </body>
 </html>
