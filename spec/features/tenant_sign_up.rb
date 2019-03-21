@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "the signup process", type: :feature do
     
     before :each do
-        Tenant.make(first_name: 'Greg', last_name: 'Rouxel Oldrà', email: 'greg@hellodingdong.com', password: 'password')
+        Tenant.create(first_name: 'Greg', last_name: 'Rouxel Oldrà', email: 'greg@hellodingdong.com', password: 'password')
     end
 
     it "signs me in" do

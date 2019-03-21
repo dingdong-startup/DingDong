@@ -1,6 +1,6 @@
 feature "Signing in" do
     background do
-      Tenant.make(first_name: 'Greg', last_name: 'Rouxel Oldrà', email: 'greg@hellodingdong.com', password: 'password')
+      Tenant.create(first_name: 'Greg', last_name: 'Rouxel Oldrà', email: 'greg@hellodingdong.com', password: 'password')
     end
   
     scenario "Signing in with correct credentials" do
