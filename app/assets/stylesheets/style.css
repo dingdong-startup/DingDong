@@ -236,3 +236,7 @@ html {
 	font-size: 0.6em !important;
 	color: #fff !important;
 }
+
+.btn-invisible {
+	outline: none !important;
+}

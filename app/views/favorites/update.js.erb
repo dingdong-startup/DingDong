@@ -1,0 +1,12 @@
+if (document.getElementById('fav-<%= @property_id%>').classList[3] === "text-orange") {
+  document.getElementById('fav-<%= @property_id%>').classList.remove("text-orange");
+  document.getElementById('fav-<%= @property_id%>').classList.add("text-light");
+  document.getElementById('fav_navbar').innerHTML = '(<%= @favorite_number - 1 %>)';
+} else if (document.getElementById('fav-<%= @property_id%>').classList[3] === "text-light") {
+  document.getElementById('fav-<%= @property_id%>').classList.remove("text-light");
+  document.getElementById('fav-<%= @property_id%>').classList.add("text-orange");
+  document.getElementById('fav_navbar').innerHTML = '(<%= @favorite_number + 1 %>)';
+} else {
+  
+}
+
