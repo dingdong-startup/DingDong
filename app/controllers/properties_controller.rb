@@ -11,6 +11,7 @@ class PropertiesController < ApplicationController
       @fav_visits = Visit.where(visit_status_id: 2, tenant_id: @tenant.id)
       @asked_visits = Visit.where(visit_status_id: 4, tenant_id: @tenant.id)
     end
+    
     @properties = Property.all
     
     # Selecting all favorites so I can find it for the favorite update method
