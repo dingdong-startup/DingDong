@@ -6,8 +6,6 @@ class FavoritesController < ApplicationController
   def create
     favorite = Favorite.new(is_liked: true, property_id: params[:property_id], tenant: current_tenant)
     @favorite_number = current_tenant.fav_properties.count
-    puts "*" * 60
-    puts @favorite_number
     
     if favorite.save
       @property_id = params[:property_id]
