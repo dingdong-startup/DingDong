@@ -1,153 +1,105 @@
+class Scrapper
+
 require 'nokogiri'
 require 'open-uri'
 require 'byebug'
 
-@U=[] #tableau des href
-@A=[] #tableau de hashes
-@T=[] #tableau des title
-@S=[] #tableau des superficies
-@P=[] #tableau des prix
-@F=[] #tableau des floors
-@D=[] #tableau des descriptions
-@R=[] #tableau des rooms
-@V=[] #tableau des villes
-@Itot=[] #tableau des images
-@I=[] #tableau intermédiaire des images d'une maison
-@ad=[] #tableau des adresses
-@intermediate =[]
-@Sh=[] #shared flat accepted or not
-@Vs = ""
-@Ps = ""
-@Ss = ""
-@Fs = ""
-@Rs
-@Fu = [] #furnished or not
-@Rintermediate = []
-@Rintermediatebis = []
-
-
-
 def flat_scrapper ()
-  # page_image = Nokogiri::HTML(open('https://www.airbnb.fr/s/Paris/homes?refinement_paths%5B%5D=%2Fhomes&adults=0&children=0&infants=0&guests=0&place_id=ChIJD7fiBh9u5kcRYJSMaMOCCwQ&click_referer=t%3ASEE_ALL%7Csid%3A9d3f7bdf-ff75-4c7b-99db-469ef83da30e%7Cst%3AMAGAZINE_HOMES&title_type=MAGAZINE_HOMES&query=Paris&allow_override%5B%5D=&s_tag=v9JpW3bS'))
-  # @I= page_image.xpath('//body')
-  # puts "Images url"
-  # puts @I.to_s
-  page = Nokogiri::HTML(open('https://www.flatlooker.com/appartements?utf8=%E2%9C%93&room_count_1=false&room_count_2=false&room_count_3=false&room_count_4=false&room_count_5=false&min_latitude=48.762749606303565&min_longitude=2.200325842396969&max_latitude=48.96150853951048&max_longitude=2.440651770131344&page=1&prix_max=9999&surface_min=30&zoom=12&furnished=&move_search=true'))
+  #Tableaux utiles pour le scrapping
+  @U=Array.new #tableau des href
+  @A=Array.new #tableau de hashes
+  @T=Array.new #tableau des title
+  @S=Array.new #tableau des superficies
+  @P=Array.new #tableau des prix
+  @F=Array.new #tableau des floors
+  @D=Array.new #tableau des descriptions
+  @R=Array.new #tableau des rooms
+  @Vn=Array.new #tableau des villes
+  @Itot=Array.new #tableau des images
+  @I=Array.new #tableau intermédiaire des images d'une maison
+  @ad=Array.new #tableau des adresses
+  @Sh=Array.new #shared flat accepted or not
+  @zipcode = [] #tableau des zipcodes
+  #tableaux intermédiaires pour la construction du tabkeau final
+  @intermediate =Array.new
+  @Vni =Array.new
+  @Vs = ""
+  @Ps = ""
+  @Ss = ""
+  @Fs = ""
+  @Rs
+  @Fu =Array.new #furnished or not
+  @Rintermediate=Array.new
+  @Rintermediatebis=Array.new
+
+  page = Nokogiri::HTML(open('https://www.flatlooker.com/appartements?utf8=%E2%9C%93&reference=&lieu=Paris+18e+Arrondissement%2C+Paris%2C+%C3%8Ele-de-France%2C+France&min_latitude=48.87949421614796&min_longitude=2.3250823240766088&max_latitude=48.904902555676735&max_longitude=2.363727495800305&zoom=14&move_search=true&surface_min=&prix_max='))
+# scrapping des datas sur la page d'accueil
   @Vs = page.xpath('//div/a/div/strong').text
-  @Ps = page.xpath('//div/a/div/p/strong[1]').text
-  @Ss = page.xpath('//div/a/div/p/strong[2]').text.delete("-")
+  @Ps = page.xpath('//div/a/div/p/strong[1]').text.delete('.0')
+  @Ss = page.xpath('//div/a/div/p/strong[2]').text.delete("-").delete('.0')
   @Rs = page.xpath('//div/a/div/small').text
-  @Fd = page.xpath('//div/a/div/small').text
-  @V = @Vs.split(')')
+  @ad = page.xpath('//div/a/div/strong').text.split(')')
+  # formatage des données à la BDD
+  @Vni = @Vs.split(')')
   @S = @Ss.split('m2')
   @P = @Ps.split('€')
-  @V.map!{|e| e + ")"}
+  @Vni.map!{|e| e + ")"}
+  @ad.map!{|e| e + ")"}
   @Rintermediate = @Rs.delete("\u0095").split("\n\n")
-
   @Rintermediate.map!{|e| e.split("\n")}
-  # @Rintermediate.map!{|e| e.delete('')}
-  # @Rintermediate.map!{|e| e.map{ |a| a.strip!}}
   @Rintermediate.map{|e| e.delete("")}
-  @Rintermediate.map{|e| e.map{ |a| a.strip!}}
-
-
-  @Rintermediate.each{|e| @R << e[0]}
+  @Rintermediate.map{|e| e.map{|a| a.strip!}}
+  @Rintermediate.each{|e| @R.push(e[0][0])}
   @Rintermediate.each{|e| @Fu << e[1]}
-  # puts @Rs
-  puts @Rintermediate.to_s
-  puts @R.to_s
-  # puts @F.to_s
+  @Vni.each{|x| @zipcode << x[-6...-1]}
+  @Vni.each{|x| @Vn << x[0...-9]}
 
-  page.xpath('//div[1]/a/@href')[6..-1].first(4).each_slice(2) do |url, url_bis|
+
+# scrapping des données sur le show d'une property
+  page.xpath('//div[1]/a/@href')[6..-1].first(14).each_slice(2) do |url, url_bis|
     complete_url = 'https://www.flatlooker.com' + url
     @U << complete_url
-
-    # puts @address
     page_flat = Nokogiri::HTML(open(complete_url))
     @T << page_flat.xpath('//*[@id="annonce"]/div[1]/div[1]/h3').text
-    @F << page_flat.xpath('//*[@id="table-essentials"]/tbody/tr[2]/td[4]').text
+    @F << page_flat.xpath('//*[@id="table-essentials"]/tbody/tr[2]/td[4]').text[1]
     @R << page_flat.xpath('//body/div[6]/div[6]/div/div/div[1]/div[1]').text
     @D << page_flat.xpath('//*[@id="annonce"]/div[2]/div[1]/div').text
-    @ad << page_flat.xpath('//body/div[6]/div[6]/div/div/h4').text
     @Sh << page_flat.xpath('//*[@id="table-essentials"]/tbody/tr[1]/td[4]').text
-    @Itot << image_hash(complete_url,page_flat)
 
+    for i in (1...21)
+      for j in (1...6)
+        @I << j.to_s + "flat" + i.to_s
 
+      end
+    end
+  end
 
+  for i in 0..19
+    @Itot << [@I[5*i+0],@I[5*i+1],@I[5*i+2],@I[5*i+3],@I[5*i+4]]
   end
 
 end
 
-def image_hash(url,page)
-  @I.clear
-  for i in 1..5
-    href = '//*[@id="slick-slide0' + i.to_s + '"]/img/@src'
-    @I << page.xpath(href)
-    puts "je suis la"
-    puts @I.to_s
-  end
-  return @I
-end
 
-
-# puts @T.to_s, @S.to_s, @P.to_s, @V.to_s, @F.to_s, @R.to_s, @D.to_s, @ad.to_s
-
-#   page.xpath("//*[@id="header-offer-ED20A669-765C-652D-C932-7063775917AF"]/div/div[2]/div[1]/div[1]/div[1]/p[1]/a").first(4).each do |node|
-#     @B << node.text
-#   end
-#   page.xpath("//*[@id="header-offer-ED20A669-765C-652D-C932-7063775917AF"]/div/div[2]/div[1]/div[3]/div/div/div[2]/h3/span[1]").first(4).each do |node|
-#     @C << node.text
-#   end
 def clean(array)
-  return array.map!{ |element| element.strip.gsub(/\n/, '')}.map!{ |element| element.gsub(/\r/, '')}
-  # .map!{ |element| element.gsub(/n/, '').gsub(/\n/, '') }
+  return array.map!{|element| element.strip.gsub(/\n/, '')}.map!{ |element| element.gsub(/\r/, '')}.map!{ |element| element.gsub(/Flatlooker/, 'Ding Dong')}
 end
 
-
-
-#
-# # scrapping sur les pages des annonces
-# def get_flat_description_images ()
-#   page = Nokogiri::HTML(open("https://www.seloger.com/list.htm?tri=initial&idtypebien=2,1&pxMax=2000&idtt=1&naturebien=1,2,4&ci=750118"))
-#   page.xpath("//div[2]/div[2]/span[2]").first(4).each do |node|
-#     description = get_flat_description(node["href"])
-#     images = get_flat_images(node["href"])
-#     @D << description
-#     @E << images
-#   end
-# end
-#
-# def get_flat_description(url)
-#   page = Nokogiri::HTML(open(url))
-#   page.xpath('//[@id="js-descriptifBien"]').first(4).each do |node|
-#     return node.text
-#   end
-# end
-#
-# def get_flat_images(url)
-#   @F.clear
-#   page = Nokogiri::HTML(open(url))
-#   page.xpath('//*[@id="fullScreenSlider"]/div/div/div[3]/img"]').each do |node|
-#     @F << node["src"]
-#   end
-#   page.xpath('//*[@id="slider1"]/div/div/div/div').each do |node|
-#     @F << node["data-lazy"].fetch("url")
-#   end
-#   return F
-# end
-#
 
 def perform ()
-  page_test = Nokogiri::HTML(open('https://www.flatlooker.com/appartements/location-meublee-9-m2-cambronne-75015-paris'))
-  puts page_test.xpath('//*[@id="slick-container"]/div[6]/div/div/div/img/@src')
-
   flat_scrapper
-  @intermediatebis = @T.zip(@S, @D, @V, @F, @R, @ad, @P, @Fu, @Itot)
-  @intermediate = @T.zip(@S, @D, @V, @F, @R, @ad, @P, @Fu)
-  @intermediate.each{|array| clean(array)}
-  @intermediatebis.each{|x| @A << {"title" => x[0], "superficie" => x[1], "description" => x[2], "ville" => x[3], "floor" => x[4], "room" => x[5], "address" => x[6], "price" => x[7], "furnished" => x[8], "images" => x[9]}}
-  puts @A.first.to_s
-  puts @A.last.to_s
+  clean(@T)
+  clean(@S)
+  clean(@D)
+  clean(@Vn)
+  clean(@F)
+  clean(@R)
+  clean(@ad)
+  clean(@P)
+  clean(@Fu)
+  @intermediate = @T.zip(@S, @D, @Vn, @F, @R, @ad, @P, @Fu, @Itot, @zipcode)
+  @intermediate.each{|x| @A << {"title" => x[0], "surface" => x[1], "description" => x[2], "area_name" => x[3], "floor" => x[4], "room" => x[5], "address" => x[6], "price" => x[7], "furnished" => x[8], "images" => x[9], "zipcode" => x[10]}}
+  return @A
 end
 
-perform
+end

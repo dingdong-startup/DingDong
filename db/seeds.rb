@@ -1,4 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
+@seedproperty1# This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
@@ -7,23 +7,23 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Property.destroy_all 
+Property.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('properties')
-Area.destroy_all 
+Area.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('areas')
-Tenant.destroy_all 
+Tenant.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('tenants')
-Agency.destroy_all 
+Agency.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('agencies')
-Position.destroy_all 
+Position.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('positions')
-Agent.destroy_all 
+Agent.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('agents')
 PaymentStatus.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('payment_statuses')
-Visit.destroy_all 
+Visit.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('visits')
-VisitStatus.destroy_all 
+VisitStatus.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('visit_statuses')
 
 
@@ -49,59 +49,95 @@ p3.save
 
 10.times do
   t = Tenant.new(first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  email: Faker::Internet.email,
-  password: "test123",
-  stripe_customer_id: nil,
-  payment_status_id: rand(1..3)) 
-  t.save
-end
-
-3.times do 
-  a = Area.new(name: Faker::Address.city,
-    zipcode: Faker::Address.zip_code)
-  a.save
-end
-
-5.times do 
-  
-  a = Agency.new(name: Faker::Company.name,
-    address: Faker::Address.full_address,
-    phone: Faker::PhoneNumber.cell_phone,
+    last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
-    password: "TEST123",
-    monthly_properties: rand(5..40))
-  a.save
-
-  p = Position.new(title: Faker::Company.profession)
-  p.save 
-
-  b = Agent.new(first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  email: Faker::Internet.email,
-  cellphone: Faker::PhoneNumber.cell_phone,
-  position_id: p.id,
-  agency_id: a.id)
-  b.save
-end 
-
-20.times do 
-
-  p = Property.new(
-    title: Faker::Address.full_address,
-    price: rand(600..3000),
-    surface: rand(9..150),
-    description: Faker::Company.bs,
-    agency_id: rand(1..5),
-    agent_id: rand(1..5),
-    floor: rand(1..9),
-    room: rand(1..4),
-    area_id: rand(1..3),
-    available_date: Faker::Date.forward(rand(10..50)),
-    address: Faker::Address.street_address)
-  p.images.attach(io: File.open('app/assets/images/photo1.jpg'), filename: 'photo1.jpg', content_type: 'image/jpg')
-  
-  p.save
-end
+    password: "test123",
+    stripe_customer_id: nil,
+    payment_status_id: rand(1..3))
+    t.save
+  end
 
 
+
+  5.times do
+
+    a = Agency.new(name: Faker::Company.name,
+      address: Faker::Address.full_address,
+      phone: Faker::PhoneNumber.cell_phone,
+      email: Faker::Internet.email,
+      password: "TEST123",
+      monthly_properties: rand(5..40))
+      a.save
+
+      p = Position.new(title: Faker::Company.profession)
+      p.save
+
+      b = Agent.new(first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        email: Faker::Internet.email,
+        cellphone: Faker::PhoneNumber.cell_phone,
+        position_id: p.id,
+        agency_id: a.id)
+        b.save
+      end
+
+
+
+
+      puts "je suis la 1"
+      @seed_property = Scrapper.new.perform
+      property = @seed_property[0]
+      property1 = @seed_property[1]
+      puts property
+      puts '$'*25
+      puts property1
+      puts '$'*25
+      a = Area.create!(name:property.fetch("area_name"),
+      zipcode:property.fetch("zipcode"))
+
+      puts "je suis la 2"
+      p = Property.new(
+        title: property.fetch("title"),
+        price: property.fetch("price"),
+        surface: property.fetch("surface"),
+        description: property.fetch("title"),
+        agency_id: rand(1..5),
+        agent_id: rand(1..5),
+        floor: property.fetch("floor"),
+        room: property.fetch("room"),
+        area_id: a.id,
+        available_date: Faker::Date.forward(rand(10..50)),
+        address: property.fetch("address"))
+        p.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[0]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
+        p.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[1]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
+        p.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[2]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
+        p.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[3]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
+        p.images.attach(io: File.open("app/assets/images/"+ property.fetch("images")[4]+".jpg"), filename: property.fetch("images")[0], content_type: 'image/jpg')
+        p.save
+        puts "je suis la 3"
+        puts property
+
+        a = Area.create!(name:property1.fetch("area_name"),
+        zipcode:property.fetch("zipcode"))
+
+        puts "je suis la 2"
+        p = Property.new(
+          title: property1.fetch("title"),
+          price: property1.fetch("price"),
+          surface: property1.fetch("surface"),
+          description: property1.fetch("title"),
+          agency_id: rand(1..5),
+          agent_id: rand(1..5),
+          floor: property1.fetch("floor"),
+          room: property1.fetch("room"),
+          area_id: a.id,
+          available_date: Faker::Date.forward(rand(10..50)),
+          address: property1.fetch("address"))
+          p.images.attach(io: File.open("app/assets/images/"+ property1.fetch("images")[0]+".jpg"), filename: property1.fetch("images")[0], content_type: 'image/jpg')
+          p.images.attach(io: File.open("app/assets/images/"+ property1.fetch("images")[1]+".jpg"), filename: property1.fetch("images")[0], content_type: 'image/jpg')
+          p.images.attach(io: File.open("app/assets/images/"+ property1.fetch("images")[2]+".jpg"), filename: property1.fetch("images")[0], content_type: 'image/jpg')
+          p.images.attach(io: File.open("app/assets/images/"+ property1.fetch("images")[3]+".jpg"), filename: property1.fetch("images")[0], content_type: 'image/jpg')
+          p.images.attach(io: File.open("app/assets/images/"+ property1.fetch("images")[4]+".jpg"), filename: property1.fetch("images")[0], content_type: 'image/jpg')
+          p.save
+          puts "je suis la 3"
+          puts property1
