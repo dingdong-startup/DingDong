@@ -16,6 +16,7 @@
               <div class="col-md-8">
                 <h2 class="mb-0"><b><%= @tenant.first_name %></b> <%= @tenant.last_name %></h2>
                 <span class="text-muted"><%= @tenant.email %></span>
+                <p><%= link_to('Se deconnecter', destroy_tenant_session_path, :method => :delete, class: "text-orange") %></p>
               </div>
             </div>
           </div>

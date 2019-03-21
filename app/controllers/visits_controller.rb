@@ -22,7 +22,6 @@ class VisitsController < ApplicationController
       # unfav if fav exists
       if customer.save
         current_tenant.update(stripe_customer_id: customer.id, payment_status_id: 2)
-        current_tenant.unfav(@property)
         @visit.update(visit_status_id: 4)
         flash[:success] = "Carte bien enregistrée, demande de visite envoyée !"
         redirect_back(fallback_location: properties_path)
@@ -31,7 +30,6 @@ class VisitsController < ApplicationController
         redirect_back(fallback_location: properties_path)
       end
     else #in case it does
-      current_tenant.unfav(@property)
       @visit.update(visit_status_id: 4)
       flash[:success] = "Ta demande a bien été enregistrée!"
       redirect_back(fallback_location: properties_path)

@@ -1,4 +1,5 @@
 <header class="header-sticky header-dark headroom headroom--not-bottom headroom--pinned headroom--top", style= "background-color: #0470C1;">
+
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar_dark">
 
@@ -20,6 +21,7 @@
               <span style="font-size: 20px; line-height:20px;">
                 <i class="fas fa-home text-light"></i><small class="text-light"><span style="font-size: 15px; " class="text-light">  Mes annonces</span> (<%= current_agency.properties.count%>)</small>
               </span>
+
               <% end %>
             </li>            <% else %>
             <%= link_to "Nos annonces", properties_path, class: "nav-link text-light"%>

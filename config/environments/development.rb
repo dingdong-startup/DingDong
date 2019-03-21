@@ -12,6 +12,16 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  # ActionMailer::Base.smtp_settings = {
+  # :user_name => ENV['MJ_APIKEY'],
+  # :password => ENV['MK_SK'],
+  # :domain => 'monsite.fr',
+  # :address => 'in.mailjet.com',
+  # :port => 587,
+  # :authentication => :plain,
+  # :enable_starttls_auto => true
+  # }
+  config.action_mailer.delivery_method = :letter_opener
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
@@ -26,6 +36,7 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
+
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :amazon
