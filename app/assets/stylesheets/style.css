@@ -147,6 +147,10 @@ label {
 		object-fit: cover;
 		height: 20vw;
 	}
+
+	.navbar-header {
+		display:none;
+	}
 }
 
 @media screen and (max-width: 768px) {
@@ -154,4 +158,31 @@ label {
 		object-fit: cover;
 		height: 55vw;
 	}
+
+	.navbar-header {
+		display:none;
+	}
+}
+
+
+/*NAVBAR FOOTER*/
+.navbar-footer{
+	height: 60px;
+	color: #fff;
+	background-color: #14439C;
+	font-size: 2em;
+	margin:auto;
+}
+
+.navbar-footer i {
+	display: block; 
+}
+
+.navbar-footer-item{
+	margin: auto;
+}
+
+.item-navbar{
+	font-size: 1rem;
+	color:#fff !important;
 }
