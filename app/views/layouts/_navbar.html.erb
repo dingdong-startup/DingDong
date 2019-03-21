@@ -1,4 +1,4 @@
-<header class="header-sticky header-dark headroom headroom--not-bottom headroom--pinned headroom--top", style= "background-color: #14439C;">
+<header class="header-sticky header-dark headroom headroom--not-bottom headroom--pinned headroom--top", style= "background-color: #0470C1;">
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar_dark">
 
@@ -44,7 +44,7 @@
           <li class="nav-item">
             <%= link_to tenant_properties_path(current_tenant.id), class:"nav-link" do %>
             <span style="font-size: 20px; line-height:20px;">
-              <i class="fas fa-calendar-check text-light"></i><span style="font-size: 15px;" class="text-light">  Demandes</span><small class="text-light"> (<%= current_tenant.asked_visits.count%>)</small>
+              <i class="fas fa-calendar-check text-light "></i><span style="font-size: 15px;" class="text-light">  Demandes</span><small class="text-light"> (<%= current_tenant.asked_visits.count%>)</small>
             </span>
             <% end %>
           </li>
@@ -90,7 +90,7 @@
           <% if !agency_signed_in? && !tenant_signed_in? %>
           <ul class="navbar-nav align-items-center mr-0">
             <li class="nav-item">
-              <%= link_to("Se connecter / s'inscrire", new_tenant_registration_path, class: "nav-link text-light")  %>
+              <%= link_to("Se connecter / S'inscrire", new_tenant_registration_path, class: "nav-link text-light")  %>
             </li>
           </ul>
           <% end %>
