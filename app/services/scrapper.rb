@@ -19,14 +19,17 @@ class Scrapper
     @I=Array.new #tableau intermédiaire des images d'une maison
     @ad=Array.new #tableau des adresses
     @Sh=Array.new #shared flat accepted or not
+    @dep=[] # tableau des deposits
+    @af=[] #tableau des agencies fees
     @zipcode = [] #tableau des zipcodes
+    @charges =[]
     #tableaux intermédiaires pour la construction du tabkeau final
     @intermediate =Array.new
     @Vni =Array.new
-    @Vs = ""
-    @Ps = ""
-    @Ss = ""
-    @Fs = ""
+    @Vs = ""#area intermediate
+    @Ps = "" #price intermediate
+    @Ss = ""#surface intermediate
+    @Fs = ""#furnished intermediate
     @Rs
     @Fu =Array.new #furnished or not
     @Rintermediate=Array.new
@@ -37,8 +40,8 @@ class Scrapper
     [page1,page2].each do |page|
       # scrapping des datas sur la page d'accueil
       @Vs = page.xpath('//div/a/div/strong').text
-      @Ps = page.xpath('//div/a/div/p/strong[1]').text.delete('.0')
-      @Ss = page.xpath('//div/a/div/p/strong[2]').text.delete("-").delete('.0')
+      @Ps = page.xpath('//div/a/div/p/strong[1]').text.gsub(".0","")
+      @Ss = page.xpath('//div/a/div/p/strong[2]').text.delete("-").gsub(".0","")
       @Rs = page.xpath('//div/a/div/small').text
       @ad = page.xpath('//div/a/div/strong').text.split(')')
       # formatage des données à la BDD
@@ -67,6 +70,9 @@ class Scrapper
         @R << page_flat.xpath('//body/div[6]/div[6]/div/div/div[1]/div[1]').text
         @D << page_flat.xpath('//*[@id="annonce"]/div[2]/div[1]/div').text
         @Sh << page_flat.xpath('//*[@id="table-essentials"]/tbody/tr[1]/td[4]').text
+        @dep << page_flat.xpath('//*[@id="table-essentials"]/tbody/tr[3]/td[2]').text.gsub(" €","")
+        @af << page_flat.xpath('//*[@id="table-essentials"]/tbody/tr[4]/td[2]').text.gsub(" €","")
+        @charges << page_flat.xpath('//*[@id="caracteristique"]/div[3]/div/div[1]/div[1]/span').text.gsub(" € / mois","")
 
         for i in (1...21)
           for j in (1...6)
@@ -99,8 +105,8 @@ class Scrapper
     clean(@ad)
     clean(@P)
     clean(@Fu)
-    @intermediate = @T.zip(@S, @D, @Vn, @F, @R, @ad, @P, @Fu, @Itot, @zipcode)
-    @intermediate.each{|x| @A << {"title" => x[0], "surface" => x[1], "description" => x[2], "area_name" => x[3], "floor" => x[4], "room" => x[5], "address" => x[6], "price" => x[7], "furnished" => x[8], "images" => x[9], "zipcode" => x[10]}}
+    @intermediate = @T.zip(@S, @D, @Vn, @F, @R, @ad, @P, @Fu, @Itot, @zipcode, @dep, @af, @charges)
+    @intermediate.each{|x| @A << {"title" => x[0], "surface" => x[1], "description" => x[2], "area_name" => x[3], "floor" => x[4], "room" => x[5], "address" => x[6], "price" => x[7], "furnished" => x[8], "images" => x[9], "zipcode" => x[10], "deposit" => x[11], "agency_fees" => x[12], "charges" => x[13]  }}
     return @A
   end
 
