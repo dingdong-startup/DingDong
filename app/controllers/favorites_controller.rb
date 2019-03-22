@@ -9,9 +9,11 @@ class FavoritesController < ApplicationController
 
   def create
     @favorite = Favorite.new(is_liked: true, property_id: params[:property_id], tenant: current_tenant)    
-    
+    @favorite_number = current_tenant.fav_properties.count
+
     if @favorite.save
       @property_id = params[:property_id]
+      @favorite_id = @favorite.id
       
       respond_to do |format| 
         format.js 
@@ -30,6 +32,7 @@ class FavoritesController < ApplicationController
     @favorite_number = current_tenant.fav_properties.count
     @property = Property.find(params[:property_id])
     @favorite = Favorite.find(params[:id])
+    @property_id = params[:property_id]
 
     if @favorite.is_liked
       if @favorite.update_attributes(is_liked: false)

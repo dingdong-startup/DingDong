@@ -25,7 +25,7 @@
           </article>
           <div class="modal-body text-center">
           <label>Votre numéro</label>
-          <%= telephone_field :tenant, :last_name, class: 'form-control form-control-lg', placeholder: "06-##-##-##-##", :required => true %>
+          <%= telephone_field :tenant, :phone_number, class: 'form-control form-control-lg', placeholder: "06-##-##-##-##", :required => true %>
           </div>
           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                       data-key="<%= Rails.configuration.stripe[:publishable_key] %>"

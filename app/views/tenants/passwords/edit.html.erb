@@ -1,24 +1,52 @@
-<h2>Change your password</h2>
+<div class="viewport">
+  <div class="image image-overlay" style="background-image:url(<%=asset_path('sofa.jpg')%>)"></div>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
 
-  <%= f.input :reset_password_token, as: :hidden %>
-  <%= f.full_error :reset_password_token %>
+  <div class="container">
+    <div class="row justify-content-center align-items-center vh-100">
+      <div class="col-md-6 col-lg-5 white">
+        <h3>Réinitialise ton mot de passe</h3>
+        <div class="mt-2 mb-2">
+          <p>Tu as oublié ton mot de passe ? Pas de panique, renseigne ci-dessous ton email et nous t'enverrons un lien pour remettre à zéro de ton mot de passe.</p> <br>
+          <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :reset_password_token, as: :hidden %>
+          <%= f.full_error :reset_password_token %>
 
-  <div class="form-inputs">
-    <%= f.input :password,
-                label: "New password",
-                required: true,
-                autofocus: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation, label: "Confirm your new password", required: true %>
+          <div class="form-inputs">
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+            <% end %>
+
+            <%= f.input :password,
+            label: 'Nouveau mot de passe',
+            required: true,
+            autofocus: true,
+            hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+            input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+            label: 'Confirmation du nouveau mot de passe',
+            required: false,
+            input_html: { autocomplete: "new-password" } %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Mettre à jour mon mot de passe", class: 'mt-2' %>
+          </div>
+          <% end %>
+          <br>
+        </div>
+        
+        <h3>Supprimer mon compte</h3>
+
+        <p>Non satisfait par nos services ? <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Es-tu sûr? Cette action est déféinitive !" }, method: :delete, class: 'text-danger' %></p>
+
+        <br> 
+        <%= link_to "Revenir sur mon profil", :back %>
+
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "tenants/shared/links" %>
