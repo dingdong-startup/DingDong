@@ -34,13 +34,17 @@
                       <%= render 'layouts/modal_btn', property: @property %>
                       <%= render 'layouts/modal_description' %>
                     <% else %>
-                      <div class="container">
+
                         <div class="row">
-                          <div class="col text-center  mb-3">
-                            <%= link_to 'Demander une visite',  new_tenant_session_path, class: 'btn btn-orange'%>
+                          <div class="col mb-3">
+                              <div class="col-lg-6 col-sm-12 p-0 mb-1">
+                            <%= link_to 'Enregistrer',  new_tenant_session_path, class: 'btn btn-outline-orange'%>                              </div>
+                              <div class="col-lg-6 col-sm-12 p-0">
+                                <%= link_to 'Demander une visite',  new_tenant_session_path, class: 'btn btn-outline-primary'%>
+                              </div>
                           </div>
                         </div>
-                      </div>
+
                     <% end %>
                   <% end %> 
 

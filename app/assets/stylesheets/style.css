@@ -248,3 +248,10 @@ html {
 .container-fluid{
 	margin-top: -75px;
 }
+
+
+/*ACCORDION PADDING FOR STEPS*/
+
+.accordion-padding{
+	padding:1rem;
+}
