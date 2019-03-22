@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
 
-  
+  before_action :authenticate_agency!, except: [:index, :show]
 
   def index
     @properties = Property.all

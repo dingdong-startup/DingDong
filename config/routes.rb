@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   devise_for :tenants
 
-  get 'static_homes/index'
 
   devise_for :agencies, except: [:index]
   authenticated :agency do
