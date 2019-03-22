@@ -1,6 +1,9 @@
 class AgenciesController < ApplicationController
 
   alias_method :current_user, :current_tenant
+
+  before_action :authenticate_agency!
+  before_action :is_current_agency?, only: [:show, :edit, :update]
   
   #load_and_authorize_resource
 
@@ -9,7 +12,7 @@ class AgenciesController < ApplicationController
   end
 
   def show
-  	@agency = current_agency
+  	@agency = Agency.find(params[:id])
   	@properties = @agency.available_properties
     @property = Property.new
 
@@ -20,6 +23,10 @@ class AgenciesController < ApplicationController
 
   end
 
-
+  def is_current_agency?
+    if Agency.find(params[:id]) != current_agency
+      redirect_to agency_path(current_agency.id)
+    end
+  end
 
 end
