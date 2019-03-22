@@ -8,6 +8,7 @@ class PropertiesController < ApplicationController
     @last_date = ((Time.now - @last_property.created_at)/60/60/24).to_i
 
     @tenant = current_tenant
+    @tenant ||= Tenant.new
     @asked_visits = @tenant.requested_visits
 
     @favorite = Favorite.new
@@ -21,6 +22,7 @@ class PropertiesController < ApplicationController
 
     @areas = Area.all
     @tenant = current_tenant
+    @tenant ||= Tenant.new
 
     @favorite = @tenant.fav_properties
     @asked_visits = @tenant.requested_visits
