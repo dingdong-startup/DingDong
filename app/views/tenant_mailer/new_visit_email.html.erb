@@ -678,7 +678,7 @@
 
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 
-                            <img align="center" alt="" src="<span style="font-size:22px">%=asset_path(image_path(main_app.url_for(@property.images.first)))%></span>" width="247" style="max-width:247px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                            <img align="center" alt="" src="<%=asset_path(image_path(main_app.url_for(@property.images.first)))%> width="247" style="max-width:247px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
                         </td>
                     </tr>
                 </tbody></table>
