@@ -1,4 +1,8 @@
 class FavoritesController < ApplicationController
+
+  before_action :authenticate_tenant!
+
+  
   def index 
     @favorites = Favorite.where(tenant: current_tenant, is_liked: true)
   end
@@ -36,8 +40,8 @@ class FavoritesController < ApplicationController
           end
         end
       else
-      flash[:danger] = "Une erreur s'est produite."
-      redirect_back(fallback_location: properties_path)
+        flash[:danger] = "Une erreur s'est produite."
+        redirect_back(fallback_location: properties_path)
       end
     else is_already_unfavorited
       if @favorite.update_attributes(is_liked: true)
