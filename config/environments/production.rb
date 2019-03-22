@@ -100,4 +100,13 @@ Rails.application.configure do
 # Precompile additional assets
 config.assets.precompile += %w( .svg .eot .woff .ttf )
 
+config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: "in-v3.mailjet.com",
+      port: 587,
+      user_name: ENV['MJ_APIKEY'],
+      password: ENV['MJ_SK'],
+      authentication: "plain"
+    }
+
 end
