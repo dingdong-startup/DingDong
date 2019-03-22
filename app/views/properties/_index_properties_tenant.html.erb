@@ -22,24 +22,14 @@
 					</div>
 					<% end %>
 				</div>
-				<div class="col-2 text-md-right">
-					<%if visit.visit_status_id == 2 %>
-						<%= form_tag visits_update_path, method: 'put' do %>
-							<%= hidden_field_tag :property_id, visit.property.id %>
-							<%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-red rounded btn-sm icon", remote: true) do %>
-								<i class="fas fa-heart" id="fav-<%=visit.property.id%>"></i>
-							<% end %>
-						<% end %>
-					<% end %>
-				</div>
 			</div>
 		</div>
 	</div>
 	<div class="col-4  align-items-center">
 		<%if visit.visit_status_id == 4 %>
 		<p>Le gestionnaire du bien va revenir vers vous afin de convenir d'un rendez-vous</p>
-			<%= form_tag visits_update_path, method: 'put' do %>
-				<%= hidden_field_tag :property_id, visit.property.id %>
+			<%= form_tag property_visit_path(visit.property, visit), method: 'delete' do %>
+				<%= hidden_field_tag :visit_id, visit.id %>
 				<%= submit_tag 'Annuler ma demande', class: 'btn btn-light' %>
 			<% end %>
 		<%else%>
