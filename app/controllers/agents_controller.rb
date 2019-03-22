@@ -19,7 +19,6 @@ class AgentsController < ApplicationController
 
   end
 
-
   private
 
   def property_params
