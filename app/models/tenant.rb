@@ -35,6 +35,7 @@ class Tenant < ApplicationRecord
     self.avatar.attach(io: File.open('app/assets/images/avatar.png'), filename: 'avatar.png', content_type: 'image/png')
   end
   
+  
   def existant_visit(property)
     visit = Visit.find_by(property_id: property.id, tenant: self)
     if visit 
@@ -52,4 +53,13 @@ class Tenant < ApplicationRecord
   def welcome_mail
     TenantMailer.welcome_email(self).deliver_now
   end
+
+  def requested_visits
+    self.visits.where(visit_status_id: 4)
+  end
+
+  def fav_properties
+    self.favorites.where(is_liked: true)
+  end
+
 end
