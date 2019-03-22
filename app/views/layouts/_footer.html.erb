@@ -23,9 +23,9 @@
                     <ul class="nav lavalamp"><div class="lavalamp-object ease" style="transition-duration: 0.2s; width: 108.297px; height: 37px; transform: translate(0px, -8px);"></div>
                       <li class="nav-item lavalamp-item" style="z-index: 5; position: relative;">
                       <% if tenant_signed_in? %>
-                        <%= link_to 'Je suis un loueur', properties_path, class:'nav-link' %>
+                        <%= link_to 'Je suis locataire', properties_path, class:'nav-link' %>
                       <% else %>
-                        <%= link_to 'Je suis un loueur', new_tenant_session_path, class: 'nav-link'%>
+                        <%= link_to 'Je suis un locataire', new_tenant_session_path, class: 'nav-link'%>
                       <% end %>
                       </li>
                       <li class="nav-item lavalamp-item" style="z-index: 5; position: relative;">

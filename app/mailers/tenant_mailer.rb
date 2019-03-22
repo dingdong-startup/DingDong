@@ -1,6 +1,9 @@
 class TenantMailer < ApplicationMailer
-  def welcome_email(tenant)
-    @tenant = tenant
-    mail(to: @tenant.email, subject: "Ding Dong! Vous allez bientôt trouver l'appartement de vos rêves")
+
+  def new_visit_email(tenant, property)
+  	@tenant = tenant
+  	@property = property
+  	mail(to: @tenant.email, subject: "Ding Dong! Ta demande de visite a bien été enregistrée")
   end
+  	
 end
