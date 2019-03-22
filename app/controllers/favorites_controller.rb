@@ -8,12 +8,11 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    favorite = Favorite.new(is_liked: true, property_id: params[:property_id], tenant: current_tenant)
-    @favorite_number = current_tenant.fav_properties.count
+    @favorite = Favorite.new(is_liked: true, property_id: params[:property_id], tenant: current_tenant)    
     
-    if favorite.save
+    if @favorite.save
       @property_id = params[:property_id]
-      @favorite_id = favorite.id
+      
       respond_to do |format| 
         format.js 
         format.html do 
@@ -29,10 +28,10 @@ class FavoritesController < ApplicationController
 
   def update  
     @favorite_number = current_tenant.fav_properties.count
-    puts "*"*60
-    puts @favorite_number
-    @property_id = params[:property_id]
-    if is_already_favorited
+    @property = Property.find(params[:property_id])
+    @favorite = Favorite.find(params[:id])
+
+    if @favorite.is_liked
       if @favorite.update_attributes(is_liked: false)
         respond_to do |format|
           format.js
@@ -45,7 +44,7 @@ class FavoritesController < ApplicationController
         flash[:danger] = "Une erreur s'est produite."
         redirect_back(fallback_location: properties_path)
       end
-    else is_already_unfavorited
+    else
       if @favorite.update_attributes(is_liked: true)
         respond_to do |format|
           format.js 
@@ -63,11 +62,4 @@ class FavoritesController < ApplicationController
 
   private
 
-  def is_already_favorited
-    @favorite = Favorite.find_by(is_liked: true, property_id: params[:property_id], tenant: current_tenant)
-  end
-
-  def is_already_unfavorited
-    @favorite = Favorite.find_by(is_liked: false, property_id: params[:property_id], tenant: current_tenant)
-  end
 end
