@@ -79,10 +79,14 @@
 											<% end %>
 										<% end %>
 									<% end %>
+								<% else %>
+								<div>
+									<%= link_to 'Enregistrer',  new_tenant_session_path, class: 'btn btn-outline-orange'%>
+								</div>
 								<% end %>
 		        </div>
 				<div class="col d-flex justify-content-center">
-				        <button type="button" class="btn btn-blue mb-1" data-toggle="modal" data-target="#PropertyShow">
+				        <button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#PropertyShow">
 			    		<i class="fas fa-calendar-check mr-1"></i>Demander une visite
 					</button>
 		        </div>
