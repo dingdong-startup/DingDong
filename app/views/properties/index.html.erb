@@ -9,7 +9,7 @@
 		<% if @tenant %>
 		<h2>Demandes de visites</h2>
 		<% if @asked_visits.size > 0 %>
-		<%= render 'properties/index_properties_tenant', visits: @asked_visits %>
+			<%= render 'properties/index_properties_tenant', visits: @asked_visits %>
 		<% else %>
 		<p>Oh oh, vous n'avez fait aucune demande de visite pour le moment</p>
 		<% end %>

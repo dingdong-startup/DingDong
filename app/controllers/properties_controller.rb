@@ -3,22 +3,14 @@ class PropertiesController < ApplicationController
   
 
   def index
-
-    if params[:tenant_id]
-      @tenant =Tenant.find(params[:tenant_id])
-      @fav_visits = Visit.where(visit_status_id: 2, tenant_id: @tenant.id)
-      @asked_visits = Visit.where(visit_status_id: 4, tenant_id: @tenant.id)
-    end
-
     @properties = Property.all
-    
-    # Selecting all favorites so I can find it for the favorite update method
-    #@favorites = Favorite.all
-    @favorite = Favorite.new
-
     @last_property = Property.last
     @last_date = ((Time.now - @last_property.created_at)/60/60/24).to_i
-    
+
+    @tenant = current_tenant
+    @asked_visits = @tenant.requested_visits
+
+    @favorite = Favorite.new
 
 
   end
@@ -26,17 +18,19 @@ class PropertiesController < ApplicationController
   def show
     @properties = Property.all
     @property = Property.find(params[:id])
+
     @areas = Area.all
-    @asked_visits = @property.visits.where(visit_status_id: 4)
-    ##TODO : Fix this bug, the params for agency ID works for agencies/id/property/id, but not for propertie/id
-    # @agency = Agency.find(params[:agency_id])
-    @favorite = Favorite.find_by(property_id: @property.id, tenant: current_tenant)
+    @tenant = current_tenant
+
+    @favorite = @tenant.fav_properties
+    @asked_visits = @tenant.requested_visits
+
+    @agency = @property.agency
   end
 
   def new
   	@agency = Agency.find(params[:agency_id])
     @property = Property.new
-
   end
 
   def create
@@ -51,8 +45,8 @@ class PropertiesController < ApplicationController
       flash[:success] = "Votre bien a été créé"
       redirect_to agency_path(current_agency)
     else
-    flash[:danger] = @property.errors.messages
-    redirect_to new_agency_property_path
+      flash[:danger] = @property.errors.messages
+      redirect_to new_agency_property_path
     end
   end
 
@@ -61,7 +55,6 @@ class PropertiesController < ApplicationController
   end
 
   def update
-    puts params
     @property = Property.find(params[:id])
     @agency = Agency.find(params[:agency_id])
 

@@ -27,14 +27,14 @@
 	</div>
 	<div class="col-4  align-items-center">
 		<%if visit.visit_status_id == 4 %>
-		<p>Le gestionnaire du bien va revenir vers vous afin de convenir d'un rendez-vous</p>
+		<p>Le gestionnaire du bien va revenir vers toi afin de convenir d'un rendez-vous</p>
 			<%= form_tag property_visit_path(visit.property, visit), method: 'delete' do %>
 				<%= hidden_field_tag :visit_id, visit.id %>
 				<%= submit_tag 'Annuler ma demande', class: 'btn btn-light' %>
 			<% end %>
 		<%else%>
 			<%= link_to 'Visiter', property_visits_path(visit.property.id), class: 'btn btn-blue', method: 'create' %>
-			<p><br>Le gestionnaire du bien va revenir vers vous afin de convenir d'un rendez-vous</p>
+			<p><br> Une fois que tu auras validé ta demande, le gestionnaire du bien reviendra vers toi afin de convenir d'un rendez-vous</p>
 		<%end%>
 	</div>
 </div>
