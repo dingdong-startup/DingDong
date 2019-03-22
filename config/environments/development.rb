@@ -21,7 +21,7 @@ Rails.application.configure do
   # :authentication => :plain,
   # :enable_starttls_auto => true
   # }
-  config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   # Enable/disable caching. By default caching is disabled.
