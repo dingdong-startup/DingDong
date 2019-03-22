@@ -612,7 +612,7 @@
                     <tbody>
                         <tr>
                             <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Helvetica; font-size: 30px; padding: 30px;">
-                              <%= link_to "Confirmer mon email",  confirmation_url(@resource, confirmation_token: @token), class: 'mcnButton btn-confirmation' %> 
+                              <%= link_to "Confirmer mon email",  confirmation_url(@resource, confirmation_token: @token), class: 'mcnButton btn-confirmation' %>
                             <style media="screen">
                             .btn-confirmation{
                               font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;
@@ -815,7 +815,12 @@
                     <tbody>
                         <tr>
                             <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Helvetica; font-size: 30px; padding: 30px;">
-                                <a class="mcnButton " title="Je découvre les annonces " href="http://dingdongproduction.herokuapp.com/properties" target="_blank" style="font-weight: bold;letter-spacing: -0.5px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Je découvre les annonces </a>
+                              <%= link_to "Confirmer mon email",  confirmation_url(@resource, confirmation_token: @token), class: 'mcnButton btn-confirmation' %> 
+                              <style media="screen">
+                              .btn-confirmation{
+                                font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;
+                                }
+                              </style>
                             </td>
                         </tr>
                     </tbody>
