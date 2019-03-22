@@ -1,4 +1,8 @@
 class FavoritesController < ApplicationController
+
+  before_action :authenticate_tenant!
+
+  
   def index 
     @favorites = Favorite.where(tenant: current_tenant, is_liked: true)
   end
