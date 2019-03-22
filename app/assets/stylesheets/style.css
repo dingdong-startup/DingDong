@@ -51,7 +51,7 @@
 	z-index: 1000;
 	position: absolute;
 	top: 0;
-	right: 0; 
+	left: 0;
 	min-width: 200px;
 	min-height: 50px;
 	/*background-color: white;*/
@@ -239,4 +239,12 @@ html {
 
 .btn-invisible {
 	outline: none !important;
+}
+
+
+
+/*Container fluid upper*/
+
+.container-fluid{
+	margin-top: -75px;
 }

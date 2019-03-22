@@ -1,11 +1,11 @@
 <%= render 'layouts/navbar' %>
 
 <section class="p-0 bg-light">
-  <div class="image image-overlay image-cover" style="background-image:url(<%=asset_path 'tenant.png' %>)"
+  <div class="image image-overlay image-cover" style="background-image:url(<%=asset_path 'tenant.png' %>);""
   data-top-top="transform: translateY(0px);" 
   data-top-bottom="transform: translateY(-250px);"></div>
   <div class="container">
-    <div class="row justify-content-center align-items-end vh-50 mb-5">
+    <div class="row justify-content-center align-items-end vh-40 mb-5">
       <div class="col col-md-10 col-lg-8">
         <div class="row align-items-center">
           <div class="col-4 col-lg-3">
@@ -44,11 +44,11 @@
                <%= link_to tenant_favorites_path(@tenant.id) do %>
                <div class="equal">
                 <div class="boxed">
-                  <div class="equal-header text-orange">
-                    <b class="h2"><%= @tenant.fav_properties.size%> <i class="fas fa-heart "></i></b>
+                  <div class="row text-primary ml-2 mt-2">
+                    <b class="h2"><%= @fav_properties.size%> <i class="fas fa-heart "></i></b>
                   </div>
-                  <div class="equal-footer">
-                    <span class="text-muted">apparts en favoris</span>
+                  <div class="row equal-header ml-2 mb-2 mt-7">
+                    <span class="text-muted">Apparts en favoris</span>
                   </div>
                 </div>
               </div>
@@ -58,11 +58,11 @@
               <%= link_to tenant_properties_path(@tenant.id) do %>
               <div class="equal">
                 <div class="boxed ">
-                  <div class="equal-header">
-                    <b class="h2"><%= @tenant.asked_visits.size %> <i class="fas fa-calendar-check text-primary"></i></b>
+                  <div class="row text-primary ml-2 mt-2">
+                    <b class="h2"><%= @visit_properties.size %> <i class="fas fa-calendar-check text-primary"></i></b>
                   </div>
-                  <div class="equal-footer">
-                    <span class="text-muted">demandes de visites</span>
+                  <div class="row equal-header ml-2 mb-2 mt-7">
+                    <span class="text-muted">Visites demandées</span>
                   </div>
                 </div>
               </div>
@@ -71,11 +71,11 @@
             <div class="col-6 col-md-4 col-lg-3">
               <div class="equal">
                 <div class="boxed">
-                  <div class="equal-header text-primary">
+                  <div class="row text-primary ml-2 mt-2">
                     <b class="h2">0 <i class="fas fa-file-upload"></i></b>
                   </div>
-                  <div class="equal-footer">
-                    <span class="text-muted">dossier complété</span>
+                  <div class="row equal-header ml-2 mb-2 mt-7">
+                    <span class="text-muted">Dossier complété</span>
                   </div>
                 </div>
               </div>
@@ -83,11 +83,11 @@
             <div class="col-6 col-md-4 col-lg-3">
               <div class="equal">
                 <div class="boxed">
-                  <div class="equal-header text-primary">
+                  <div class="row text-primary ml-2 mt-2">
                     <b class="h2"><%= @tenant.successful_rent.size %> <i class="fas fa-check-circle text-primary"></i></b>
                   </div>
-                  <div class="equal-footer">
-                    <span class="text-muted">bien loué via Din-Dong</span>
+                  <div class="row equal-header ml-2 mb-2 mt-7">
+                    <span class="text-muted">Biens loués</span>
                   </div>
                 </div>
               </div>
@@ -98,7 +98,7 @@
           <!-- EDIT INFOS -->
           <div class="row">
             <div class="col">
-              <h3 class="mb-2 font-weight-normal">Mes informations</h3>
+              <h3 class="mb-2 mt-2">Mes informations</h3>
               <%= form_for [@tenant], action: :update do |f| %>
               <div class="form-row">
                 <div class="col">
@@ -149,9 +149,10 @@
               </div>
               <% end %>
               <br>
-
-              <%= link_to "Modifier les informations de connexion ou supprimer mon compte", edit_tenant_registration_path, class: 'text-orange' %>
             </div>
+          </div>
+          <div class="row pl-2">
+            <%= link_to "Modifier les informations de connexion ou supprimer mon compte", edit_tenant_registration_path, class: 'text-primary' %>
           </div>
 
         </div>
@@ -165,4 +166,5 @@
 </div>
 </section>
 
+<%= render 'layouts/footer' %>
 

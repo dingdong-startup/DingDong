@@ -18,7 +18,7 @@ class PropertiesController < ApplicationController
 
     @last_property = Property.last
     @last_date = ((Time.now - @last_property.created_at)/60/60/24).to_i
-
+    
 
 
   end

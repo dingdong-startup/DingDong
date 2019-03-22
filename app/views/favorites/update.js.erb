@@ -1,12 +1,15 @@
-if (document.getElementById('fav-<%= @property_id%>').classList[3] === "text-orange") {
-  document.getElementById('fav-<%= @property_id%>').classList.remove("text-orange");
-  document.getElementById('fav-<%= @property_id%>').classList.add("text-light");
-  document.getElementById('fav_navbar').innerHTML = '(<%= @favorite_number - 1 %>)';
-} else if (document.getElementById('fav-<%= @property_id%>').classList[3] === "text-light") {
-  document.getElementById('fav-<%= @property_id%>').classList.remove("text-light");
-  document.getElementById('fav-<%= @property_id%>').classList.add("text-orange");
+<% unless @property_id.nil? %>
+var currentFav = 'fav-<%= @property_id %>';
+<% end %>
+var currentFavNumber = parseInt(<%= @favorite_number %>);
+
+document.getElementById(currentFav).classList.toggle("text-orange");
+document.getElementById(currentFav).classList.toggle("text-light");
+
+if (document.getElementById(currentFav).classList[3] == "text-orange") {
   document.getElementById('fav_navbar').innerHTML = '(<%= @favorite_number + 1 %>)';
+} else if (document.getElementById(currentFav).classList[3] == "text-light") {
+  document.getElementById('fav_navbar').innerHTML = '(<%= @favorite_number - 1 %>)';
 } else {
   
 }
-

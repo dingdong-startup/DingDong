@@ -1,9 +1,5 @@
 class Scrapper
 
-  require 'nokogiri'
-  require 'open-uri'
-  require 'byebug'
-
   def flat_scrapper ()
     #Tableaux utiles pour le scrapping
     @U=Array.new #tableau des href

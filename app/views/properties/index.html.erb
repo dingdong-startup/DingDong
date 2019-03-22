@@ -6,15 +6,16 @@
 <div class="tab-content m-3" >
 	<div class="container">
 
-		<% if @tenant %>
-		<h2>Demandes de visites</h2>
+<% if @tenant %>
+		<h3 class="mt-4 mb-3">Demandes de visites</h3>
 		<% if @asked_visits.size > 0 %>
 		<%= render 'properties/index_properties_tenant', visits: @asked_visits %>
 		<% else %>
 		<p>Oh oh, vous n'avez fait aucune demande de visite pour le moment</p>
 		<% end %>
-		<br><br>
+		<div class="row mb-4 pl-2">
 		<%= link_to "Continuer mes recherches", properties_path %>
+		</div>
 	</div>
 </div>
 <%= render 'layouts/footer' %>
@@ -22,7 +23,7 @@
 
 <% else %>
 
-<div class="row mb-2 d-flex align-items-end">
+<div class="row mb-4 d-flex align-items-end mt-4">
 	<h3 class="m-0 p-0">Notre dernière annonce</h3> &nbsp;&nbsp;
 	<lead class="text-orange">publiée il y a  <%= @last_date%> jour(s)</lead>
 </div>
@@ -35,11 +36,11 @@
 
 	<div class="col-xs-12 col-md-4 d-flex flex-column justify-content-between">
 		
-		<div class="col-12">
+		<div class="col-12 mb-2">
 			<h4 class="text-orange"><%= @last_property.title%></h4>
 		</div>
 		
-		<div class="col-12">
+		<div class="col-12 mb-2">
 			<div class="text-primary" style="font-weight: 900"><i class="fas fa-coins mr-1"></i><%= @last_property.total_rent %> € C.C.</div>
 
 			<div class="text-primary" style="font-weight: 900"><i class="fas fa-arrows-alt-h mr-1"></i><%= @last_property.surface %> m&#xB2;</div>
@@ -56,7 +57,7 @@
 
 </div>
 
-<div class="row">
+<div class="row mb-3 mt-4">
 	<h3>Toutes les annonces (<%= @properties.size %>)</h3>
 </div>
 <div class="row">
