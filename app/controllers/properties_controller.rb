@@ -27,9 +27,7 @@ class PropertiesController < ApplicationController
     @tenant ||= Tenant.new
 
     @favorite = @tenant.property_fav(@property).last
-
-
-
+    @asked_visits_tenants = @property.requested_visits_agency
     @asked_visits = @tenant.requested_visits
 
     @agency = @property.agency

@@ -41,4 +41,8 @@ class Property < ApplicationRecord
 		self.visits.where(visit_status_id: 4, tenant: tenant)
 	end
 
+	def requested_visits_agency
+		self.visits.where(visit_status_id: 4, property: self)
+	end
+
 end
