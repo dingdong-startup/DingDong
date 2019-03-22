@@ -9,7 +9,7 @@
       <%= render 'favorites/no_favorites' %>
       
     <% else %>
-      <div class="row mt-2">
+      <div class="row mt-2 mb-4">
         <% @favorites.each do |favorite| %>
           <div class="col-xs-12 col-md-6 col-lg-4 p-1">
             <div class="card">
@@ -63,4 +63,9 @@
         <% end %>
       </div>
     <% end %>
+    <div class="row mb-4 pl-2">
+      <%= link_to "Continuer mes recherches", properties_path %>
+    </div>
 </div>
+
+<%= render 'layouts/footer' %>
