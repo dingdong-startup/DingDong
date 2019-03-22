@@ -11,9 +11,9 @@ class AdminChargesController < ApplicationController
     puts "Je suis en passe de marcher"
     tenant = Tenant.last
     charge = Stripe::Charge.create({
-    amount: 9900,
-    currency: 'eur',
-    customer: stripe_customer_id,
+      amount: 9900,
+      currency: 'eur',
+      customer: stripe_customer_id,
     })
     puts "c'est BON"
     if charge.save 
@@ -24,8 +24,8 @@ class AdminChargesController < ApplicationController
       redirect_to root_path
     end
 
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
-      redirect_to charge_index_path
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to charge_index_path
   end
 end
