@@ -2,6 +2,7 @@ class VisitsController < ApplicationController
 
   before_action :authenticate_tenant!
 
+
   def create
     
     @property = Property.find(params[:property_id])
