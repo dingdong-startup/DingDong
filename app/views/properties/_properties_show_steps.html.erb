@@ -86,9 +86,7 @@
 								<% end %>
 		        </div>
 				<div class="col d-flex justify-content-center">
-				        <button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#PropertyShow">
-			    		<i class="fas fa-calendar-check mr-1"></i>Demander une visite
-					</button>
+					<%= link_to 'Demander une visite', property_visits_path(property.id), class: 'btn btn-primary mb-1', method: :create%>
 		        </div>
 
 	    	</div>

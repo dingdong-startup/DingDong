@@ -83,7 +83,7 @@
 
 					<p>Vous souhaitez supprimer votre compte de notre plateforme ? <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Etes vous sûr ?" }, method: :delete, class: 'btn-danger text-white btn-sm' %></p>
 
-					<%= link_to "Revenir", :back, class: "btn btn-primary" %>
+					<%= link_to "Revenir", agency_path(current_agency), class: "btn btn-primary" %>
 
 
 			</div>
