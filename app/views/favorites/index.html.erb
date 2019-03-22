@@ -125,8 +125,8 @@
                               </button>
                             </div>
                             <div class="modal-body text-center">
-                              <h3>Valide ta visite</h3>
-                              <p>Nous reviendrons vers toi sous 2 jours pour valider ta visite.</p>
+                                        <h3>Juste une empreinte</h3>
+                              <p>Afin de pouvoir valider ta demande de visite, nous te demandons juste une empreinte bancaire et ton numéro de téléphone.</p><br/>
                               <p>Bien entendu, nous te facturerons 99€ <span class="text-black">si et seulement si</span> tu obtiens les clés de cet appart'.</p>
                             </div>
                             <div class="modal-footer">
@@ -141,7 +141,10 @@
                                       </div>
                                     <% end %>
                                   </article>
-
+                                  <div class="modal-body text-center">
+                                  <label>Votre numéro</label>
+                                  <%= telephone_field :tenant, :last_name, class: 'form-control form-control-lg', placeholder: "06-##-##-##-##", :required => true %>
+                                  </div>
                                   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                                               data-description="Ton Empreinte Bancaire"
