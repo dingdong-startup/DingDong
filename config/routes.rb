@@ -40,8 +40,6 @@ Rails.application.routes.draw do
 
   resources :charges, only: [:index, :create]
 
-  # put 'visits/update'
-
 
   root 'statics#index'
 
