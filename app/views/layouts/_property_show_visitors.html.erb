@@ -23,9 +23,13 @@
                   </div>
 
   	              	<div class="row">
-  	                  <div class="col-4 text-muted"><i class="fas fa-phone  mr-1"></i>06.24.99.32.34  </div>
-  	                  <div class=" col-4 text-muted"><i class="fas fa-envelope  mr-1"></i><%=visit.tenant.email%> </div>
-  	             
+                      <% if visit.tenant.phone_number %>
+                        <div class="col-4 text-muted"><i class="fas fa-phone  mr-1"></i><%=visit.tenant.phone_number%>  </div>
+                      <% else %>
+                        <div class="col-4 text-muted"><i class="fas fa-phone  mr-1"></i>06.##.##.##.##  </div>
+                      <% end %>
+                        <div class=" col-4 text-muted"><i class="fas fa-envelope  mr-1"></i><%=visit.tenant.email%> </div>
+                  
   	              	</div>
 
   	            </div>
