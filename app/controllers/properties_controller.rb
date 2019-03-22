@@ -53,7 +53,7 @@ class PropertiesController < ApplicationController
       redirect_to agency_path(current_agency)
     else
       flash[:danger] = @property.errors.messages
-      redirect_to new_agency_property_path
+      redirect_back(fallback_location: root_path)
     end
   end
 
