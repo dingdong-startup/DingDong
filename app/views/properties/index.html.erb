@@ -7,7 +7,7 @@
 	<div class="container">
 
 <% if @tenant %>
-		<h2>Demandes de visites</h2>
+		<h3 class="mt-4 mb-3">Demandes de visites</h3>
 		<% if @asked_visits.size > 0 %>
 		<%= render 'properties/index_properties_tenant', visits: @asked_visits %>
 		<% else %>
