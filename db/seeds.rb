@@ -102,6 +102,9 @@ p3.save
             agent_id: rand(1..5),
             floor: property.fetch("floor"),
             room: property.fetch("room"),
+            deposit: property.fetch("deposit"),
+            agency_fees: property.fetch("agency_fees"),
+            charges: property.fetch("charges"),
             area_id: a.id,
             available_date: Faker::Date.forward(rand(10..50)),
             address: property.fetch("address"))
