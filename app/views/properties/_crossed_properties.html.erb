@@ -1,3 +1,4 @@
+
 <section class="bg-light">
       <div class="container gallery">
         <div class="row justify-content-center">
@@ -12,7 +13,7 @@
               <div class="owl-stage-outer">
                 <div class="owl-stage" style="transform: translate3d(-4253px, 0px, 0px); transition: all 0.4s ease 0s; width: 6380px;">
                   <div class="owl-item active" style="width: 521.665px; margin-right: 10px;">
-                    <% first_property = properties.last(20)[rand(0..19)]%>
+                    <% first_property = properties.last(10)[rand(0..9)]%>
                     <% first_property_first_image = first_property.images.first %>
                     <%=link_to property_path(first_property) do %>
                       <figure class="photo equal pt-2">
@@ -21,7 +22,7 @@
                     <%end%>
                   </div>
                   <div class="owl-item active pb-2" style="width: 521.665px; margin-right: 10px;">
-                    <% second_property = properties.last(20)[rand(0..19)]%>
+                    <% second_property = properties.last(10)[rand(0..9)]%>
                     <% second_property_first_image = second_property.images.first %>
                     <%=link_to property_path(second_property) do %>
                       <figure class="photo equal pt-2">
@@ -30,7 +31,7 @@
                     <%end%>
                   </div>
                   <div class="owl-item active" style="width: 521.665px; margin-right: 10px;">
-                    <% third_property = properties.last(20)[rand(0..19)]%>
+                    <% third_property = properties.last(10)[rand(0..9)]%>
                     <% third_property_first_image = third_property.images.first %>
                     <%=link_to property_path(third_property) do %>
                       <figure class="photo equal pt-2">
@@ -39,7 +40,7 @@
                     <%end%>
                   </div>
                   <div class="owl-item active pb-2" style="width: 521.665px; margin-right: 10px;">
-                    <% fourth_property = properties.last(20)[rand(0..19)]%>
+                    <% fourth_property = properties.last(10)[rand(0..9)]%>
                     <% fourth_property_first_image = fourth_property.images.first %>
                     <%=link_to property_path(fourth_property) do %>
                       <figure class="photo equal pt-2">
@@ -61,6 +62,6 @@
             </div>
           </div>
         </div>
-        
+
       </div>
     </section>
