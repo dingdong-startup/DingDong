@@ -109,7 +109,7 @@ config.assets.precompile += %w( .svg .eot .woff .ttf )
   :password => ENV['MJ_SK'],
   :domain => 'heroku.com',
   :address => 'in-v3.mailjet.com',
-  :port => 587,
+  :port => 587
   # :authentication => :plain,
   # :enable_starttls_auto => true
   }
