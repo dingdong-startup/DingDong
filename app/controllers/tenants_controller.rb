@@ -19,33 +19,32 @@ class TenantsController < ApplicationController
 
     if @tenant.update(tenant_params)
      flash[:success] = "Tes informations ont été mises à jour"
-   else
-    flash[:danger] = []
-    @tenant.errors.full_messages.each do |message|
-     flash[:danger] << message
-   end
-   flash[:danger] = flash[:danger].join(" & ")
- end 
+    else
+      flash[:danger] = []
+      @tenant.errors.full_messages.each do |message|
+        flash[:danger] << message
+      end
+      flash[:danger] = flash[:danger].join(" & ")
+    end 
 
- redirect_to tenant_path(@tenant.id)
+    redirect_to tenant_path(@tenant.id)
 
-end
+  end
 
-private
+  private
 
-def tenant_params
- params.require(:tenant).permit(:first_name, :last_name, :email, :avatar, :documents)
-end
+  def tenant_params
+   params.require(:tenant).permit(:first_name, :last_name, :email, :avatar, :documents)
+  end
 
-def is_current_tenant?
-  if params[:id]
-    tenant = Tenant.find(params[:id])
-    if tenant != current_tenant
-      redirect_to tenant_path(current_tenant.id)
+  def is_current_tenant?
+    if params[:id]
+      tenant = Tenant.find(params[:id])
+      if tenant != current_tenant
+        redirect_to tenant_path(current_tenant.id)
+      end
     end
   end
-end
-
 
 
 end
