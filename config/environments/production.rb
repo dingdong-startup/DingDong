@@ -22,7 +22,7 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  #config.action_mailer.default_url_options = { :host => 'https://dingdongproduction.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'dingdongproduction.herokuapp.com' }
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -104,14 +104,14 @@ config.assets.precompile += %w( .svg .eot .woff .ttf )
   config.action_mailer.default_url_options = { host: 'https://dingdongstaging.herokuapp.com/' }
   config.action_mailer.delivery_method = :smtp
 
-  ActionMailer::Base.smtp_settings = {
-  :user_name => ENV['MJ_APIKEY'],
-  :password => ENV['MJ_SK'],
-  :domain => 'heroku.com',
-  :address => 'in-v3.mailjet.com',
-  :port => 587
-  # :authentication => :plain,
-  # :enable_starttls_auto => true
-  }
+  # ActionMailer::Base.smtp_settings = {
+  # :user_name => ENV['MJ_APIKEY'],
+  # :password => ENV['MJ_SK'],
+  # :domain => 'heroku.com',
+  # :address => 'in-v3.mailjet.com',
+  # :port => 587
+  # # :authentication => :plain,
+  # # :enable_starttls_auto => true
+  # }
 
 end
