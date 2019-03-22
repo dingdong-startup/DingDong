@@ -15413,13 +15413,13 @@ footer {
     -webkit-transform: translate(-50%, 0);
     -moz-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
-    content: "";
+    content: "v";
     position: absolute;
     display: block;
-    top: 25%;
+    top: 13%;
     left: 50%;
     width: 6px;
-    height: 6px;
+    height: 0px;
     background: #000;
     border-radius: 50%;
     -webkit-animation: mouse 2s linear infinite;
@@ -16123,7 +16123,7 @@ footer {
   -moz-transition-delay: 0s;
   transition-delay: 0s;
   position: relative;
-  padding: .625rem;
+  padding: 0rem;
   border: 1px solid #e5e5e5; }
   .accordion.open .accordion-control::after {
     -webkit-transform: rotate(180deg);
@@ -16405,7 +16405,7 @@ footer {
   transform: translate(0, -50%);
   left: 15px; }
   .owl-carousel .owl-nav .owl-prev::before {
-    content: "\ebfb"; }
+    content: "<"; }
   .owl-carousel .owl-nav .owl-prev[class*="disabled"] {
     -webkit-transform: translate(-100%, -50%);
     -moz-transform: translate(-100%, -50%);
@@ -16420,7 +16420,7 @@ footer {
   transform: translate(0, -50%);
   right: 15px; }
   .owl-carousel .owl-nav .owl-next::before {
-    content: "\ebfc"; }
+    content: ">"; }
   .owl-carousel .owl-nav .owl-next[class*="disabled"] {
     -webkit-transform: translate(100%, -50%);
     -moz-transform: translate(100%, -50%);
@@ -19356,7 +19356,7 @@ footer {
     z-index: 10; }
   .card-img-container .card-title {
     text-shadow: 0px 0px 25px rgba(0, 0, 0, 0.4);
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin: 0;
     color: #fff; }
 
