@@ -34,7 +34,7 @@ class Property < ApplicationRecord
 	end
 
 	def existant_fav(tenant)
-		Favorite.find_by(property_id: self.id, tenant: tenant, is_liked: true)
+		Favorite.find_by(property_id: self.id, tenant: tenant)
 	end
 
 end

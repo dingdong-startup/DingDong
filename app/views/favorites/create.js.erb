@@ -1,5 +1,6 @@
 document.getElementById('fav-<%= @property_id%>').classList.remove('text-light');
 document.getElementById('fav-<%= @property_id%>').classList.add('text-orange');
-document.getElementById('btn-<%= @property_id%>').childNodes[1].setAttribute('value', 'put');
-document.getElementById('btn-<%= @property_id%>').setAttribute('action', '/properties/<%=@property_id%>/favorites/<%=@favorite_id%>');
-document.getElementById('fav_navbar').innerHTML = '(<%= @favorite_number + 1 %>)';
+document.getElementById('btn-create-<%= @property_id%>').setAttribute('method', 'post');
+document.getElementById('btn-create-<%= @property_id%>').childNodes[1].setAttribute('value', 'put');
+document.getElementById('btn-create-<%= @property_id%>').setAttribute('action', '/properties/<%=@property_id%>/favorites/<%=@favorite_id%>');
+document.getElementById('fav_navbar').innerHTML = '(<%= @favorite_number + 1%>)';
