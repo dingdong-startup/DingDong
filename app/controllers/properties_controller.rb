@@ -13,6 +13,8 @@ class PropertiesController < ApplicationController
 
     @favorite = Favorite.new
 
+    @tenant_id = params[:tenant_id]
+
 
   end
 
@@ -24,7 +26,10 @@ class PropertiesController < ApplicationController
     @tenant = current_tenant
     @tenant ||= Tenant.new
 
-    @favorite = @tenant.fav_properties
+    @favorite = @tenant.property_fav(@property).last
+
+
+
     @asked_visits = @tenant.requested_visits
 
     @agency = @property.agency

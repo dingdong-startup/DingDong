@@ -62,4 +62,8 @@ class Tenant < ApplicationRecord
     self.favorites.where(is_liked: true)
   end
 
+  def property_fav(property)
+    self.favorites.where(property: property)
+  end
+
 end
