@@ -14,7 +14,6 @@ class Tenant < ApplicationRecord
   has_one_attached :avatar
 
   before_create :attach_avatar
-  after_create :welcome_mail
 
   def default_payment_status
     self.payment_status_id ||= 1
@@ -48,9 +47,5 @@ class Tenant < ApplicationRecord
     unless favoris.nil?
       favoris.update_attributes(is_liked: false)
     end
-  end
-
-  def welcome_mail
-    TenantMailer.welcome_email(self).deliver_now
   end
 end
