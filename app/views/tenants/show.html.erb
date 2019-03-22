@@ -44,8 +44,8 @@
                <%= link_to tenant_favorites_path(@tenant.id) do %>
                <div class="equal">
                 <div class="boxed">
-                  <div class="row text-orange ml-2 mt-2">
-                    <b class="h2"><%= @tenant.fav_properties.size%> <i class="fas fa-heart "></i></b>
+                  <div class="equal-header text-orange">
+                    <b class="h2"><%= @fav_properties.size%> <i class="fas fa-heart "></i></b>
                   </div>
                   <div class="row equal-header ml-2 mb-2 mt-7">
                     <span class="text-muted">apparts en favoris</span>
@@ -58,8 +58,8 @@
               <%= link_to tenant_properties_path(@tenant.id) do %>
               <div class="equal">
                 <div class="boxed ">
-                  <div class="row text-primary ml-2 mt-2">
-                    <b class="h2"><%= @tenant.asked_visits.size %> <i class="fas fa-calendar-check text-primary"></i></b>
+                  <div class="equal-header">
+                    <b class="h2"><%= @visit_properties.size %> <i class="fas fa-calendar-check text-primary"></i></b>
                   </div>
                   <div class="row equal-header ml-2 mb-2 mt-7">
                     <span class="text-muted">visites demandées</span>
