@@ -1,4 +1,7 @@
 class AgentsController < ApplicationController
+
+  before_action :authenticate_agency!
+
   def create
   end
 
