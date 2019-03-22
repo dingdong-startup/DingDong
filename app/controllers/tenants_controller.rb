@@ -5,10 +5,8 @@ class TenantsController < ApplicationController
 
   def show
   	@tenant = Tenant.find(params[:id])
-  	#To change once relationship between tenant and property would have been done
-  	@fav_properties = Property.all.limit(14)
-  	#To change to all flats where the user asked for a visit
-  	@visit_properties = Property.all.limit(3)
+  	@fav_properties = @tenant.fav_properties
+  	@visit_properties = @tenant.requested_visits
   end
 
   def edit

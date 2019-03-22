@@ -35,10 +35,10 @@
           <li class="nav-item">
             <%= link_to tenant_favorites_path(current_tenant.id), class:"nav-link" do %>
             <span style="font-size: 20px; line-height:20px;">
-              <% if current_tenant.fav_properties.count > 0 %>
-              <i class="fas fa-heart text-orange"></i><span style="font-size: 15px;" class="text-light"> Favoris</span><small class="text-light" id ="fav_navbar"> (<%= current_tenant.fav_properties.count%>)</small>
+              <% if current_tenant.fav_properties.size > 0 %>
+              <i class="fas fa-heart text-orange"></i><span style="font-size: 15px;" class="text-light"> Favoris</span><small class="text-light" id ="fav_navbar"> (<%= current_tenant.fav_properties.size%>)</small>
               <% else %>
-              <i class="fas fa-heart text-light"></i><span style="font-size: 15px;" class="text-light"> Favoris</span><small class="text-light" id ="fav_navbar"> (<%= current_tenant.fav_properties.count%>)</small>
+              <i class="fas fa-heart text-light"></i><span style="font-size: 15px;" class="text-light"> Favoris</span><small class="text-light" id ="fav_navbar"> (<%= current_tenant.fav_properties.size%>)</small>
               <% end %>
             </span>
             <% end %>
@@ -46,7 +46,7 @@
           <li class="nav-item">
             <%= link_to tenant_properties_path(current_tenant.id), class:"nav-link" do %>
             <span style="font-size: 20px; line-height:20px;">
-              <i class="fas fa-calendar-check text-light "></i><span style="font-size: 15px;" class="text-light">  Demandes</span><small class="text-light"> (<%= current_tenant.asked_visits.count%>)</small>
+              <i class="fas fa-calendar-check text-light "></i><span style="font-size: 15px;" class="text-light">  Demandes</span><small class="text-light"> (<%= current_tenant.requested_visits.size%>)</small>
             </span>
             <% end %>
           </li>
@@ -63,6 +63,7 @@
             </div>
           </li>
           <% end %>
+
           <% if agency_signed_in? %>
           <ul class="navbar-nav align-items-center mr-0">
             <li class="nav-item">
