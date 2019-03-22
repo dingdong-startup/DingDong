@@ -15413,13 +15413,13 @@ footer {
     -webkit-transform: translate(-50%, 0);
     -moz-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
-    content: "";
+    content: "v";
     position: absolute;
     display: block;
-    top: 25%;
+    top: 13%;
     left: 50%;
     width: 6px;
-    height: 6px;
+    height: 0px;
     background: #000;
     border-radius: 50%;
     -webkit-animation: mouse 2s linear infinite;
