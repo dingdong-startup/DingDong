@@ -13,14 +13,14 @@
               </div>
               <div class="col-2">
             
-                            <a class="dropdown-item btn-blue" data-toggle="modal" data-target="#exampleModal" href="#"><i class="fas fa-edit mr-1"></i>Editer</a>
+                            <a class="dropdown-item btn-blue" data-toggle="modal" data-target="#editModal" href="#"><i class="fas fa-edit mr-1"></i>Editer</a>
                             <div class="dropdown-item btn-orange text-white"><i class="fas fa-trash-alt mr-1"></i><%= link_to "Archiver", agency_property_path(agency_id: current_agency.id, property_id: property), method: :DELETE %>
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px;" role="document">
                           <div class="modal-content">
                             <div class="modal-header justify-content-end">

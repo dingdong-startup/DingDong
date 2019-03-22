@@ -1,6 +1,6 @@
 class TenantMailer < ApplicationMailer
-  def welcome_email(user)
-    mail(from: "maxime@startoop.fr", to: "mlesegret@yopmail.com",
-         subject: "This is a nice welcome email")
+  def welcome_email(tenant)
+    @tenant = tenant
+    mail(to: @tenant.email, subject: "Ding Dong! Vous allez bientôt trouver l'appartement de vos rêves")
   end
 end

@@ -1,4 +1,7 @@
 class ChargesController < ApplicationController
+
+  before_action :authenticate_admin!
+
   def index
     @tenants = Tenant.where(payment_status_id: 2)
   end

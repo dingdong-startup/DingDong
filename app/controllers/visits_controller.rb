@@ -42,17 +42,16 @@ class VisitsController < ApplicationController
     redirect_back(fallback_location: properties_path)
   end
 
-  def update 
-    if visit_is_canceled 
-      @visit.destroy
+  def destroy
+    @visit = Visit.find(params[:visit_id])
+    if @visit.destroy
       flash[:light] = "Demande de visite annulée"
       redirect_back(fallback_location: properties_path)
+    else 
+      flash[:danger] = "Oups, demande de visite non annulée"
+      redirect_back(fallback_location: properties_path)
     end
+
   end
 
-  private 
-
-  def visit_is_canceled
-    @visit = Visit.find_by(property_id: params[:property_id], tenant: current_tenant, visit_status_id: 4) 
-  end
 end

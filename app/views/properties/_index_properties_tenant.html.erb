@@ -18,6 +18,7 @@
 					<div class="text-muted" style="font-weight: 500"><i class="text-primary fas fa-arrows-alt-h mr-1"></i><%= visit.property.surface %> m&#xB2;</div>
 					<div class="text-muted" style="font-weight: 500"> <i class="text-primary fas fa-map-marker-alt mr-1"></i><%= visit.property.area.zipcode %></div>
 				</div>
+
 				<div class="row d-fex justify-content-around flex-wrap mb-0">
 					<div class="row d-fex justify-content-around  flex-wrap mb-0">
 						<div class="item-property p-1 m-1 mb-0 flex-wrap"> <%=visit.property.floor%> <sup>e</sup> étage</div>
@@ -26,18 +27,19 @@
 					<div class="d-flex justify-content-around flex-wrap">
 						<%if visit.visit_status_id == 4 %>
 						<p class="text-center">Le gestionnaire du bien va revenir vers vous afin de convenir d'un rendez-vous</p>
-							<%= form_tag property_visit_path(visit.property.id, visit.id), method: 'put' do %>
-								<%= hidden_field_tag :property_id, visit.property.id %>
+							<%= form_tag property_visit_path(visit.property, visit), method: 'delete' do %>
+								<%= hidden_field_tag :visit_id, visit.id %>
 								<%= submit_tag 'Annuler ma demande', class: 'btn btn-light' %>
 							<% end %>
 						<%else%>
 							<%= link_to 'Visiter', property_visits_path(visit.property.id), class: 'btn btn-blue', method: 'create' %>
-							<p><br>Le gestionnaire du bien va revenir vers vous afin de convenir d'un rendez-vous</p>
+							<p><br> Une fois que tu auras validé ta demande, le gestionnaire du bien reviendra vers toi afin de convenir d'un rendez-vous</p>
 						<%end%>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 <%end%>
 </div>

@@ -3,7 +3,7 @@
         <div class="row justify-content-center text-center text-left">
 
 	          <div class="accordion-group accordion-group-steps" data-accordion-group="">
-	            <div class="accordion open" data-accordion="">
+	            <div class="accordion open accordion-padding" data-accordion="">
 	              <div class="accordion-control" data-control="">
 	                <h5>Découvre les appartements en avant première</h5>
 	              </div>
@@ -13,7 +13,7 @@
 	                </div>
 	              </div>
 	            </div>
-	            <div class="accordion" data-accordion="">
+	            <div class="accordion accordion-padding" data-accordion="">
 	              <div class="accordion-control" data-control="">
 	                <h5>Inscris-toi aux visites de tes appartements préférés</h5>
 	              </div>
@@ -23,7 +23,7 @@
 	                </div>
 	              </div>
 	            </div>
-	            <div class="accordion" data-accordion="">
+	            <div class="accordion accordion-padding" data-accordion="">
 	              <div class="accordion-control" data-control="">
 	                <h5>Visite avant tout le monde</h5>
 	              </div>
@@ -33,7 +33,7 @@
 	                </div>
 	              </div>
 	            </div>
-	          <div class="accordion" data-accordion="">
+	          <div class="accordion accordion-padding" data-accordion="">
 	              <div class="accordion-control" data-control="">
 	                <h5>A toi les clés !</h5>
 	              </div>
@@ -61,7 +61,7 @@
 										<% end %>
 									<% end %>
 
-									<% elsif @favorite.is_liked == true %>
+									<% elsif @favorite.is_liked %>
 
 									<%= form_tag property_favorite_path(property.id, @favorite.id), method: 'put' do %>
 										<%= hidden_field_tag :property_id, property.id %>
@@ -79,10 +79,14 @@
 											<% end %>
 										<% end %>
 									<% end %>
+								<% else %>
+								<div>
+									<%= link_to 'Enregistrer',  new_tenant_session_path, class: 'btn btn-outline-orange'%>
+								</div>
 								<% end %>
 		        </div>
 				<div class="col d-flex justify-content-center">
-				        <button type="button" class="btn btn-blue mb-1" data-toggle="modal" data-target="#PropertyShow">
+				        <button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#PropertyShow">
 			    		<i class="fas fa-calendar-check mr-1"></i>Demander une visite
 					</button>
 		        </div>
