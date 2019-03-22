@@ -29,8 +29,10 @@ class FavoritesController < ApplicationController
 
   def update  
     @favorite_number = current_tenant.fav_properties.count
+    puts "*"*60
+    puts @favorite_number
+    @property_id = params[:property_id]
     if is_already_favorited
-      @property_id = params[:property_id]
       if @favorite.update_attributes(is_liked: false)
         respond_to do |format|
           format.js
