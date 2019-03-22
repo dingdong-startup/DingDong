@@ -1,4 +1,7 @@
 class AgentsController < ApplicationController
+
+  before_action :authenticate_agency!
+
   def create
   end
 
@@ -8,9 +11,6 @@ class AgentsController < ApplicationController
   def update
 
     @agent = Agent.find(params[:id])
-    puts "#"*100
-    puts params
-    puts "#"*100
 
     if @agent.update(property_params)
       flash[:success] = "Les informations de l'agent ont été mises à jour"
@@ -21,7 +21,6 @@ class AgentsController < ApplicationController
     end
 
   end
-
 
   private
 

@@ -50,5 +50,22 @@ class Tenant < ApplicationRecord
     end
   end
 
-  
+
+  def welcome_mail
+    TenantMailer.welcome_email(self).deliver_now
+  end
+
+  def requested_visits
+    self.visits.where(visit_status_id: 4)
+  end
+
+  def fav_properties
+    self.favorites.where(is_liked: true)
+  end
+
+  def property_fav(property)
+    self.favorites.where(property: property)
+  end
+
+
 end

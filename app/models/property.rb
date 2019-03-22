@@ -37,4 +37,8 @@ class Property < ApplicationRecord
 		Favorite.find_by(property_id: self.id, tenant: tenant)
 	end
 
+	def requested_visits(tenant)
+		self.visits.where(visit_status_id: 4, tenant: tenant)
+	end
+
 end

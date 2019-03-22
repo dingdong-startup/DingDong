@@ -61,7 +61,7 @@
 										<% end %>
 									<% end %>
 
-									<% elsif @favorite.is_liked == true %>
+									<% elsif @favorite.is_liked %>
 
 									<%= form_tag property_favorite_path(property.id, @favorite.id), method: 'put' do %>
 										<%= hidden_field_tag :property_id, property.id %>

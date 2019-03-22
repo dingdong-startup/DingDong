@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   devise_for :tenants
 
-  get 'static_homes/index'
 
   devise_for :agencies, except: [:index]
   authenticated :agency do
@@ -21,8 +20,10 @@ Rails.application.routes.draw do
   resources :agents, only: [:create, :update, :edit]
 
 
-  resources :properties, only: [:index, :show] do
-    resources :visits, only: [:create, :update]
+
+  resources :properties, only: [:index, :show] do 
+    resources :visits, only: [:create, :update, :destroy]
+
   end
 
   resources :properties, only: [:index, :show] do
@@ -38,8 +39,6 @@ Rails.application.routes.draw do
   end
 
   resources :charges, only: [:index, :create]
-
-  # put 'visits/update'
 
 
   root 'statics#index'

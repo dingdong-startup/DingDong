@@ -6,10 +6,12 @@
 <div class="tab-content m-3" >
 	<div class="container">
 
-<% if @tenant %>
+
+<% if @tenant_id %>
 		<h3 class="mt-4 mb-3">Demandes de visites</h3>
+
 		<% if @asked_visits.size > 0 %>
-		<%= render 'properties/index_properties_tenant', visits: @asked_visits %>
+			<%= render 'properties/index_properties_tenant', visits: @asked_visits %>
 		<% else %>
 		<p>Oh oh, vous n'avez fait aucune demande de visite pour le moment</p>
 		<% end %>
