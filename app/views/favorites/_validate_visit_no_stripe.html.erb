@@ -1,0 +1,25 @@
+<div class="modal fade" id="modalVisit-<%=favorite.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header justify-content-end">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="icon-x"></span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <h3>Valide ta visite</h3>
+        <p>Nous reviendrons vers toi sous 2 jours pour valider ta visite.</p>
+        <p>Bien entendu, nous te facturerons 99€ <span class="text-black">si et seulement si</span> tu obtiens les clés de cet appart'.</p>
+      </div>
+      <div class="modal-footer">
+        <div class="container">
+            <div class="row">
+              <div class="col text-center">
+                <%= link_to 'Valide ta demande', property_visits_path(favorite.property.id), class: 'btn btn-blue', method: 'create' %>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

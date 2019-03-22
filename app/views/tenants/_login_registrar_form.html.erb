@@ -1,5 +1,5 @@
 <div class="viewport">
-  <div class="image image-overlay" style="background-image:url(<%=asset_path('photo1.jpg')%>)"></div>
+  <div class="image image-overlay" style="background-image:url(<%=asset_path('photo1.jpg')%>);"></div>
 
 
 <div class="container">
@@ -7,11 +7,7 @@
           <div class="col-md-6 col-lg-5">
             <div class="accordion-group accordion-group-portal" data-accordion-group="">
 
-              <div class="row  p-1 mb-0 bg-primary d-flex align-items-center">
-                <div class="col-12 agency-login d-flex align-items-center justify-content-center">
-                  Espace Locataire
-                </div>
-              </div>
+        
               <!-- LOGIN -->
               <div class="accordion open" data-accordion="">
                 <div class="accordion-control" data-control="">
@@ -110,3 +106,11 @@
 
 
 </div>
+
+
+<script>
+  setTimeout(
+    function() {
+      document.getElementById('footer').setAttribute("style", "display:none!important");
+    }, 1);
+</script>

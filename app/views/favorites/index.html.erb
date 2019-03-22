@@ -1,179 +1,71 @@
-<%= render 'layouts/navbar' %>
+<%= render 'layouts/navbar_light' %>
+<%= render 'properties/banner_property_index_tenant'%>
 
-<div class="tab-content m-3" >
-  <div class="container" style="margin-top:150px;">
-  	<%rowcount = 0%>
-        <h2>Vos favoris</h2>
-        <% if @favorites.count == 0 %>
-          <p>Oh oh, tu n'as aucune annonce en favoris pour le moment...</p>
-            <%= link_to "Continuer mes recherches", properties_path %>
-        <% else %>
-                <% @favorites.each do |favorite| %>
-                  <div class="row mt-1">
-                    <div class="col-8">
-                      <div class="boxed p-2 bordered scaling">
-                        <div class="row align-items-center justify-content-between">
-                          <div class="col-10">
-                            <%= link_to property_path(favorite.property.id) do %>
-                              <div class="media align-items-center">           			           
-                                <img src="<%=asset_path(image_path(main_app.url_for(favorite.property.images.first)))%>" alt="Avatar" class="avatar avatar-lg mr-3">
-                                  <div class="media-body">
-                                    <h5 class="mb-0"><%=favorite.property.title%></h5>
-                                      <br>
-                                        <container>
-                                          <div class="row">
-                                            <div class="col-4 text-muted"><i class="fas fa-arrows-alt-h"></i> <%=favorite.property.surface%> m2  </div>
-                                            <div class=" col-4 text-muted"><i class="fas fa-coins"></i> <%=favorite.property.price%> €  </div>
-                                            <div class="col-4 text-muted"><i class="fas fa-map-marker-alt"></i> <%=favorite.property.area.zipcode%></div>
-                                          </div>
-                                        </container>
-                                  </div>
-                                  <div class="ml-5">
-                                  <%= form_tag property_favorite_path(favorite.property.id, favorite.id), method: 'put' do %>
-                                    <%= hidden_field_tag :property_id, favorite.property.id %>
-                                    <%= button_tag(type: "submit", class: "btn btn-ico btn-outline-light text-orange rounded btn-sm icon", remote: true) do %>
-                                      <i class="fas fa-heart"></i>
-                                    <% end %>
-                                  <% end %>
-                                  </div>
-                              </div>
-                            <% end %>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <% if favorite.tenant.payment_status_id == 2 %>
-                      <% if favorite.tenant.visits.find_by(property_id: favorite.property.id, tenant_id: favorite.tenant.id).nil? %>
-                        <div class="col-4  pt-2 align-items-center">
-                          <div class="tab-pane show active" id="component-1-1" role="tabpanel" aria-labelledby="component-1-1">
-                            <div class="component-example">
-                              <div class="container">
-                                <div class="row">
-                                  <div class="col text-center">
-                                    <button type="button" class="btn btn-orange" data-toggle="modal" data-target="#modalVisit-<%=favorite.id%>">
-                                      Demander une visite
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      <% else %>
-                        <div class="col-4  pt-2 align-items-center">
-                          <div class="tab-pane show active" id="component-1-1" role="tabpanel" aria-labelledby="component-1-1">
-                            <div class="component-example">
-                              <div class="container">
-                                <div class="row">
-                                  <div class="col text-center">
-                                    <h5>Visite demandée ! <i class="fas fa-check text-orange"></i></h5>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      <% end %>
-                      <div class="modal fade" id="modalVisit-<%=favorite.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header justify-content-end">
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true" class="icon-x"></span>
-                              </button>
-                            </div>
-                            <div class="modal-body text-center">
-                              <h3>Valide ta visite</h3>
-                              <p>Nous reviendrons vers toi sous 2 jours pour valider ta visite.</p>
-                              <p>Bien entendu, nous te facturerons 99€ <span class="text-black">si et seulement si</span> tu obtiens les clés de cet appart'.</p>
-                            </div>
-                            <div class="modal-footer">
-                              <div class="container">
-                                  <div class="row">
-                                    <div class="col text-center">
-                                      <%= link_to 'Valide ta demande', property_visits_path(favorite.property.id), class: 'btn btn-blue', method: 'create' %>
-                                    </div>
-                                  </div>
-                                </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    <% else %>
-                        <div class="col-4  pt-2 align-items-center">
-                          <div class="tab-pane show active" id="component-1-1" role="tabpanel" aria-labelledby="component-1-1">
-                            <div class="component-example">
-                              <div class="container">
-                                <div class="row">
-                                  <div class="col text-center">
-                                    <button type="button" class="btn btn-orange" data-toggle="modal" data-target="#modalStripe-<%=favorite.id%>">
-                                      Demander une visite
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+
+<div class="container">
+  <h3 class="mt-4 mb-3">Favoris</h3>
+    <% if @favorites.count == 0 %>
+
+      <%= render 'favorites/no_favorites' %>
       
-                      <div class="modal fade" id="modalStripe-<%=favorite.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header justify-content-end">
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true" class="icon-x"></span>
-                              </button>
-                            </div>
-                            <div class="modal-body text-center">
-                                        <h3>Juste une empreinte</h3>
-                              <p>Afin de pouvoir valider ta demande de visite, nous te demandons juste une empreinte bancaire et ton numéro de téléphone.</p><br/>
-                              <p>Bien entendu, nous te facturerons 99€ <span class="text-black">si et seulement si</span> tu obtiens les clés de cet appart'.</p>
-                            </div>
-                            <div class="modal-footer">
-                            <div class="container">
-                              <div class="row">
-                                <div class="col text-center">
-                                <%= form_tag  property_visits_path(favorite.property.id) do %>
-                                  <article>
-                                    <% if flash[:error].present? %>
-                                      <div id="error_explanation">
-                                        <p><%= flash[:error] %></p>
-                                      </div>
-                                    <% end %>
-                                  </article>
-                                  <div class="modal-body text-center">
-                                  <label>Votre numéro</label>
-                                  <%= telephone_field :tenant, :last_name, class: 'form-control form-control-lg', placeholder: "06-##-##-##-##", :required => true %>
-                                  </div>
-                                  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                                              data-description="Ton Empreinte Bancaire"
-                                              data-locale="auto"
-                                              data-name="Enregistrer"
-                                              data-panel-label="Enregistrer">
-                                  </script>
-                                  <button type="submit" class="btn btn-orange">Demander une visite</button>
-
-                                  <script>
-                                      document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
-                                  </script>
-                                  <% end %>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> 
+    <% else %>
+      <div class="row mt-2 mb-4">
+        <% @favorites.each do |favorite| %>
+          <div class="col-xs-12 col-md-6 col-lg-4 p-1">
+            <div class="card">
+              <%= link_to property_path(favorite.property.id), class: "card-img-container" do %>
+              <img class="card-img-top" src="<%=asset_path(image_path(main_app.url_for(favorite.property.images.first)))%>" alt="Property image">
+              <div class="card-header  d-flex flex-column justify-content-between">
+                <div class="d-flex justify-content-end">
+                  <%if !favorite.property.existant_fav(current_tenant).nil? %>
+                    <%= form_tag property_favorite_path(favorite.property.id, favorite.property.existant_fav(current_tenant).id), method: 'put', remote: true do%>
+                      <%= button_tag(type: "submit", class: "btn-invisible") do %>
+                      <span class="circle-fav d-flex justify-content-around align-items-center"><i class="fas fa-heart text-orange" id="fav-<%=favorite.property.id %>"></i></span>
+                      <% end %>
+                    <% end%>
+                  <% else %>
+                    <%= form_tag property_favorites_path(favorite.property.id), method: 'create', id: "btn-#{property.id}", remote: true do%>
+                      <%= button_tag(type: "submit", class: "btn-invisible") do %>
+                      <span class="circle-fav d-flex justify-content-around align-items-center"><i class="fas fa-heart text-light" id="fav-<%=property.id %>"></i></span>
+                      <% end %>
+                    <% end%>
                   <% end %>
+                </div>
+                <div><h5 class="card-title"><%= favorite.property.title %></h5></div>
+              </div>
+              <% end %>
+              <div class="card-body">
+                <div class="row mb-2 d-flex justify-content-around" >
+                  <div class="text-muted" style="font-weight: 500"><i class="text-primary fas fa-coins mr-1"></i><%= favorite.property.total_rent %> € C.C.</div>
+                  <div class="text-muted" style="font-weight: 500"><i class="text-primary fas fa-arrows-alt-h mr-1"></i><%= favorite.property.surface %> m&#xB2;</div>
+                  <div class="text-muted" style="font-weight: 500"> <i class="text-primary fas fa-map-marker-alt mr-1"></i><%= favorite.property.area.zipcode %></div>
+                </div>
+                <div class="row d-fex justify-content-around flex-wrap">
+                  <div class="row d-fex justify-content-around  flex-wrap mb-2">
+                    <div class="item-property p-1 m-1 mb-0 flex-wrap"> <%=favorite.property.floor%> <sup>e</sup> étage</div>
+                    <div class="item-property p-1 m-1 mb-0 flex-wrap"> <%=favorite.property.room%> pièces</div>
                   </div>
-                    <%end%>
-                  <%end%>
+                  <% if favorite.tenant.payment_status_id == 2 %>
+                    <% if favorite.tenant.visits.find_by(property_id: favorite.property.id, tenant_id: favorite.tenant.id).nil? %>
+                    <%= render 'favorites/ask_visit', favorite: favorite %>
+                    <% else %>
+                    <%= render 'favorites/visit_asked', favorite: favorite %>
+                    <% end %>
+                    <%= render 'favorites/validate_visit_no_stripe', favorite: favorite %>
+                  <% else %>
+                  <%= render 'favorites/ask_visit_modal_stripe', favorite: favorite %>
+                  <%= render 'favorites/validate_visit_with_stripe', favorite: favorite %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="row mb-4 pl-2">
+      <%= link_to "Continuer mes recherches", properties_path %>
     </div>
-  </div>
+</div>
 
-  <% if @favorites.count <= 1 %>
-  <%= render 'layouts/footer_fixed'%>
-  <% else %>
-  <%= render 'layouts/footer' %>
-  <% end %>
+<%= render 'layouts/footer' %>
