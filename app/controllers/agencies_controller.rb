@@ -20,9 +20,14 @@ class AgenciesController < ApplicationController
 
   # This method test if the agency is trying to access to an other agency profile page and redirect him to his own profile page if it is
   def is_current_agency?
-    if Agency.find(params[:id]) != current_agency
-      redirect_to agency_path(current_agency.id)
+    if params[:id]
+      agency = Agency.find(params[:id])
+      if agency != current_agency
+        redirect_to agency_path(current_agency.id)
+      end
     end
   end
+
+
 
 end

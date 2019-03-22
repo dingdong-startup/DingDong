@@ -2,18 +2,16 @@ Rails.application.routes.draw do
 
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
+
   devise_for :tenants
 
   get 'static_homes/index'
 
   devise_for :agencies, except: [:index]
   authenticated :agency do
-    root :to => 'agencies#show'
+    root 'agencies#show'
   end
-  # resources :agencies, except: [:index]
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
  
 
   resources :agencies, except: [:index]  do 
@@ -24,7 +22,7 @@ Rails.application.routes.draw do
 
 
   resources :properties, only: [:index, :show] do 
-    resources :visits, only: [:create]
+    resources :visits, only: [:create, :update]
   end
 
   resources :properties, only: [:index, :show] do 
@@ -41,7 +39,7 @@ Rails.application.routes.draw do
 
   resources :charges, only: [:index, :create]
 
-  put 'visits/update'
+  # put 'visits/update'
 
   root 'statics#index'
 
