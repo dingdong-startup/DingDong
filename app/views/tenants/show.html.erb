@@ -44,10 +44,10 @@
                <%= link_to tenant_favorites_path(@tenant.id) do %>
                <div class="equal">
                 <div class="boxed">
-                  <div class="equal-header text-orange">
+                  <div class="row text-orange ml-2 mt-2">
                     <b class="h2"><%= @tenant.fav_properties.size%> <i class="fas fa-heart "></i></b>
                   </div>
-                  <div class="equal-footer">
+                  <div class="row equal-header ml-2 mb-2 mt-7">
                     <span class="text-muted">apparts en favoris</span>
                   </div>
                 </div>
@@ -58,11 +58,11 @@
               <%= link_to tenant_properties_path(@tenant.id) do %>
               <div class="equal">
                 <div class="boxed ">
-                  <div class="equal-header">
+                  <div class="row text-primary ml-2 mt-2">
                     <b class="h2"><%= @tenant.asked_visits.size %> <i class="fas fa-calendar-check text-primary"></i></b>
                   </div>
-                  <div class="equal-footer">
-                    <span class="text-muted">demandes de visites</span>
+                  <div class="row equal-header ml-2 mb-2 mt-7">
+                    <span class="text-muted">visites demandées</span>
                   </div>
                 </div>
               </div>
@@ -71,10 +71,10 @@
             <div class="col-6 col-md-4 col-lg-3">
               <div class="equal">
                 <div class="boxed">
-                  <div class="equal-header text-primary">
+                  <div class="row text-primary ml-2 mt-2">
                     <b class="h2">0 <i class="fas fa-file-upload"></i></b>
                   </div>
-                  <div class="equal-footer">
+                  <div class="row equal-header ml-2 mb-2 mt-7">
                     <span class="text-muted">dossier complété</span>
                   </div>
                 </div>
@@ -83,11 +83,11 @@
             <div class="col-6 col-md-4 col-lg-3">
               <div class="equal">
                 <div class="boxed">
-                  <div class="equal-header text-primary">
+                  <div class="row text-primary ml-2 mt-2">
                     <b class="h2"><%= @tenant.successful_rent.size %> <i class="fas fa-check-circle text-primary"></i></b>
                   </div>
-                  <div class="equal-footer">
-                    <span class="text-muted">bien loué via Din-Dong</span>
+                  <div class="row equal-header ml-2 mb-2 mt-7">
+                    <span class="text-muted">Biens loués</span>
                   </div>
                 </div>
               </div>
