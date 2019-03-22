@@ -206,7 +206,7 @@ html {
 
 .navbar-footer{
 	color: #fff;
-	background-color: #14439C;
+	background-color: #0470C1;
 	font-size: 1.5em;
 	margin:auto;
 	position: fixed;
@@ -235,4 +235,8 @@ html {
 	margin-left : 1em;
 	font-size: 0.6em !important;
 	color: #fff !important;
+}
+
+.btn-invisible {
+	outline: none !important;
 }

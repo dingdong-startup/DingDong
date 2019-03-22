@@ -6,15 +6,15 @@
 		<div class="card-header  d-flex flex-column justify-content-between">
 			<div class="d-flex justify-content-end">
 				<%if !property.existant_fav(current_tenant).nil? %>
-					<%= form_tag property_favorite_path(property.id, property.existant_fav(current_tenant).id), method: 'put' do%>
+					<%= form_tag property_favorite_path(property.id, property.existant_fav(current_tenant).id), method: 'put', remote: true do%>
 						<%= button_tag(type: "submit", class: "btn-invisible") do %>
 						<span class="circle-fav d-flex justify-content-around align-items-center"><i class="fas fa-heart text-orange" id="fav-<%=property.id %>"></i></span>
 						<% end %>
 					<% end%>
 				<% else %>
-					<%= form_tag property_favorites_path(property.id), method: 'create' do%>
+					<%= form_tag property_favorites_path(property.id), method: 'create', id: "btn-#{property.id}", remote: true do%>
 						<%= button_tag(type: "submit", class: "btn-invisible") do %>
-						<span class="circle-fav d-flex justify-content-around align-items-center"><i class="far fa-heart text-orange" id="fav-<%=property.id %>"></i></span>
+						<span class="circle-fav d-flex justify-content-around align-items-center"><i class="fas fa-heart text-light" id="fav-<%=property.id %>"></i></span>
 						<% end %>
 					<% end%>
 				<% end %>
