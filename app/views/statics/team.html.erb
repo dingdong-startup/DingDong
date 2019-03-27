@@ -1,0 +1,89 @@
+<%= render 'layouts/navbar' %>
+
+ <!-- team -->
+    <section class="bg-white mt-5">
+	
+        <div class="row justify-content-center">
+          <div class="col-md-6 text-center">
+            <span class="eyebrow d-block mb-1 text-primary">La team</span><br> 
+            <p class="lead text-black">Ding Dong, c'est avant tout une team de 5 associés convaincus que la recherche d'appartements mérite un nouveau jour ! <br> <br> 
+            Nous sommes tous d'anciens agents immobiliers, ingénieurs en tech ou entrepreneurs, et comptons bien changer les choses ensemble, pour vous. </p><br>
+          </div>
+        </div>
+        <div class="row gutter-0 justify-content-center">
+          <div class="col-md-2">
+            <figure class="user">
+              <a href="" class="user-photo">
+                <img src="<%=asset_path(@team[0][:image])%>" alt="Avatar">
+              </a>
+              <figcaption class="user-caption">
+                <h4><%=@team[0][:name]%></h4>
+                <span><%=@team[0][:position]%></span>
+                <ul class="socials text-orange">
+                  <li><%=@team[0][:citation]%></li>
+                </ul>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col-md-2">
+            <figure class="user">
+              <a href="" class="user-photo">
+                <img src="<%=asset_path(@team[1][:image])%>" alt="Avatar">
+              </a>
+              <figcaption class="user-caption">
+                <h4><%=@team[1][:name]%></h4>
+                <span><%=@team[1][:position]%></span>
+                <ul class="socials text-orange">
+                  <li><%=@team[1][:citation]%></li>
+                </ul>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col-md-2">
+            <figure class="user">
+              <a href="" class="user-photo">
+                <img src="<%=asset_path(@team[2][:image])%>" alt="Avatar">
+              </a>
+              <figcaption class="user-caption">
+                <h4><%=@team[2][:name]%></h4>
+                <span><%=@team[2][:position]%></span>
+                <ul class="socials text-orange">
+                  <li><%=@team[2][:citation]%></li>
+                </ul>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col-md-2">
+            <figure class="user">
+              <a href="" class="user-photo">
+                <img src="<%=asset_path(@team[3][:image])%>" alt="Avatar">
+              </a>
+              <figcaption class="user-caption">
+                <h4><%=@team[3][:name]%></h4>
+                <span><%=@team[3][:position]%></span>
+                <ul class="socials text-orange">
+                  <li><%=@team[3][:citation]%></li>
+                </ul>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col-md-2">
+            <figure class="user">
+              <a href="" class="user-photo">
+                <img src="<%=asset_path(@team[4][:image])%>" alt="Avatar">
+              </a>
+              <figcaption class="user-caption">
+                <h4><%=@team[4][:name]%></h4>
+                <span><%=@team[4][:position]%></span>
+                <ul class="socials text-orange">
+                  <li><%=@team[4][:citation]%></li>
+                </ul>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+    </section>
+    <!-- / team -->
+
+<%= render 'layouts/footer' %>
