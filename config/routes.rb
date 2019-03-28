@@ -42,5 +42,6 @@ Rails.application.routes.draw do
 
 
   root 'statics#index'
+  get 'team' , to: 'statics#team'
 
 end
