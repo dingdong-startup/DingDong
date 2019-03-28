@@ -20,8 +20,10 @@
           					    <p>en ligne.</p>
 												<p>en quelques clics.</p>
           					</div>
-
-                    <%= link_to "Je découvre les appartements disponibles ici", properties_path, style:"font-size: 1em", class:'mt-6 btn btn-rounded btn-white px-8'%>
+                    <%= link_to properties_path do %>
+                      <div class="mt-4 btn btn-rounded btn-white px-5"> Je découvre les appartements</div>
+                    <%end%>
+                    
                   </div>
                 </div>
               </div>
