@@ -1,44 +1,38 @@
 <section class="p-0">
 
-      <div class="swiper-container swiper-container-half text-white swiper-container-fade swiper-container-horizontal skrollable skrollable-between" data-top-top="transform: translateY(0px);" data-top-bottom="transform: translateY(250px);" style="transform: translateY(0px);">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide vh-100 swiper-slide-active" style="width: 1056px; opacity: 1; transform: translate3d(0px, 0px, 0px);">
-            <div class="image image-overlay" style="background-image: linear-gradient(
-                     rgba(20,20,20, .5),
-                     rgba(20,20,20, .5)),
-                      url(<%=asset_path('sofa3.jpg')%>);"></div>
-            <div class="caption">
-              <div class="container">
-                <div class="row justify-content-center vh-100">
-                  <div class="col-md-8 align-self-center text-center">
-                    <h1 style="font-size:3em"><i class="fas fa-bell mr-3"></i><b>Ding Dong</b> <br></h1>
-                    <h2 class="mt-6">Réservez une visite pour votre future location
-                    <h1><span id="typed" class="text-orange"></span></h1>
+  <div class="swiper-container swiper-container-half text-white swiper-container-fade swiper-container-horizontal skrollable skrollable-between" data-top-top="transform: translateY(0px);" data-top-bottom="transform: translateY(250px);" style="transform: translateY(0px);">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide vh-100 swiper-slide-active" style="width: 1056px; opacity: 1; transform: translate3d(0px, 0px, 0px);">
+        <div class="image image-overlay" style="background-image: linear-gradient(
+        rgba(20,20,20, .5),
+        rgba(20,20,20, .5)),
+        url(<%=asset_path('sofa3.jpg')%>);"></div>
+        <div class="caption">
+          <div class="container">
+            <div class="row justify-content-center vh-100">
+              <div class="col-md-8 align-self-center text-center">
+                <h1 style="font-size:3em"><i class="fas fa-bell mr-3"></i><b>Ding Dong</b> <br></h1>
+                <h2 class="mt-6">Réservez une visite pour votre future location
+                  <h1><span class="text-orange">en exclusivité.</span></h1>
+                  <%= link_to properties_path do %>
+                  <div class="mt-4 btn btn-rounded btn-white px-5"> Je découvre les appartements</div>
+                  <%end%>
 
-          					<div id="typed-strings" script="typeSpeed: 130">
-          					    <p>avant tout le monde.</p>
-          					    <p>en ligne.</p>
-												<p>en quelques clics.</p>
-          					</div>
-                    <%= link_to properties_path do %>
-                      <div class="mt-4 btn btn-rounded btn-white px-5"> Je découvre les appartements</div>
-                    <%end%>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-footer">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col text-center">
-                  <div class="mouse"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div class="swiper-footer">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col text-center">
+                <div class="mouse"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
 
- </section>
+    </section>
