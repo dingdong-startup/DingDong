@@ -4,7 +4,7 @@ class VisitsController < ApplicationController
 
 
   def create
-    
+
     @property = Property.find(params[:property_id])
     # testing if a visit exists or not
     @visit = current_tenant.existant_visit(@property)
@@ -20,12 +20,13 @@ class VisitsController < ApplicationController
         source: params[:stripeToken],
         email: params[:stripeEmail],
       })
-          
+
       # if the stripe process is success, saving stripe customer id
       # updating payment status to 2
       # unfav if fav exists
       if customer.save
         current_tenant.update(stripe_customer_id: customer.id, payment_status_id: 2, phone_number: params[:tenant][:last_name])
+        TenantMailer.payment_email(current_tenant,@property).deliver_now
         @visit.update(visit_status_id: 4)
         flash[:success] = "Carte bien enregistrée, demande de visite envoyée !"
         redirect_back(fallback_location: properties_path)
@@ -37,7 +38,7 @@ class VisitsController < ApplicationController
       @visit.update(visit_status_id: 4)
       flash[:success] = "Ta demande a bien été enregistrée!"
       redirect_back(fallback_location: properties_path)
-    end 
+    end
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_back(fallback_location: properties_path)
@@ -48,7 +49,7 @@ class VisitsController < ApplicationController
     if @visit.destroy
       flash[:light] = "Demande de visite annulée"
       redirect_back(fallback_location: properties_path)
-    else 
+    else
       flash[:danger] = "Oups, demande de visite non annulée"
       redirect_back(fallback_location: properties_path)
     end
