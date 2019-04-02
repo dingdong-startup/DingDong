@@ -1,50 +1,59 @@
 
 
-          <div class="container pl-4 pr-4">
-            <div class="row justify-content-around">
-              <div class="col-lg-4 mr-3 p-0">
-                <div class="mb-3"><i class="fas fa-arrows-alt-h mr-1 text-primary "></i> Surface :
-                  <span class="text-muted"> <%=property.surface%> m2</span>
-                </div>
-                <div class="mb-3"><i class="fas fa-coins mr-1 text-primary"></i> Loyer C.C. / Mois :
-                  <span class="text-muted"> <%=property.total_rent%> €</span>
-                  <div class="text-muted"> > Dont <%= property.charges %> € de charges </div>
-                </div>
-                <div class="mb-3"><i class="fas fa-money-check mr-1 text-primary"></i>Honoraires de location :
-                  <span class="text-muted"> <%= property.agency_fees %> €</span>
-                  <div class="text-muted"> > Et <%= property.deposit %> € de dépôt de garantie </div>
-                </div>
+<div class="container pl-4 pr-4">
+  <div class="row justify-content-around">
+    <div class="col-lg-4 mr-3 p-0">
+      <span class="text-primary"> Infos pratiques </span> <br> <br>
 
+      <div class="mb-1"><i class="fas fa-map-marker-alt mr-1 text-primary"></i> Adresse :
+        <span class="text-muted"> <%=property.address%> </span>
+      </div>
 
-                <div class="mb-3"><i class="fas fa-hiking mr-1 text-primary"></i> Etage :
-                  <span class="text-muted"> <%=property.floor%> ème</span>
-                </div>
+      <div class="mb-3"><i class="fas fa-calendar-alt mr-1 text-primary"></i> Disponibilité :
+        <span class="text-muted">  <%=property.available_date.to_date%>  </span>
+      </div>
 
-                <div class="mb-3"><i class="fas fa-calendar-alt mr-1 text-primary"></i> Disponibilité :
-                  <span class="text-muted">  <%=property.available_date.to_date%>  </span>
-                </div>
+      <span class="text-primary">L'appartement</span> <br> <br>
+      <div class="mb-1"><i class="fas fa-arrows-alt-h mr-1 text-primary "></i> Surface :
+        <span class="text-muted"> <%=property.surface%> m2</span>
+      </div>
+      <div class="mb-1"><i class="fas fa-bed mr-1 text-primary"></i> Pièces :
+        <span class="text-muted"> <%=property.room%> </span>
+      </div>
 
-                <div class=""><i class="fas fa-map-marker-alt mr-1 text-primary"></i> Adresse :
-                  <span class="text-muted"> Adresse, <%=property.area.zipcode%> Ville  </span>
-                </div>
-              </div>
-              <div class="col-lg-7 p-0">
-                <div class=""><i class="fas fa-info-circle mr-1 text-primary"></i> Description
-                  <div class="text-muted text-justify"><%=property.description%></div>
-                </div>
-              </div>
+      <div class="mb-3"><i class="fas fa-hiking mr-1 text-primary"></i> Etage :
+        <span class="text-muted"> <%=property.floor%> ème</span>
+      </div>
 
-            </div>
+      <span class="text-primary">Conditions financières</span> <br> <br>
+      <div class="mb-1"><i class="fas fa-coins mr-1 text-primary"></i> Loyer C.C. / Mois :
+        <span class="text-muted"> <%=property.total_rent%> €</span>
+        <div class="text-muted"> > Dont <%= property.charges %> € de charges </div>
+      </div>
 
-            <div class="row" style="justify-content: flex-end;">
-              <div class="card-meta font-weight-light mr-1">Ajouté le : <%=property.updated_at.to_date%>
-              </div>
-            </div>
+      <div class="mb-1"><i class="fas fa-money-check mr-1 text-primary"></i>Honoraires de location :
+        <span class="text-muted"> <%= property.agency_fees %> €</span>
+        <div class="text-muted"> > Et <%= property.deposit %> € de dépôt de garantie </div>
+      </div>
 
-        </div>
+      <div class="mb-3"><i class="fas fa-bell mr-1 text-primary"></i> Honoraires Ding Dong :
+        <span class="text-muted"> 99€ </span>
+        <div class="text-muted"> > Uniquement si vous louez l'appartement </div>
 
+      </div>
 
+    </div>
+    <div class="col-lg-7 p-0">
+      <span class="mr-1 text-primary">Description du bien <br> <br> </span>
+        <div class="text-muted text-justify"><%=property.description%></div>
+      </div>
+    </div>
 
+  </div>
 
+  <div class="row" style="justify-content: flex-end;">
+    <div class="card-meta font-weight-light mr-1">Ajouté le : <%=property.updated_at.to_date%>
+    </div>
+  </div>
 
-
+</div>
