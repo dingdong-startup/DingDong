@@ -36,7 +36,7 @@ class VisitsController < ApplicationController
       end
     else #in case it does
       @visit.update(visit_status_id: 4)
-      flash[:success] = "Ta demande a bien été enregistrée!"
+      flash[:success] = "votre demande a bien été enregistrée!"
       redirect_back(fallback_location: properties_path)
     end
   rescue Stripe::CardError => e
