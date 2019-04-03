@@ -99,7 +99,7 @@ Rails.application.configure do
 config.assets.precompile += %w( .svg .eot .woff .ttf )
 
 
-  config.action_mailer.default_url_options = { host: 'https://dingdongproduction.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: 'https://www.hellodingdong.com/' }
   config.action_mailer.delivery_method = :smtp
 
 end

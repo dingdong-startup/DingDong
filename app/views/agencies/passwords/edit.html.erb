@@ -7,7 +7,7 @@
       <div class="col-md-6 col-lg-5 white">
         <h3>Réinitialise ton mot de passe</h3>
         <div class="mt-2 mb-2">
-          <p>Tu as oublié ton mot de passe ? Pas de panique, renseigne ci-dessous ton email et nous t'enverrons un lien pour remettre à zéro de ton mot de passe.</p> <br>
+          <p>Vous avez oublié votre mot de passe ? Renseignez ci-dessous votre email et nous vous enverrons un lien pour réinitialiser votre mot de passe.</p> <br>
           <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
           <%= f.error_notification %>
           <%= f.input :reset_password_token, as: :hidden %>
@@ -37,16 +37,15 @@
           <% end %>
           <br>
         </div>
-        
+
         <h3>Supprimer mon compte</h3>
 
         <p>Non satisfait par nos services ? <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Es-tu sûr? Cette action est déféinitive !" }, method: :delete, class: 'text-danger' %></p>
 
-        <br> 
+        <br>
         <%= link_to "Revenir sur mon profil", :back %>
 
       </div>
     </div>
   </div>
 </div>
-
