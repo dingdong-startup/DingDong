@@ -8,9 +8,9 @@
       </div>
       <% if current_tenant.payment_status_id == 1 %>
         <div class="modal-body text-center">
-          <h3>Juste une empreinte</h3>
-          <p>Afin de pouvoir valider ta demande de visite, nous te demandons juste une empreinte bancaire et ton numéro de téléphone.</p><br/>
-          <p>Bien entendu, nous te facturerons 99€ <span class="text-black">si et seulement si</span> tu obtiens les clés de cet appart'.</p>
+          <h3>Votre empreinte bancaire</h3>
+          <p>Afin de pouvoir valider votre demande de visite, nous vous demandons une empreinte bancaire et un numéro de téléphone.</p><br/>
+          <p>Vous serez facturé de 99€ <span class="text-black">si et seulement si</span> vous devenez locataire de l'appartement.</p>
         </div>
         <div class="modal-footer">
             <%= render 'layouts/stripe_print' %>
@@ -20,9 +20,9 @@
 
 
         <div class="modal-body text-center">
-          <h3>Valide ta visite</h3>
-          <p>Nous reviendrons vers toi sous 2 jours pour valider ta visite.</p>
-          <p>Bien entendu, nous te facturerons 99€ <span class="text-black">si et seulement si</span> tu obtiens les clés de cet appart'.</p>
+          <h3>Validez votre visite</h3>
+          <p>Nous reviendrons vers vous rapidement pour valider votre visite.</p>
+          <p>Vous serez facturé de 99€ <span class="text-black">si et seulement si</span> vous devenez locataire de l'appartement.</p>
         </div>
         <div class="modal-footer">
             <%= render 'layouts/validate_visit' %>

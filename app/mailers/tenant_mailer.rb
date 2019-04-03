@@ -5,5 +5,11 @@ class TenantMailer < ApplicationMailer
   	@property = property
   	mail(to: @tenant.email, subject: "Ding Dong! Ta demande de visite a bien été enregistrée")
   end
-  	
+
+  def payment_email(tenant, property)
+    @tenant = tenant
+    @property = property
+    mail(to: @tenant.email, subject: "Ding Dong! Votre empreinte bancaire a bien été enregistré")
+  end
+
 end
