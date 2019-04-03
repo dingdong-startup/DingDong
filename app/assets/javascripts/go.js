@@ -45,7 +45,7 @@
               }
           });
       });
-      
+
       $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
         disableOn: 700,
         type: 'iframe',
@@ -61,11 +61,11 @@
       if( $('#typed').length ) {
         var typed = new Typed("#typed", {
           stringsElement: '#typed-strings',
-          typeSpeed: 100,
-          backSpeed: 50,
-          backDelay: 2000,
-          startDelay: 200,
-          loop: true
+          typeSpeed: 70,
+          backSpeed: 45,
+          backDelay: 1300,
+          startDelay: 10,
+          loop: false
         });
       }
     },
@@ -216,7 +216,7 @@
             1200: { items: items[0] || 1}
           }
         };
-        
+
         a.owlCarousel(options);
       });
     },
@@ -261,8 +261,8 @@
       $('[data-toggle="tooltip"]').tooltip();
 
 
-      skrollr.init({  
-          forceHeight: false,        
+      skrollr.init({
+          forceHeight: false,
           mobileCheck: function() {
               //hack - forces mobile version to be off
               return false;

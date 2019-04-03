@@ -1,95 +1,63 @@
-<section class="section">
+<section class="section-lg">
       <div class="container">
-        <div class="row justify-content-center text-center text-left">
+        <div class="row justify-content-center text-center text-lg-left">
 
 	          <div class="accordion-group accordion-group-steps" data-accordion-group="">
 	            <div class="accordion open accordion-padding" data-accordion="">
 	              <div class="accordion-control" data-control="">
-	                <h5>Découvre les appartements en avant première</h5>
+	                <h2>Découvrez nos appartements en avant première</h2>
 	              </div>
-	              <div class="accordion-content" data-content="" style="transition: max-height 300ms ease 0s; max-height: 156px;">
+	              <div class="accordion-content">
 	                <div class="accordion-content-wrapper">
-	                  <p>Mets-les en favori <i class="ml-1 fas fa-heart text-orange"></i></p>
+	                  <p>Mettez-les en favori <i class="ml-1 fas fa-heart text-orange"></i></p>
+	                </div>
+	              </div>
+	            </div>
+              <div class="accordion accordion-padding" data-accordion="">
+               <div class="accordion-control" data-control="">
+                 <h2>Renseignez votre empreinte bancaire</h2>
+               </div>
+               <div class="accordion-content">
+							 <!--class="accordion-content" data-content="" style="max-height: 0px; overflow: hidden;" -->
+                 <div class="accordion-content-wrapper">
+                   <p>Si vous ne trouvez pas votre appartement avec Ding Dong, vous ne serez pas débité.<i class="ml-1 fas fa-credit-card text-orange"></i> </p>
+                 </div>
+               </div>
+             </div>
+	            <div class="accordion accordion-padding" data-accordion="">
+	              <div class="accordion-control" data-control="">
+	                <h2>Inscrivez-vous aux visites de vos appartements préférés</h2>
+	              </div>
+	              <div class="accordion-content">
+								<!--class="accordion-content" data-content="" style="max-height: 0px; overflow: hidden;" -->
+	                <div class="accordion-content-wrapper">
+	                  <p>Nous vous recontacterons dans les plus brefs délais<i class="ml-1 fas fa-calendar-check mr-1 text-orange"></i> </p>
 	                </div>
 	              </div>
 	            </div>
 	            <div class="accordion accordion-padding" data-accordion="">
 	              <div class="accordion-control" data-control="">
-	                <h5>Inscris-toi aux visites de tes appartements préférés</h5>
+	                <h2>Visitez avant tout le monde</h2>
 	              </div>
-	              <div class="accordion-content" data-content="" style="max-height: 0px; overflow: hidden;">
+	              <div class="accordion-content">
+								<!--class="accordion-content" data-content="" style="max-height: 0px; overflow: hidden;" -->
 	                <div class="accordion-content-wrapper">
-	                  <p>Tu recevras un mail dans les 2 jours avec une proposition de visite <i class="ml-1 fas fa-calendar-check mr-1 text-orange"></i> </p>
+	                  <p>Comme promis, pas plus de 10 visiteurs pour un appart<i class="ml-1 fas fa-users text-orange"></i> </p>
 	                </div>
 	              </div>
 	            </div>
-	            <div class="accordion accordion-padding" data-accordion="">
+              <div class="accordion accordion-padding" data-accordion="">
 	              <div class="accordion-control" data-control="">
-	                <h5>Visite avant tout le monde</h5>
+	                <h2>Vous êtes retenu pour l'appartement !</h2>
 	              </div>
-	              <div class="accordion-content" data-content="" style="max-height: 0px; overflow: hidden;">
+	              <div class="accordion-content">
+								<!--class="accordion-content" data-content="" style="max-height: 0px; overflow: hidden;" -->
 	                <div class="accordion-content-wrapper">
-	                  <p>Comme promis, pas plus de 10 pour visiter un appart<i class="ml-1 fas fa-users text-orange"></i> </p>
-	                </div>
-	              </div>
-	            </div>
-	          <div class="accordion accordion-padding" data-accordion="">
-	              <div class="accordion-control" data-control="">
-	                <h5>A toi les clés !</h5>
-	              </div>
-	              <div class="accordion-content" data-content="" style="max-height: 0px; overflow: hidden;">
-	                <div class="accordion-content-wrapper">
-	                  <p>Tu reçois une réponse dans la semaine et à toi l'appart <i class="ml-1 fas fa-key text-orange"></i>
-	                  </p>
+	                  <p>Vous recevez une réponse dans la semaine et vous serez débité de 99€<i class="ml-1 fas fa-key text-orange"></i> </p>
 	                </div>
 	              </div>
 	            </div>
 	          </div>
 		</div>
-
-		<% if @property.visits.find_by(tenant: current_tenant, property_id: params[:id], visit_status_id: 4) %>
-        <% else %>
-		
-			<div class="row justify-content-around mt-8">
-	           	<div class="col-md col-sm-12 d-flex justify-content-center">
-								<% if tenant_signed_in? %>
-									<% if @favorite.nil? %>
-									<%= form_tag property_favorites_path(property.id), method: 'post' do %>
-										<%= hidden_field_tag :property_id, property.id %>
-										<%= button_tag(type: "submit", class: "btn btn btn-outline-orange mb-1", remote: true) do %>
-											<div><i class="far fa-heart mr-1"></i>Enregistrer</div> 
-										<% end %>
-									<% end %>
-
-									<% elsif @favorite.is_liked %>
-
-									<%= form_tag property_favorite_path(property.id, @favorite.id), method: 'put' do %>
-										<%= hidden_field_tag :property_id, property.id %>
-										<%= button_tag(type: "submit", class: "btn btn btn-orange mb-1", remote: true) do %>
-											<div><i class="fas fa-heart mr-1"></i>Enregistrer</div> 
-										<% end %>
-									<% end %>
-
-									<% else %>
-
-										<%= form_tag property_favorite_path(property.id, @favorite.id), method: 'put' do %>
-											<%= hidden_field_tag :property_id, property.id %>
-											<%= button_tag(type: "submit", class: "btn btn btn-outline-orange mb-1", remote: true) do %>
-												<div><i class="far fa-heart mr-1"></i>Enregistrer</div> 
-											<% end %>
-										<% end %>
-									<% end %>
-								<% else %>
-								<div>
-									<%= link_to 'Enregistrer',  new_tenant_session_path, class: 'btn btn-outline-orange'%>
-								</div>
-								<% end %>
-		        </div>
-
-	    	</div>
-	    <%end%>
-
-
-
 	</div>
 </section>
