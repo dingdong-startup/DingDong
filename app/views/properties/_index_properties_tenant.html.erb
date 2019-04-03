@@ -5,7 +5,7 @@
 			<%= link_to property_path(visit.property.id), class: "card-img-container" do %>
 			<img class="card-img-top" src="<%=asset_path(image_path(main_app.url_for(visit.property.images.first)))%>" alt="Property image">
 			<div class="card-header  d-flex flex-column justify-content-between">
-				<div class="d-flex justify-content-end">	
+				<div class="d-flex justify-content-end">
 				</div>
 				<div>
 					<h5 class="card-title"><%= visit.property.title %></h5>
@@ -33,7 +33,7 @@
 							<% end %>
 						<%else%>
 							<%= link_to 'Visiter', property_visits_path(visit.property.id), class: 'btn btn-blue', method: 'create' %>
-							<p><br> Une fois que tu auras validé ta demande, le gestionnaire du bien reviendra vers toi afin de convenir d'un rendez-vous</p>
+							<p><br> Une fois que vous aurez validé votre demande, le gestionnaire du bien reviendra vers vous afin de convenir d'un rendez-vous</p>
 						<%end%>
 					</div>
 				</div>
