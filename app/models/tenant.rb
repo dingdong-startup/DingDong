@@ -2,7 +2,7 @@ class Tenant < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable
   has_many :visits
   belongs_to :payment_status
 
@@ -35,7 +35,6 @@ class Tenant < ApplicationRecord
     self.avatar.attach(io: File.open('app/assets/images/avatar.png'), filename: 'avatar.png', content_type: 'image/png')
   end
 
-
   def existant_visit(property)
     visit = Visit.find_by(property_id: property.id, tenant: self)
     if visit
@@ -66,6 +65,4 @@ class Tenant < ApplicationRecord
   def property_fav(property)
     self.favorites.where(property: property)
   end
-
-
 end

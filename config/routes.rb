@@ -40,6 +40,9 @@ Rails.application.routes.draw do
 
   resources :charges, only: [:index, :create]
 
+  resources :payments, only: [:index, :create]
+
+  get 'thank_you', to: 'payments#thank_you'
 
   root 'statics#index'
   get 'team' , to: 'statics#team'
