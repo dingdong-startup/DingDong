@@ -7,6 +7,29 @@
                 <p><h5> Inscrivez vous aux visites de nos appartements <br> sans débourser un euro. <br> <br>
                   <span class="text-primary"style="font-weight:bolder;">99€ uniquement si <br> </span>vous devenez locataire à la suite de la visite.
                 </h5  >
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <%= form_tag do %>
+                        <article>
+                          <% if flash[:error].present? %>
+                            <div id="error_explanation">
+                              <p><%= flash[:error] %></p>
+                            </div>
+                          <% end %>
+                        </article>
+                      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                                    data-description="Votre Empreinte Bancaire"
+                                    data-locale="auto"
+                                    data-name="Enregistrer"
+                                    data-panel-label="Enregistrer">
+                        </script>
+                      <button type="submit" class="btn btn-orange">Faire partie du club</button>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
               </p>
               </div>
             </div>

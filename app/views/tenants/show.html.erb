@@ -75,7 +75,7 @@
                     <b class="h2">0 <i class="fas fa-file-upload"></i></b>
                   </div>
                   <div class="row equal-header ml-2 mb-2 mt-7">
-                    <span class="text-muted">Dossier complété</span>
+                    <span><%= link_to('Remplir mon dossier déclaratif', "https://dingdong-inscription.typeform.com/to/mMksFc?first_name=#{@tenant.first_name}&last_name=#{@tenant.last_name}&email=#{@tenant.email}", target: "_blank", class: "text-muted") %></span>
                   </div>
                 </div>
               </div>

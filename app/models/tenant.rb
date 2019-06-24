@@ -65,6 +65,4 @@ class Tenant < ApplicationRecord
   def property_fav(property)
     self.favorites.where(property: property)
   end
-
-
 end
