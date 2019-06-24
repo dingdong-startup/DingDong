@@ -1,5 +1,45 @@
 <%= render 'layouts/navbar_payments' %>
-<%= render 'layouts/steps_payments'%>
+
+<section class="section-lg">
+      <div class="container">
+        <div class="row text-center text-lg-left">
+          <div class="col-12 col-lg-9">
+            <div class="row">
+              <div class="col-lg-8">
+                <p><h5> Pour pouvoir postuler aux visites, renseignez votre empreinte de carte bleue :<br> <br> <br>
+                <%= form_tag do %>
+                  <article>
+                    <% if flash[:error].present? %>
+                      <div id="error_explanation">
+                        <p><%= flash[:error] %></p>
+                      </div>
+                    <% end %>
+                  </article>
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                              data-description="Votre Empreinte Bancaire"
+                              data-locale="auto"
+                              data-name="Enregistrer"
+                              data-panel-label="Enregistrer">
+                </script>
+                <button type="submit" class="btn btn-primary">Enregistrer mon empreinte bancaire</button>
+                <script src="https://js.stripe.com/v3/"></script>
+                <% end %>
+                <br><br>
+                  <span class="text-primary"style="font-weight:bolder;">Si vous ne trouvez pas avec Ding Dong, vous ne serez pas débité.<br> </span>
+                </h5>
+
+              </p>
+              </div>
+                        <div class="col-12 col-lg-3 presentation presentation-responsive">
+            <img class="left-25 vertical-align" style="width: 30em;" src="<%=asset_path("undraw_credit_card_df1m.png")%>" alt="Image">
+          </div>
+            </div>  
+        </div>
+      </div>
+    </section>
+
+              
 <%= render 'layouts/footer_payments' %>
 <script>
     document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';

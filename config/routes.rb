@@ -23,7 +23,6 @@ Rails.application.routes.draw do
 
   resources :properties, only: [:index, :show] do 
     resources :visits, only: [:create, :update, :destroy]
-
   end
 
   resources :properties, only: [:index, :show] do
